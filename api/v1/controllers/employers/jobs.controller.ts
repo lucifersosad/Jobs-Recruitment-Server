@@ -166,13 +166,10 @@ export const index = async function (
         .populate(populateCheck);
     }
 
-    //Mã hóa dữ liệu khi gửi đi
-    const dataEncrypted = encryptedData(records);
-
     //Trả về công việc đó.
     res
       .status(200)
-      .json({ data: dataEncrypted, code: 200, countJobs: countJobs });
+      .json({ data: records, code: 200, countJobs: countJobs });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
     console.error("Error in API:", error);
@@ -588,28 +585,32 @@ export const actionCv = async function (
     // Nếu status là "refuse", xóa CV và gửi email từ chối
     if (status === "refuse") {
       // Cập nhật status của CV thành "refuse"
-      const checkCv = await Cv.findOneAndUpdate({
-        email: email ,
-        idJob: idJob,
-      },{
-        status: "refuse"
-      });
+      const checkCv = await Cv.findOneAndUpdate(
+        {
+          email: email,
+          idJob: idJob,
+        },
+        {
+          status: "refuse",
+        }
+      );
       // Nếu CV tồn tại trong listProfileRequirement của công việc, xóa nó
-      if(checkCv){
-        await Job.updateOne({
-          "listProfileRequirement":checkCv._id
-        },{
-          $pull: { listProfileRequirement: checkCv._id }
-        })
+      if (checkCv) {
+        await Job.updateOne(
+          {
+            listProfileRequirement: checkCv._id,
+          },
+          {
+            $pull: { listProfileRequirement: checkCv._id },
+          }
+        );
       }
       await sendMailEmployerRefureCv(email, emailSubject, jobRecord);
     }
     // Nếu status là "accept", cập nhật status của CV, gửi email chấp nhận, và tạo một phòng chat mới
     else if (status === "accept") {
       await Cv.updateOne({ email: email, idJob: idJob }, { status: "accept" });
-      await Job.updateOne({
-
-      })
+      await Job.updateOne({});
       await sendMailEmployerAcceptCv(email, emailSubject, jobRecord);
 
       // Tìm phòng chat bạn bè và kiểm tra xem người dùng đã tham gia chưa
@@ -645,10 +646,9 @@ export const actionCv = async function (
         typeRoom: "group",
         "users.user_id": profile?.idUser["_id"],
       });
-      
+
       // Nếu chưa tham gia, thêm người dùng vào phòng chat group
       if (!roomChatGroupExit) {
-   
         // Tìm phòng chat group và thêm người dùng vào nếu chưa có
         await RoomChat.findOneAndUpdate(
           {

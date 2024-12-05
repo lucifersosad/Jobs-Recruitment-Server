@@ -24,20 +24,20 @@ export const getDetailedAddress = async function (
   next: any
 ): Promise<void> {
   try {
-    if (!req.body.ward) {
-      res.status(400).json({ code: 401, error: "Vui lòng nhập xã/phường" });
-      return;
-    }
-    if (!req.body.district) {
-      res.status(400).json({ code: 401, error: "Vui lòng nhập quận/huyện" });
-      return;
-    }
-    if (!req.body.city) {
-      res
-        .status(400)
-        .json({ code: 401, error: "Vui lòng nhập tỉnh/thành phố" });
-      return;
-    }
+    // if (!req.body.ward) {
+    //   res.status(400).json({ code: 401, error: "Vui lòng nhập xã/phường" });
+    //   return;
+    // }
+    // if (!req.body.district) {
+    //   res.status(400).json({ code: 401, error: "Vui lòng nhập quận/huyện" });
+    //   return;
+    // }
+    // if (!req.body.city) {
+    //   res
+    //     .status(400)
+    //     .json({ code: 401, error: "Vui lòng nhập tỉnh/thành phố" });
+    //   return;
+    // }
     if (!req.body.keyword) {
       res.status(400).json({ code: 401, error: "Vui lòng nhập từ khóa" });
       return;
