@@ -120,12 +120,8 @@ export const index = async function (req: Request, res: Response): Promise<void>
                 .skip(objectPagination.skip)
         }
 
-
-
-        //Mã hóa dữ liệu khi gửi đi
-        const dataEncrypted = encryptedData(records)
         //Trả về công việc đó.
-        res.status(200).json({ data: dataEncrypted, code: 200 });
+        res.status(200).json({ data: records, code: 200 });
     } catch (error) {
         //Thông báo lỗi 500 đến người dùng server lỗi.
         console.error("Error in API:", error);
@@ -169,10 +165,8 @@ export const countJobs = async function (req: Request, res: Response): Promise<v
             arr.push(dataObject)
         }
 
-        //Mã hóa dữ liệu khi gửi đi
-        const dataEncrypted = encryptedData(arr)
         //Ta trả dữ liệu ra giao diện
-        res.status(200).json({ data: dataEncrypted, code: 200 });
+        res.status(200).json({ data: arr, code: 200 });
     } catch (error) {
         //Thông báo lỗi 500 đến người dùng server lỗi.
         console.error("Error in API:", error);

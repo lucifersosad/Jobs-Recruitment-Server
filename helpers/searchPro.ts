@@ -7,6 +7,7 @@ export function searchPro(
   keyOne: string = "",
   keyTwo: string = ""
 ): any[] {
+  console.log("🚀 ~ listItem:", listItem)
   //Duyệt qua từng phần tử của listItem và gôp chung lại thành một mảng hàm flatMap là vậy
   const convertArrr = listItem
     .flatMap((item) =>
@@ -25,5 +26,6 @@ export function searchPro(
       })
     ) //Lọc ra những phần tử không phải là false, 0, "", null, undefined, và NaN.
     .filter(Boolean);
+  console.log("🚀 ~ convertArrr:", convertArrr);
   return convertArrr;
 }

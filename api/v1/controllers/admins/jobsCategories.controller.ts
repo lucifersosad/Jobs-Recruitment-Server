@@ -13,7 +13,6 @@ import { encryptedData } from "../../../../helpers/encryptedData";
 import JobCategories from "../../../../models/jobCategories.model";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 
-
 //VD: {{BASE_URL}}/api/v1/admin/job-categories?page=1&limit=7&sortKey=companyName&sortValue=asc&status=active$findAll=true
 export const index = async function (req: Request, res: Response): Promise<void> {
     try {
@@ -124,21 +123,15 @@ export const index = async function (req: Request, res: Response): Promise<void>
                 .limit(objectPagination.limitItem)
                 .skip(objectPagination.skip);
         }
-
-     
-
-        //Mã hóa dữ liệu khi gửi đi
-        const dataEncrypted = encryptedData(records)
+        
         //Trả về công việc đó.
-        res.status(200).json({ data: dataEncrypted, code: 200 });
+        res.status(200).json({ data: records, code: 200 });
     } catch (error) {
         //Thông báo lỗi 500 đến người dùng server lỗi.
         console.error("Error in API:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
-
-
 
 // [POST] /api/v1/admin/job-categories/create
 export const create = async function (req: Request, res: Response): Promise<void> {
@@ -225,7 +218,6 @@ export const edit = async function (req: Request, res: Response): Promise<void> 
 
 }
 
-
 // [POST] /api/v1/admin/job-categories/delete/:id
 export const deleteCategories = async function (req: Request, res: Response): Promise<void> {
 
@@ -252,7 +244,6 @@ export const deleteCategories = async function (req: Request, res: Response): Pr
 
 
 }
-
 
 // [PATCH] /api/v1/admin/job-categories/change-status/:id
 export const changeStatus = async function (req: Request, res: Response): Promise<void> {
@@ -352,8 +343,6 @@ export const changeMulti = async function (req: Request, res: Response): Promise
     }
 }
 
-
-
 // [GET] /api/v1/admin/job-categories/tree
 export const tree = async function (req: Request, res: Response): Promise<void> {
     try {
@@ -371,10 +360,8 @@ export const tree = async function (req: Request, res: Response): Promise<void> 
         const record = await JobCategories.find(find);
         //Lấy những bản ghi đó tạo ra một tree để phân cấp
         const convertTree = createTree.tree2(record)
-        //Mã hóa dữ liệu lại
-        const dataEncrypted = encryptedData(convertTree)
         //Gửi dữ liệu di
-        res.status(201).json({ data: dataEncrypted, code: 200 });
+        res.status(201).json({ data: convertTree, code: 200 });
     } catch (error) {
         //Thông báo lỗi 500 đến người dùng server lỗi.
         console.error("Error in API:", error);

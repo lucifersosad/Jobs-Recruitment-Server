@@ -67,7 +67,7 @@ export const index = async function (
     if (req.query.keyword) {
       queryKeyword = req.query.keyword.toString() || "";
     }
-    
+
     if (req.query.jobCategoriesKey) {
       const keyword = req.query.jobCategoriesKey;
 
@@ -269,7 +269,7 @@ export const jobSearchPosition = async function (
         { listTagSlug: { $regex: new RegExp(unidecodeSlug, "i") } },
       ],
     };
-
+    
     const jobSearch = await Job.find(find, {
       listTagName: 1,
       listTagSlug: 1,
@@ -363,8 +363,8 @@ export const advancedSearch = async function (
         $lte: parseInt(req.query.salary_max.toString()),
       };
     }
-     //Check xem nếu query gửi lên level của công ty muốn tuyển (Chức năng tìm kiếm kinh nghiệm làm việc của job đó)
-     if (req.query.workExperience) {
+    //Check xem nếu query gửi lên level của công ty muốn tuyển (Chức năng tìm kiếm kinh nghiệm làm việc của job đó)
+    if (req.query.workExperience) {
       find["workExperience"] = req.query.workExperience.toString();
     }
     //Check xem nếu query gửi lên thành phố muốn tìm kiếm (Chức năng tìm kiếm theo thành phố)
@@ -406,7 +406,7 @@ export const advancedSearch = async function (
       .limit(objectPagination.limitItem)
       .skip(objectPagination.skip)
       .select(select);
-      console.log(find)
+    console.log(find);
     const convertData = records.map((record) => ({
       ...record.toObject(),
       companyName: record["employerId"]["companyName"],
@@ -414,6 +414,8 @@ export const advancedSearch = async function (
       logoCompany: record["employerId"]["logoCompany"],
       slugCompany: record["employerId"]["slug"],
     }));
+
+    console.log("🚀 ~ convertData ~ convertData:", convertData);
 
     const dataEncrypted = encryptedData(convertData);
     res
