@@ -29,7 +29,7 @@ const employerSchema = new mongoose.Schema(
         specificAddressCompany: String,
         bannerCompany:{
             type: String,
-            default: "https://res.cloudinary.com/dmmz10szo/image/upload/v1713900525/GNOUD_n4xqix.png"
+            default: "https://res.cloudinary.com/dt10idnhk/image/upload/v1733474976/ube8acjxnrv02zpvzzyb.png"
         },
         slug: {
             type: String,
@@ -46,7 +46,7 @@ const employerSchema = new mongoose.Schema(
           },
         logoCompany: {
             type: String,
-            default: "https://s3.thegioiyeuthuong.vn/demo/user-resource/oTAkcPTJkD_1733079376727.png"
+            default: "https://thegioiyeuthuong.vn/wp-content/uploads/2022/03/logo-tgyt-02-1-1.svg"
         },
         activePhone:{
             type:Boolean,
@@ -61,7 +61,7 @@ const employerSchema = new mongoose.Schema(
         ,
         image : {
             type: String,
-            default: "https://lh3.googleusercontent.com/d/1ILtAxkD9TrKMtGQkxX9eThmrMjCp49W0"
+            default: "https://thegioiyeuthuong.vn/wp-content/uploads/2022/03/logo-tgyt-02-1-1.svg"
         },
         position: {
             type: Number,

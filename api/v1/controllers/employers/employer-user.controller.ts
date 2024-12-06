@@ -438,7 +438,7 @@ export const changeInfoCompany = async function (
       // Cập nhật avatar cho phòng chat
       updateFields["avatar"] =
         req.body["thumbUrl"] ||
-        "https://res.cloudinary.com/dmmz10szo/image/upload/v1710149283/GNOUD_2_pxldrg.png";
+        "https://www.topcv.vn/v4/image/normal-company/logo_default.png";
     }
 
     if (req.body["companyName"]) {

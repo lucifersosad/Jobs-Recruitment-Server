@@ -16,7 +16,7 @@ const roomChatSchema = new mongoose.Schema(
     ],
     avatar: {
       type: String,
-      default: "https://res.cloudinary.com/dmmz10szo/image/upload/v1710149283/GNOUD_2_pxldrg.png"
+      default: "https://www.topcv.vn/v4/image/normal-company/logo_default.png"
   },
     deleted: {
       type: Boolean,

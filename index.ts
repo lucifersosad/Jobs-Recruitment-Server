@@ -21,7 +21,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://project-duong-vip-vite.vercel.app",
+    origin: "*",
     methods: ["GET", "POST","DELETE","PUT","PATCH","OPTIONS"]
   }
 });

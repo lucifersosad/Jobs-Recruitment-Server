@@ -96,7 +96,7 @@ export const sendMail = (
   <body>
     <div class="background">
       <div class="logo">
-        <h1>GNOUD</h1>
+        <h1>UTEM</h1>
       </div>
       <div
         class="content" 
@@ -112,11 +112,9 @@ export const sendMail = (
           </p>
           <p>
             Nếu không phải bạn đã gửi yêu cầu reset mật khẩu, xin hãy bỏ qua
-            email này. Nếu có bất kì thắc mắc nào, vui lòng liên hệ
-            <a href="">hotro@duongit.vn</a> để nhận được hỗ trợ.
+            email này. Nếu có bất kì thắc mắc nào, vui lòng liên hệ để nhận được hỗ trợ.
           </p>
           <p>Cảm ơn bạn đã sử dụng dịch vụ.</p>
-          <p>GNOUD</p>
           <p
             style="
               text-align: center;
@@ -163,7 +161,7 @@ export const sendMail = (
         </p>
       </div>
       <p style="font-size: 12px; color: #888; text-align: center">
-        &copy 2024 GNOUD. All rights reserved.
+        &copy 2024 UTEM. All rights reserved.
       </p>
       <div
         style="text-align: center;"
@@ -283,7 +281,7 @@ export const sendMailEmployer = (
   <body>
     <div class="background">
       <div class="logo">
-        <h1>GNOUD</h1>
+        <h1>UTEM</h1>
       </div>
       <div
         class="content" 
@@ -299,11 +297,10 @@ export const sendMailEmployer = (
           </p>
           <p>
             Nếu không phải bạn đã gửi yêu cầu reset mật khẩu, xin hãy bỏ qua
-            email này. Nếu có bất kì thắc mắc nào, vui lòng liên hệ
-            <a href="">hotro@duongit.vn</a> để nhận được hỗ trợ.
+            email này. Nếu có bất kì thắc mắc nào, vui lòng liên hệ để nhận được hỗ trợ.
           </p>
           <p>Cảm ơn bạn đã sử dụng dịch vụ.</p>
-          <p>GNOUD</p>
+          <p>UTEM</p>
           <p
             style="
               text-align: center;
@@ -350,7 +347,7 @@ export const sendMailEmployer = (
         </p>
       </div>
       <p style="font-size: 12px; color: #888; text-align: center">
-        &copy 2024 GNOUD. All rights reserved.
+        &copy 2024 UTEM. All rights reserved.
       </p>
       <div
         style="text-align: center;"
@@ -435,7 +432,7 @@ export const sendMailEmployerAcceptCv = (
                   padding: 0 10px;
                 "
               >
-                GNOUD
+                UTEM
               </h1>
             </div>
             <div
@@ -471,7 +468,7 @@ export const sendMailEmployerAcceptCv = (
                 gặp sớm trong tương lai gần!
               </p>
               <p>Trân trọng.</p>
-              <p>GNOUD</p>
+              <p>UTEM</p>
               <p
                 style="
                   text-align: center;
@@ -515,7 +512,7 @@ export const sendMailEmployerAcceptCv = (
             </p>
           </div>
           <p style="font-size: 12px; color: #888; text-align: center">
-            &copy; 2024 GNOUD. All rights reserved.
+            &copy; 2024 UTEM. All rights reserved.
           </p>
         </div>
     
@@ -591,7 +588,7 @@ export const sendMailEmployerRefureCv = (
                   padding: 0 10px;
                 "
               >
-                GNOUD
+                UTEM
               </h1>
             </div>
             <div
@@ -607,7 +604,7 @@ export const sendMailEmployerRefureCv = (
             >
               <h3>Chào bạn <span style="color: #ff3f8c">${record["findName"]}</span></h3>
               <p>
-                GNOUD chân thành cám ơn bạn đã ứng tuyển vào vị trí
+                UTEM chân thành cám ơn bạn đã ứng tuyển vào vị trí
                 <strong style="color: #ff3f8c">${record?.title}</strong> của
                 <strong style="color: #ff3f8c">${record?.employerId?.companyName}</strong>.
                 Chúng tôi hoan nghênh về việc ứng tuyển cũng như đánh giá cao tinh
@@ -627,7 +624,7 @@ export const sendMailEmployerRefureCv = (
                 khác của công ty.
               </p>
               <p>Trân trọng.</p>
-              <p>GNOUD</p>
+              <p>UTEM</p>
               <p
                 style="
                   text-align: center;
@@ -671,7 +668,7 @@ export const sendMailEmployerRefureCv = (
             </p>
           </div>
           <p style="font-size: 12px; color: #888; text-align: center">
-            &copy; 2024 GNOUD. All rights reserved.
+            &copy; 2024 UTEM. All rights reserved.
           </p>
         </div>
     

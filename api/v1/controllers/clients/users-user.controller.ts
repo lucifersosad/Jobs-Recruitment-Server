@@ -450,7 +450,7 @@ export const changeInfoUser = async function (
     const email: string = req["user"].email;
     const description: string =
       req.body.description ||
-      "Kết nối với hàng nghìn cơ hội việc làm và ứng viên tài năng trên GNOUD - một nền tảng đổi mới dành cho người tìm kiếm công việc và nhà tuyển dụng. Với GNOUD, bạn sẽ khám phá ra một thế giới mới của cơ hội nghề nghiệp và kết nối với cộng đồng chuyên nghiệp. Hãy bắt đầu hành trình của bạn ngay hôm nay và tạo ra một hồ sơ độc đáo để nổi bật giữa đám đông.";
+      "Kết nối với hàng nghìn cơ hội việc làm và ứng viên tài năng trên UTEM - một nền tảng đổi mới dành cho người tìm kiếm công việc và nhà tuyển dụng. Với UTEM, bạn sẽ khám phá ra một thế giới mới của cơ hội nghề nghiệp và kết nối với cộng đồng chuyên nghiệp. Hãy bắt đầu hành trình của bạn ngay hôm nay và tạo ra một hồ sơ độc đáo để nổi bật giữa đám đông.";
     await User.updateOne(
       {
         email: email,

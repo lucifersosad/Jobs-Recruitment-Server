@@ -40,7 +40,7 @@ const streamUpload = async (base64) => {
     // Tải file lên Google Drive
     const upload = await drive.files.create({
       requestBody: {
-        name: "duong-image" + Date.now().toString() + ".png",
+        name: "image-" + Date.now().toString() + ".png",
         mimeType: "image/png",
       },
       media: {
