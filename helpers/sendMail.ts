@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
-const LINK = "http://34.87.54.148:3001";
-// const LINK = "http://localhost:3001"
+// const LINK = "http://34.87.54.148:3001";
+const LINK = "http://localhost:3000"
 interface MailOptions {
   from: string;
   to: string;
@@ -446,7 +446,7 @@ export const sendMailEmployerAcceptCv = (
               "
               class="box-content"
             >
-              <h3>Chào bạn <span style="color: #ff3f8c">${record["findName"]}</span></h3>
+              <h3>Chào bạn <span style="color: #ff3f8c">${record["profileName"]}</span></h3>
               <p>
                 Xin chúc mừng bạn vì đã trở thành ứng viên thành công cho vị trí
                 <strong style="color: #ff3f8c">${record?.title}</strong> tại
@@ -602,7 +602,7 @@ export const sendMailEmployerRefureCv = (
               "
               class="box-content"
             >
-              <h3>Chào bạn <span style="color: #ff3f8c">${record["findName"]}</span></h3>
+              <h3>Chào bạn <span style="color: #ff3f8c">${record["profileName"]}</span></h3>
               <p>
                 UTEM chân thành cám ơn bạn đã ứng tuyển vào vị trí
                 <strong style="color: #ff3f8c">${record?.title}</strong> của
