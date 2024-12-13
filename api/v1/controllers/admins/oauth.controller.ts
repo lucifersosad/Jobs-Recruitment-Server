@@ -4,9 +4,9 @@ import { google } from "googleapis";
 // Load environment variables
 dotenv.config();
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = process.env.REDIRECT_URI;
+const CLIENT_ID = process.env.CLIENT_DRIVER_ID;
+const CLIENT_SECRET = process.env.CLIENT_DRIVER_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_DRIVER_URI;
 
 // Khởi tạo OAuth2 client
 const oauth2Client = new google.auth.OAuth2(

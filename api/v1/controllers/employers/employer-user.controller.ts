@@ -10,6 +10,7 @@ import EmployerCounter from "../../../../models/employer-counter";
 import ActivePhoneEmployer from "../../../../models/active-phone-employer";
 import {
   getSession,
+  getSessionV2,
   saveRecord,
   sendCode,
   verifyCode,
@@ -302,7 +303,7 @@ export const authen = async function (
       res.status(401).json({ error: "Tài Khoản Đã Bị Khóa!" });
       return;
     }
-   
+
     //lấy ra thông tin cần thiết của user
     const recordNew = {
       id: userEmployer._id,
@@ -485,9 +486,9 @@ export const sendEms = async function (
     const phone: string = req.body.phone;
     const tokenSMS: string = process.env.TOKEN_SPEEDSMS;
 
-    const responseSession = await getSession(tokenSMS);
+    const responseSession = await getSessionV2(tokenSMS);
 
-    if (responseSession["data"] && responseSession["data"]["verify"]) {
+    if (responseSession["data"] && responseSession["data"]["require_2fa"]) {
       const session = responseSession["data"]["data"]["session"];
       const responseSendCode = await sendCode(session, phone);
 
@@ -535,7 +536,7 @@ export const sendEms = async function (
       });
     }
   } catch (error) {
-    console.error("Error in API:", error);
+    console.log("🚀 ~ error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -675,7 +676,7 @@ export const statisticCompany = async function (
   res: Response
 ): Promise<void> {
   try {
-    const idEmployer :string = req["user"]["_id"].toString();
+    const idEmployer: string = req["user"]["_id"].toString();
     //Công việc đang mở
     const coutCompaignIsOpen = await Job.countDocuments({
       employerId: idEmployer,
@@ -710,8 +711,8 @@ export const statisticCompany = async function (
     const groupedCvs = await Cv.aggregate([
       {
         $match: {
-          employerId: idEmployer
-        }
+          employerId: idEmployer,
+        },
       },
       {
         $project: {
@@ -742,10 +743,10 @@ export const statisticCompany = async function (
         },
       },
     ]);
-    record["groupedCvs"] = groupedCvs.map(item => {
+    record["groupedCvs"] = groupedCvs.map((item) => {
       return {
         value: item.accept / (item.accept + item.pending + item.refuse),
-        type: item._id
+        type: item._id,
       };
     });
     res.status(200).json({ code: 200, data: record });
