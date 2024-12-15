@@ -749,6 +749,7 @@ export const statisticCompany = async function (
         type: item._id,
       };
     });
+    console.log("🚀  ~ record:", record);
     res.status(200).json({ code: 200, data: record });
   } catch (error) {
     console.error("Error in API:", error);

@@ -63,8 +63,6 @@ export async function detailedAddress(
       use_case_C +
       v_C;
 
-    console.log("🚀 ~ url:", url);
-
     const { data } = await axios.get(url, {
       headers: {
         "content-type": "application/json",
@@ -151,7 +149,6 @@ export async function fullAddress(input: string): Promise<any> {
         },
       }
     );
-    console.log("🚀 ~ fullAddress ~ response.data:", response.data);
     return response.data || [];
   } catch (error) {
     console.log("🚀 ~ fullAddress ~ error:", error);

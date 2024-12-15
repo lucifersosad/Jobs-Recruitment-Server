@@ -415,8 +415,6 @@ export const advancedSearch = async function (
       slugCompany: record["employerId"]["slug"],
     }));
 
-    console.log("🚀 ~ convertData ~ convertData:", convertData);
-
     const dataEncrypted = encryptedData(convertData);
     res
       .status(200)

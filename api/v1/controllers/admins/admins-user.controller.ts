@@ -24,7 +24,6 @@ export const login = async function (req: Request, res: Response): Promise<void>
     try {
         //Lấy email ,password người dùng gửi lên
         const email: string = req.body.email;
-        console.log("🚀 ~ login ~ email:", email)
         const password: string = req.body.password;
 
         //Check xem trong databse có tồn tại email và mật khẩu có đúng hay không!

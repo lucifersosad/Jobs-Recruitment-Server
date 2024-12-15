@@ -12,7 +12,7 @@ export const getSession = async (tokenSMS: string) => {
     });
     return res;
   } catch (error) {
-    // console.log("🚀 ~ getSession ~ error:", error);
+    console.log("🚀 ~ getSession ~ error:", error);
   }
 };
 
