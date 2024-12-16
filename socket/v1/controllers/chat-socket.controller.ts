@@ -4,8 +4,10 @@ import Employer from "../../../models/employers.model";
 import User from "../../../models/user.model";
 import RoomChat from "../../../models/rooms-chat.model";
 
-export const chatSocket = (socket: Socket, io: any): any => {
+export const chatSocket = (socket: Socket, io: any, typeRoom: string): any => {
   return async (msg: string) => {
+
+    const avatar = typeRoom === "friend" ?  (socket["user"]?.image || socket["user"]?.avatar || "") : (socket["user"]?.logoCompany || "")
    
     // Log tin nhắn và id của user
     const objectSend: {
@@ -17,7 +19,7 @@ export const chatSocket = (socket: Socket, io: any): any => {
       fullName: socket["user"].fullName,
       content: msg,
       user_id: socket["user"]._id,
-      avatar: socket["user"]?.avatar || socket["user"]?.logoCompany || "",
+      avatar: avatar,
     };
 
     const record: {

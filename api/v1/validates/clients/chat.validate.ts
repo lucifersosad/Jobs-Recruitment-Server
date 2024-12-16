@@ -7,6 +7,7 @@ export const getContentChat = async function (
 ): Promise<void> {
   try {
     const clientId: string = req["user"]._id.toString();
+    
     const idUser: string = req.params.idUser;
     if (!idUser || !clientId || idUser === "undefined" || clientId === "undefined") {
       res.status(400).json({ error: "Thiếu thông tin." });

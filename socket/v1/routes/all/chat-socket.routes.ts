@@ -81,10 +81,10 @@ const registerEventHandlers = async (socket: Socket, io: Server,typeRoom: string
  
   if(typeRoom === "group" && await RoomChat.findOne({ _id: roomChatId,"users.employer_id":idUser, typeRoom: "group" })) {
    
-    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io));
+    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io, typeRoom));
   }
   if(typeRoom === "friend"){
-    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io));
+    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io, typeRoom));
   }
   socket.on("CLIENT_SEND_REQUEST_SEEN_CHAT", controller.requestSeenChat(socket, io));
   socket.on("CLIENT_SEND_TYPING", controller.sendTyping(socket, io));
