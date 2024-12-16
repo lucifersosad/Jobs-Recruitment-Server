@@ -85,12 +85,19 @@ export const getCvApplyAccept = async function (
         model: User,
       },
     ];
+    
     const record = await Cv.find(find)
       .populate(populate)
       .select("idUser")
       .sort({ createdAt: -1 })
       .limit(7);
-    const convertRecord = record.map((item) => item.idUser);
+
+    const users = record.map((item) => item.idUser);
+
+    const convertRecord = Array.from(new Set(users)).map((id) =>
+      users.find((idUser) => idUser === id)
+    ); 
+
     res.status(200).json({ data: convertRecord, code: 200 });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
@@ -105,8 +112,8 @@ export const getCvInfoUser = async function (
   res: Response
 ): Promise<void> {
   try {
-    let data : any;
-    if(req["infoRoom"]){
+    let data: any;
+    if (req["infoRoom"]) {
       data = {
         fullName: req["infoRoom"].title,
         avatar: req["infoRoom"].avatar,
@@ -114,7 +121,9 @@ export const getCvInfoUser = async function (
       };
     } else {
       const idUser = req.params.idUser;
-      data = await User.findOne({ _id: idUser }).select("email phone fullName avatar statusOnline");
+      data = await User.findOne({ _id: idUser }).select(
+        "email phone fullName avatar statusOnline"
+      );
     }
     res.status(200).json({ data, code: 200 });
   } catch (error) {

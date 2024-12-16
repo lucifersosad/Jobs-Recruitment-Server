@@ -41,7 +41,7 @@ export const chatSocket = (socket: Socket, io: any, typeRoom: string): any => {
     io.emit("SERVER_RETURN_REQUEST_LOADMORE", {
       id_check: socket["user"]._id,
     });
-  };
+  }; 
 };
 
 export const disconnectChatSocket = (socket: Socket, io: any): any => {
