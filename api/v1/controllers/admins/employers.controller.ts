@@ -211,6 +211,7 @@ export const changeMulti = async function (req: Request, res: Response): Promise
                 } else {
                     //Trả về lỗi nếu không tồn tại key hợp lệ nào
                     res.status(400).json({ error: "Vui Lòng Nhập Giá Trị!" });
+                    break;
                 }
 
             case KEY.DELETED:
@@ -225,6 +226,7 @@ export const changeMulti = async function (req: Request, res: Response): Promise
                 } else {
                     //Trả về lỗi nếu không tồn tại key hợp lệ nào
                     res.status(400).json({ error: "Vui Lòng Nhập Các Ứng Viên Cần Xóa!" });
+                    break;
                 }
 
             default:
