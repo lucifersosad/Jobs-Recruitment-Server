@@ -24,7 +24,7 @@ export const index = async function (req: Request, res: Response): Promise<void>
         let querySortKey: string = "";
         let querySortValue: string = "";
         let queryPage: number = 1;
-        let queryLimit: number = 6;
+        let queryLimit: number = 20;
         let queryKeyword: string = "";
 
         //Check xem nếu query có status thì gán vào biến checkQueryStatus không thì gán bằng rỗng. (Chức Năng Check Trạng Thái)
