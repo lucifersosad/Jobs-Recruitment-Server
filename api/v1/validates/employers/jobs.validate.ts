@@ -11,7 +11,8 @@ import {
 } from "../../../../helpers/filterQuery Validate";
 import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
-export const createRecord = (req: Request, res: Response, next: any): void => {
+import filterJobCategory from "../../../../helpers/filterJobCategory";
+export const createRecord = async (req: Request, res: Response, next: any): Promise<void> => {
   try {
     //Lấy dữ liệu người dùng gửi lên
     const title: string = req.body.title || "";
@@ -39,6 +40,13 @@ export const createRecord = (req: Request, res: Response, next: any): void => {
 
     if (!job_categorie_id) {
       res.status(400).json({ error: "Vui Lòng Chọn Danh Mục Công Việc!" });
+      return;
+    }
+
+    const category = await filterJobCategory(job_categorie_id)
+
+    if (!category) {
+      res.status(400).json({ error: "Danh Mục Công Việc Không Hợp Lệ!" });
       return;
     }
 

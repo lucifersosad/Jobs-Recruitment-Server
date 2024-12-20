@@ -73,7 +73,7 @@ const employerSchema = new mongoose.Schema(
         },
         cointsGP : {
             type:Number,
-            default:0
+            default:1000
         },
         cvRecruitment: [
             {

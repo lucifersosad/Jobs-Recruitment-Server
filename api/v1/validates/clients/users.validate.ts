@@ -611,8 +611,12 @@ export const saveJob = async function (
     res.status(401).json({ code: 401, error: "Công việc không tồn tại!" });
     return;
   }
+
+  const user = req["user"];
+
   if (action === "save") {
     const exitedJob = await User.findOne({
+      "_id": user._id,
       "listJobSave.idJob": idJob,
     });
     if (exitedJob) {
