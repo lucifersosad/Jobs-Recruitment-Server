@@ -11,11 +11,6 @@
     "foo": "echo \"fooo\" && exit 0",
     "bar": "echo \"bar\" && exit 0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run foo && npm run bar && npm run test"
-    }
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
