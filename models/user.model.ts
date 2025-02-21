@@ -60,7 +60,9 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-
+    notification_token: {
+      type: Array
+    },
     status: {
       type: String,
       default: "active",

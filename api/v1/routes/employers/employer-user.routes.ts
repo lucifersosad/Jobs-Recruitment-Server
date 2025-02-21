@@ -9,10 +9,12 @@ const router : Router = Router();
 
 router.post('/register',validates.register,controller.register )
 router.post('/login',validates.login,controller.login )
+router.post('/authen',validates.authen,controller.authen)
 router.post('/password/forgot',validates.forgotPassword,controller.forgotPassword)
 router.post('/password/check-token',validates.checkToken,controller.checkToken)
 router.post('/password/reset',validates.resetPassword,controller.resetPassword)
 
+router.post('/device-session', authMiddlewares.auth, controller.createDeviceSession)
 
 router.post('/upload-avatar',authMiddlewares.auth,uploadDriver.uplloadReact,controller.uploadAvatar)
 router.post('/change-info-employer',authMiddlewares.auth,validates.changeInfoUser,controller.changeInfoEmployer)
@@ -23,5 +25,5 @@ router.post('/verify-password',authMiddlewares.auth,validates.verifyPassword,con
 
 router.post('/send-sms',authMiddlewares.auth,validates.sendEms,controller.sendEms)
 router.post('/verify-code-sms',authMiddlewares.auth,validates.verifyCodeSms,controller.verifyCodeSms)
-router.post('/authen',validates.authen,controller.authen)
+
 export const employerUserRoutes : Router  = router

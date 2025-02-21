@@ -6,6 +6,7 @@ import * as authMiddlewares from "../../middlewares/employers/auth.middleware"
 import { chatRoutes } from "./chat.routes";
 import { cvRoutes } from "./cv.routes";
 import { employerAuthRoutes } from "./auth.routes";
+import { notificationRoutes } from "./notification.routes";
 const routesEmployerVersion1 = (app: Express): void => {
     const version = "/api/v1/employer";
     app.use(version + "/auth", employerAuthRoutes);
@@ -14,5 +15,6 @@ const routesEmployerVersion1 = (app: Express): void => {
     app.use(version +"/jobs",authMiddlewares.auth,jobRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
+    app.use(version +"/notifications",authMiddlewares.auth, notificationRoutes)
 }
 export default routesEmployerVersion1

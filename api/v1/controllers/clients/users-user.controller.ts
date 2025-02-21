@@ -10,6 +10,7 @@ import ForgotPassword from "../../../../models/forgot-password.model";
 import { sendMail } from "../../../../helpers/sendMail";
 import Job from "../../../../models/jobs.model";
 import Cv from "../../../../models/cvs.model";
+import { createAndSendNotification, ENUM_NOTIFICATION_DETAIL_TYPE, ENUM_NOTIFICATION_TYPE } from "../../../../helpers/notification";
 
 // [POST] /api/v1/clients/users/allow-setting-user
 export const allowSettingUser = async function (
@@ -543,6 +544,8 @@ export const recruitmentJob = async function (
     const recordNew = {
       email: req["user"].email,
       fullName: req["user"].fullName,
+      avatar: req["user"].avatar,
+      title: req.body.title,
       phone: req.body.phone,
       id_file_cv: req.body.file,
       ["introducing_letter"]: req.body["introducing_letter"],
@@ -566,6 +569,19 @@ export const recruitmentJob = async function (
         $push: { listProfileRequirement: idCv },
       }
     );
+
+    await createAndSendNotification({
+      employerId: record.employerId,
+      type: ENUM_NOTIFICATION_TYPE.CV,
+      detail_type: ENUM_NOTIFICATION_DETAIL_TYPE.NEW_CV,
+      ref_id: record._id,
+      image: record.avatar,
+      extra: { 
+        job_id: record.idJob,
+        candidate_name: record.fullName,
+        job_title: record.title
+      }
+    })
 
     res.status(200).json({
       code: 201,
