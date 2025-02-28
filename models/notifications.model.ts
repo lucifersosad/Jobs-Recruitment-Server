@@ -9,9 +9,13 @@ const notificationSchema = new mongoose.Schema(
     content: String,
     type: String,
     detail_type: String,
-    isSeen: Boolean,
+    is_seen: Boolean,
     ref_id: String,
-    extra: Object
+    extra: Object,
+    deleted: {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

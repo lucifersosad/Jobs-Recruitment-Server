@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import {
   ENUM_NOTIFICATION_DETAIL_TYPE,
   ENUM_NOTIFICATION_TYPE,
@@ -25,6 +26,7 @@ export interface NotificationParams
 }
 
 export interface Find {
+  _id?: any;
   title?: RegExp;
   description?: string;
   employerId?: string;

@@ -1,8 +1,10 @@
 import { Router } from "express";
 import * as controller from "../../controllers/employers/notification.controller";
-import * as validates from "../../validates/employers/jobs.validate";
+import * as authMiddlewares from "../../middlewares/employers/auth.middleware"
 const router: Router = Router();
 
-router.get("/", controller.index);
+router.get("/", authMiddlewares.auth, controller.index);
+router.post("/read/:id", authMiddlewares.auth, controller.read);
+router.post("/read-all", authMiddlewares.auth, controller.readAll);
 
 export const notificationRoutes: Router = router;

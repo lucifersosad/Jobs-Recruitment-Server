@@ -3,7 +3,8 @@ interface ObjectPagination{
     currentPage? : number,
     limitItem? : number
     skip? : number,
-    totalPage? : number
+    totalPage? : number,
+    remainingItem?: number,
 }
 
 
@@ -24,5 +25,7 @@ export const filterQueryPagination = (countRecord : number, currentPage : number
     //Tính số Page sản phẩm cho trang
     const totalPage : number = Math.ceil(countRecord / limitItem);
     objectPagination.totalPage = totalPage;
+    const remainingItem = countRecord > limitItem ? countRecord - limitItem : 0;
+    objectPagination.remainingItem = remainingItem;
     return objectPagination;
 }
