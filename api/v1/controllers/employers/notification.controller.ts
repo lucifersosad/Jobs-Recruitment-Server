@@ -98,3 +98,26 @@ export const readAll = async function (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// [POST] /api/v1/employer/notifications/read-all
+export const countUnreadNoti = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+
+    const find: NotificationInterface.Find = {
+      deleted: false,
+      employerId: req["user"]._id,
+      is_seen: false
+    };
+
+    const countRecord = await Notification.countDocuments(find);
+
+    res.status(200).json({ code: 200, data: countRecord});
+  } catch (error) {
+    //Thông báo lỗi 500 đến người dùng server lỗi.
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

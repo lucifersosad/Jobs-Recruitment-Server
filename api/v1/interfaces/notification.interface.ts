@@ -63,4 +63,5 @@ export interface Find {
   city?: string[];
   $or?: any;
   slug?: any;
+  is_seen?: boolean
 }
