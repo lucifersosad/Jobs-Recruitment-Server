@@ -330,37 +330,6 @@ export const authen = async function (
       res.status(401).json({ error: "Tài Khoản Đã Bị Khóa!" });
       return;
     }
-    const convertData = [];
-
-    //Kiểm tra xem user có job_position không
-    if (userClient?.job_position?.length > 0) {
-      const checkTag = await Job.find({
-        listTagSlug: { $in: userClient.job_position },
-      }).select("listTagName listTagSlug");
-
-      const userJobPositionsSet = new Set(userClient.job_position); // Tạo một Set từ mảng job_position để tối ưu hóa việc kiểm tra tồn tại
-      // Duyệt qua mảng checkTag để kiểm tra từng tag có tồn tại trong Set không
-
-      checkTag.forEach((item) => {
-        item.listTagName.forEach((tag, index) => {
-          //Lấy tagSlug từ mảng listTagSlug tương ứng với tag
-          const tagSlug = item.listTagSlug[index];
-          // Kiểm tra nhanh chóng sự tồn tại trong Set
-          if (userJobPositionsSet.has(tagSlug)) {
-            //Nếu thấy phần tử tồn tại thì push vào mảng convertData
-            convertData.push({ label: tag, value: tagSlug });
-            userJobPositionsSet.delete(tagSlug); // Xóa phần tử đã kiểm tra khỏi Set
-          }
-        });
-      });
-      // Duyệt qua các phần tử còn lại trong Set để kiểm tra xem có phần tử nào không tồn tại trong database không
-      userJobPositionsSet.forEach(function (value) {
-        //Lấy ra tag từ value xong push vào mảng convertData ở đây ta loại bỏ phần tử cuối cùng là - và thay thế bằng khoảng trắng
-        const tag = value.replace(/-/g, " ");
-        convertData.push({ label: tag, value: value });
-      });
-    }
-
     //lấy ra thông tin cần thiết của user
     const recordNew = {
       id: userClient._id,
@@ -372,7 +341,6 @@ export const authen = async function (
       phone: userClient.phone || "",
       gender: userClient.gender || "",
       job_categorie_id: userClient.job_categorie_id || "",
-      job_position: convertData || [],
       skill_id: userClient.skill_id || "",
       yearsOfExperience: userClient.yearsOfExperience || "",
       desiredSalary: userClient.desiredSalary || "",
@@ -482,7 +450,6 @@ export const changeJobSuggestions = async function (
     const {
       gender,
       job_categorie_id,
-      job_position,
       skill_id,
       yearsOfExperience,
       desiredSalary,
@@ -497,7 +464,6 @@ export const changeJobSuggestions = async function (
       {
         gender,
         job_categorie_id,
-        job_position,
         skill_id,
         yearsOfExperience,
         desiredSalary,

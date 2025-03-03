@@ -15,7 +15,7 @@ const routesClientVersion1 = (app: Express): void => {
     app.use(version + "/users", usersRoutes);
     app.use(version +"/jobs",jobRoutes);
     app.use(version +"/job-categories",jobCategoriesRoutes)
-    app.use(version +"/skill",skillRoutes)
+    app.use(version +"/skills",skillRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
 }
