@@ -10,7 +10,12 @@ import ForgotPassword from "../../../../models/forgot-password.model";
 import { sendMail } from "../../../../helpers/sendMail";
 import Job from "../../../../models/jobs.model";
 import Cv from "../../../../models/cvs.model";
-import { createAndSendNotification, ENUM_NOTIFICATION_DETAIL_TYPE, ENUM_NOTIFICATION_TYPE } from "../../../../helpers/notification";
+import {
+  createAndSendNotification,
+  ENUM_NOTIFICATION_DETAIL_TYPE,
+  ENUM_NOTIFICATION_TYPE,
+} from "../../../../helpers/notification";
+import { putObject } from "../../../../helpers/uploadToS3Aws";
 
 // [POST] /api/v1/clients/users/allow-setting-user
 export const allowSettingUser = async function (
@@ -542,12 +547,12 @@ export const recruitmentJob = async function (
       detail_type: ENUM_NOTIFICATION_DETAIL_TYPE.NEW_CV,
       ref_id: record._id,
       image: record.avatar,
-      extra: { 
+      extra: {
         job_id: record.idJob,
         candidate_name: record.fullName,
-        job_title: record.title
-      }
-    })
+        job_title: record.title,
+      },
+    });
 
     res.status(200).json({
       code: 201,
@@ -708,5 +713,173 @@ export const saveJob = async function (
 
     // Trả về lỗi 500 nếu có lỗi xảy ra
     res.status(500).json({ error: "Lỗi máy chủ nội bộ" });
+  }
+};
+
+// [POST] /api/v1/clients/users/upload-image
+export const uploadImage = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const objectFile = req["files"]["file"]
+
+    const file = objectFile.data
+    const fileExtentsion = objectFile.mimetype.split("/")[1]
+    
+    const fileName = "profile/" + Date.now() + `.${fileExtentsion}`
+    
+    const { url, key } = await putObject(file, fileName)
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Upload thành công`, data: {url, key} });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+// [POST] /api/v1/clients/users/update-education
+export const updateEducation = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    const {
+      school_id = "",
+      school_logo = "",
+      start_month = "",
+      start_year = "",
+      end_month = "",
+      end_year = "",
+      title = "",
+      description = "",
+    } = req.body;
+
+    const educations: any = {
+      school_id,
+      school_logo,
+      start_month,
+      start_year,
+      end_month,
+      end_year,
+      title,
+      description,
+    }
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        $push: {
+          educations: educations
+        }
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu Học Vấn` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/users/update-education
+export const updateExperience = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    const {
+      company_id = "",
+      company_logo = "",
+      start_month = "",
+      start_year = "",
+      end_month = "",
+      end_year = "",
+      position_name = "",
+      attachments,
+    } = req.body;
+
+    const experiences: any = {
+      company_id,
+      company_logo,
+      start_month,
+      start_year,
+      end_month,
+      end_year,
+      position_name,
+      attachments,
+    }
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        $push: {
+          experiences: experiences
+        }
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu Kinh Nghiệm` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+// [POST] /api/v1/clients/users/update-education
+export const updateSkill = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    const {
+      skill_id = "",
+      title = "",
+      image = "",
+      rate = "",
+      description = "",
+    } = req.body;
+
+    const skills: any = {
+      skill_id,
+      title,
+      image,
+      rate,
+      description,
+    }
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        $push: {
+          skills: skills
+        }
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

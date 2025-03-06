@@ -37,7 +37,6 @@ const userSchema = new mongoose.Schema(
     ],
     skill_id: Array,
     job_categorie_id: String,
-    job_position: Array,
     gender: Number,
     image: String,
     token: String,
@@ -87,6 +86,44 @@ const userSchema = new mongoose.Schema(
         account_id: String,
         updatedAt: Date,
       },
+    ],
+
+    //profile
+    educations: [
+      {
+        school_id: String,
+        school_logo: String,
+        school_name: String,
+        start_month: String,
+        start_year: String,
+        end_month: String,
+        end_year: String,
+        title: String,
+        description: String,
+      }
+    ],
+    experiences: [
+      {
+        company_id: String,
+        company_logo: String,
+        company_name: String,
+        start_month: String,
+        start_year: String,
+        end_month: String,
+        end_year: String,
+        position_name: String,
+        description: String,
+        attachments: []
+      }
+    ],
+    skills: [
+      {
+        skill_id: String,
+        title: String,
+        image: String,
+        rate: String,
+        description: String,
+      }
     ],
   },
   {
