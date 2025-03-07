@@ -33,7 +33,7 @@ export const auth = async function (req: Request, res: Response, next: any): Pro
             
             const recordNew = {
                 id: userAdmin._id,
-                title: userAdmin.title,
+                fullName: userAdmin.fullName,
                 avatar: userAdmin.avatar,
                 email: userAdmin.email,
                 role_id: userAdmin.role_id["_id"],

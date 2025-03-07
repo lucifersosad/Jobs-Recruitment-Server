@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import * as SkillInterface from "../../interfaces/skill.interface";
 import Skill from "../../../../models/skills.model";
 import { encryptedData } from "../../../../helpers/encryptedData";
+import skills from '../../../../static_data/skill.json';
+
 // [GET] /api/v1/client/skill/index/
 export const index = async function (
   req: Request,
@@ -14,8 +16,8 @@ export const index = async function (
     }
     const records = await Skill.find(find);
      //Mã hóa dữ liệu khi gửi đi
-     const dataEncrypted = encryptedData(records);
-    res.status(200).json({ data: dataEncrypted, code: 200 });
+     const dataEncrypted = encryptedData(skills);
+    res.status(200).json({ data: dataEncrypted, skills, code: 200 });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
     console.error("Error in API:", error);

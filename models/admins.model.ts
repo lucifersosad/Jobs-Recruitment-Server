@@ -3,14 +3,22 @@ import mongoose from "mongoose";
 
 const employerSchema = new mongoose.Schema(
     {
-        title: String,
+        fullName: String,
         email:String,
         password:String,
         token:String,
-        phone:String,
-        avatar:String,
+        phoneNumber:String,
+        address: String,
+        gender:String,
+        avatar:{
+            type:String,
+            default:"https://cdn-icons-png.flaticon.com/512/9703/9703596.png"
+        },
         role_id:String,
-        status:String,
+        status: {
+            type:String,
+            default:"active"
+        },
         createdBy: {
             account_id: String,
             createdAt: {
@@ -29,6 +37,7 @@ const employerSchema = new mongoose.Schema(
         updatedBy: [
             {
               account_id: String,
+              email: String,
               updatedAt: Date
             }
           ],

@@ -82,6 +82,9 @@ const employerSchema = new mongoose.Schema(
             }
 
         ],
+        notification_token: {
+            type: Array
+        },
         deleted: {
             type: Boolean,
             default: false,
