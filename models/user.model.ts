@@ -104,8 +104,6 @@ const userSchema = new mongoose.Schema(
     ],
     experiences: [
       {
-        company_id: String,
-        company_logo: String,
         company_name: String,
         start_month: String,
         start_year: String,
