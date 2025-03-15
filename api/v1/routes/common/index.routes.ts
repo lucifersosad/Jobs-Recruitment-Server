@@ -1,5 +1,7 @@
 import { Express } from "express";
-const routesLocations = (app: Express) : void => {
-    const version = "/api/v1/";  
+import { schoolRoutes } from "./school.routes";
+const routesCommonVersion1 = (app: Express) : void => {
+    const version = "/api/v1/client";  
+    app.use(version + "/schools", schoolRoutes);
 }
-export default routesLocations
+export default routesCommonVersion1

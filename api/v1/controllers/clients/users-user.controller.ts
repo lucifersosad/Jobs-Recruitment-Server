@@ -751,7 +751,7 @@ export const getProfile = async function (
   try {
     const _id = req.params.id;
 
-    const profile = await User.findById(_id).select("_id fullName experiences")
+    const profile = await User.findById(_id).select("_id fullName experiences educations")
 
     res
       .status(200)
@@ -771,36 +771,12 @@ export const updateEducation = async function (
   try {
     const _id: string = req["user"]._id;
 
-    const {
-      school_id = "",
-      school_logo = "",
-      start_month = "",
-      start_year = "",
-      end_month = "",
-      end_year = "",
-      title = "",
-      description = "",
-    } = req.body;
-
-    const educations: any = {
-      school_id,
-      school_logo,
-      start_month,
-      start_year,
-      end_month,
-      end_year,
-      title,
-      description,
-    }
-
     await User.updateOne(
       {
         _id,
       },
       {
-        $push: {
-          educations: educations
-        }
+        educations: req.body
       }
     );
 
