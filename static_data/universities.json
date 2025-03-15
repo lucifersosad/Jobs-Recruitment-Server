@@ -1,0 +1,1958 @@
+[
+  {
+    "name": "Đại học Quốc gia Hà Nội",
+    "short_name": "VNU",
+    "code": "QHF",
+    "address": "144 Xuân Thủy, Mai Dịch, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghệ – ĐH QGHN",
+    "short_name": "VNU-UET",
+    "code": "QHI",
+    "address": "144 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Giáo dục – ĐH QGHN",
+    "short_name": "VNU-UED",
+    "code": "QHS",
+    "address": "Tòa nhà G7 145 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – ĐH QGHN",
+    "short_name": "VNU-UEB",
+    "code": "QHE",
+    "address": "Tòa nhà E4, 144 đường Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Khoa học Tự nhiên – ĐH QGHN",
+    "short_name": "VNU-HUS",
+    "code": "QHT",
+    "address": "334 Nguyễn Trãi, phường Thanh Xuân Trung, Thanh Xuân, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Khoa học Xã hội và Nhân văn – ĐH QGHN",
+    "short_name": "VNU-USSH",
+    "code": "QHX",
+    "address": "336 Nguyễn Trãi, Thanh Xuân Trung, Thanh Xuân, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Ngoại ngữ – ĐH QGHN",
+    "short_name": "ULIS",
+    "code": "QHF",
+    "address": "Phạm Văn Đồng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Trường Đại học Việt – Nhật – ĐH QGHN",
+    "short_name": "VJU",
+    "code": null,
+    "address": "Đường Lưu Hữu Phước, Khu Đô thị, Mỹ Đình 1, Nam Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Viện Trần Nhân Tông – ĐH QGHN",
+    "short_name": null,
+    "code": null,
+    "address": "Tầng 8, toà C1T, ĐHQGHN, số, 144 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Đại học Thương mại",
+    "short_name": "TMU",
+    "code": "TMA",
+    "address": "1: 79 Đường Hồ Tùng Mậu, Mai Dịch, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Đại học Công nghiệp Việt-Hung",
+    "short_name": "VIU",
+    "code": "VHD",
+    "address": "1: Tầng 6, tòa nhà Hà Nội Center Point, số 27 Lê Văn Lương, Q.Thanh Xuân, TP.Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Bách khoa Hà Nội",
+    "short_name": "HUST",
+    "code": "BKA",
+    "address": "1 Đại Cồ Việt, Bách Khoa, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công đoàn",
+    "short_name": "TUU",
+    "code": "LDA",
+    "address": "169 Tây Sơn, Quang Trung, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Giao thông Vận tải",
+    "short_name": "UTT",
+    "code": "GTA",
+    "address": "Số 54, phố Triều Khúc, phường Thanh Xuân Nam, quận Thanh Xuân, thành phố Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Dệt May Hà Nội",
+    "short_name": "HICT",
+    "code": "CCM",
+    "address": "Xã Lệ Chi, huyện Gia Lâm, thành phố Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Hà Nội",
+    "short_name": "HAUI",
+    "code": "DCN",
+    "address": "Số 298, Đường Cầu Diễn, Q.Bắc Từ Liêm, TP. Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Điện lực",
+    "short_name": "EPU",
+    "code": "DDL",
+    "address": "Số 235 Hoàng Quốc Việt, Cổ Nhuế, Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Dược Hà Nội",
+    "short_name": "HUP",
+    "code": "DKH",
+    "address": "13-15 Lê Thánh Tông, Phan Chu Trinh, Hoàn Kiếm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Giao thông Vận tải",
+    "short_name": "UTC",
+    "code": "GHA",
+    "address": "Số 3 Đường Cầu Giấy, Ngọc Khánh, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Hà Nội",
+    "short_name": "HANU",
+    "code": "NHF",
+    "address": "Km 9 Nguyễn Trãi, Thanh Xuân Bắc, Nam Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Khoa học và Công nghệ Hà Nội (USTH, Đại học Việt Pháp)",
+    "short_name": "USTH",
+    "code": "KCN",
+    "address": "18 Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kiểm sát Hà Nội",
+    "short_name": "HPU",
+    "code": "DKS",
+    "address": "Đường Ỷ La, Dương Kinh, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kiến trúc Hà Nội",
+    "short_name": "HAU",
+    "code": "KTA",
+    "address": "Km10 Nguyễn Trãi, P. Văn Quán, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – Kỹ thuật Công nghiệp",
+    "short_name": "UNETI",
+    "code": "DKK",
+    "address": "456 Phố Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kinh tế Quốc dân",
+    "short_name": "NEU",
+    "code": "KHA",
+    "address": "207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Lâm nghiệp Việt Nam",
+    "short_name": "VNUF",
+    "code": "LNH",
+    "address": "QL21, TT. Xuân Mai, Chương Mỹ, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Lao động – Xã hội",
+    "short_name": "ULSA",
+    "code": "DLT",
+    "address": "43 Trần Duy Hưng, Trung Hoà, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Luật Hà Nội",
+    "short_name": "HLU",
+    "code": "LPH",
+    "address": "87 Nguyễn Chí Thanh, Thành Công, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Mỏ – Địa chất",
+    "short_name": "HUMG",
+    "code": "MDA",
+    "address": "Số 18 phố Viên, phường Đức Thắng, quận Bắc Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Mỹ thuật Công nghiệp",
+    "short_name": "MTCN",
+    "code": "MTC",
+    "address": "360 Đường La Thành, Chợ Dừa, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Mỹ thuật Việt Nam",
+    "short_name": "VUFA",
+    "code": "MTH",
+    "address": "42 Yết Kiêu, Cửa Nam, Hoàn Kiếm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Ngoại thương",
+    "short_name": "FTU",
+    "code": "NTH",
+    "address": "91 Chùa Láng, Láng Thượng, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Nội vụ Hà Nội",
+    "short_name": "HUHA",
+    "code": "DNV",
+    "address": "Ngõ 36, Xuân La, Tây Hồ, Hà Nội"
+  },
+  {
+    "name": "Đại học Sân khấu – Điện ảnh Hà Nội",
+    "short_name": "SKD",
+    "code": "SKD",
+    "address": "Khu văn hóa nghệ thuật, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Hà Nội",
+    "short_name": "HNUE",
+    "code": "SPH",
+    "address": "Số 136 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Nghệ thuật Trung ương",
+    "short_name": "NUAE",
+    "code": "GNT",
+    "address": "18 Ngõ 55, P. Văn Quán, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Thể dục Thể thao Hà Nội",
+    "short_name": "HUPES",
+    "code": "TDH",
+    "address": "Phụng Châu, Chương Mỹ, Hà Nội"
+  },
+  {
+    "name": "Đại học Tài nguyên và Môi trường Hà Nội",
+    "short_name": "HUNRE",
+    "code": "DMT",
+    "address": "41A Đường Phú Diễn, Cầu Diễn, Bắc Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Thủy lợi",
+    "short_name": "TLU",
+    "code": "TLA (Hà Nội), TLS (Cơ sở 2 – Tp.HCM)",
+    "address": "Số 175 Tây Sơn, Trung Liệt, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Văn hóa Hà Nội",
+    "short_name": "HUC",
+    "code": "VHH",
+    "address": "418 Đường La Thành, Chợ Dừa, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Xây dựng",
+    "short_name": "NUCE",
+    "code": "XDA",
+    "address": "số 55 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Y Hà Nội",
+    "short_name": "HMU",
+    "code": "YHB",
+    "address": "Số 1 Tôn Thất Tùng, Kim Liên, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Y tế Công cộng",
+    "short_name": "HUPH",
+    "code": "YTC",
+    "address": "số 1A Đường Đức Thắng, quận, Bắc Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Lao động – Xã hội, cơ sở Sơn Tây",
+    "short_name": null,
+    "code": "DLT",
+    "address": "Số 59 Đường Hữu Nghị, P. Xuân Khanh, Sơn Tây, Hà Nội"
+  },
+  {
+    "name": "Học viện Âm nhạc Quốc gia Việt Nam",
+    "short_name": "VNAM",
+    "code": "NVH",
+    "address": "77 Hào Nam, Chợ Dừa, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Múa Việt Nam",
+    "short_name": null,
+    "code": null,
+    "address": "Khu Văn hoá Nghệ thuật, Đường Hồ Tùng Mậu, Mai Dịch, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Báo chí và Tuyên truyền",
+    "short_name": "AJC",
+    "code": "HBT",
+    "address": "36 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Cán bộ Quản lý xây dựng và đô thị",
+    "short_name": "AMC",
+    "code": null,
+    "address": "10 Nguyễn Trãi, Thanh Xuân Nam, Thanh Xuân, Hà Nội"
+  },
+  {
+    "name": "Học viện Chính sách và phát triển",
+    "short_name": "APD",
+    "code": "HCP",
+    "address": "Toà nhà Bộ Kế hoạch và Đầu tư, Ngõ 7 Tôn Thất Thuyết, Dịch Vọng Hậu, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Chính trị – Hành chính Quốc gia Hồ Chí Minh",
+    "short_name": "HCMA",
+    "code": null,
+    "address": "135 Nguyễn Phong Sắc, Nghĩa Tân, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Công nghệ Bưu chính Viễn thông",
+    "short_name": "PTIT",
+    "code": "BVH",
+    "address": "Km10 đường Trần Phú, phường Mộ Lao, quận Hà Đông"
+  },
+  {
+    "name": "Học viện Dân tộc",
+    "short_name": "Academy for Ethnic Minorities (VAEM)",
+    "code": null,
+    "address": "Dream Town, Tây Mỗ, Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Học viện Hành chính Quốc gia",
+    "short_name": "NAPA",
+    "code": "HCH (Hà Nội), HCS (Tp.HCM)",
+    "address": "77 Nguyễn Chí Thanh, Láng Thượng, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Khoa học và Công nghệ",
+    "short_name": "GUST",
+    "code": "KCN",
+    "address": "18 Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Khoa học, Công nghệ và Đổi mới sáng tạo",
+    "short_name": null,
+    "code": null,
+    "address": "38 Phố Ngô Quyền, Hàng Bài, Hoàn Kiếm, Hà Nội"
+  },
+  {
+    "name": "Học viện Khoa học xã hội",
+    "short_name": "GASS",
+    "code": "GASS",
+    "address": "Số 477 Nguyễn Trãi, Quận Thanh Xuân, Tp. Hà Nội"
+  },
+  {
+    "name": "Học viện Ngân hàng",
+    "short_name": "BA",
+    "code": "NHH",
+    "address": "12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Ngoại giao Việt Nam",
+    "short_name": "DAV",
+    "code": "QHT",
+    "address": "69 Chùa Láng, Láng Thượng, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Nông nghiệp Việt Nam",
+    "short_name": "VNUA",
+    "code": "HVN",
+    "address": "Thị trấn Trâu Quỳ, Gia Lâm, Hà Nội"
+  },
+  {
+    "name": "Học viện Phụ nữ Việt Nam",
+    "short_name": "VWA",
+    "code": "HPN",
+    "address": "68 Nguyễn Chí Thanh, Láng Thượng, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Quản lý Giáo dục",
+    "short_name": "National Academy of Education Managenment (NAEM)",
+    "code": "HVQ",
+    "address": "31 Phan Đình Giót, Phương Liệt, Thanh Xuân, Hà Nội"
+  },
+  {
+    "name": "Học viện Tài chính",
+    "short_name": "AOF",
+    "code": "HTC",
+    "address": "Số 58 Lê Văn Hiến, Phường Đức Thắng, Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Học viện Thanh thiếu niên Việt Nam",
+    "short_name": "VYA",
+    "code": "HTN",
+    "address": "58 Nguyễn Chí Thanh, Láng Thượng, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Học viện Tòa án",
+    "short_name": null,
+    "code": "HTA",
+    "address": "QL18B, Kim Sơn, Gia Lâm, Hà Nội"
+  },
+  {
+    "name": "Học viện Tư Pháp",
+    "short_name": "‎Judicial Academy",
+    "code": null,
+    "address": "Số 9 Trần Vỹ, Mai Dịch, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Học viện Y dược học cổ truyền Việt Nam",
+    "short_name": "VATM",
+    "code": "HYD",
+    "address": "2 Trần Phú, P. Mộ Lao, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Viện Đại học Mở Hà Nội",
+    "short_name": "HOU",
+    "code": "MHN",
+    "address": "Nhà B101, Phố Nguyễn Hiền, phường Bách Khoa, Q.Hai Bà Trưng, TP. Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Thủ đô Hà Nội",
+    "short_name": "HMU",
+    "code": "HNM",
+    "address": "98 phố Dương Quảng Hàm, Quan Hoa, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Đông Á",
+    "short_name": "East Asia University of Technology (EAUT)",
+    "code": "DDA",
+    "address": "Tầng 5 tòa nhà Polyco, Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Công nghệ và Quản lý Hữu nghị",
+    "short_name": "UTM",
+    "code": "DCQ",
+    "address": "Số 431 Đường Tam Trinh, Hoàng Văn Thụ, Hoàng Mai, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Đại Nam",
+    "short_name": "Dai Nam University (DNU)",
+    "code": "DDN",
+    "address": "Số 1 Phố Xốm, Phú Lâm, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Đông Đô",
+    "short_name": "Hanoi Dong Do International University",
+    "code": "DDD",
+    "address": "60B Nguyễn Huy Tưởng, Thanh Xuân Trung, Thanh Xuân, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học FPT",
+    "short_name": null,
+    "code": null,
+    "address": "KM29 Khu GD&ĐT, Khu CNC, ĐCT08, Hòa Lạc, Thạch Thất, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Hòa Bình",
+    "short_name": "PEACE UNIVERSITY",
+    "code": "ETU",
+    "address": "Số 8 Bùi Xuân Phái, Mỹ Đình, Nam Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Kinh doanh và Công nghệ Hà Nội",
+    "short_name": "Ha Noi University of Business and Technology (HUBT)",
+    "code": "DQK",
+    "address": "Số 29A Ngõ 124 Phố Vĩnh Tuy, Thanh Long, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Mỹ thuật Công nghiệp Á Châu",
+    "short_name": "Asia University of Arts and Design (AUAD)",
+    "code": "MCA",
+    "address": "360 Đường La Thành, Chợ Dừa, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Nguyễn Trãi",
+    "short_name": "Nguyen Trai University (NTU)",
+    "code": "NTU",
+    "address": "Số 28A Đ.Lê Trọng Tấn, Hà Cầu, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Đại học Phương Đông",
+    "short_name": "Phuong Dong University",
+    "code": "DPD",
+    "address": "171 Trung Kính, Yên Hoà, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học RMIT",
+    "short_name": "RMIT University Vietnam",
+    "code": "RMU",
+    "address": "Handi Resco Building, 521 Kim Mã, Ngọc Khánh, Ba Đình, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Tài chính – Ngân hàng Hà Nội",
+    "short_name": "Hanoi Financial and Banking University – FBU)",
+    "code": "FBU",
+    "address": "136 Phạm Văn Đồng, Xuân Đỉnh, Bắc Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Thăng Long",
+    "short_name": "Thăng Long University (TLU)",
+    "code": "DTL",
+    "address": "Nghiêm Xuân Yêm, Đại Kim, Hoàng Mai, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Thành Đô",
+    "short_name": "Thanh Do University (TDU)",
+    "code": "TDD",
+    "address": "QL32, Đức Giang, Hoài Đức, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Thành Tây",
+    "short_name": "Thanh Tay University Hanoi",
+    "code": "DTA",
+    "address": "Km 15, Quốc lộ 6, phường Yên Nghĩa, Hà Đông, Hà Nội."
+  },
+  {
+    "name": "Học viện Biên phòng",
+    "short_name": null,
+    "code": "BPH",
+    "address": "Phường Sơn Lộc, thị xã Sơn Tây, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Chính trị Quân sự",
+    "short_name": null,
+    "code": null,
+    "address": "124 Ngô Quyền, P. Quang Trung, Hà Đông, Hà Nội"
+  },
+  {
+    "name": "Học viện Hậu cần",
+    "short_name": null,
+    "code": "HEH",
+    "address": "Phường Ngọc Thụy, quận Long Biên, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Khoa học Quân sự",
+    "short_name": null,
+    "code": "NQH",
+    "address": "Số 322, đường Lê Trọng Tấn, quận Hoàng Mai, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Kỹ thuật Mật mã",
+    "short_name": "Vietnam Academy of Cryptography Techniques",
+    "code": "KMA",
+    "address": "141 Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội"
+  },
+  {
+    "name": "Học viện Kỹ thuật Quân sự",
+    "short_name": null,
+    "code": "KQH",
+    "address": "Số 236, đường Hoàng Quốc Việt, quận Cầu Giấy, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Phòng không – Không quân",
+    "short_name": null,
+    "code": "PKH",
+    "address": "Xã Kim Sơn, thị xã Sơn Tây, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Quân y",
+    "short_name": null,
+    "code": "YQH",
+    "address": "Số 160, Phùng Hưng, Phường Phúc La, quận Hà Đông, thành phố Hà Nội"
+  },
+  {
+    "name": "Học viện Quốc phòng Việt Nam",
+    "short_name": null,
+    "code": null,
+    "address": "93 Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Chính trị",
+    "short_name": "Political Officers College",
+    "code": "LCH",
+    "address": "Thạch Hoà, Thạch Thất, Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Trần Quốc Tuấn",
+    "short_name": "The Army officer College No1 (TQT Uni)",
+    "code": "LAH",
+    "address": "Xã Cổ Đông, Thị Xã Sơn Tây, Thành Phố Hà Nội, Cổ Đông, Sơn Tây, Hà Nội"
+  },
+  {
+    "name": "Trường Sĩ quan Pháo binh",
+    "short_name": null,
+    "code": "PBH",
+    "address": "ã Thanh Mỹ, thị xã Sơn Tây, TP Hà Nội"
+  },
+  {
+    "name": "Trường Sĩ quan Phòng hóa",
+    "short_name": null,
+    "code": "HGH",
+    "address": "Tân Phú, Sơn Đông, Sơn Tây, Hà Nội"
+  },
+  {
+    "name": "Trường Sĩ quan Đặc công",
+    "short_name": null,
+    "code": "DCH",
+    "address": "Thị trấn Xuân Mai, huyện Chương Mỹ, thành phố Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Văn hóa – Nghệ thuật Quân đội",
+    "short_name": "Military University of Culture and Arts",
+    "code": "ZNH",
+    "address": "101 Nguyễn Chí Thanh, Láng Hạ, Đống Đa, Hà Nội"
+  },
+  {
+    "name": "Trường Cao đẳng Công nghệ và Kỹ thuật Ô tô",
+    "short_name": null,
+    "code": "COT",
+    "address": "Phường Xuân Khanh, thị xã Sơn Tây, thành phố Hà Nội"
+  },
+  {
+    "name": "Trường Cao đẳng Quân y 1",
+    "short_name": null,
+    "code": null,
+    "address": "Chùa Thông, P. Sơn Lộc, Sơn Tây, Hà Nội"
+  },
+  {
+    "name": "Phân hiệu Học viện Kỹ thuật Mật mã tại Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": null,
+    "address": "141 Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội."
+  },
+  {
+    "name": "Học viện An ninh Nhân dân",
+    "short_name": null,
+    "code": "ANH",
+    "address": "125 Trần Phú, Văn Quán, Hà Đông, Hà Nội."
+  },
+  {
+    "name": "Học viện Cảnh sát Nhân dân",
+    "short_name": null,
+    "code": "CSH",
+    "address": "Phường Cổ Nhuế 2, Q.Bắc Từ Liêm, Hà Nội."
+  },
+  {
+    "name": "Học viện Chính trị Công an Nhân dân",
+    "short_name": null,
+    "code": "HCA",
+    "address": "Số 29 phố Lê Văn Hiến, Phường Đức Thắng, Q.Bắc Từ Liêm, Hà Nội"
+  },
+  {
+    "name": "Đại học Phòng cháy Chữa cháy",
+    "short_name": "Official Fire Fighting Prevention University (T34)",
+    "code": "PCH / PCS",
+    "address": "Số 243, đường Khuất Duy Tiến, Q.Thanh Xuân, TP Hà Nội."
+  },
+  {
+    "name": "Trường Cao đẳng An ninh Nhân dân I",
+    "short_name": null,
+    "code": "AD1",
+    "address": "Đồng Mốc, Sóc Sơn, Hà Nội"
+  },
+  {
+    "name": "Trường Cao đẳng Cảnh sát Nhân dân I",
+    "short_name": null,
+    "code": "CD1",
+    "address": "207 Khuất Duy Tiến, Phường Nhân Chính, Quận Thanh Xuân, TP Hà Nội"
+  },
+  {
+    "name": "Trường Đại học Nông Lâm Bắc Giang",
+    "short_name": null,
+    "code": "DBG",
+    "address": "Bích Sơn, Việt Yên, Bắc Giang"
+  },
+  {
+    "name": "Trường Đại học Thể dục Thể thao Bắc Ninh",
+    "short_name": null,
+    "code": "TDB",
+    "address": "Trang Hạ, Từ Sơn, Bắc Ninh"
+  },
+  {
+    "name": "Phân viện Bắc Ninh – Học viện Ngân hàng",
+    "short_name": null,
+    "code": null,
+    "address": "331 Đường Ngô Gia Tự, Kinh Bắc, Bắc Ninh"
+  },
+  {
+    "name": "Trường Đại học Kinh Bắc",
+    "short_name": "University Of Kinh Bac",
+    "code": "UKB",
+    "address": "Phố Phúc Sơn, Phúc Sơn, Bắc Ninh, TP.Bắc Ninh Bắc Ninh"
+  },
+  {
+    "name": "Trường Đại học Quốc tế Bắc Hà",
+    "short_name": "Bac Ha International University",
+    "code": "BHIU",
+    "address": "Số 15 đường Nguyễn Văn Cừ, phường Ninh Xá, thành phố Bắc Ninh"
+  },
+  {
+    "name": "Trường Đại học Kỹ thuật – Hậu cần Công an Nhân dân",
+    "short_name": null,
+    "code": "HCB / HCN",
+    "address": "Thị trấn Hồ, huyện Thuận Thành, tỉnh Bắc Ninh"
+  },
+  {
+    "name": "Trường Đại học Hà Hoa Tiên",
+    "short_name": null,
+    "code": "DHH",
+    "address": "QL1A, Hoang Dong, Duy Tiên, Hà Nam"
+  },
+  {
+    "name": "Trường Đại học Kỹ thuật Y tế Hải Dương",
+    "short_name": "HMTU",
+    "code": "DKY",
+    "address": "1 Vũ Hựu, P. Thanh Bình, Thành phố Hải Dương, Hải Dương"
+  },
+  {
+    "name": "Trường Đại học Sao Đỏ",
+    "short_name": "SDU",
+    "code": "SDU",
+    "address": "24 Nguyễn Thái Học, TT. Sao Đỏ, Chí Linh, Hải Dương"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Kỹ thuật Hưng Yên",
+    "short_name": "UTEHY",
+    "code": "SKH",
+    "address": "68 Đỗ Ngọc Du, P. Tân Bình, Thành phố Hải Dương, Hải Dương"
+  },
+  {
+    "name": "Trường Đại học Hải Dương",
+    "short_name": "UHD",
+    "code": "DKT",
+    "address": "QL37, Liên Hồng, Gia Lộc, Hải Dương"
+  },
+  {
+    "name": "Trường Đại học Thành Đông",
+    "short_name": "Thanh Dong University (TDU)",
+    "code": "DDB",
+    "address": "Số 03 Vũ Công Đán, Tứ Minh, Thành phố Hải Dương, Hải Dương"
+  },
+  {
+    "name": "Trường Đại học Hàng hải Việt Nam",
+    "short_name": "ISE",
+    "code": "HHA",
+    "address": "484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng"
+  },
+  {
+    "name": "Đại học Y Dược Hải Phòng",
+    "short_name": "HPMU",
+    "code": "YPB",
+    "address": "72A Nguyễn Bỉnh Khiêm, Đằng Giang, Ngô Quyền, Hải Phòng"
+  },
+  {
+    "name": "Trường Đại học Hải Phòng",
+    "short_name": "HPU",
+    "code": "THP",
+    "address": "171 Phan Đăng Lưu, Trần Thành Ngọ, Kiến An, Hải Phòng"
+  },
+  {
+    "name": "Đại học Hải Phòng",
+    "short_name": "Hai Phong University",
+    "code": "THP",
+    "address": "171 Phan Đăng Lưu, Trần Thành Ngọ, Kiến An, Hải Phòng"
+  },
+  {
+    "name": "Trường Đại học Tài chính – Quản trị kinh doanh",
+    "short_name": "UFBA",
+    "code": "DFA",
+    "address": "Cơ sở 1: Trưng Trắc – Văn Lâm – Hưng Yên"
+  },
+  {
+    "name": "Trường Đại học Chu Văn An",
+    "short_name": "Chu Van An University",
+    "code": "DCA",
+    "address": "Khu đại học phố Hiến, đường Tô Hiệu, Phường Hiến Nam, Thành phố Hưng yên, Hưng Yên"
+  },
+  {
+    "name": "Phân hiệu Đại học Thái Nguyên tại Lào Cai – ĐH TN",
+    "short_name": null,
+    "code": "DTP",
+    "address": "Đường 19/5, Bình Minh, TX.Lào Cai, Lào Cai"
+  },
+  {
+    "name": "Trường Đại học Điều dưỡng Nam Định",
+    "short_name": "NDUN",
+    "code": "YDD",
+    "address": "257 Hàn Thuyên, Vị Xuyên, TP. Nam Định, Nam Định"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Kỹ thuật Nam Định",
+    "short_name": "NUTE",
+    "code": "SKN",
+    "address": "Phú Nghĩa, TP. Nam Định, Nam Định"
+  },
+  {
+    "name": "Trường Đại học Lương Thế Vinh",
+    "short_name": "Luong The Vinh University (LTVU)",
+    "code": "DTV",
+    "address": "Đường Cầu Đông, P, TP. Nam Định, Nam Định"
+  },
+  {
+    "name": "Trường Đại học Hoa Lư",
+    "short_name": "HLUV",
+    "code": "DNB",
+    "address": "Đường Xuân Thành, thành phố Ninh Bình, tỉnh Ninh Bình"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Việt Trì",
+    "short_name": "VUI",
+    "code": "VUI",
+    "address": "Cơ sở Việt Trì: Số 9, Đường Tiên Sơn, phường Tiên Cát, TP.Việt Trì, tỉnh Phú Thọ"
+  },
+  {
+    "name": "Trường Đại học Hùng Vương",
+    "short_name": "HVU",
+    "code": "THV",
+    "address": "Nguyễn Tất Thành, Nông Trang, Thành phố Việt Trì, Phú Thọ"
+  },
+  {
+    "name": "Trường Cao đẳng Công nghiệp Quốc phòng",
+    "short_name": "Military Industrial College (MIC);",
+    "code": "QPH",
+    "address": "Thanh Vinh, Thị xã Phú Thọ, Tỉnh Phú Thọ."
+  },
+  {
+    "name": "Trường Dự bị Đại học dân tộc Trung ương Việt Trì – Phú Thọ",
+    "short_name": null,
+    "code": null,
+    "address": "02 Trần Phú, Ph.Tân Dân, Việt Trì, Phú Thọ"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Quảng Ninh",
+    "short_name": "QUI",
+    "code": "DDM",
+    "address": "Phường, Yên Thọ, tx. Đông Triều, Quảng Ninh"
+  },
+  {
+    "name": "Phân hiệu Đại học Mỏ-Địa chất tại Quảng Ninh",
+    "short_name": null,
+    "code": null,
+    "address": "Thành phố Uông Bí; Tỉnh Quảng Ninh"
+  },
+  {
+    "name": "Trường Đại học Ngoại thương, cơ sở Quảng Ninh",
+    "short_name": null,
+    "code": "NTH",
+    "address": "260 Bạch Đằng, Nam Khê, Uông Bí, Quảng Ninh"
+  },
+  {
+    "name": "Trường Đại học Hạ Long",
+    "short_name": "HLU",
+    "code": "HLU",
+    "address": "Đông Hồ, Hồng Hải, Thành phố Hạ Long, Quảng Ninh"
+  },
+  {
+    "name": "Trường Đại học Tây Bắc",
+    "short_name": "UTB",
+    "code": "TTB",
+    "address": "Tổ 2 – phường Quyết Tâm – TP Sơn La – tỉnh Sơn La"
+  },
+  {
+    "name": "Trường Đại học Y Dược Thái Bình",
+    "short_name": "TBUMP",
+    "code": "YTB",
+    "address": "Số 373 Lý Bôn, TP Thái Bình, tỉnh Thái Bình"
+  },
+  {
+    "name": "Trường Đại học Thái Bình",
+    "short_name": "TBU",
+    "code": "DTB",
+    "address": "Xã Tân Bình – Thành Phố Thái Bình – Tỉnh Thái Bình"
+  },
+  {
+    "name": "Đại học Thái Nguyên",
+    "short_name": "TNU",
+    "code": null,
+    "address": "Tan Thinh Ward, Tân Thịnh, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Thông tin và Truyền thông – ĐH TN",
+    "short_name": "ICTU",
+    "code": "DTC",
+    "address": "Đường Z 115, Quyết Thắng, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Khoa học – ĐH TN",
+    "short_name": "TNUS",
+    "code": "DTZ",
+    "address": "Tân Thịnh, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Kinh tế và Quản trị Kinh doanh – ĐH TN",
+    "short_name": "TUEBA",
+    "code": "DTE",
+    "address": "Tân Thịnh, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Kỹ thuật Công nghiệp – ĐH TN",
+    "short_name": "TNUT",
+    "code": "DTK",
+    "address": "Số 666 Đường 3, 2 Ba Tháng Hai, tích dương, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Nông Lâm – ĐH TN",
+    "short_name": "TUAF",
+    "code": "DTN",
+    "address": "Cầu Mỏ Bạch, đê, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Sư phạm – ĐH TN",
+    "short_name": "TUE",
+    "code": "DTS",
+    "address": "Số 20, Đường Lương Ngọc Quyến, TP. Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Y Dược – ĐH TN",
+    "short_name": "TUMP",
+    "code": "DTY",
+    "address": "284 Đường Lương Ngọc Quyến, TP. Thái Nguyên"
+  },
+  {
+    "name": "Phân hiệu Đại học Công nghệ Giao thông Vận tải tại Thái Nguyên",
+    "short_name": "UTT",
+    "code": "GTA",
+    "address": "Phú Thái, Tân Thịnh, TP.Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Việt Bắc",
+    "short_name": "Viet Bac University (VBU)",
+    "code": "DVB",
+    "address": "QL 1B, Đồng Bẩm, Thành phố Thái Nguyên, Thái Nguyên"
+  },
+  {
+    "name": "Trường Đại học Tân Trào",
+    "short_name": "Tan Trao University",
+    "code": "TQU",
+    "address": "QL2, Trung Môn, Yên Sơn, Tuyên Quang"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Hà Nội 2",
+    "short_name": "ĐHSP HN2",
+    "code": "SP2",
+    "address": "Đường Nguyễn Văn Linh, Phường Xuân Hoà, Phúc Yên, Vĩnh Phúc"
+  },
+  {
+    "name": "Phân hiệu Đại học Công nghệ Giao thông Vận tải tại Vĩnh Phúc",
+    "short_name": null,
+    "code": null,
+    "address": "Số 278 Lam Sơn, Đồng Tâm, TP. Vĩnh Yên, Vĩnh Phúc"
+  },
+  {
+    "name": "Trường Đại học Trưng Vương",
+    "short_name": "Trung Vuong University (TVU)",
+    "code": "DVP",
+    "address": "QL2B, Kim Long, Tam Đảo, Vĩnh Phúc"
+  },
+  {
+    "name": "Trường Sĩ quan Tăng-Thiết giáp",
+    "short_name": "Military College of Tank Armour Officer (MCTAO)",
+    "code": "TGH",
+    "address": "km6 – đường Vĩnh Yên-Tam Đảo, xã Kim Long, huyện Tam Dương, tỉnh Vĩnh Phúc"
+  },
+  {
+    "name": "Trường Đại học Phú Xuân",
+    "short_name": "Phu Xuan University",
+    "code": "DPX",
+    "address": "28 Nguyễn Tri Phương, Phú Hội, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Đại học Huế",
+    "short_name": "HUEUNI",
+    "code": null,
+    "address": "03 Lê Lợi – TP Huế"
+  },
+  {
+    "name": "Trường Đại học Khoa học – ĐH Huế",
+    "short_name": "HUSC",
+    "code": "DHT",
+    "address": "77 Nguyễn Huệ, Phú Nhuận, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – ĐH Huế",
+    "short_name": "HCE",
+    "code": "DHK",
+    "address": "CS1: Phùng Hưng, Thuận Thành, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Luật – ĐH Huế",
+    "short_name": "HUL",
+    "code": "DHA",
+    "address": "Võ Văn Kiệt, Thủy Thủ, Hương Thủy, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Nghệ thuật – ĐH Huế",
+    "short_name": "HUFA",
+    "code": "DHN",
+    "address": "10 Tô Ngọc Vân, Thuận Thành, Tp. Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Ngoại ngữ – ĐH Huế",
+    "short_name": "HUCFL",
+    "code": "DHF",
+    "address": "57 Nguyễn Khoa Chiêm, An Cựu, Thành phố Huế, Huế"
+  },
+  {
+    "name": "Trường Đại học Nông Lâm – ĐH Huế",
+    "short_name": "HUAF",
+    "code": "DHL",
+    "address": "102 Phùng Hưng, Thuận Thành, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Sư phạm – ĐH Huế",
+    "short_name": null,
+    "code": "DHS",
+    "address": "34 Lê Lợi, Phú Hội, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Trường Đại học Y Dược – ĐH Huế",
+    "short_name": null,
+    "code": "DHY",
+    "address": "6 Đ. Ngô Quyền, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Phân hiệu Đại học Tài chính – Kế toán tại Thừa Thiên-Huế",
+    "short_name": "UFA Thua Thien Hue Campus",
+    "code": "DKQ",
+    "address": "Đường Phạm Văn Đồng, Phú Thượng, Phú Vang, Thừa Thiên Huế"
+  },
+  {
+    "name": "Học viện Âm nhạc Huế",
+    "short_name": "Hue Academy of Music",
+    "code": "HVA",
+    "address": "1 Lê Lợi, Vĩnh Ninh, Thành phố Huế, Thừa Thiên Huế"
+  },
+  {
+    "name": "Phân viện Học viện Hành chính Quốc gia tại Thành phố Huế",
+    "short_name": null,
+    "code": null,
+    "address": "Số 201, đường Phan Bội Châu, TP. Huế, tỉnh Thừa Thiên Huế."
+  },
+  {
+    "name": "Đại học Đà Nẵng",
+    "short_name": "UDN",
+    "code": "GD33",
+    "address": "41 Lê Duẩn, Hải Châu 1, Hải Châu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Bách khoa – ĐH Đà Nẵng",
+    "short_name": "DUT",
+    "code": "DDK",
+    "address": "54 Nguyễn Lương Bằng, Hoà Khánh Bắc, Liên Chiểu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Kỹ thuật – ĐH Đà Nẵng",
+    "short_name": "UTE",
+    "code": "DSK",
+    "address": "48 Cao Thắng, Thanh Bình, Hải Châu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – ĐH Đà Nẵng",
+    "short_name": "DUE",
+    "code": "DDQ",
+    "address": "71, Ngũ Hành Sơn, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Ngoại ngữ – ĐH Đà Nẵng",
+    "short_name": "UFL",
+    "code": "DDF",
+    "address": "41 Lê Duẩn, Hải Châu 1, Hải Châu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Sư phạm – ĐH Đà Nẵng",
+    "short_name": "UED",
+    "code": "DDS",
+    "address": "59 Tôn Đức Thắng, Hoà Khánh Nam, Liên Chiểu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Kỹ thuật Y – Dược Đà Nẵng",
+    "short_name": null,
+    "code": "YDN",
+    "address": "99 Hùng Vương, Hải Châu 1, Hải Châu, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Thể dục Thể thao Đà Nẵng",
+    "short_name": "DUPES",
+    "code": "TTD",
+    "address": "44 Dũng Sĩ Thanh Khê, Thanh Khê Tây, Thanh Khê, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Đông Á",
+    "short_name": "Dong A University",
+    "code": "DAD",
+    "address": "33 Xô Viết Nghệ Tĩnh – Hải Châu – Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Duy Tân",
+    "short_name": "Duy Tan University",
+    "code": "DDT",
+    "address": "254 Nguyễn Văn Linh, P, Thanh Khê, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Kiến trúc Đà Nẵng",
+    "short_name": null,
+    "code": "KTD",
+    "address": "Số 566 Núi Thành – Phường Hòa Cường Nam – Quận Hải Châu – Tp. Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Mỹ tại Việt Nam – AUV Đà Nẵng",
+    "short_name": "The American University in Vietnam – AUV",
+    "code": null,
+    "address": "299 Đường Trần Đại Nghĩa, Hoà Hải, Ngũ Hành Sơn, Đà Nẵng"
+  },
+  {
+    "name": "Trường Đại học Quy Nhơn",
+    "short_name": "QNU",
+    "code": "DQN",
+    "address": "170 An Dương Vương, Nguyễn Văn Cừ, Thành phố Qui Nhơn, Bình Định"
+  },
+  {
+    "name": "Trường Đại học Quang Trung",
+    "short_name": "Quang Trung University (QTU)",
+    "code": "DQT",
+    "address": "Đào Tấn, Nhơn Phú, Thành phố Qui Nhơn, Bình Định"
+  },
+  {
+    "name": "Trường Đại học Buôn Ma Thuột",
+    "short_name": null,
+    "code": "BMU",
+    "address": "298 Hà Huy Tập, phường Tân An, thành phố Buôn Ma Thuột, tỉnh Đắk Lắk"
+  },
+  {
+    "name": "Phân hiệu Đại học Nông Lâm Thành phố Hồ Chí Minh tại Gia Lai",
+    "short_name": null,
+    "code": "NLG",
+    "address": "126 Đường Lê Thánh Tôn, P. Ia King, Thành phố Pleiku, Gia Lai"
+  },
+  {
+    "name": "Trường Đại học Hà Tĩnh",
+    "short_name": "HTU",
+    "code": "HHT",
+    "address": "Cơ sở Đại Nài: Số 447, đường 26/3, P.Đại Nài, Tp.Hà Tĩnh, tỉnh Hà Tĩnh;"
+  },
+  {
+    "name": "Trường Đại học Nha Trang",
+    "short_name": "NTU",
+    "code": "TSN",
+    "address": "Số 2 Nguyễn Đình Chiểu, Vĩnh Thọ, Thành phố Nha Trang, Khánh Hòa"
+  },
+  {
+    "name": "Đại học Khánh Hòa",
+    "short_name": "UKH",
+    "code": "UKH",
+    "address": "1 Nguyễn Chánh, Lộc Thọ, Thành phố Nha Trang, Khánh Hòa"
+  },
+  {
+    "name": "Trường Đại học Thái Bình Dương",
+    "short_name": "Pacific Ocean University (POU)",
+    "code": "TBD",
+    "address": "08 Pasteur, Xương Huân, Thành phố Nha Trang, Khánh Hòa"
+  },
+  {
+    "name": "Học viện Hải quân",
+    "short_name": null,
+    "code": "HQH",
+    "address": "30 Trần Phú, Lộc Thọ, Thành phố Nha Trang, Khánh Hòa"
+  },
+  {
+    "name": "Trường Sĩ quan Không quân",
+    "short_name": null,
+    "code": "KGH / KGC",
+    "address": "Cổng 3, đường Biệt Thự, thành phố Nha Trang, tỉnh Khánh Hòa"
+  },
+  {
+    "name": "Đại học Thông tin liên lạc",
+    "short_name": "Telecommunications University (TCU)",
+    "code": "TCU",
+    "address": "101 Mai Xuân Thưởng, Nha Trang,Khánh Hòa"
+  },
+  {
+    "name": "Trường Dự bị Đại học dân tộc Nha Trang",
+    "short_name": null,
+    "code": null,
+    "address": "46 Nguyễn Thiện Thuật, Tân Lập, Thành phố Nha Trang, Khánh Hòa"
+  },
+  {
+    "name": "Phân hiệu Đại học Đà Nẵng tại Kon Tum – ĐH Đà Nẵng",
+    "short_name": "UD-CK",
+    "code": "DDP",
+    "address": "704 Phan Đình Phùng, Quang Trung, Kon Tum"
+  },
+  {
+    "name": "Trường Đại học Đà Lạt",
+    "short_name": "DLU",
+    "code": "TDL",
+    "address": "1 Đường P. Đ Thiên Vương, Phường 8, Thành phố Đà Lạt, Lâm Đồng"
+  },
+  {
+    "name": "Trường Đại học Tôn Đức Thắng, cơ sở Bảo Lộc",
+    "short_name": null,
+    "code": "DTT",
+    "address": "Lộc Tiến, Bảo Lộc, Lâm Đồng"
+  },
+  {
+    "name": "Đại học Yersin Đà Lạt",
+    "short_name": "Yersin University",
+    "code": "DYD",
+    "address": "27 Đường Tôn Thất Tùng, Phường 8, Thành phố Đà Lạt, Lâm Đồng"
+  },
+  {
+    "name": "Học viện Lục quân Đà Lạt",
+    "short_name": null,
+    "code": null,
+    "address": "Phường 9, Thành phố Đà Lạt, Lâm Đồng"
+  },
+  {
+    "name": "Trường Đại học Vinh",
+    "short_name": "Vinhuni",
+    "code": "TDV",
+    "address": "182 Lê Duẩn – Thành Phố Vinh – tỉnh Nghệ An"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Kỹ thuật Vinh",
+    "short_name": "VUTED",
+    "code": "SKV",
+    "address": "Số 117, Đường Nguyễn Viết Xuân, Phường Hưng Dũng, Thành phố Vinh, Nghệ An"
+  },
+  {
+    "name": "Trường Đại học Y khoa Vinh",
+    "short_name": "VMU",
+    "code": "YKV",
+    "address": "161 Nguyễn Phong Sắc, Hưng Dũng, Thành phố Vinh, Nghệ An"
+  },
+  {
+    "name": "Trường Đại học Kinh tế Nghệ An",
+    "short_name": "NACE",
+    "code": "CEA",
+    "address": "51 Lý Tự Trọng, Hà Huy Tập, Thành phố Vinh, Nghệ An"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Vạn Xuân",
+    "short_name": "Van Xuan University of Technology (VXUT)",
+    "code": "DVX",
+    "address": "103 Nguyễn Sinh Cung, Nghi Hương, Cửa Lò, Nghệ An"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Vinh",
+    "short_name": "Industrial University of Vinh (IUV)",
+    "code": "DCV",
+    "address": "Số 26, Đường Nguyễn Thái Học, TP Vinh, Nghệ An."
+  },
+  {
+    "name": "Phân hiệu Đại học Nông Lâm Thành phố Hồ Chí Minh tại Ninh Thuận",
+    "short_name": null,
+    "code": "NLN",
+    "address": "08 Yên Ninh, TT. Khánh Hải, Ninh Hải, Ninh Thuận"
+  },
+  {
+    "name": "Trường Đại học Xây dựng miền Trung",
+    "short_name": "MUCE",
+    "code": "XDT",
+    "address": "24 Nguyễn Du, Tp. Tuy Hòa, Phú Yên"
+  },
+  {
+    "name": "Phân viện Phú Yên – Học viện Ngân hàng",
+    "short_name": null,
+    "code": null,
+    "address": "441 Nguyễn Huệ, Phường7, Tuy Hòa, Phú Yên"
+  },
+  {
+    "name": "Trường Đại học Phú Yên",
+    "short_name": "PYU",
+    "code": "DPY",
+    "address": "18 Trần Phú – Phường 7 – Thành phố Tuy Hòa – Tỉnh Phú Yên"
+  },
+  {
+    "name": "Trường Đại học Quảng Bình",
+    "short_name": "Quang Binh Univesity",
+    "code": "DQB",
+    "address": "312 Lý Thường Kiệt, Đồng Phú, Đồng Hới, Quảng Bình"
+  },
+  {
+    "name": "Phân hiệu Đại học Nội vụ Hà Nội tại Quảng Nam",
+    "short_name": null,
+    "code": "DNV",
+    "address": "749 đường Trần Hưng Đạo, phường Điện Ngọc, thị xã Điện Bàn, tỉnh Quảng Nam"
+  },
+  {
+    "name": "Trường Đại học Quảng Nam",
+    "short_name": "Quang Nam Univesity",
+    "code": "DQU",
+    "address": "102, Hùng Vương, Phường An Mỹ, Tam Kỳ, Quảng Nam"
+  },
+  {
+    "name": "Trường Đại học Phan Châu Trinh",
+    "short_name": "Phan Chu Trinh University (PCTU)",
+    "code": "DPC",
+    "address": "09 Nguyễn Gia Thiều, Điện Ngọc, Điện Bàn, Quảng Nam"
+  },
+  {
+    "name": "Trường Đại học Phạm Văn Đồng",
+    "short_name": "PDU",
+    "code": "DPQ",
+    "address": "986 Quang Trung, Chánh Lộ, Quảng Ngãi"
+  },
+  {
+    "name": "Trường Đại học Tài chính – Kế toán",
+    "short_name": "UFA",
+    "code": "DKQ",
+    "address": "La Hà, Tư Nghĩa, Quảng Ngãi"
+  },
+  {
+    "name": "Phân hiệu Đại học Công nghiệp Thành phố Hồ Chí Minh tại Quảng Ngãi",
+    "short_name": null,
+    "code": "IUQ",
+    "address": "938 Quang Trung, Chánh Lộ, Quảng Ngãi"
+  },
+  {
+    "name": "Phân hiệu Đại học Huế tại Quảng Trị – ĐH Huế",
+    "short_name": null,
+    "code": "DHQ",
+    "address": "Đường Điện Biên Phủ, phường Đông Lương, Tp.Đông Hà, tỉnh Quảng Trị"
+  },
+  {
+    "name": "Phân hiệu Đại học Y Hà Nội tại Thanh Hóa",
+    "short_name": "Hanoi Medical University (HMU)",
+    "code": "YHT",
+    "address": "718 đường Quang Trung 3, Phường Đông Vệ, TP Thanh Hóa"
+  },
+  {
+    "name": "Phân hiệu Đại học Tài nguyên và Môi trường Hà Nội tại Thanh Hóa",
+    "short_name": null,
+    "code": "DMT",
+    "address": "Số 04 Trần Phú – Ba Đình – Bỉm Sơn – Thanh Hóa"
+  },
+  {
+    "name": "Đại học Hồng Đức",
+    "short_name": "HDU",
+    "code": "HDT",
+    "address": "565 Quang Trung, P. Tân Sơn, Thành phố Thanh Hóa, Thanh Hoá"
+  },
+  {
+    "name": "Trường Đại học Văn hóa, Thể thao và Du lịch Thanh Hóa",
+    "short_name": "DVTDT",
+    "code": "DVD",
+    "address": "Quảng Thịnh, Thành phố Thanh Hóa, Thanh Hoá"
+  },
+  {
+    "name": "Trường Dự bị Đại học dân tộc Sầm Sơn",
+    "short_name": null,
+    "code": null,
+    "address": "Lê Văn Hưu, P. Bắc Sơn, Sầm Sơn, Thanh Hoá"
+  },
+  {
+    "name": "Đại học Quốc gia Thành phố Hồ Chí Minh",
+    "short_name": "VNUHCM",
+    "code": null,
+    "address": "P. Linh Trung, Q. Thủ Đức, TP.HCM"
+  },
+  {
+    "name": "Trường Đại học Bách khoa – ĐHQG HCM",
+    "short_name": "HCMUT",
+    "code": "QSB",
+    "address": "268 Lý Thường Kiệt, Phường 14, Quận 10, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Thông tin – ĐHQG HCM",
+    "short_name": "UIT",
+    "code": "QSC",
+    "address": "khu phố 6, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Khoa học Tự nhiên – ĐHQG HCM",
+    "short_name": "HCMUS",
+    "code": "QST",
+    "address": "227 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Khoa học Xã hội và Nhân văn – ĐHQG HCM",
+    "short_name": "hcmussh",
+    "code": "QSX",
+    "address": "10-12 Đinh Tiên Hoàng, Bến Nghé, Quận 1, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – Luật – ĐHQG HCM",
+    "short_name": "UEL",
+    "code": "QSK",
+    "address": "669 QL1A, khu phố 3, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Quốc tế – ĐHQG HCM",
+    "short_name": "HCMIU",
+    "code": "QSQ",
+    "address": "Khu phố 6, P. Linh Trung, Q. Thủ Đức, TP.HCM"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Thành phố Hồ Chí Minh",
+    "short_name": "IUH",
+    "code": "HUI",
+    "address": "12 Nguyễn Văn Bảo, Phường 4, Gò Vấp, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Công nghiệp Thực phẩm Thành phố Hồ Chí Minh",
+    "short_name": "HUFI",
+    "code": "DCT",
+    "address": "140 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Giao thông vận tải Thành phố Hồ Chí Minh",
+    "short_name": "GTS hoặc UT-HCMC",
+    "code": "GTS",
+    "address": "2 Võ Oanh, Phường 25, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Kiến trúc Thành phố Hồ Chí Minh",
+    "short_name": "HCMUArc hoặc UAH",
+    "code": "KTS",
+    "address": "196 Pasteur, Phường 6, Quận 3, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Kinh tế Thành phố Hồ Chí Minh",
+    "short_name": "UEH",
+    "code": "KSA",
+    "address": "59C Nguyễn Đình Chiểu, Quận 3, Thành phố Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Luật Thành phố Hồ Chí Minh",
+    "short_name": "HCMUL",
+    "code": "LPS",
+    "address": "2 Nguyễn Tất Thành, Phường 12, Quận 4, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Mở Thành phố Hồ Chí Minh",
+    "short_name": "OU – HCMCOU",
+    "code": "MBS",
+    "address": "97 Võ Văn Tần, Phường 6, Quận 3, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Mỹ thuật Thành phố Hồ Chí Minh",
+    "short_name": "HCMUFA",
+    "code": "MTS",
+    "address": "5 Phan Đăng Lưu, Phường 3, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Ngân hàng Thành phố Hồ Chí Minh",
+    "short_name": "BUH",
+    "code": "NHS",
+    "address": "56 Hoàng Diệu 2, Linh Chiểu, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Nông Lâm Thành phố Hồ Chí Minh",
+    "short_name": "NLU",
+    "code": "NLU",
+    "address": "khu phố 6, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Sân khấu – Điện ảnh Thành phố Hồ Chí Minh",
+    "short_name": "SKDAHCM",
+    "code": "DSD",
+    "address": "125 Cống Quỳnh, Phường Nguyễn Cư Trinh, Quận 1, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Kỹ thuật Thành phố Hồ Chí Minh",
+    "short_name": "HCMUTE -UTE",
+    "code": "SPK",
+    "address": "1 Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Thành phố Hồ Chí Minh",
+    "short_name": "HCMUE",
+    "code": "SPS",
+    "address": "280 An Dương Vương, Phường 4, Quận 5, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Sư phạm Thể dục Thể thao Thành phố Hồ Chí Minh",
+    "short_name": "UPES",
+    "code": "STS",
+    "address": "639 Đ. Nguyễn Trãi, Phường 11, Quận 5, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Tài chính – Marketing",
+    "short_name": "UFM",
+    "code": "DMS",
+    "address": "Số 2/4 Trần Xuân Soạn, Phường Tân Thuận Tây, Quận 7, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Tài nguyên và Môi trường Thành phố Hồ Chí Minh",
+    "short_name": "HCMUNRE",
+    "code": "DTM",
+    "address": "236B Đ. Lê Văn Sỹ, Phường 1, Tân Bình, Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Thể dục Thể thao Thành phố Hồ Chí Minh",
+    "short_name": "HCUS",
+    "code": "TDS",
+    "address": "Phường Linh Trung, Thu Duc District, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Tôn Đức Thắng",
+    "short_name": "TDTU",
+    "code": "DTT",
+    "address": "19 Đường Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Văn hóa Thành phố Hồ Chí Minh",
+    "short_name": "HCMUC",
+    "code": "VHS",
+    "address": "51 Đường Quốc Hương, Thảo Điền, Quận 2, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Y Dược Thành phố Hồ Chí Minh",
+    "short_name": "UMP",
+    "code": "YDS",
+    "address": "217 Hồng Bàng, Q.5, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Y Phạm Ngọc Thạch",
+    "short_name": "PNTU",
+    "code": "TYS",
+    "address": "2 Dương Quang Trung, Phường 12, Quận 10, Hồ Chí Minh"
+  },
+  {
+    "name": "Phân hiệu Học viện Phụ nữ Việt Nam tại Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": null,
+    "address": "620 Đỗ Xuân Hợp, Phường Phước Bình, Quận 9, TP Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Giao thông Vận tải cơ sở 2",
+    "short_name": "University of Transport and Communications",
+    "code": "GSA",
+    "address": "450-451 Lê Văn Việt, Phường Tăng Nhơn Phú A, Quận 9, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Lao động – Xã hội cơ sở 2, Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "DLS",
+    "address": "1018 Tô Ký, Tân Chánh Hiệp, Quận 12, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Ngoại thương cơ sở 2, Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "NTS",
+    "address": "15 Đường D5, Phường 25, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Thủy lợi cơ sở 2, Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "TLS",
+    "address": "2 Trường Sa, Phường 17, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Học viện Cán bộ Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "HVC",
+    "address": "324 Chu Văn An, Phường 12, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Học viện Công nghệ Bưu chính Viễn thông cơ sở 2, Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "BVS",
+    "address": "Số 11 Nguyễn Đình Chiểu, Quận 1, Tp. Hồ Chí Minh"
+  },
+  {
+    "name": "Học viện Hàng không Việt Nam",
+    "short_name": "VAA",
+    "code": "HHK",
+    "address": "104 Nguyễn Văn Trỗi, Phường 8, Phú Nhuận, Hồ Chí Minh"
+  },
+  {
+    "name": "Nhạc viện Thành phố Hồ Chí Minh",
+    "short_name": "HCMCONS",
+    "code": "NVS",
+    "address": "112 Nguyễn Du, Phường Bến Thành, Quận 1, Hồ Chí Minh"
+  },
+  {
+    "name": "Phân viện Học viện Hành chính Quốc gia tại Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": null,
+    "address": "Số 10, đường 3/2, Quận 10, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Phân viện miền Nam – Học viện Thanh thiếu niên Việt Nam",
+    "short_name": null,
+    "code": null,
+    "address": "Trụ sở tại 261 đường Hoàng Hữu Nam, phường Tân Phú, quận 9, thành phố Hồ Chí Minh"
+  },
+  {
+    "name": "Học viện Tư Pháp – Cơ sở tại Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": null,
+    "address": "821 Kha Vạn Cân, Linh Chiểu, Thủ Đức, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Sài Gòn",
+    "short_name": "SGU",
+    "code": "SGD",
+    "address": "273 An Dương Vương, Phường 3, Quận 5, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Sài Gòn",
+    "short_name": "SaiGon Technology University",
+    "code": "DSG",
+    "address": "180 Đường Cao Lỗ, Phường 4, Quận 8, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Thành phố Hồ Chí Minh",
+    "short_name": "HUTECH",
+    "code": "DKC",
+    "address": "475 A Điện Biên Phủ, Phường 25, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Văn Lang",
+    "short_name": "Van Lang University (VLU)",
+    "code": "DVL",
+    "address": "45 Nguyễn Khắc Nhu P.CG, Phường Cô Giang, Quận 1, Thành phố Hồ Chí Minh."
+  },
+  {
+    "name": "Đại học Fulbright Việt Nam",
+    "short_name": "Fulbright University Vietnam",
+    "code": "FUV",
+    "address": "Tầng 2, 105 Tôn Dật Tiên, Phường Tân Phú, Quận 7, TP Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Hoa Sen",
+    "short_name": "Hoa Sen University (HSU)",
+    "code": "HSU",
+    "address": "93 Cao Thắng, Phường 3, Quận 3, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Hùng Vương Thành phố Hồ Chí Minh",
+    "short_name": "Hung Vuong University Ho Chi Minh City (HVUH",
+    "code": "DHV",
+    "address": "736 Nguyễn Trãi, Phường 11, Quận 5, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Kinh tế – Tài chính Thành phố Hồ Chí Minh",
+    "short_name": "University of Economics and Finance (UEF)",
+    "code": "UEF",
+    "address": "145 Điện Biên Phủ, Phường 15, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Ngoại ngữ Tin học Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": "DNT",
+    "address": "Số 155 Sư Vạn Hạnh (nd), P.13, Q.10, Tp.HCM"
+  },
+  {
+    "name": "Trường Đại học Nguyễn Tất Thành",
+    "short_name": "Nguyen Tat Thanh University (NTTU)",
+    "code": "NTT",
+    "address": "300A Nguyễn Tất Thành, Phường 13, Quận 4, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Quốc tế Hồng Bàng",
+    "short_name": "(Hong Bang University, viết tắt HBU",
+    "code": "HIU",
+    "address": "215 Điện Biên Phủ, Phường 15, Bình Thạnh, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Quốc tế Sài Gòn",
+    "short_name": "The Saigon International University( SIU)",
+    "code": "TTQ",
+    "address": "2 Quang Trung, Hiệp Phú, Quận 9, Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Gia Định",
+    "short_name": "Gia Dinh University",
+    "code": "DCG",
+    "address": "185 Hoàng Văn Thụ, Phường 8, Phú Nhuận, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Văn Hiến",
+    "short_name": "Van Hien University (VHU)",
+    "code": "DVH",
+    "address": "665-667-669 Điện Biên Phủ, Phường 1, Quận 3, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học Trần Đại Nghĩa",
+    "short_name": "Tran Dai Nghia University (TDNU)",
+    "code": "VPH (Hệ quân sự), ZPH (Hệ dân sự)",
+    "address": "số 189 Nguyễn Oanh, Phường 10, Quận Gò Vấp, Tp. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Cao đẳng Kỹ thuật Hải quân",
+    "short_name": null,
+    "code": "QP02",
+    "address": "1295A Nguyễn Thị Định, P. Cát Lái, Quận 2, TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Cao đẳng Quân y 2",
+    "short_name": null,
+    "code": null,
+    "address": "50 Lê Văn Việt, Hiệp Phú, Quận 9, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học An ninh Nhân dân",
+    "short_name": null,
+    "code": "ANS",
+    "address": "Km 18 xa lộ Hà Nội đi Biên Hòa; phường Linh Trung, Q.Thủ Đức, TP Hồ Chí Minh"
+  },
+  {
+    "name": "Đại học Cảnh sát Nhân dân",
+    "short_name": null,
+    "code": "CSS",
+    "address": "36 Nguyễn Hữu Thọ – Phường Tân Phong – Quận 7 – TP. Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Cao đẳng Cảnh sát Nhân dân II",
+    "short_name": null,
+    "code": null,
+    "address": "200 Nguyễn Văn Tăng, Long Thạnh Mỹ, Quận 9, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Dự bị Đại Học Thành phố Hồ Chí Minh",
+    "short_name": null,
+    "code": null,
+    "address": "91 Nguyễn Chí Thanh, Phường 9, Quận 5, Hồ Chí Minh"
+  },
+  {
+    "name": "Trường Đại học An Giang – ĐHQG HCM",
+    "short_name": "AGU",
+    "code": "TAG",
+    "address": "18 Ung Văn Khiêm, phường Đông Xuyên, An Giang"
+  },
+  {
+    "name": "Trường Đại học Dầu khí Việt Nam",
+    "short_name": "PVU",
+    "code": "PVU",
+    "address": "Cách Mạng Tháng Tám, Long Toàn, Bà Rịa, Bà Rịa – Vũng Tàu"
+  },
+  {
+    "name": "Phân hiệu Đại học Mỏ-Địa chất tại Vũng Tàu",
+    "short_name": null,
+    "code": null,
+    "address": "Số 139, đường Phan Chu Trinh, phường 2, thành phố Vũng Tàu"
+  },
+  {
+    "name": "Trường Đại học Bà Rịa – Vũng Tàu",
+    "short_name": "Baria-Vungtau University",
+    "code": "BVU",
+    "address": "80 Trương Công Định, Phường 3, Thành phố Vũng Tầu, Bà Rịa – Vũng Tàu"
+  },
+  {
+    "name": "Trường Đại học Bạc Liêu",
+    "short_name": "BLU",
+    "code": "DBL",
+    "address": "108 Võ Thị Sáu, Phường 8, Bạc Liêu"
+  },
+  {
+    "name": "Phân hiệu Đại học Quốc gia Thành phố Hồ Chí Minh tại Bến Tre – ĐHQG HCM",
+    "short_name": "VNUHCM – CBT",
+    "code": "QSB",
+    "address": "99A QL60, Khu phố 1, Bến Tre"
+  },
+  {
+    "name": "Phân hiệu Đại học Bách Khoa tại Bến Tre",
+    "short_name": "VNUHCM – CBT",
+    "code": "QSB",
+    "address": "99A, Quốc lộ 60, KP1, P. Phú Tân, Tp Bến Tre"
+  },
+  {
+    "name": "Phân hiệu Đại học Công nghệ Thông tin tại Bến Tre",
+    "short_name": null,
+    "code": null,
+    "address": "Số 99A, Quốc lộ 60, khu phố 1, phường Phú Tân, thành phố Bến Tre, tỉnh Bến Tre"
+  },
+  {
+    "name": "Phân hiệu Đại học Khoa học Tự nhiên tại Bến Tre",
+    "short_name": null,
+    "code": null,
+    "address": "99A, Quốc lộ 60, KP1, P. Phú Tân, Tp Bến Tre"
+  },
+  {
+    "name": "Phân hiệu Đại học Khoa học Xã hội và Nhân văn tại Bến Tre",
+    "short_name": null,
+    "code": null,
+    "address": "99A, Quốc lộ 60, KP1, P. Phú Tân, Tp Bến Tre"
+  },
+  {
+    "name": "Phân hiệu Đại học Kinh tế – Luật tại Bến Tre",
+    "short_name": null,
+    "code": null,
+    "address": "99A, Quốc lộ 60, KP1, P. Phú Tân, Tp Bến Tre"
+  },
+  {
+    "name": "Trường Đại học Việt Đức",
+    "short_name": "VGU",
+    "code": "VGU",
+    "address": "Lê Lai, Định Hoà, Thủ Dầu Một, Bình Dương"
+  },
+  {
+    "name": "Trường Đại học Thủ Dầu Một",
+    "short_name": "TDMU",
+    "code": "TDM",
+    "address": "06 Trần Văn Ơn, Phú Hoà, Thủ Dầu Một, Bình Dương"
+  },
+  {
+    "name": "Trường Đại học Bình Dương",
+    "short_name": "Binh Duong University",
+    "code": "DBD",
+    "address": "Số 504, Đại lộ Bình Dương, Phường HiệpThành, Tp. Thủ Dầu Một, Tỉnh Bình Dương."
+  },
+  {
+    "name": "Trường Đại học Kinh tế- Kỹ thuật Bình Dương",
+    "short_name": "Binh Duong Economics and Technology University (BETU)",
+    "code": "DKB",
+    "address": "530 P Đại lộ Bình Dương, Hiệp Thành, Thủ Dầu Một, Bình Dương"
+  },
+  {
+    "name": "Trường Đại học Quốc tế Miền Đông",
+    "short_name": "Eastern International University",
+    "code": "EIU",
+    "address": "Nam Kỳ Khởi Nghĩa, Định Hoà, Thủ Dầu Một, Bình Dương"
+  },
+  {
+    "name": "Trường Đại học Ngô Quyền",
+    "short_name": null,
+    "code": null,
+    "address": "229B Bạch Đằng, Phú Cường, Thủ Dầu Một, Bình Dương"
+  },
+  {
+    "name": "Phân hiệu Đại học Bình Dương tại Cà Mau",
+    "short_name": null,
+    "code": "DBD",
+    "address": "Số 3, Đường số 6, Khu Dự án Đông Bắc, P5, TP. Cà Mau, Cà Mau."
+  },
+  {
+    "name": "Trường Đại học Tôn Đức Thắng, cơ sở Cà Mau",
+    "short_name": null,
+    "code": "TDTU",
+    "address": "Đường Mậu Thân, Khóm 6, Phường 9, TP.Cà Mau, Tỉnh Cà Mau."
+  },
+  {
+    "name": "Trường Đại học Tôn Đức Thắng, cơ sở Nha Trang",
+    "short_name": null,
+    "code": null,
+    "address": "Số 22 Nguyễn Đình Chiểu, P. Vĩnh Phước, Tp. Nha Trang, Khánh Hòa."
+  },
+  {
+    "name": "Trường Đại học Cần Thơ",
+    "short_name": "CTU",
+    "code": "TCT",
+    "address": "Khu II, đường 3/2 P. Xuân Khánh TP, Ninh Kiều, Cần Thơ"
+  },
+  {
+    "name": "Trường Đại học Y Dược Cần Thơ",
+    "short_name": "CTUMP",
+    "code": "YCT",
+    "address": "Số 179 Nguyễn Văn Cừ, An Khánh, Ninh Kiều, Cần Thơ"
+  },
+  {
+    "name": "Trường Đại học Kiến trúc Thành phố Hồ Chí Minh cơ sở Cần Thơ",
+    "short_name": "University of Architecture Ho Chi Minh City (UAH)",
+    "code": "KTS",
+    "address": "Khu đô thị Nam sông Cần Thơ, P. Hưng Thạnh, Q. Cái Răng, TP. Cần Thơ"
+  },
+  {
+    "name": "Trường Đại học Kỹ thuật – Công nghệ Cần Thơ",
+    "short_name": "CTUT",
+    "code": "KCC",
+    "address": "256 Đường Nguyễn Văn Cừ, An Hoà, Ninh Kiều, Cần Thơ"
+  },
+  {
+    "name": "Trường Đại học Nam Cần Thơ",
+    "short_name": "Nam Can Tho University (NCTU)",
+    "code": "DNC",
+    "address": "Số 168 Nguyễn Văn Cừ (nối dài), Phường An Bình, Q. Ninh Kiều, TP. Cần Thơ"
+  },
+  {
+    "name": "Trường Đại học Tây Đô",
+    "short_name": "Tay Do University",
+    "code": "DTD",
+    "address": "68 Trần Chiên, Lê Bình, Cái Răng, Cần Thơ"
+  },
+  {
+    "name": "Trường Cao đẳng Cảnh sát Nhân dân III",
+    "short_name": null,
+    "code": null,
+    "address": "63 – 71 Cách Mạng Tháng 8, Phường An Thới, Quận Bình Thuỷ, TP Cần Thơ"
+  },
+  {
+    "name": "Phân hiệu Đại học Lâm nghiệp Việt Nam tại Đồng Nai",
+    "short_name": "VNUF",
+    "code": "LNS",
+    "address": "Thị trấn Trảng Bom, huyện Trảng Bom, tỉnh Đồng Nai"
+  },
+  {
+    "name": "Đại học Đồng Nai",
+    "short_name": "DNU",
+    "code": "DNU",
+    "address": "4 Lê Quý Đôn, Kp3, Thành phố Biên Hòa, Đồng Nai"
+  },
+  {
+    "name": "Trường Đại học Công nghệ Đồng Nai",
+    "short_name": "Dong Nai Technology University (DNTU)",
+    "code": "DCD",
+    "address": "Kp5 Đường Nguyễn Khuyến, Trảng Dài, Thành phố Biên Hòa, Đồng Nai"
+  },
+  {
+    "name": "Trường Đại học Lạc Hồng",
+    "short_name": "Lac Hong University.",
+    "code": "DLH",
+    "address": "Số 15/2B Huỳnh Văn Nghệ, P, Thành phố Biên Hòa, Đồng Nai"
+  },
+  {
+    "name": "Trường Đại học Nguyễn Huệ",
+    "short_name": "Nguyễn Huệ University (NHU)",
+    "code": "LBH",
+    "address": "Xã Tam Phước, Thành Phố Biên Hoà, Tỉnh Đồng Nai"
+  },
+  {
+    "name": "Trường Cao đẳng An ninh Nhân dân II",
+    "short_name": null,
+    "code": "AD2",
+    "address": "Tam Phước, Long Thành, Đồng Nai"
+  },
+  {
+    "name": "Trường Đại học Đồng Tháp",
+    "short_name": "DTHU",
+    "code": "SPD",
+    "address": "783 Phạm Hữu Lầu, Phường 6, TP. Cao Lãnh, Đồng Tháp"
+  },
+  {
+    "name": "Phân hiệu Đại học Cần Thơ tại Hậu Giang",
+    "short_name": "Can Tho University (CTU)",
+    "code": "TCT",
+    "address": "Khu Hòa An – ĐHCT, số 544, quốc lộ 61, ấp Hòa Đức, xã Hòa An, huyện Phụng Hiệp, tỉnh Hậu Giang"
+  },
+  {
+    "name": "Trường Đại học Võ Trường Toản",
+    "short_name": "Vo Truong Toan University (VTTU)",
+    "code": "VTT",
+    "address": "QL1A, Tân Phú Thạnh, Châu Thành A, Hậu Giang"
+  },
+  {
+    "name": "Trường Đại học Kiên Giang",
+    "short_name": "Kien Giang University",
+    "code": "TKG",
+    "address": "320A, QL61, Vĩnh Hoà Hiệp, Châu Thành, tỉnh Kiên Giang"
+  },
+  {
+    "name": "Đại học Kinh tế – Công nghiệp Long An",
+    "short_name": "Long An University of Economics and Industry",
+    "code": "DLA",
+    "address": "Quốc lộ 1, Ward, Khánh Hậu, Tân An, Long An"
+  },
+  {
+    "name": "Trường Đại học Tân Tạo",
+    "short_name": "Tan Tao University (TTU",
+    "code": "TTU",
+    "address": "Tân Đức, Đức Hòa, E.City Đức Hòa Long An"
+  },
+  {
+    "name": "Trường Đại học Tiền Giang",
+    "short_name": "TGU",
+    "code": "TTG",
+    "address": "119 Ấp Bắc, Phường 5, Thành phố Mỹ Tho, Tiền Giang"
+  },
+  {
+    "name": "Trường Đại học Trà Vinh",
+    "short_name": "Tra Vinh University",
+    "code": "DVT",
+    "address": "126 Nguyễn Thiện Thành, Phường 5, tp. Trà Vinh, Trà Vinh"
+  },
+  {
+    "name": "Trường Đại học Sư phạm kỹ thuật Vĩnh Long",
+    "short_name": "VLUTE",
+    "code": "VLU",
+    "address": "73 Nguyễn Huệ, Phường 2, Vĩnh Long"
+  },
+  {
+    "name": "Trường Đại học Xây dựng Miền Tây",
+    "short_name": "MTU",
+    "code": "MTU",
+    "address": "20B Phó Cơ Điều, Phường 3, Vĩnh Long"
+  },
+  {
+    "name": "Trường Đại học Cửu Long",
+    "short_name": "Mekong University (MKU)",
+    "code": "DCL",
+    "address": "Quốc Lộ 1A, Huyện Long Hồ, Phú Quới, Long Hồ, Vĩnh Long"
+  }
+]

@@ -12,6 +12,7 @@ import { Server } from "socket.io";
 import http from "http"
 
 import routerSocketAll from "./socket/v1/routes/all/index-socket.routes";
+import routesCommonVersion1 from "./api/v1/routes/common/index.routes";
 
 const app: Express = express();
 
@@ -36,6 +37,7 @@ dotenv.config()
 
 database.connect();
 
+routesCommonVersion1(app);
 
 routesAdminVersion1(app);
 
