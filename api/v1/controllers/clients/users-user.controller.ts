@@ -356,6 +356,9 @@ export const authen = async function (
       description: userClient.description || "",
       statusOnline: userClient.statusOnline || false,
       listJobSave: userClient.listJobSave || [],
+      experiences: userClient.experiences || [],
+      educations: userClient.educations || [],
+      skills: userClient.skills || [],
     };
 
     res.status(200).json({
@@ -733,7 +736,26 @@ export const uploadImage = async function (
 
     res
       .status(200)
-      .json({ code: 200, success: `Upload thành công`, data: {url, key} });
+      .json({ code: 200, success: `Upload Thành Công`, data: {url, key} });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [GET] /api/v1/clients/users/get-profile/:id
+export const getProfile = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id = req.params.id;
+
+    const profile = await User.findById(_id).select("_id fullName experiences")
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Truy Vấn Thành Công`, data: profile });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -799,36 +821,12 @@ export const updateExperience = async function (
   try {
     const _id: string = req["user"]._id;
 
-    const {
-      company_id = "",
-      company_logo = "",
-      start_month = "",
-      start_year = "",
-      end_month = "",
-      end_year = "",
-      position_name = "",
-      attachments,
-    } = req.body;
-
-    const experiences: any = {
-      company_id,
-      company_logo,
-      start_month,
-      start_year,
-      end_month,
-      end_year,
-      position_name,
-      attachments,
-    }
-
     await User.updateOne(
       {
         _id,
       },
       {
-        $push: {
-          experiences: experiences
-        }
+        experiences: req.body
       }
     );
 
