@@ -34,6 +34,7 @@ router.post('/upload-cv',authMiddlewares.auth,validates.uploadCv,uploadDriver.up
 router.get('/get-cv-user',authMiddlewares.auth,controller.getCvByUser)
 router.post('/edit-cv-user',authMiddlewares.auth,validates.editCvByUser,controller.editCvByUser)
 
+router.get('/get-profile/:id', controller.getProfile)
 router.post('/upload-image', uploadAws, controller.uploadImage)
 router.post('/update-education', authMiddlewares.auth, controller.updateEducation)
 router.post('/update-experience', authMiddlewares.auth, controller.updateExperience)
