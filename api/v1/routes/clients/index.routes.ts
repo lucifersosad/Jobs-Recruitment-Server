@@ -8,6 +8,7 @@ import { skillRoutes } from "./skill.routes";
 import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
 import { chatRoutes } from "./chat.routes";
 import { cvRoutes } from "./cv.routes";
+import { postRoutes } from "./post.rutes";
 
 const routesClientVersion1 = (app: Express): void => {
     const version = "/api/v1/client";
@@ -18,5 +19,6 @@ const routesClientVersion1 = (app: Express): void => {
     app.use(version +"/skills",skillRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
+    app.use(version +"/",authMiddlewares.auth,postRoutes)
 }
 export default routesClientVersion1
