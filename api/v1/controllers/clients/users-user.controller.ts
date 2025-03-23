@@ -751,7 +751,7 @@ export const getProfile = async function (
   try {
     const _id = req.params.id;
 
-    const profile = await User.findById(_id).select("_id fullName experiences educations")
+    const profile = await User.findById(_id).select("_id fullName experiences educations skills")
 
     res
       .status(200)
@@ -822,36 +822,18 @@ export const updateSkill = async function (
   try {
     const _id: string = req["user"]._id;
 
-    const {
-      skill_id = "",
-      title = "",
-      image = "",
-      rate = "",
-      description = "",
-    } = req.body;
-
-    const skills: any = {
-      skill_id,
-      title,
-      image,
-      rate,
-      description,
-    }
-
     await User.updateOne(
       {
         _id,
       },
       {
-        $push: {
-          skills: skills
-        }
+        skills: req.body
       }
     );
 
     res
       .status(200)
-      .json({ code: 200, success: `Đã Lưu` });
+      .json({ code: 200, success: `Đã Lưu Kĩ Năng` });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
