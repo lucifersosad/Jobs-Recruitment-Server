@@ -147,7 +147,8 @@ const recallEraX = async (uniqueId) => {
 // const filePath = path.join(__dirname, "static_data", "CV_TEST.jpg");
 const filePath1 = path.join(__dirname, "static_data", "page-1.jpg");
 const filePath2 = path.join(__dirname, "static_data", "page-2.jpg");
-const filePath = [filePath1, filePath2]
+// const filePath = [filePath1, filePath2]
+const filePath = [path.join(__dirname, "static_data", "cv33-1D1B21.png")]
 callEraX(filePath).then((result) => {
   if (result) {
     console.log("Extracted Data:", result);
