@@ -16,6 +16,8 @@ import {
   ENUM_NOTIFICATION_TYPE,
 } from "../../../../helpers/notification";
 import { putObject } from "../../../../helpers/uploadToS3Aws";
+import { callRapidApi } from "../../../../helpers/parseCV";
+import MyCv from "../../../../models/my-cvs.model";
 
 // [POST] /api/v1/clients/users/allow-setting-user
 export const allowSettingUser = async function (
@@ -732,7 +734,7 @@ export const uploadImage = async function (
     
     const fileName = "profile/" + Date.now() + `.${fileExtentsion}`
     
-    const { url, key } = await putObject(file, fileName)
+    const { url, key } = await putObject(file, fileName, "image")
 
     res
       .status(200)
@@ -834,6 +836,33 @@ export const updateSkill = async function (
     res
       .status(200)
       .json({ code: 200, success: `Đã Lưu Kĩ Năng` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/users/upload-cv-2
+export const uploadCv2 = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    // Lấy thông tin người dùng từ request
+    const user = req["user"];
+
+    const url = req.body.url;
+    const key = req.body.key;
+    const buffer = req.body.buffer;
+
+    const result = await callRapidApi(url)
+
+    const cv = new MyCv(result);
+    await cv.save()
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Upload CV Thành Công`, data: {url, key, result} });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });

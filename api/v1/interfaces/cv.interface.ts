@@ -10,6 +10,6 @@ export interface Find   {
     status?:string,
     idJob?: string,
     countView?: number,
-    employerId: string
+    employerId?: string
     deletedAt?: Date,
   }

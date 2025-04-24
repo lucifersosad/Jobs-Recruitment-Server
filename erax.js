@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const fetch = require("node-fetch");
 const path = require("path");
@@ -7,7 +8,7 @@ const API_OCR_URL = "https://api.erax.ai/api/v1/extract_image";
 const RECALL_URL_TEMPLATE = (unique_id) => `https://api.erax.ai/api/v1/${unique_id}/recall`;
 
 // Thông tin API
-const API_KEY = "8587e79aafde59272af3092f18ee5ad75cde3631d06437383009601db6a95e44"; // Thay bằng API key của bạn
+const API_KEY = process.env.ERAX_API_KEY; // Thay bằng API key của bạn
 const MODEL_NAME = "erax-vl-plus-2b"; // Chọn model phù hợp
 
 // Chuyển file PDF thành base64
@@ -148,7 +149,7 @@ const recallEraX = async (uniqueId) => {
 const filePath1 = path.join(__dirname, "static_data", "page-1.jpg");
 const filePath2 = path.join(__dirname, "static_data", "page-2.jpg");
 // const filePath = [filePath1, filePath2]
-const filePath = [path.join(__dirname, "static_data", "cv33-1D1B21.png")]
+const filePath = [filePath1, filePath2]
 callEraX(filePath).then((result) => {
   if (result) {
     console.log("Extracted Data:", result);

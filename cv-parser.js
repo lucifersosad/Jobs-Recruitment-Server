@@ -1,8 +1,9 @@
+require("dotenv").config();
 const fs = require("fs");
 const fetch = require("node-fetch");
 const path = require("path");
 
-const filePath = path.join(__dirname, "static_data", "cv33-1D1B21.png");
+const filePath = path.join(__dirname, "static_data", "CV_TEST_2.jpg");
 
 // Chuyển file PDF thành base64
 const pdfToBase64 = (filePath) => {
@@ -16,7 +17,7 @@ const url = "https://resume-parsing-api2.p.rapidapi.com/processDocument";
 const options = {
   method: "POST",
   headers: {
-    "x-rapidapi-key": "2031a72107mshc740500a08bcc2cp1c20dfjsnbd1e2caba741",
+    "x-rapidapi-key": process.env.RAPID_API_KEY,
     "x-rapidapi-host": "resume-parsing-api2.p.rapidapi.com",
     "Content-Type": "application/json",
   },
@@ -78,7 +79,7 @@ const options = {
           items: { type: "string" },
         },
         {
-          key: "certificates",
+          key: "certifications",
           description: "certificates of the person",
           type: "array",
           items: { type: "string" },

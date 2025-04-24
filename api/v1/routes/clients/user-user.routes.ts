@@ -4,10 +4,11 @@ import * as controller from "../../controllers/clients/users-user.controller";
 import * as validates from "../../validates/clients/users.validate"
 import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
 import * as uploadDriver from "../../middlewares/admins/uploadDriver.middleware"
+import * as uploadAws from "../../middlewares/clients/uploadAws.middleware"
 import fileUpload from "express-fileupload"
 
 const router : Router = Router();
-const uploadAws = fileUpload()
+const FileUpload = fileUpload()
 
 router.post('/register',validates.register,controller.register )
 router.post('/login',validates.login,controller.login)
@@ -35,8 +36,9 @@ router.get('/get-cv-user',authMiddlewares.auth,controller.getCvByUser)
 router.post('/edit-cv-user',authMiddlewares.auth,validates.editCvByUser,controller.editCvByUser)
 
 router.get('/get-profile/:id', controller.getProfile)
-router.post('/upload-image', uploadAws, controller.uploadImage)
+router.post('/upload-image', FileUpload, controller.uploadImage)
 router.post('/update-education', authMiddlewares.auth, controller.updateEducation)
 router.post('/update-experience', authMiddlewares.auth, controller.updateExperience)
 router.post('/update-skill', authMiddlewares.auth, controller.updateSkill)
+router.post('/upload-cv-2', authMiddlewares.auth, FileUpload, uploadAws.uploadPdf, controller.uploadCv2)
 export const usersRoutes : Router  = router
