@@ -6,5 +6,6 @@ const router: Router = Router();
 router.get("/get-cv-apply", controller.getCvApply);
 router.get("/get-cv-apply-accept", controller.getCvApplyAccept);
 router.get("/get-cv-info-user/:idUser", validate.getCvInfoUser,controller.getCvInfoUser);
+router.get("/find-cv", controller.getCv);
 
 export const cvRoutes: Router = router;

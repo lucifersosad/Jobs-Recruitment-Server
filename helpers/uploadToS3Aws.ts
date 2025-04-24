@@ -8,15 +8,25 @@ const s3Client = new S3Client({
   }
 })
 
-export const putObject = async (file, fileName) => {
+export const putObject = async (file, fileName, type) => {
   try {
     const params: any = {
       Bucket: process.env.AWS_S3_BUCKET,
       Key: `${fileName}`,
       Body: file,
-      ContentType: "image/jpg,jpeg,png"
+      // ContentType: "image/jpg,jpeg,png"
       // ContentType: "application/pdf"
     }
+
+    switch (type) {
+      case "image": 
+        params.ContentType = "image/jpg,jpeg,png"
+        break;
+      case "file": 
+        params.ContentType = "application/pdf"
+        break;
+    }
+
     const command = new PutObjectCommand(params)
     const data = await s3Client.send(command)
 
