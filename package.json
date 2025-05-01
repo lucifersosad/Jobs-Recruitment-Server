@@ -39,6 +39,7 @@
     "pdf-merger-js": "^4.3.1",
     "pdf-poppler": "^0.2.1",
     "pre-commit": "^1.2.2",
+    "puppeteer": "^24.7.2",
     "sharp": "^0.33.5",
     "slug": "^8.2.3",
     "socket.io": "^4.7.5",
