@@ -109,7 +109,7 @@ export const createPost = async (req: Request, res: Response) => {
 
     
     for (const file of files) {
-      const result = await putObject(file.buffer, `posts/${Date.now()}-${file.originalname}`);
+      const result = await putObject(file.buffer, `posts/${Date.now()}-${file.originalname}`, 'image/jpeg');
       if (result) {
         imageUrls.push(result.url);
       }
@@ -160,7 +160,7 @@ export const updatePost = async (req: Request, res: Response) => {
     if (Array.isArray(files) && files.length > 0) {
       updatedImages = [];
       for (const file of files) {
-        const result = await putObject(file.buffer, `posts/${Date.now()}-${file.originalname}`);
+        const result = await putObject(file.buffer, `posts/${Date.now()}-${file.originalname}`, 'image/jpeg');
         if (result) {
           updatedImages.push(result.url);
         }
