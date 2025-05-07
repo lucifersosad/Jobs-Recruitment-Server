@@ -1,0 +1,9 @@
+import { Router } from "express";
+
+import * as controller from "../../controllers/clients/myCv.controller";
+import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
+
+const router : Router = Router();
+
+router.post('/', authMiddlewares.auth, controller.createMyCv)
+export const myCvsRoutes : Router  = router

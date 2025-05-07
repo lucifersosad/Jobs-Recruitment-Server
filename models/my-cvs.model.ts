@@ -8,7 +8,12 @@ const myCvSchema = new mongoose.Schema(
     idUser: String,
     idFile: String,
     nameFile: String,
+    fullName: String,
+    email: String,
+    phone: String,
+    address: String,
     position: String,
+    objective: String,
     experiences: [
       {
         position_name: String,
@@ -27,8 +32,33 @@ const myCvSchema = new mongoose.Schema(
           description: String,
       }
     ],
-    skills: [String],
-    certifications: [String],
+    skills: [
+      {
+        skill_name: String,
+        description: String,
+      },
+    ],
+    awards: [
+      {
+        date: String,
+        title: String,
+      },
+    ],
+    certifications: [
+      {
+        date: String,
+        title: String,
+      },
+    ],
+    activities: [
+      {
+        position_name: String,
+        group_name: String,
+        start_date: String,
+        end_date: String,
+        description: String,
+      }
+    ],
     status: {
       type: String,
       default: "active",
