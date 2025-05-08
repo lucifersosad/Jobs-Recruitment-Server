@@ -20,7 +20,7 @@ const routesClientVersion1 = (app: Express): void => {
     app.use(version +"/skills",skillRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
-    app.use(version +"/",authMiddlewares.auth,postRoutes)
+    app.use(version +"/post",authMiddlewares.auth,postRoutes)
     app.use(version +"/my-cvs", myCvsRoutes)
 }
 export default routesClientVersion1

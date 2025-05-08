@@ -5,5 +5,6 @@ import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
 
 const router : Router = Router();
 
+router.get('/:id', controller.getMyCv)
 router.post('/', authMiddlewares.auth, controller.createMyCv)
 export const myCvsRoutes : Router  = router

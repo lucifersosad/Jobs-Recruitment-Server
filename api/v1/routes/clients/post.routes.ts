@@ -6,8 +6,8 @@ const router: Router = Router();
 
 
 
-router.get("/post/get-all/:employerId",validates.getPosts, controller.getEmployerPosts );
-router.post("/post/like/:postId",validates.likePost, controller.likePost);
-router.post("/post/comment/:postId", validates.commentOnPost, controller.commentOnPost);
+router.get("/get-all/:employerId",validates.getPosts, controller.getEmployerPosts );
+router.post("/like/:postId",validates.likePost, controller.likePost);
+router.post("/comment/:postId", validates.commentOnPost, controller.commentOnPost);
 
 export const postRoutes: Router = router;

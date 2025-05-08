@@ -9,7 +9,7 @@ const puppeteer = require("puppeteer");
   const page = await browser.newPage();
 
   // Đảm bảo app React đang chạy ở đây
-  await page.goto("http://localhost:3000/xem-cv", {
+  await page.goto("http://localhost:3000/xem-cv/67e2790696fe829b81af2704", {
     waitUntil: "networkidle0",
   });
   
