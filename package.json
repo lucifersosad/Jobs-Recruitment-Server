@@ -9,7 +9,8 @@
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "foo": "echo \"fooo\" && exit 0",
-    "bar": "echo \"bar\" && exit 0"
+    "bar": "echo \"bar\" && exit 0",
+    "postinstall": "puppeteer install"
   },
   "author": "",
   "license": "ISC",
