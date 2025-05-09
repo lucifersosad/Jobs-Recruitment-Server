@@ -9,7 +9,9 @@ export const getCvPdfBuffer = async (id) => {
 
     const page = await browser.newPage();
 
-    await page.goto(`http://localhost:3000/xem-cv/${id}`, {
+    const url = `${process.env.CLIENT_WEB_URL}/xem-cv/${id}`
+
+    await page.goto(url, {
       waitUntil: "networkidle0",
     });
 
