@@ -73,7 +73,7 @@ const employerSchema = new mongoose.Schema(
         },
         cointsGP : {
             type:Number,
-            default:0
+            default:1000
         },
         cvRecruitment: [
             {
@@ -82,6 +82,9 @@ const employerSchema = new mongoose.Schema(
             }
 
         ],
+        notification_token: {
+            type: Array
+        },
         deleted: {
             type: Boolean,
             default: false,

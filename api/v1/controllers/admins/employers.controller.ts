@@ -24,7 +24,7 @@ export const index = async function (req: Request, res: Response): Promise<void>
         let querySortKey: string = "";
         let querySortValue: string = "";
         let queryPage: number = 1;
-        let queryLimit: number = 6;
+        let queryLimit: number = 20;
         let queryKeyword: string = "";
 
         //Check xem nếu query có status thì gán vào biến checkQueryStatus không thì gán bằng rỗng. (Chức Năng Check Trạng Thái)
@@ -211,6 +211,7 @@ export const changeMulti = async function (req: Request, res: Response): Promise
                 } else {
                     //Trả về lỗi nếu không tồn tại key hợp lệ nào
                     res.status(400).json({ error: "Vui Lòng Nhập Giá Trị!" });
+                    break;
                 }
 
             case KEY.DELETED:
@@ -225,6 +226,7 @@ export const changeMulti = async function (req: Request, res: Response): Promise
                 } else {
                     //Trả về lỗi nếu không tồn tại key hợp lệ nào
                     res.status(400).json({ error: "Vui Lòng Nhập Các Ứng Viên Cần Xóa!" });
+                    break;
                 }
 
             default:

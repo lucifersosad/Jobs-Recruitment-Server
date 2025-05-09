@@ -5,6 +5,7 @@
     "removeComments": true, // Xóa comments khi biên dịch sang file js
     "esModuleInterop": true,//Dùng được từ khóa import thay cho require
     "outDir": "dist",//Biên dịch vào thư mục dist
-    "noEmitOnError": false
+    "noEmitOnError": false,
+    "resolveJsonModule": true,
   },
 }

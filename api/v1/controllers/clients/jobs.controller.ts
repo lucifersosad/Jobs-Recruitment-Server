@@ -415,8 +415,6 @@ export const advancedSearch = async function (
       slugCompany: record["employerId"]["slug"],
     }));
 
-    console.log("🚀 ~ convertData ~ convertData:", convertData);
-
     const dataEncrypted = encryptedData(convertData);
     res
       .status(200)
@@ -549,7 +547,7 @@ export const jobApply = async function (
   try {
     const idUser: string = req["user"]._id;
     let queryPage: number = 1;
-    let queryLimit: number = 6;
+    let queryLimit: number = 20;
     //Khai báo biến find có định dạng như dưới
     const find: {
       idUser: string;

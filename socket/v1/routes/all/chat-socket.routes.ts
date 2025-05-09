@@ -19,6 +19,7 @@ export const chatSocketRouter = async (socket: Socket, io: Server) => {
   const typeRoom = await getTypeRoom(idUser);
   // Tìm phòng chat mà userMain và idUser đều tham gia
   const roomChat = await getRoomChat(userMain, idUser, typeRoom);
+  console.log("🚀 ~ chatSocketRouter ~ roomChat:", roomChat)
 
   // Nếu không tìm thấy phòng chat thì không thực hiện gì cả
   if (!roomChat) return;
@@ -51,10 +52,17 @@ const getTypeRoom = async (idUser: string) => {
 
 // Hàm tìm phòng chat mà userMain và idUser đều tham gia
 const getRoomChat = async (userMain: string, idUser: string, typeRoom: string) => {
+
   const query = {
     "users.id_check": { $all: [userMain] },
     typeRoom: typeRoom,
   };
+
+  if (typeRoom === "group") {
+    const room = await RoomChat.findOne({ _id: idUser }).select("_id users");
+    const idEmployer = room?.users?.find(item => item?.employer_id)?.employer_id
+    query["users.id_check"].$all.push(idEmployer);
+  }  
 
   if (typeRoom !== "group") {
     query["users.id_check"].$all.push(idUser);
@@ -81,10 +89,10 @@ const registerEventHandlers = async (socket: Socket, io: Server,typeRoom: string
  
   if(typeRoom === "group" && await RoomChat.findOne({ _id: roomChatId,"users.employer_id":idUser, typeRoom: "group" })) {
    
-    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io));
+    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io, typeRoom));
   }
   if(typeRoom === "friend"){
-    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io));
+    socket.on("CLIENT_SEND_MESSAGE", controller.chatSocket(socket, io, typeRoom));
   }
   socket.on("CLIENT_SEND_REQUEST_SEEN_CHAT", controller.requestSeenChat(socket, io));
   socket.on("CLIENT_SEND_TYPING", controller.sendTyping(socket, io));

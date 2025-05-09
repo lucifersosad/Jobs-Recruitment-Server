@@ -8,6 +8,8 @@ import { skillRoutes } from "./skill.routes";
 import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
 import { chatRoutes } from "./chat.routes";
 import { cvRoutes } from "./cv.routes";
+import { postRoutes } from "./post.routes";
+import { myCvsRoutes } from "./my-cv.routes";
 
 const routesClientVersion1 = (app: Express): void => {
     const version = "/api/v1/client";
@@ -15,8 +17,10 @@ const routesClientVersion1 = (app: Express): void => {
     app.use(version + "/users", usersRoutes);
     app.use(version +"/jobs",jobRoutes);
     app.use(version +"/job-categories",jobCategoriesRoutes)
-    app.use(version +"/skill",skillRoutes)
+    app.use(version +"/skills",skillRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
+    app.use(version +"/post",authMiddlewares.auth,postRoutes)
+    app.use(version +"/my-cvs", myCvsRoutes)
 }
 export default routesClientVersion1

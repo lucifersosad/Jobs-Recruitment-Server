@@ -20,6 +20,7 @@ import JobCategories from "../../../../models/jobCategories.model";
 import RoomChat from "../../../../models/rooms-chat.model";
 import Job from "../../../../models/jobs.model";
 import Cv from "../../../../models/cvs.model";
+import { sendSingleMessage } from "../../../../helpers/firebaseMessage";
 
 // [POST] /api/v1/clients/employer/register
 export const register = async function (
@@ -265,6 +266,40 @@ export const resetPassword = async function (
     res.status(200).json({ code: 200, success: `Đổi Mật Khẩu Thành Công!` });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/employer/users/device-session
+export const createDeviceSession = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const id: string = req["user"]["_id"];
+    const notiTokens = req["user"]["notification_token"]
+
+    const notification_token = req.body.notification_token
+
+    if (!notiTokens?.includes(notification_token)) {
+      await Employer.updateOne(
+        {
+          _id: id
+  
+        },
+        {
+          $push: {
+            notification_token
+          }
+        }
+      );  
+    }
+    
+    // Gửi phản hồi thành công về cho client
+    res.status(200).json({ code: 200, success: "Cập nhật thông tin thiết bị thành công" });
+  } catch (error) {
+    // Ghi log lỗi và gửi phản hồi lỗi về cho client
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -749,6 +784,7 @@ export const statisticCompany = async function (
         type: item._id,
       };
     });
+
     res.status(200).json({ code: 200, data: record });
   } catch (error) {
     console.error("Error in API:", error);

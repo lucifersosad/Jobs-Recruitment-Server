@@ -345,7 +345,6 @@ export const changeJobSuggestions = async function (
     const {
       gender,
       job_categorie_id,
-      job_position,
       skill_id,
       yearsOfExperience,
       desiredSalary,
@@ -359,10 +358,6 @@ export const changeJobSuggestions = async function (
     }
     if (!job_categorie_id) {
       res.status(401).json({ code: 401, error: "Vui lòng chọn ngành nghề!" });
-      return;
-    }
-    if (!job_position) {
-      res.status(401).json({ code: 401, error: "Vui lòng chọn vị trí!" });
       return;
     }
     if (!skill_id) {
@@ -387,12 +382,6 @@ export const changeJobSuggestions = async function (
         .json({ code: 401, error: "Vui lòng chọn địa chỉ làm việc!" });
       return;
     }
-    if (job_position.length < 1) {
-      res
-        .status(401)
-        .json({ code: 401, error: "Vui lòng chọn ít nhất một vị trí!" });
-      return;
-    }
     if (skill_id.length < 1) {
       res
         .status(401)
@@ -403,13 +392,6 @@ export const changeJobSuggestions = async function (
       res
         .status(401)
         .json({ code: 401, error: "Vui lòng chọn ít nhất một địa chỉ!" });
-      return;
-    }
-    if (job_position.length > 5) {
-      res.status(401).json({
-        code: 401,
-        error: "Bạn chỉ được phép chọn 5 vị trí nếu là thành viên thường!",
-      });
       return;
     }
     if (skill_id.length > 5) {
@@ -611,8 +593,12 @@ export const saveJob = async function (
     res.status(401).json({ code: 401, error: "Công việc không tồn tại!" });
     return;
   }
+
+  const user = req["user"];
+
   if (action === "save") {
     const exitedJob = await User.findOne({
+      "_id": user._id,
       "listJobSave.idJob": idJob,
     });
     if (exitedJob) {

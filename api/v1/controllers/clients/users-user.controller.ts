@@ -10,6 +10,14 @@ import ForgotPassword from "../../../../models/forgot-password.model";
 import { sendMail } from "../../../../helpers/sendMail";
 import Job from "../../../../models/jobs.model";
 import Cv from "../../../../models/cvs.model";
+import {
+  createAndSendNotification,
+  ENUM_NOTIFICATION_DETAIL_TYPE,
+  ENUM_NOTIFICATION_TYPE,
+} from "../../../../helpers/notification";
+import { putObject } from "../../../../helpers/uploadToS3Aws";
+import { callRapidApi } from "../../../../helpers/parseCV";
+import MyCv from "../../../../models/my-cvs.model";
 
 // [POST] /api/v1/clients/users/allow-setting-user
 export const allowSettingUser = async function (
@@ -329,37 +337,6 @@ export const authen = async function (
       res.status(401).json({ error: "Tài Khoản Đã Bị Khóa!" });
       return;
     }
-    const convertData = [];
-
-    //Kiểm tra xem user có job_position không
-    if (userClient?.job_position?.length > 0) {
-      const checkTag = await Job.find({
-        listTagSlug: { $in: userClient.job_position },
-      }).select("listTagName listTagSlug");
-
-      const userJobPositionsSet = new Set(userClient.job_position); // Tạo một Set từ mảng job_position để tối ưu hóa việc kiểm tra tồn tại
-      // Duyệt qua mảng checkTag để kiểm tra từng tag có tồn tại trong Set không
-
-      checkTag.forEach((item) => {
-        item.listTagName.forEach((tag, index) => {
-          //Lấy tagSlug từ mảng listTagSlug tương ứng với tag
-          const tagSlug = item.listTagSlug[index];
-          // Kiểm tra nhanh chóng sự tồn tại trong Set
-          if (userJobPositionsSet.has(tagSlug)) {
-            //Nếu thấy phần tử tồn tại thì push vào mảng convertData
-            convertData.push({ label: tag, value: tagSlug });
-            userJobPositionsSet.delete(tagSlug); // Xóa phần tử đã kiểm tra khỏi Set
-          }
-        });
-      });
-      // Duyệt qua các phần tử còn lại trong Set để kiểm tra xem có phần tử nào không tồn tại trong database không
-      userJobPositionsSet.forEach(function (value) {
-        //Lấy ra tag từ value xong push vào mảng convertData ở đây ta loại bỏ phần tử cuối cùng là - và thay thế bằng khoảng trắng
-        const tag = value.replace(/-/g, " ");
-        convertData.push({ label: tag, value: value });
-      });
-    }
-
     //lấy ra thông tin cần thiết của user
     const recordNew = {
       id: userClient._id,
@@ -371,7 +348,6 @@ export const authen = async function (
       phone: userClient.phone || "",
       gender: userClient.gender || "",
       job_categorie_id: userClient.job_categorie_id || "",
-      job_position: convertData || [],
       skill_id: userClient.skill_id || "",
       yearsOfExperience: userClient.yearsOfExperience || "",
       desiredSalary: userClient.desiredSalary || "",
@@ -382,6 +358,9 @@ export const authen = async function (
       description: userClient.description || "",
       statusOnline: userClient.statusOnline || false,
       listJobSave: userClient.listJobSave || [],
+      experiences: userClient.experiences || [],
+      educations: userClient.educations || [],
+      skills: userClient.skills || [],
     };
 
     res.status(200).json({
@@ -481,7 +460,6 @@ export const changeJobSuggestions = async function (
     const {
       gender,
       job_categorie_id,
-      job_position,
       skill_id,
       yearsOfExperience,
       desiredSalary,
@@ -496,7 +474,6 @@ export const changeJobSuggestions = async function (
       {
         gender,
         job_categorie_id,
-        job_position,
         skill_id,
         yearsOfExperience,
         desiredSalary,
@@ -543,6 +520,8 @@ export const recruitmentJob = async function (
     const recordNew = {
       email: req["user"].email,
       fullName: req["user"].fullName,
+      avatar: req["user"].avatar,
+      title: req.body.title,
       phone: req.body.phone,
       id_file_cv: req.body.file,
       ["introducing_letter"]: req.body["introducing_letter"],
@@ -566,6 +545,19 @@ export const recruitmentJob = async function (
         $push: { listProfileRequirement: idCv },
       }
     );
+
+    await createAndSendNotification({
+      employerId: record.employerId,
+      type: ENUM_NOTIFICATION_TYPE.CV,
+      detail_type: ENUM_NOTIFICATION_DETAIL_TYPE.NEW_CV,
+      ref_id: record._id,
+      image: record.avatar,
+      extra: {
+        job_id: record.idJob,
+        candidate_name: record.fullName,
+        job_title: record.title,
+      },
+    });
 
     res.status(200).json({
       code: 201,
@@ -726,5 +718,153 @@ export const saveJob = async function (
 
     // Trả về lỗi 500 nếu có lỗi xảy ra
     res.status(500).json({ error: "Lỗi máy chủ nội bộ" });
+  }
+};
+
+// [POST] /api/v1/clients/users/upload-image
+export const uploadImage = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const objectFile = req["files"]["file"]
+
+    const file = objectFile.data
+    const fileExtentsion = objectFile.mimetype.split("/")[1]
+    
+    const fileName = "profile/" + Date.now() + `.${fileExtentsion}`
+    
+    const { url, key } = await putObject(file, fileName, "image")
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Upload Thành Công`, data: {url, key} });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [GET] /api/v1/clients/users/get-profile/:id
+export const getProfile = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id = req.params.id;
+
+    const profile = await User.findById(_id).select("_id fullName experiences educations skills")
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Truy Vấn Thành Công`, data: profile });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+// [POST] /api/v1/clients/users/update-education
+export const updateEducation = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        educations: req.body
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu Học Vấn` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/users/update-education
+export const updateExperience = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        experiences: req.body
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu Kinh Nghiệm` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+// [POST] /api/v1/clients/users/update-education
+export const updateSkill = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        skills: req.body
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Đã Lưu Kĩ Năng` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/users/upload-cv-2
+export const uploadCv2 = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    // Lấy thông tin người dùng từ request
+    const user = req["user"];
+
+    const url = req.body.url;
+    const key = req.body.key;
+    const buffer = req.body.buffer;
+
+    const result = await callRapidApi(url)
+
+    const cv = new MyCv(result);
+    await cv.save()
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Upload CV Thành Công`, data: {url, key, result} });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

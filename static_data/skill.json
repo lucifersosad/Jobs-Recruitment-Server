@@ -1,0 +1,3318 @@
+[
+  {
+    "_id": "1",
+    "title": ".NET"
+  },
+  {
+    "_id": "2",
+    "title": "3D Artist"
+  },
+  {
+    "_id": "3",
+    "title": "3D Max"
+  },
+  {
+    "_id": "4",
+    "title": "ActionScript"
+  },
+  {
+    "_id": "5",
+    "title": "Agavi"
+  },
+  {
+    "_id": "6",
+    "title": "Agile"
+  },
+  {
+    "_id": "7",
+    "title": "Ajax"
+  },
+  {
+    "_id": "8",
+    "title": "Andro_id"
+  },
+  {
+    "_id": "9",
+    "title": "AngularJS"
+  },
+  {
+    "_id": "10",
+    "title": "Antiryad Gx"
+  },
+  {
+    "_id": "11",
+    "title": "App Game Kit"
+  },
+  {
+    "_id": "12",
+    "title": "ASP.NET"
+  },
+  {
+    "_id": "13",
+    "title": "AutoCAD"
+  },
+  {
+    "_id": "14",
+    "title": "BattryTech"
+  },
+  {
+    "_id": "15",
+    "title": "Bootstrap"
+  },
+  {
+    "_id": "16",
+    "title": "Br_idge Engineer"
+  },
+  {
+    "_id": "17",
+    "title": "C#"
+  },
+  {
+    "_id": "18",
+    "title": "C++"
+  },
+  {
+    "_id": "19",
+    "title": "Cacti"
+  },
+  {
+    "_id": "20",
+    "title": "CakePHP"
+  },
+  {
+    "_id": "21",
+    "title": "Ceph"
+  },
+  {
+    "_id": "22",
+    "title": "Cocoonjs"
+  },
+  {
+    "_id": "23",
+    "title": "Cocos2D"
+  },
+  {
+    "_id": "24",
+    "title": "CodeIgniter"
+  },
+  {
+    "_id": "25",
+    "title": "Construct 2"
+  },
+  {
+    "_id": "26",
+    "title": "CorelDRAW"
+  },
+  {
+    "_id": "27",
+    "title": "Corona"
+  },
+  {
+    "_id": "28",
+    "title": "CSS"
+  },
+  {
+    "_id": "29",
+    "title": "Designer"
+  },
+  {
+    "_id": "30",
+    "title": "Django"
+  },
+  {
+    "_id": "31",
+    "title": "Drupal"
+  },
+  {
+    "_id": "32",
+    "title": "Edgelib"
+  },
+  {
+    "_id": "33",
+    "title": "Elasticsearch"
+  },
+  {
+    "_id": "34",
+    "title": "Emo"
+  },
+  {
+    "_id": "35",
+    "title": "ERP"
+  },
+  {
+    "_id": "36",
+    "title": "Esenthel Engine"
+  },
+  {
+    "_id": "37",
+    "title": "FlightPHP"
+  },
+  {
+    "_id": "38",
+    "title": "FuelPHP"
+  },
+  {
+    "_id": "39",
+    "title": "Game"
+  },
+  {
+    "_id": "40",
+    "title": "Game Artist"
+  },
+  {
+    "_id": "41",
+    "title": "Game Editor"
+  },
+  {
+    "_id": "42",
+    "title": "GameMaker"
+  },
+  {
+    "_id": "43",
+    "title": "GameSalad"
+  },
+  {
+    "_id": "44",
+    "title": "G_ideros"
+  },
+  {
+    "_id": "45",
+    "title": "Git"
+  },
+  {
+    "_id": "46",
+    "title": "Github"
+  },
+  {
+    "_id": "47",
+    "title": "GlusterFS"
+  },
+  {
+    "_id": "48",
+    "title": "HDFS"
+  },
+  {
+    "_id": "49",
+    "title": "HTML"
+  },
+  {
+    "_id": "50",
+    "title": "HTML5"
+  },
+  {
+    "_id": "51",
+    "title": "Illustrator"
+  },
+  {
+    "_id": "52",
+    "title": "iOS"
+  },
+  {
+    "_id": "53",
+    "title": "IT Helpdesk"
+  },
+  {
+    "_id": "54",
+    "title": "J2EE"
+  },
+  {
+    "_id": "55",
+    "title": "Java"
+  },
+  {
+    "_id": "56",
+    "title": "Javascript"
+  },
+  {
+    "_id": "57",
+    "title": "JMonkey"
+  },
+  {
+    "_id": "58",
+    "title": "Joomla"
+  },
+  {
+    "_id": "59",
+    "title": "JQuery"
+  },
+  {
+    "_id": "60",
+    "title": "JSON"
+  },
+  {
+    "_id": "61",
+    "title": "Knockout JS"
+  },
+  {
+    "_id": "62",
+    "title": "Laravel"
+  },
+  {
+    "_id": "63",
+    "title": "Libdx"
+  },
+  {
+    "_id": "64",
+    "title": "Linux"
+  },
+  {
+    "_id": "65",
+    "title": "LiveCode"
+  },
+  {
+    "_id": "66",
+    "title": "Lua"
+  },
+  {
+    "_id": "67",
+    "title": "Magento"
+  },
+  {
+    "_id": "68",
+    "title": "Manager"
+  },
+  {
+    "_id": "69",
+    "title": "MariaDB"
+  },
+  {
+    "_id": "70",
+    "title": "Marmalade"
+  },
+  {
+    "_id": "71",
+    "title": "Maya"
+  },
+  {
+    "_id": "72",
+    "title": "Memcached"
+  },
+  {
+    "_id": "73",
+    "title": "Microsoft Access"
+  },
+  {
+    "_id": "74",
+    "title": "MongoDB"
+  },
+  {
+    "_id": "75",
+    "title": "MonoGame"
+  },
+  {
+    "_id": "76",
+    "title": "MoSync"
+  },
+  {
+    "_id": "77",
+    "title": "MRTG"
+  },
+  {
+    "_id": "78",
+    "title": "MS SQL"
+  },
+  {
+    "_id": "79",
+    "title": "Multimedia Fusion 2"
+  },
+  {
+    "_id": "80",
+    "title": "MVC"
+  },
+  {
+    "_id": "81",
+    "title": "MVC5"
+  },
+  {
+    "_id": "82",
+    "title": "MySQL"
+  },
+  {
+    "_id": "83",
+    "title": "Nagios"
+  },
+  {
+    "_id": "84",
+    "title": "Nette"
+  },
+  {
+    "_id": "85",
+    "title": "Nginx"
+  },
+  {
+    "_id": "86",
+    "title": "NodeJS"
+  },
+  {
+    "_id": "87",
+    "title": "NoSQL"
+  },
+  {
+    "_id": "88",
+    "title": "Objective-C"
+  },
+  {
+    "_id": "89",
+    "title": "Odoo"
+  },
+  {
+    "_id": "90",
+    "title": "OOP"
+  },
+  {
+    "_id": "91",
+    "title": "Oracle"
+  },
+  {
+    "_id": "92",
+    "title": "Orx"
+  },
+  {
+    "_id": "93",
+    "title": "Papaya Social Game Engine"
+  },
+  {
+    "_id": "94",
+    "title": "Perl"
+  },
+  {
+    "_id": "95",
+    "title": "PhalconPHP"
+  },
+  {
+    "_id": "96",
+    "title": "Photoshop"
+  },
+  {
+    "_id": "97",
+    "title": "PHP"
+  },
+  {
+    "_id": "98",
+    "title": "PHPixie"
+  },
+  {
+    "_id": "99",
+    "title": "PlayCanvas"
+  },
+  {
+    "_id": "100",
+    "title": "PlayIR"
+  },
+  {
+    "_id": "101",
+    "title": "PopPHP"
+  },
+  {
+    "_id": "102",
+    "title": "PostgreSQL"
+  },
+  {
+    "_id": "103",
+    "title": "Product Manager"
+  },
+  {
+    "_id": "104",
+    "title": "Project Manager"
+  },
+  {
+    "_id": "105",
+    "title": "Python"
+  },
+  {
+    "_id": "106",
+    "title": "Redis"
+  },
+  {
+    "_id": "107",
+    "title": "REST API"
+  },
+  {
+    "_id": "108",
+    "title": "Riak"
+  },
+  {
+    "_id": "109",
+    "title": "Ruby on Rails"
+  },
+  {
+    "_id": "110",
+    "title": "SEM"
+  },
+  {
+    "_id": "111",
+    "title": "SEO"
+  },
+  {
+    "_id": "112",
+    "title": "Server-S_ide Scripting"
+  },
+  {
+    "_id": "113",
+    "title": "Sharepoint"
+  },
+  {
+    "_id": "114",
+    "title": "ShiVa"
+  },
+  {
+    "_id": "115",
+    "title": "ShiVa3D"
+  },
+  {
+    "_id": "116",
+    "title": "Signal R"
+  },
+  {
+    "_id": "117",
+    "title": "Simple MVC Framework"
+  },
+  {
+    "_id": "118",
+    "title": "Sketch"
+  },
+  {
+    "_id": "119",
+    "title": "Socket.io"
+  },
+  {
+    "_id": "120",
+    "title": "Sparrow"
+  },
+  {
+    "_id": "121",
+    "title": "SQL"
+  },
+  {
+    "_id": "122",
+    "title": "SQL Server"
+  },
+  {
+    "_id": "123",
+    "title": "Squ_id"
+  },
+  {
+    "_id": "124",
+    "title": "Starling"
+  },
+  {
+    "_id": "125",
+    "title": "Styncyl"
+  },
+  {
+    "_id": "126",
+    "title": "SVN"
+  },
+  {
+    "_id": "127",
+    "title": "Swift"
+  },
+  {
+    "_id": "128",
+    "title": "Symfony"
+  },
+  {
+    "_id": "129",
+    "title": "System Admin"
+  },
+  {
+    "_id": "130",
+    "title": "Tester"
+  },
+  {
+    "_id": "132",
+    "title": "UML"
+  },
+  {
+    "_id": "133",
+    "title": "Unity"
+  },
+  {
+    "_id": "134",
+    "title": "Unreal Development Kit"
+  },
+  {
+    "_id": "135",
+    "title": "UX/UI Design"
+  },
+  {
+    "_id": "136",
+    "title": "visual-basic"
+  },
+  {
+    "_id": "137",
+    "title": "WCF"
+  },
+  {
+    "_id": "138",
+    "title": "Websocket"
+  },
+  {
+    "_id": "139",
+    "title": "Windows Phone"
+  },
+  {
+    "_id": "146",
+    "title": "Leadership"
+  },
+  {
+    "_id": "147",
+    "title": "Teamwork"
+  },
+  {
+    "_id": "148",
+    "title": "Database"
+  },
+  {
+    "_id": "149",
+    "title": "IELTS"
+  },
+  {
+    "_id": "150",
+    "title": "Word"
+  },
+  {
+    "_id": "151",
+    "title": "Excel"
+  },
+  {
+    "_id": "152",
+    "title": "PowerPoint"
+  },
+  {
+    "_id": "153",
+    "title": "GMAT"
+  },
+  {
+    "_id": "154",
+    "title": "test cases"
+  },
+  {
+    "_id": "155",
+    "title": "test scripts"
+  },
+  {
+    "_id": "156",
+    "title": "test plan"
+  },
+  {
+    "_id": "157",
+    "title": "Google Analytics"
+  },
+  {
+    "_id": "158",
+    "title": "Google Webmaster tool"
+  },
+  {
+    "_id": "159",
+    "title": "iView"
+  },
+  {
+    "_id": "160",
+    "title": "iClick"
+  },
+  {
+    "_id": "161",
+    "title": "Facebook Ninja"
+  },
+  {
+    "_id": "162",
+    "title": "Rank tracker"
+  },
+  {
+    "_id": "163",
+    "title": "HMA"
+  },
+  {
+    "_id": "164",
+    "title": "Opencart"
+  },
+  {
+    "_id": "165",
+    "title": "Làm việc độc lập"
+  },
+  {
+    "_id": "181",
+    "title": "Microsoft Office"
+  },
+  {
+    "_id": "183",
+    "title": "Kỹ năng lãnh đạo"
+  },
+  {
+    "_id": "187",
+    "title": "Kỹ năng giao tiếp"
+  },
+  {
+    "_id": "188",
+    "title": "Làm việc nhóm"
+  },
+  {
+    "_id": "189",
+    "title": "Quản lý thời gian"
+  },
+  {
+    "_id": "194",
+    "title": "Copywriting"
+  },
+  {
+    "_id": "198",
+    "title": "Kỹ năng đàm phán"
+  },
+  {
+    "_id": "202",
+    "title": "Tổ chức sự kiện"
+  },
+  {
+    "_id": "203",
+    "title": "Market Research"
+  },
+  {
+    "_id": "204",
+    "title": "Telesales"
+  },
+  {
+    "_id": "218",
+    "title": "Kĩ năng phân tích tổng hợp"
+  },
+  {
+    "_id": "219",
+    "title": "Kỹ năng lắng nghe"
+  },
+  {
+    "_id": "220",
+    "title": "Docker"
+  },
+  {
+    "_id": "223",
+    "title": "Redux"
+  },
+  {
+    "_id": "230",
+    "title": "Planning"
+  },
+  {
+    "_id": "238",
+    "title": "Angular 2"
+  },
+  {
+    "_id": "239",
+    "title": "LESS"
+  },
+  {
+    "_id": "240",
+    "title": "SASS"
+  },
+  {
+    "_id": "245",
+    "title": "After Effect"
+  },
+  {
+    "_id": "249",
+    "title": "Google Adwords"
+  },
+  {
+    "_id": "254",
+    "title": "Marketing"
+  },
+  {
+    "_id": "259",
+    "title": "R&D"
+  },
+  {
+    "_id": "260",
+    "title": "Project Management"
+  },
+  {
+    "_id": "263",
+    "title": "cs-cart"
+  },
+  {
+    "_id": "264",
+    "title": "bitrix"
+  },
+  {
+    "_id": "268",
+    "title": "Biên tập"
+  },
+  {
+    "_id": "276",
+    "title": "React Native"
+  },
+  {
+    "_id": "289",
+    "title": "webpack"
+  },
+  {
+    "_id": "291",
+    "title": "babel"
+  },
+  {
+    "_id": "293",
+    "title": "HSK"
+  },
+  {
+    "_id": "297",
+    "title": "CPA"
+  },
+  {
+    "_id": "299",
+    "title": "Tiếng Trung"
+  },
+  {
+    "_id": "321",
+    "title": "SCRUM"
+  },
+  {
+    "_id": "322",
+    "title": "evm"
+  },
+  {
+    "_id": "343",
+    "title": "Dựng phim"
+  },
+  {
+    "_id": "363",
+    "title": "Tiếng Nhật"
+  },
+  {
+    "_id": "367",
+    "title": "QC/QA"
+  },
+  {
+    "_id": "392",
+    "title": "Windows Server"
+  },
+  {
+    "_id": "393",
+    "title": "Oracle DataGuard"
+  },
+  {
+    "_id": "397",
+    "title": "C&B"
+  },
+  {
+    "_id": "398",
+    "title": "LAN"
+  },
+  {
+    "_id": "399",
+    "title": "WAN"
+  },
+  {
+    "_id": "401",
+    "title": "CRM"
+  },
+  {
+    "_id": "410",
+    "title": "AFC"
+  },
+  {
+    "_id": "411",
+    "title": "ACCA"
+  },
+  {
+    "_id": "415",
+    "title": "AI"
+  },
+  {
+    "_id": "417",
+    "title": "VR"
+  },
+  {
+    "_id": "418",
+    "title": "Graphic design"
+  },
+  {
+    "_id": "448",
+    "title": "Java GUI Framework"
+  },
+  {
+    "_id": "449",
+    "title": "Oracle Database"
+  },
+  {
+    "_id": "454",
+    "title": "UI"
+  },
+  {
+    "_id": "467",
+    "title": "GIS"
+  },
+  {
+    "_id": "468",
+    "title": "NPI"
+  },
+  {
+    "_id": "469",
+    "title": "UX"
+  },
+  {
+    "_id": "470",
+    "title": "kafka"
+  },
+  {
+    "_id": "474",
+    "title": "Analytics"
+  },
+  {
+    "_id": "476",
+    "title": "etabs"
+  },
+  {
+    "_id": "479",
+    "title": "AIX platform"
+  },
+  {
+    "_id": "480",
+    "title": "IBM HTTP Server"
+  },
+  {
+    "_id": "481",
+    "title": "Business Process Analysis"
+  },
+  {
+    "_id": "482",
+    "title": "Tiếng Nhật N3"
+  },
+  {
+    "_id": "486",
+    "title": "Adobe Photoshop"
+  },
+  {
+    "_id": "490",
+    "title": "AWS"
+  },
+  {
+    "_id": "511",
+    "title": "ORM"
+  },
+  {
+    "_id": "529",
+    "title": "TOEIC"
+  },
+  {
+    "_id": "530",
+    "title": "Kỹ năng Thuyết phục"
+  },
+  {
+    "_id": "534",
+    "title": "Tiếng Anh giao tiếp"
+  },
+  {
+    "_id": "549",
+    "title": "Automation Test"
+  },
+  {
+    "_id": "579",
+    "title": "Struts"
+  },
+  {
+    "_id": "617",
+    "title": "Revit"
+  },
+  {
+    "_id": "639",
+    "title": "Sketchup"
+  },
+  {
+    "_id": "679",
+    "title": "CSS3"
+  },
+  {
+    "_id": "681",
+    "title": "OTC"
+  },
+  {
+    "_id": "720",
+    "title": "VB.NET"
+  },
+  {
+    "_id": "723",
+    "title": ".NET Framework"
+  },
+  {
+    "_id": "724",
+    "title": "MSSQL"
+  },
+  {
+    "_id": "725",
+    "title": "LinQ"
+  },
+  {
+    "_id": "732",
+    "title": "Facebook Ads"
+  },
+  {
+    "_id": "733",
+    "title": "Zalo ads"
+  },
+  {
+    "_id": "735",
+    "title": "SQLite"
+  },
+  {
+    "_id": "740",
+    "title": "Elixir"
+  },
+  {
+    "_id": "744",
+    "title": "TESOL"
+  },
+  {
+    "_id": "746",
+    "title": "TOEFL"
+  },
+  {
+    "_id": "747",
+    "title": "Quản lý nhóm"
+  },
+  {
+    "_id": "770",
+    "title": "Tiếng Anh thành thạo"
+  },
+  {
+    "_id": "771",
+    "title": "Thuyết trình"
+  },
+  {
+    "_id": "675260f0d656279dbac10261",
+    "title": "Tư duy hệ thống"
+  },
+  {
+    "_id": "779",
+    "title": "ASP"
+  },
+  {
+    "_id": "795",
+    "title": "Tiếng Nhật N3"
+  },
+  {
+    "_id": "913",
+    "title": "Crystal Reports"
+  },
+  {
+    "_id": "922",
+    "title": "Hibernate"
+  },
+  {
+    "_id": "1028",
+    "title": "Kỹ năng quản lý"
+  },
+  {
+    "_id": "1099",
+    "title": "LabVIEW"
+  },
+  {
+    "_id": "1153",
+    "title": "RD"
+  },
+  {
+    "_id": "1157",
+    "title": "Tiếng Nhật N2"
+  },
+  {
+    "_id": "1179",
+    "title": "Qt Framework"
+  },
+  {
+    "_id": "1182",
+    "title": "Biên phiên dịch tiếng Trung"
+  },
+  {
+    "_id": "1186",
+    "title": "pfSense"
+  },
+  {
+    "_id": "1188",
+    "title": "Tin học văn phòng"
+  },
+  {
+    "_id": "1206",
+    "title": "DNS"
+  },
+  {
+    "_id": "1246",
+    "title": "Biên tập V_ideo"
+  },
+  {
+    "_id": "1248",
+    "title": "Sol_idWorks"
+  },
+  {
+    "_id": "1255",
+    "title": "Oracle PL/SQL"
+  },
+  {
+    "_id": "1269",
+    "title": "UIKit"
+  },
+  {
+    "_id": "1270",
+    "title": "Core Data"
+  },
+  {
+    "_id": "1278",
+    "title": "Blockchain"
+  },
+  {
+    "_id": "1282",
+    "title": "Sony Vegas"
+  },
+  {
+    "_id": "1338",
+    "title": "Tiếng Nga giao tiếp"
+  },
+  {
+    "_id": "1397",
+    "title": "Maven"
+  },
+  {
+    "_id": "1405",
+    "title": "Kubernetes"
+  },
+  {
+    "_id": "1412",
+    "title": "Cocos2d-x"
+  },
+  {
+    "_id": "1413",
+    "title": "XCode"
+  },
+  {
+    "_id": "1414",
+    "title": "Visual Studio"
+  },
+  {
+    "_id": "1415",
+    "title": "Cocos Studio"
+  },
+  {
+    "_id": "1451",
+    "title": "Tiếng Nhật N4"
+  },
+  {
+    "_id": "1523",
+    "title": "CAD/CAE"
+  },
+  {
+    "_id": "1524",
+    "title": "Angular 4"
+  },
+  {
+    "_id": "1589",
+    "title": "Javascript Framework"
+  },
+  {
+    "_id": "1739",
+    "title": "Web API"
+  },
+  {
+    "_id": "1747",
+    "title": "TypeScript"
+  },
+  {
+    "_id": "1753",
+    "title": "Stopmotion"
+  },
+  {
+    "_id": "1754",
+    "title": "Storyboad"
+  },
+  {
+    "_id": "1762",
+    "title": "Message Queue"
+  },
+  {
+    "_id": "1847",
+    "title": "Adobe Illustrator"
+  },
+  {
+    "_id": "1909",
+    "title": "Scala"
+  },
+  {
+    "_id": "1919",
+    "title": "Chart.JS"
+  },
+  {
+    "_id": "1929",
+    "title": "Google APIs"
+  },
+  {
+    "_id": "1941",
+    "title": "DI"
+  },
+  {
+    "_id": "1942",
+    "title": "Web Socket"
+  },
+  {
+    "_id": "1950",
+    "title": "ADO.NET"
+  },
+  {
+    "_id": "1962",
+    "title": "Hitosoft"
+  },
+  {
+    "_id": "1971",
+    "title": "MVC4"
+  },
+  {
+    "_id": "1989",
+    "title": "Realm"
+  },
+  {
+    "_id": "1994",
+    "title": "OpenGL"
+  },
+  {
+    "_id": "1996",
+    "title": "Andro_id SDK"
+  },
+  {
+    "_id": "1997",
+    "title": "Andro_id ADT"
+  },
+  {
+    "_id": "2008",
+    "title": "CentOS"
+  },
+  {
+    "_id": "2009",
+    "title": "Shell script"
+  },
+  {
+    "_id": "2010",
+    "title": "Adobe Audition"
+  },
+  {
+    "_id": "2011",
+    "title": "DaVinci"
+  },
+  {
+    "_id": "2016",
+    "title": "Adobe Premier"
+  },
+  {
+    "_id": "2024",
+    "title": "Moho"
+  },
+  {
+    "_id": "2046",
+    "title": "SDLC"
+  },
+  {
+    "_id": "2086",
+    "title": "Angular 6"
+  },
+  {
+    "_id": "2098",
+    "title": "TOPIK 4"
+  },
+  {
+    "_id": "2123",
+    "title": "COBOL"
+  },
+  {
+    "_id": "2129",
+    "title": "Dịch thuật tiếng Trung"
+  },
+  {
+    "_id": "2151",
+    "title": "Animation"
+  },
+  {
+    "_id": "2177",
+    "title": "Apache"
+  },
+  {
+    "_id": "2187",
+    "title": "Scraping"
+  },
+  {
+    "_id": "2199",
+    "title": "Kendo UI"
+  },
+  {
+    "_id": "2212",
+    "title": "Archicad"
+  },
+  {
+    "_id": "2235",
+    "title": "Lotus Notes"
+  },
+  {
+    "_id": "2244",
+    "title": "Slim PHP"
+  },
+  {
+    "_id": "2274",
+    "title": "JSF"
+  },
+  {
+    "_id": "2308",
+    "title": "VLAN"
+  },
+  {
+    "_id": "2309",
+    "title": "Routing IP"
+  },
+  {
+    "_id": "2320",
+    "title": "Financial office"
+  },
+  {
+    "_id": "2321",
+    "title": "Advertising"
+  },
+  {
+    "_id": "2322",
+    "title": "Vẽ 3D"
+  },
+  {
+    "_id": "2332",
+    "title": "Junit"
+  },
+  {
+    "_id": "2340",
+    "title": "Magento 2"
+  },
+  {
+    "_id": "2341",
+    "title": "Angular JS"
+  },
+  {
+    "_id": "2355",
+    "title": "Tiếng Nhật N1"
+  },
+  {
+    "_id": "2392",
+    "title": "VueJS"
+  },
+  {
+    "_id": "2393",
+    "title": "MS Outlook"
+  },
+  {
+    "_id": "2394",
+    "title": "XHTML"
+  },
+  {
+    "_id": "2397",
+    "title": "ISA"
+  },
+  {
+    "_id": "2398",
+    "title": "DFS"
+  },
+  {
+    "_id": "2406",
+    "title": "MCSA"
+  },
+  {
+    "_id": "2407",
+    "title": "MCSE"
+  },
+  {
+    "_id": "2415",
+    "title": "CCBA"
+  },
+  {
+    "_id": "2416",
+    "title": "CBAP"
+  },
+  {
+    "_id": "2421",
+    "title": "Cad"
+  },
+  {
+    "_id": "2449",
+    "title": "Kỹ năng phỏng vấn"
+  },
+  {
+    "_id": "2466",
+    "title": "counselor"
+  },
+  {
+    "_id": "2472",
+    "title": "debug"
+  },
+  {
+    "_id": "2473",
+    "title": "IOT"
+  },
+  {
+    "_id": "2484",
+    "title": "FileMaker"
+  },
+  {
+    "_id": "2493",
+    "title": "ReactJS"
+  },
+  {
+    "_id": "2494",
+    "title": "ExpressJS"
+  },
+  {
+    "_id": "2495",
+    "title": "MeanJS"
+  },
+  {
+    "_id": "2497",
+    "title": "Restify"
+  },
+  {
+    "_id": "2504",
+    "title": "Kỹ năng sư phạm"
+  },
+  {
+    "_id": "2548",
+    "title": "PMP"
+  },
+  {
+    "_id": "2549",
+    "title": "PMF"
+  },
+  {
+    "_id": "2550",
+    "title": "CSM"
+  },
+  {
+    "_id": "2551",
+    "title": "PSM"
+  },
+  {
+    "_id": "2575",
+    "title": "Xử lý tình huống"
+  },
+  {
+    "_id": "2611",
+    "title": "TBA"
+  },
+  {
+    "_id": "2612",
+    "title": "MFĐ"
+  },
+  {
+    "_id": "2613",
+    "title": "UPS"
+  },
+  {
+    "_id": "2625",
+    "title": "Juniper"
+  },
+  {
+    "_id": "2644",
+    "title": "Tiếng Nhật N2 - N1"
+  },
+  {
+    "_id": "2685",
+    "title": "N3"
+  },
+  {
+    "_id": "2686",
+    "title": "N1"
+  },
+  {
+    "_id": "2690",
+    "title": "Biên phiên dịch tiếng Hàn"
+  },
+  {
+    "_id": "2706",
+    "title": "Biên phiên dịch tiếng Anh"
+  },
+  {
+    "_id": "2713",
+    "title": "Kỹ năng phân tích kinh doanh"
+  },
+  {
+    "_id": "2762",
+    "title": "Angular"
+  },
+  {
+    "_id": "2847",
+    "title": "Kỹ năng bơi lội"
+  },
+  {
+    "_id": "2888",
+    "title": "Meteor"
+  },
+  {
+    "_id": "2913",
+    "title": "Smartfox"
+  },
+  {
+    "_id": "2922",
+    "title": "Kỹ năng bán hàng"
+  },
+  {
+    "_id": "2953",
+    "title": "kỹ năng đào tạo"
+  },
+  {
+    "_id": "2972",
+    "title": "HTTP/HTTPS"
+  },
+  {
+    "_id": "2973",
+    "title": "FTP"
+  },
+  {
+    "_id": "3002",
+    "title": "VNACCS"
+  },
+  {
+    "_id": "3012",
+    "title": "Framework Django"
+  },
+  {
+    "_id": "3013",
+    "title": "Lái xe"
+  },
+  {
+    "_id": "3015",
+    "title": "MVP"
+  },
+  {
+    "_id": "3016",
+    "title": "MVV"
+  },
+  {
+    "_id": "3018",
+    "title": "Av_id Media Composer"
+  },
+  {
+    "_id": "3019",
+    "title": "Lightworks"
+  },
+  {
+    "_id": "3020",
+    "title": "Final Cut"
+  },
+  {
+    "_id": "3065",
+    "title": "Content write"
+  },
+  {
+    "_id": "3092",
+    "title": "MES"
+  },
+  {
+    "_id": "3097",
+    "title": "Flutter"
+  },
+  {
+    "_id": "3148",
+    "title": "IELTS 6."
+  },
+  {
+    "_id": "3157",
+    "title": "Cimatron"
+  },
+  {
+    "_id": "3186",
+    "title": "GUI"
+  },
+  {
+    "_id": "3229",
+    "title": "Đàm phán thương lượng"
+  },
+  {
+    "_id": "3240",
+    "title": "HSK4"
+  },
+  {
+    "_id": "3316",
+    "title": "DB2"
+  },
+  {
+    "_id": "3324",
+    "title": "Avr"
+  },
+  {
+    "_id": "3329",
+    "title": "Angular 1"
+  },
+  {
+    "_id": "3357",
+    "title": "Kỹ năng tuyển dụng"
+  },
+  {
+    "_id": "3364",
+    "title": "Kỹ năng giảng dạy"
+  },
+  {
+    "_id": "3421",
+    "title": "JLPT N3"
+  },
+  {
+    "_id": "3509",
+    "title": "HSK5"
+  },
+  {
+    "_id": "3563",
+    "title": "ETAB"
+  },
+  {
+    "_id": "3663",
+    "title": "Fireframe"
+  },
+  {
+    "_id": "3664",
+    "title": "ASTM"
+  },
+  {
+    "_id": "3683",
+    "title": "phân tích số liệu"
+  },
+  {
+    "_id": "3759",
+    "title": "Tiếng Hàn"
+  },
+  {
+    "_id": "3817",
+    "title": "UCD"
+  },
+  {
+    "_id": "3818",
+    "title": "U_id"
+  },
+  {
+    "_id": "3842",
+    "title": "Tiếng Pháp"
+  },
+  {
+    "_id": "3861",
+    "title": "Kỹ năng đàm phán"
+  },
+  {
+    "_id": "4001",
+    "title": "Business Analyst"
+  },
+  {
+    "_id": "4003",
+    "title": "kỹ năng điều tra"
+  },
+  {
+    "_id": "4009",
+    "title": "Unix"
+  },
+  {
+    "_id": "4079",
+    "title": "Kỹ năng báo cáo"
+  },
+  {
+    "_id": "4110",
+    "title": "Sales"
+  },
+  {
+    "_id": "4119",
+    "title": "PR"
+  },
+  {
+    "_id": "4129",
+    "title": "Tìm kiếm khách hàng"
+  },
+  {
+    "_id": "4131",
+    "title": "Tư vấn"
+  },
+  {
+    "_id": "4151",
+    "title": "Kỹ năng quản lý công việc"
+  },
+  {
+    "_id": "4165",
+    "title": "Sales online"
+  },
+  {
+    "_id": "4168",
+    "title": "PQA"
+  },
+  {
+    "_id": "4169",
+    "title": "QA"
+  },
+  {
+    "_id": "4195",
+    "title": "PLC"
+  },
+  {
+    "_id": "4209",
+    "title": "Oracle SQL"
+  },
+  {
+    "_id": "4213",
+    "title": "CCNA"
+  },
+  {
+    "_id": "4225",
+    "title": "Flash"
+  },
+  {
+    "_id": "4289",
+    "title": "LPI"
+  },
+  {
+    "_id": "4335",
+    "title": "Tư duy logic"
+  },
+  {
+    "_id": "4338",
+    "title": "Adobe After Effects"
+  },
+  {
+    "_id": "4339",
+    "title": "Adobe Dreamweaver"
+  },
+  {
+    "_id": "4340",
+    "title": "Adobe InDesign"
+  },
+  {
+    "_id": "4363",
+    "title": "Biên phiên dịch Tiếng Nhật"
+  },
+  {
+    "_id": "4466",
+    "title": "Jenkins"
+  },
+  {
+    "_id": "4574",
+    "title": "MS Offices"
+  },
+  {
+    "_id": "4575",
+    "title": "Misa"
+  },
+  {
+    "_id": "4587",
+    "title": "Tiếng Anh đọc hiểu"
+  },
+  {
+    "_id": "4699",
+    "title": "Adobe Premiere Pro"
+  },
+  {
+    "_id": "4715",
+    "title": "Golang"
+  },
+  {
+    "_id": "4738",
+    "title": "Unity 3D"
+  },
+  {
+    "_id": "4797",
+    "title": "Cadewa"
+  },
+  {
+    "_id": "4801",
+    "title": "Kotlin"
+  },
+  {
+    "_id": "4808",
+    "title": "Jira"
+  },
+  {
+    "_id": "4839",
+    "title": "Tiếng Anh cơ bản"
+  },
+  {
+    "_id": "4845",
+    "title": "Tiếng Anh trung cấp"
+  },
+  {
+    "_id": "4866",
+    "title": "ATSM"
+  },
+  {
+    "_id": "4867",
+    "title": "ASME"
+  },
+  {
+    "_id": "4883",
+    "title": "Lightroom"
+  },
+  {
+    "_id": "4919",
+    "title": "Alige"
+  },
+  {
+    "_id": "4920",
+    "title": "VMWare"
+  },
+  {
+    "_id": "4927",
+    "title": "VB6"
+  },
+  {
+    "_id": "4928",
+    "title": "Zoho Desk"
+  },
+  {
+    "_id": "4972",
+    "title": "Big Data"
+  },
+  {
+    "_id": "4973",
+    "title": "NLP"
+  },
+  {
+    "_id": "4982",
+    "title": "RSpec"
+  },
+  {
+    "_id": "4983",
+    "title": "Devise"
+  },
+  {
+    "_id": "4984",
+    "title": "TDD"
+  },
+  {
+    "_id": "4985",
+    "title": "CI"
+  },
+  {
+    "_id": "4986",
+    "title": "Mocking"
+  },
+  {
+    "_id": "4991",
+    "title": "Exploit"
+  },
+  {
+    "_id": "4994",
+    "title": "Eclipse"
+  },
+  {
+    "_id": "5001",
+    "title": "OOD"
+  },
+  {
+    "_id": "5009",
+    "title": "LAMP"
+  },
+  {
+    "_id": "5010",
+    "title": "LEMP"
+  },
+  {
+    "_id": "5011",
+    "title": "VPSSIM"
+  },
+  {
+    "_id": "5016",
+    "title": "Ubuntu"
+  },
+  {
+    "_id": "5034",
+    "title": "Objective C"
+  },
+  {
+    "_id": "5104",
+    "title": "IRP"
+  },
+  {
+    "_id": "5112",
+    "title": "SOA"
+  },
+  {
+    "_id": "5189",
+    "title": "Gerber"
+  },
+  {
+    "_id": "5190",
+    "title": "Lectra"
+  },
+  {
+    "_id": "5305",
+    "title": "Negotiation Skill"
+  },
+  {
+    "_id": "5363",
+    "title": "Tiếng Thái"
+  },
+  {
+    "_id": "5560",
+    "title": "Spring"
+  },
+  {
+    "_id": "5719",
+    "title": "CAD 2D"
+  },
+  {
+    "_id": "5743",
+    "title": "Fast"
+  },
+  {
+    "_id": "5744",
+    "title": "Amis"
+  },
+  {
+    "_id": "5777",
+    "title": "Angular 5"
+  },
+  {
+    "_id": "5788",
+    "title": "Apache Spark"
+  },
+  {
+    "_id": "5798",
+    "title": "HMTL5"
+  },
+  {
+    "_id": "5799",
+    "title": "Figma"
+  },
+  {
+    "_id": "5866",
+    "title": "JET"
+  },
+  {
+    "_id": "6724",
+    "title": "Intermed_idate English"
+  },
+  {
+    "_id": "6820",
+    "title": "ABAP"
+  },
+  {
+    "_id": "6929",
+    "title": "Tensorflow"
+  },
+  {
+    "_id": "6932",
+    "title": "Pytorch"
+  },
+  {
+    "_id": "6939",
+    "title": "Zbrush"
+  },
+  {
+    "_id": "6940",
+    "title": "Sculpt"
+  },
+  {
+    "_id": "7198",
+    "title": "Spring Framework"
+  },
+  {
+    "_id": "7199",
+    "title": "Spring Boot"
+  },
+  {
+    "_id": "7323",
+    "title": "BPMN"
+  },
+  {
+    "_id": "7660",
+    "title": "Phát triển thị trường"
+  },
+  {
+    "_id": "8223",
+    "title": "TCP/IP"
+  },
+  {
+    "_id": "9879",
+    "title": "English"
+  },
+  {
+    "_id": "10007",
+    "title": "HSK 6"
+  },
+  {
+    "_id": "10035",
+    "title": "IELTS 7.0"
+  },
+  {
+    "_id": "10157",
+    "title": "JLPT N2"
+  },
+  {
+    "_id": "11598",
+    "title": "Ruby"
+  },
+  {
+    "_id": "11604",
+    "title": "Tiếng Đức"
+  },
+  {
+    "_id": "11605",
+    "title": "Tiếng Ý"
+  },
+  {
+    "_id": "11606",
+    "title": "Tiếng Ả Rập"
+  },
+  {
+    "_id": "11607",
+    "title": "Tiếng Bồ Đào Nha"
+  },
+  {
+    "_id": "11608",
+    "title": "Tiếng Tây Ban Nha"
+  },
+  {
+    "_id": "12147",
+    "title": "Tiếng Anh"
+  },
+  {
+    "_id": "14473",
+    "title": "Adobe Premiere"
+  },
+  {
+    "_id": "17180",
+    "title": "Full Stack"
+  },
+  {
+    "_id": "17729",
+    "title": "XML"
+  },
+  {
+    "_id": "17741",
+    "title": "AXure"
+  },
+  {
+    "_id": "17831",
+    "title": "TOEIC 600"
+  },
+  {
+    "_id": "21065",
+    "title": "JLPT N4"
+  },
+  {
+    "_id": "24699",
+    "title": "JLPT N1"
+  },
+  {
+    "_id": "24738",
+    "title": "IELTS 7.5"
+  },
+  {
+    "_id": "26442",
+    "title": "Tiếng Indonesia"
+  },
+  {
+    "_id": "28547",
+    "title": "TOEIC 550"
+  },
+  {
+    "_id": "29317",
+    "title": "TOEIC 850"
+  },
+  {
+    "_id": "45197",
+    "title": "IELTS 8.5"
+  },
+  {
+    "_id": "46772",
+    "title": "HKS5"
+  },
+  {
+    "_id": "46773",
+    "title": "HSK6"
+  },
+  {
+    "_id": "47976",
+    "title": "IELTS 6.5"
+  },
+  {
+    "_id": "47977",
+    "title": "TOEIC 650"
+  },
+  {
+    "_id": "47978",
+    "title": "Tiếng Anh B2"
+  },
+  {
+    "_id": "48980",
+    "title": "IELTS 8.0"
+  },
+  {
+    "_id": "65382",
+    "title": "Performance Marketing"
+  },
+  {
+    "_id": "65383",
+    "title": "Marketing Online"
+  },
+  {
+    "_id": "65397",
+    "title": "Programming"
+  },
+  {
+    "_id": "65400",
+    "title": "Xây dựng đội nhóm"
+  },
+  {
+    "_id": "65412",
+    "title": "Excel cơ bản"
+  },
+  {
+    "_id": "65437",
+    "title": "API"
+  },
+  {
+    "_id": "65447",
+    "title": "CI/CD"
+  },
+  {
+    "_id": "65454",
+    "title": "Adobe"
+  },
+  {
+    "_id": "65456",
+    "title": "Quay dựng"
+  },
+  {
+    "_id": "65467",
+    "title": "Game Balance"
+  },
+  {
+    "_id": "65468",
+    "title": "Game Design"
+  },
+  {
+    "_id": "65469",
+    "title": "Event Planning"
+  },
+  {
+    "_id": "65470",
+    "title": "Public Speaking"
+  },
+  {
+    "_id": "65472",
+    "title": "Business Development"
+  },
+  {
+    "_id": "65473",
+    "title": "Communication"
+  },
+  {
+    "_id": "65495",
+    "title": "zalo"
+  },
+  {
+    "_id": "65496",
+    "title": "facebook"
+  },
+  {
+    "_id": "65497",
+    "title": "Content Writer"
+  },
+  {
+    "_id": "65498",
+    "title": "Sáng tạo nội dung"
+  },
+  {
+    "_id": "65506",
+    "title": "Phân tích công việc"
+  },
+  {
+    "_id": "65509",
+    "title": "Windows"
+  },
+  {
+    "_id": "65510",
+    "title": "Chịu áp lực cao"
+  },
+  {
+    "_id": "65513",
+    "title": "Direct Sale"
+  },
+  {
+    "_id": "65514",
+    "title": "Design Thinking"
+  },
+  {
+    "_id": "65519",
+    "title": "RESTful API"
+  },
+  {
+    "_id": "65520",
+    "title": "Back-End Web Development"
+  },
+  {
+    "_id": "65521",
+    "title": "RabbitMQ"
+  },
+  {
+    "_id": "65522",
+    "title": "Setup hệ thống"
+  },
+  {
+    "_id": "65523",
+    "title": "Nghiên cứu"
+  },
+  {
+    "_id": "65524",
+    "title": "Tổ chức công việc"
+  },
+  {
+    "_id": "65525",
+    "title": "Nhanh nhẹn"
+  },
+  {
+    "_id": "65529",
+    "title": "Cẩn thận"
+  },
+  {
+    "_id": "65530",
+    "title": "Nhiệt tình"
+  },
+  {
+    "_id": "65531",
+    "title": "Tự tin"
+  },
+  {
+    "_id": "65532",
+    "title": "Xây dựng mối quan hệ"
+  },
+  {
+    "_id": "65539",
+    "title": "Thiết kế đồ họa"
+  },
+  {
+    "_id": "65540",
+    "title": "Cởi mở"
+  },
+  {
+    "_id": "65541",
+    "title": "Creativity"
+  },
+  {
+    "_id": "65542",
+    "title": "People Management"
+  },
+  {
+    "_id": "65543",
+    "title": "Quản lý con người"
+  },
+  {
+    "_id": "65544",
+    "title": "Time Management"
+  },
+  {
+    "_id": "65545",
+    "title": "Persuasion"
+  },
+  {
+    "_id": "65546",
+    "title": "Khả năng thuyết phục"
+  },
+  {
+    "_id": "65547",
+    "title": "Emotional Intelligence (EQ)"
+  },
+  {
+    "_id": "65548",
+    "title": "Translation"
+  },
+  {
+    "_id": "65549",
+    "title": "V_ideo Production"
+  },
+  {
+    "_id": "65550",
+    "title": "Corporate Communications"
+  },
+  {
+    "_id": "65551",
+    "title": "Industrial Design"
+  },
+  {
+    "_id": "65552",
+    "title": "Collaboration"
+  },
+  {
+    "_id": "65553",
+    "title": "Adaptability"
+  },
+  {
+    "_id": "65554",
+    "title": "Analytical Reasoning"
+  },
+  {
+    "_id": "65555",
+    "title": "Sales Leadership"
+  },
+  {
+    "_id": "65556",
+    "title": "Journalism"
+  },
+  {
+    "_id": "65557",
+    "title": "Competitive Strategies"
+  },
+  {
+    "_id": "65558",
+    "title": "Active listening"
+  },
+  {
+    "_id": "65559",
+    "title": "Writing"
+  },
+  {
+    "_id": "65560",
+    "title": "Nonverbal Communication"
+  },
+  {
+    "_id": "65561",
+    "title": "Consulting"
+  },
+  {
+    "_id": "65562",
+    "title": "Research"
+  },
+  {
+    "_id": "65563",
+    "title": "Problem-solving"
+  },
+  {
+    "_id": "65564",
+    "title": "Critical Thinking"
+  },
+  {
+    "_id": "65565",
+    "title": "Data Analysis"
+  },
+  {
+    "_id": "65566",
+    "title": "SEO/SEM"
+  },
+  {
+    "_id": "65567",
+    "title": "Social Media"
+  },
+  {
+    "_id": "65568",
+    "title": "Media Planning"
+  },
+  {
+    "_id": "65569",
+    "title": "Channel Marketing"
+  },
+  {
+    "_id": "65570",
+    "title": "Affiliate Marketing"
+  },
+  {
+    "_id": "65571",
+    "title": "Online Marketing"
+  },
+  {
+    "_id": "65572",
+    "title": "Strategic Planning"
+  },
+  {
+    "_id": "65573",
+    "title": "Delegating Tasks"
+  },
+  {
+    "_id": "65574",
+    "title": "Coaching"
+  },
+  {
+    "_id": "65575",
+    "title": "Giảng dạy"
+  },
+  {
+    "_id": "65576",
+    "title": "Negotiation"
+  },
+  {
+    "_id": "65577",
+    "title": "Đàm phán"
+  },
+  {
+    "_id": "65579",
+    "title": "Relationship Management"
+  },
+  {
+    "_id": "65580",
+    "title": "Cloud Computing"
+  },
+  {
+    "_id": "65581",
+    "title": "Data Presentation"
+  },
+  {
+    "_id": "65582",
+    "title": "Tech Support"
+  },
+  {
+    "_id": "65583",
+    "title": "UI/UX"
+  },
+  {
+    "_id": "65584",
+    "title": "Software Engineering"
+  },
+  {
+    "_id": "65585",
+    "title": "Mobile Development"
+  },
+  {
+    "_id": "65586",
+    "title": "Scientific Computing"
+  },
+  {
+    "_id": "65588",
+    "title": "Google"
+  },
+  {
+    "_id": "66488",
+    "title": ".NET CLR"
+  },
+  {
+    "_id": "66489",
+    "title": ".NET Compact Framework"
+  },
+  {
+    "_id": "66490",
+    "title": ".com"
+  },
+  {
+    "_id": "66491",
+    "title": ".htaccess"
+  },
+  {
+    "_id": "66492",
+    "title": "10 Key"
+  },
+  {
+    "_id": "66493",
+    "title": "1031 Exchanges"
+  },
+  {
+    "_id": "66494",
+    "title": "1H NMR"
+  },
+  {
+    "_id": "66495",
+    "title": "21 CFR"
+  },
+  {
+    "_id": "66496",
+    "title": "21 CFR Part 11"
+  },
+  {
+    "_id": "66497",
+    "title": "21st Century Skills"
+  },
+  {
+    "_id": "66498",
+    "title": "2D graphics"
+  },
+  {
+    "_id": "66499",
+    "title": "360 Degree Assessment"
+  },
+  {
+    "_id": "66500",
+    "title": "360 Feedback"
+  },
+  {
+    "_id": "66501",
+    "title": "3Com NBX"
+  },
+  {
+    "_id": "66502",
+    "title": "3D Architectural Rendering"
+  },
+  {
+    "_id": "66503",
+    "title": "3D GIS"
+  },
+  {
+    "_id": "66504",
+    "title": "3D Graphics"
+  },
+  {
+    "_id": "66505",
+    "title": "3D Modeling"
+  },
+  {
+    "_id": "66506",
+    "title": "3D Rendering"
+  },
+  {
+    "_id": "66507",
+    "title": "3D Scanning"
+  },
+  {
+    "_id": "66508",
+    "title": "3D Seismic Interpretation"
+  },
+  {
+    "_id": "66509",
+    "title": "3D Studio Max"
+  },
+  {
+    "_id": "66510",
+    "title": "3D Studio Viz"
+  },
+  {
+    "_id": "66511",
+    "title": "3D Visualization"
+  },
+  {
+    "_id": "66512",
+    "title": "401k Rollovers"
+  },
+  {
+    "_id": "66513",
+    "title": "4th Dimension"
+  },
+  {
+    "_id": "66514",
+    "title": "5 Why"
+  },
+  {
+    "_id": "66515",
+    "title": "5.1 Mixing"
+  },
+  {
+    "_id": "66516",
+    "title": "960 Gr_id System"
+  },
+  {
+    "_id": "66517",
+    "title": "@Task"
+  },
+  {
+    "_id": "66518",
+    "title": "A-GPS"
+  },
+  {
+    "_id": "66519",
+    "title": "A3 Thinking"
+  },
+  {
+    "_id": "66520",
+    "title": "AAAHC"
+  },
+  {
+    "_id": "66521",
+    "title": "AAC"
+  },
+  {
+    "_id": "66522",
+    "title": "AACR2"
+  },
+  {
+    "_id": "66523",
+    "title": "AAMS"
+  },
+  {
+    "_id": "66524",
+    "title": "AAP"
+  },
+  {
+    "_id": "66525",
+    "title": "AAR"
+  },
+  {
+    "_id": "66526",
+    "title": "AASHTO"
+  },
+  {
+    "_id": "66527",
+    "title": "AAT"
+  },
+  {
+    "_id": "66528",
+    "title": "AAUS Scientific Diver"
+  },
+  {
+    "_id": "66529",
+    "title": "ABAP Web Dynpro"
+  },
+  {
+    "_id": "66530",
+    "title": "ABAP-OO"
+  },
+  {
+    "_id": "66531",
+    "title": "ABB 800xA"
+  },
+  {
+    "_id": "66532",
+    "title": "ABBYY"
+  },
+  {
+    "_id": "66533",
+    "title": "ABBYY FineReader"
+  },
+  {
+    "_id": "66534",
+    "title": "ABC Analysis"
+  },
+  {
+    "_id": "66535",
+    "title": "ABC Flowcharter"
+  },
+  {
+    "_id": "66536",
+    "title": "ABCP"
+  },
+  {
+    "_id": "66537",
+    "title": "ABEL"
+  },
+  {
+    "_id": "66538",
+    "title": "ABI"
+  },
+  {
+    "_id": "66539",
+    "title": "ABLS"
+  },
+  {
+    "_id": "66540",
+    "title": "ABO Certified"
+  },
+  {
+    "_id": "66541",
+    "title": "ABR"
+  },
+  {
+    "_id": "66542",
+    "title": "ABS"
+  },
+  {
+    "_id": "66543",
+    "title": "ABV"
+  },
+  {
+    "_id": "66544",
+    "title": "AC Nielsen"
+  },
+  {
+    "_id": "66545",
+    "title": "ACAD"
+  },
+  {
+    "_id": "66546",
+    "title": "ACBS"
+  },
+  {
+    "_id": "66547",
+    "title": "ACD"
+  },
+  {
+    "_id": "66548",
+    "title": "ACD Management"
+  },
+  {
+    "_id": "66549",
+    "title": "ACDSee"
+  },
+  {
+    "_id": "66550",
+    "title": "ACE"
+  },
+  {
+    "_id": "66551",
+    "title": "ACE Certified"
+  },
+  {
+    "_id": "66552",
+    "title": "ACE Certified Personal Trainer"
+  },
+  {
+    "_id": "66553",
+    "title": "ACF2"
+  },
+  {
+    "_id": "66554",
+    "title": "ACFE"
+  },
+  {
+    "_id": "66555",
+    "title": "ACH"
+  },
+  {
+    "_id": "66556",
+    "title": "ACI Codes"
+  },
+  {
+    "_id": "66557",
+    "title": "ACIS"
+  },
+  {
+    "_id": "66558",
+    "title": "ACLS"
+  },
+  {
+    "_id": "66559",
+    "title": "ACLS Instruction"
+  },
+  {
+    "_id": "66560",
+    "title": "ACMS"
+  },
+  {
+    "_id": "66561",
+    "title": "ACOA"
+  },
+  {
+    "_id": "66562",
+    "title": "ACORD"
+  },
+  {
+    "_id": "66563",
+    "title": "ACP"
+  },
+  {
+    "_id": "66564",
+    "title": "ACPI"
+  },
+  {
+    "_id": "66565",
+    "title": "ACR"
+  },
+  {
+    "_id": "66566",
+    "title": "ACSA"
+  },
+  {
+    "_id": "66567",
+    "title": "ACSC"
+  },
+  {
+    "_id": "66568",
+    "title": "ACSLS"
+  },
+  {
+    "_id": "66569",
+    "title": "ACSM"
+  },
+  {
+    "_id": "66570",
+    "title": "ACSM Health Fitness"
+  },
+  {
+    "_id": "66571",
+    "title": "ACSP"
+  },
+  {
+    "_id": "66572",
+    "title": "ACSR"
+  },
+  {
+    "_id": "66573",
+    "title": "ACSS"
+  },
+  {
+    "_id": "66574",
+    "title": "ACT CRM"
+  },
+  {
+    "_id": "66575",
+    "title": "ADA Compliance"
+  },
+  {
+    "_id": "66576",
+    "title": "ADABAS"
+  },
+  {
+    "_id": "66577",
+    "title": "ADB"
+  },
+  {
+    "_id": "66578",
+    "title": "ADB Adapter"
+  },
+  {
+    "_id": "66579",
+    "title": "ADCs"
+  },
+  {
+    "_id": "66580",
+    "title": "ADDIE"
+  },
+  {
+    "_id": "66581",
+    "title": "ADDM"
+  },
+  {
+    "_id": "66582",
+    "title": "ADE"
+  },
+  {
+    "_id": "66583",
+    "title": "ADEA"
+  },
+  {
+    "_id": "66584",
+    "title": "ADF"
+  },
+  {
+    "_id": "66585",
+    "title": "ADFS"
+  },
+  {
+    "_id": "66586",
+    "title": "ADFS 2.0"
+  },
+  {
+    "_id": "66587",
+    "title": "ADHD Coaching"
+  },
+  {
+    "_id": "66710",
+    "title": "API 510"
+  },
+  {
+    "_id": "66712",
+    "title": "API 653"
+  },
+  {
+    "_id": "66714",
+    "title": "API Development"
+  },
+  {
+    "_id": "66715",
+    "title": "API Testing"
+  },
+  {
+    "_id": "66747",
+    "title": "ASAP"
+  },
+  {
+    "_id": "66885",
+    "title": "Accountants"
+  },
+  {
+    "_id": "66886",
+    "title": "Accounting"
+  },
+  {
+    "_id": "66887",
+    "title": "Accounts Payable"
+  },
+  {
+    "_id": "66889",
+    "title": "Accounts Receivable"
+  },
+  {
+    "_id": "67001",
+    "title": "Adobe Design Programs"
+  },
+  {
+    "_id": "67103",
+    "title": "Agile Environment"
+  },
+  {
+    "_id": "67108",
+    "title": "Agile Testing"
+  },
+  {
+    "_id": "67293",
+    "title": "Analytical Skills"
+  },
+  {
+    "_id": "67455",
+    "title": "Architectural Illustration"
+  },
+  {
+    "_id": "67511",
+    "title": "Aruba Wireless"
+  },
+  {
+    "_id": "67928",
+    "title": "Basic HTML"
+  },
+  {
+    "_id": "68532",
+    "title": "CAPA"
+  },
+  {
+    "_id": "68738",
+    "title": "CNC"
+  },
+  {
+    "_id": "68739",
+    "title": "CNC Machine"
+  },
+  {
+    "_id": "68740",
+    "title": "CNC Manufacturing"
+  },
+  {
+    "_id": "68743",
+    "title": "CNC Programing"
+  },
+  {
+    "_id": "68818",
+    "title": "CRM Program Management"
+  },
+  {
+    "_id": "68908",
+    "title": "Cache Coherency"
+  },
+  {
+    "_id": "68909",
+    "title": "Cache Object Script"
+  },
+  {
+    "_id": "68959",
+    "title": "Camtasia"
+  },
+  {
+    "_id": "69562",
+    "title": "Computer Vision"
+  },
+  {
+    "_id": "69670",
+    "title": "Core Java"
+  },
+  {
+    "_id": "69776",
+    "title": "Creative Writing"
+  },
+  {
+    "_id": "69830",
+    "title": "Cross-cultural Communication Skills"
+  },
+  {
+    "_id": "69859",
+    "title": "Crypto"
+  },
+  {
+    "_id": "69915",
+    "title": "Custom Facebook Pages"
+  },
+  {
+    "_id": "69943",
+    "title": "Customer Service"
+  },
+  {
+    "_id": "70250",
+    "title": "Dart"
+  },
+  {
+    "_id": "70259",
+    "title": "Data Backup Solutions"
+  },
+  {
+    "_id": "70269",
+    "title": "Data Domain"
+  },
+  {
+    "_id": "70301",
+    "title": "Database Marketing"
+  },
+  {
+    "_id": "70519",
+    "title": "Digital Art"
+  },
+  {
+    "_id": "70544",
+    "title": "Digital Media"
+  },
+  {
+    "_id": "70747",
+    "title": "Dreamweaver"
+  },
+  {
+    "_id": "71028",
+    "title": "ERP Software"
+  },
+  {
+    "_id": "71615",
+    "title": "Excel Pivot"
+  },
+  {
+    "_id": "71776",
+    "title": "FIFO"
+  },
+  {
+    "_id": "72089",
+    "title": "Final Cut Pro"
+  },
+  {
+    "_id": "72093",
+    "title": "Finance"
+  },
+  {
+    "_id": "72335",
+    "title": "Food Quality"
+  },
+  {
+    "_id": "72373",
+    "title": "Foundation Certificate in IT Service Management"
+  },
+  {
+    "_id": "72374",
+    "title": "Foundation Design"
+  },
+  {
+    "_id": "72432",
+    "title": "Front-end"
+  },
+  {
+    "_id": "72588",
+    "title": "GMP"
+  },
+  {
+    "_id": "72806",
+    "title": "German Teaching"
+  },
+  {
+    "_id": "72807",
+    "title": "German Translation"
+  },
+  {
+    "_id": "73045",
+    "title": "Group Purchasing"
+  },
+  {
+    "_id": "73429",
+    "title": "Heroku"
+  },
+  {
+    "_id": "74020",
+    "title": "IT Recruitment"
+  },
+  {
+    "_id": "74092",
+    "title": "Illustration"
+  },
+  {
+    "_id": "74118",
+    "title": "Import/Export Operations"
+  },
+  {
+    "_id": "74124",
+    "title": "InDesign"
+  },
+  {
+    "_id": "74150",
+    "title": "Indirect Purchasing"
+  },
+  {
+    "_id": "74336",
+    "title": "Internet Explorer"
+  },
+  {
+    "_id": "74346",
+    "title": "Interviews"
+  },
+  {
+    "_id": "74486",
+    "title": "JMeter"
+  },
+  {
+    "_id": "74495",
+    "title": "JPA"
+  },
+  {
+    "_id": "74557",
+    "title": "Java Web Services"
+  },
+  {
+    "_id": "74563",
+    "title": "JavaScript Libraries"
+  },
+  {
+    "_id": "75349",
+    "title": "Load Testing"
+  },
+  {
+    "_id": "75723",
+    "title": "Mac OS X Server"
+  },
+  {
+    "_id": "75833",
+    "title": "Manual Testing"
+  },
+  {
+    "_id": "76095",
+    "title": "Microsoft CRM"
+  },
+  {
+    "_id": "76097",
+    "title": "Microsoft Certified Technology"
+  },
+  {
+    "_id": "76101",
+    "title": "Microsoft Dynamics AX"
+  },
+  {
+    "_id": "76106",
+    "title": "Microsoft Excel"
+  },
+  {
+    "_id": "76115",
+    "title": "Microsoft Technologies"
+  },
+  {
+    "_id": "76117",
+    "title": "Microsoft Word"
+  },
+  {
+    "_id": "76233",
+    "title": "Mobile Games"
+  },
+  {
+    "_id": "76236",
+    "title": "Mobile Internet"
+  },
+  {
+    "_id": "76331",
+    "title": "Motion Graphic Design"
+  },
+  {
+    "_id": "76332",
+    "title": "Motion Graphics"
+  },
+  {
+    "_id": "76461",
+    "title": "MySQL Cluster"
+  },
+  {
+    "_id": "77691",
+    "title": "PHP Applications"
+  },
+  {
+    "_id": "77692",
+    "title": "PHP Frameworks"
+  },
+  {
+    "_id": "77718",
+    "title": "PKCS"
+  },
+  {
+    "_id": "77819",
+    "title": "PTS"
+  },
+  {
+    "_id": "78003",
+    "title": "Pdf"
+  },
+  {
+    "_id": "78478",
+    "title": "Premiere"
+  },
+  {
+    "_id": "78551",
+    "title": "Procurement"
+  },
+  {
+    "_id": "78611",
+    "title": "Project Coordination"
+  },
+  {
+    "_id": "78623",
+    "title": "Project Purchasing"
+  },
+  {
+    "_id": "78731",
+    "title": "Purchasing Negotiation"
+  },
+  {
+    "_id": "78732",
+    "title": "Purchasing Processes"
+  },
+  {
+    "_id": "78754",
+    "title": "QC Tools"
+  },
+  {
+    "_id": "78762",
+    "title": "Quality Control"
+  },
+  {
+    "_id": "78892",
+    "title": "RNO"
+  },
+  {
+    "_id": "79450",
+    "title": "Routers"
+  },
+  {
+    "_id": "79519",
+    "title": "SAP"
+  },
+  {
+    "_id": "79523",
+    "title": "SAP BI"
+  },
+  {
+    "_id": "79839",
+    "title": "STLC"
+  },
+  {
+    "_id": "79914",
+    "title": "Sales Management"
+  },
+  {
+    "_id": "80097",
+    "title": "Selenium"
+  },
+  {
+    "_id": "80098",
+    "title": "Selenium Testing"
+  },
+  {
+    "_id": "80496",
+    "title": "Social Media Marketing"
+  },
+  {
+    "_id": "80604",
+    "title": "Sony Vegas V_ideo"
+  },
+  {
+    "_id": "80677",
+    "title": "Spine"
+  },
+  {
+    "_id": "80720",
+    "title": "Spring MVC"
+  },
+  {
+    "_id": "80928",
+    "title": "Sumif"
+  },
+  {
+    "_id": "81368",
+    "title": "Tax Accounting"
+  },
+  {
+    "_id": "82144",
+    "title": "User Research"
+  },
+  {
+    "_id": "82246",
+    "title": "VPN"
+  },
+  {
+    "_id": "82446",
+    "title": "V_ideo Editing"
+  },
+  {
+    "_id": "82585",
+    "title": "Vray"
+  },
+  {
+    "_id": "82659",
+    "title": "WPF"
+  },
+  {
+    "_id": "82686",
+    "title": "Wacom Tablet"
+  },
+  {
+    "_id": "82900",
+    "title": "Wholesale Purchasing"
+  },
+  {
+    "_id": "82944",
+    "title": "WinForms"
+  },
+  {
+    "_id": "83227",
+    "title": "YouTube"
+  },
+  {
+    "_id": "83484",
+    "title": ""
+  },
+  {
+    "_id": "84873",
+    "title": "ANOVA"
+  },
+  {
+    "_id": "84947",
+    "title": "ASP.NET MVC"
+  },
+  {
+    "_id": "85039",
+    "title": "Academic Development"
+  },
+  {
+    "_id": "85040",
+    "title": "Academic Editing"
+  },
+  {
+    "_id": "85041",
+    "title": "Academic English"
+  },
+  {
+    "_id": "85062",
+    "title": "Account Management"
+  },
+  {
+    "_id": "85138",
+    "title": "Adaptive Learning"
+  },
+  {
+    "_id": "85167",
+    "title": "Administration"
+  },
+  {
+    "_id": "85211",
+    "title": "Advertising Sales"
+  },
+  {
+    "_id": "85257",
+    "title": "After Effects"
+  },
+  {
+    "_id": "101564",
+    "title": "xCAT"
+  },
+  {
+    "_id": "101565",
+    "title": "xCP"
+  },
+  {
+    "_id": "101566",
+    "title": "xPC Target"
+  },
+  {
+    "_id": "101567",
+    "title": "xPON"
+  },
+  {
+    "_id": "101568",
+    "title": "xPression"
+  },
+  {
+    "_id": "101570",
+    "title": "xUnit"
+  },
+  {
+    "_id": "101571",
+    "title": "zLinux"
+  },
+  {
+    "_id": "101572",
+    "title": "zSeries"
+  },
+  {
+    "_id": "112843",
+    "title": "Giao tiếp"
+  },
+  {
+    "_id": "112859",
+    "title": "Tư duy sáng tạo"
+  },
+  {
+    "_id": "112860",
+    "title": "Phân tích dữ liệu"
+  },
+  {
+    "_id": "113845",
+    "title": "Wordpress"
+  },
+  {
+    "_id": "114499",
+    "title": "Adobe Acrobat"
+  }
+]

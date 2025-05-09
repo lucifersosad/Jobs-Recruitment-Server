@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const cvSchema = new mongoose.Schema(
   {
     email: String,
-    fulName: String,
+    fullName: String,
+    avatar: String,
+    title: String,
     phone: String,
     id_file_cv: String,
     introducing_letter: String,
