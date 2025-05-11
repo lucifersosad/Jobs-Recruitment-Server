@@ -17,21 +17,18 @@ export const callRapidApi = async (fileBuffer) => {
         name: "Resume - Extraction",
         language: "English",
         fields: [
-          {
-            key: "fullName",
-            description: "name of the person",
-            type: "string",
-          },
+          { key: "fullName", description: "name of the person", type: "string" },
           { key: "email", description: "email of the person", type: "string" },
           { key: "phone", description: "phone of the person", type: "string" },
+          { key: "address", description: "address of the person", type: "string" },
           {
-            key: "address",
-            description: "address of the person",
+            key: "position",
+            description: "job title of the person",
             type: "string",
           },
           {
-            key: "position",
-            description: "job position of the person",
+            key: "objective",
+            description: "job objective of the person",
             type: "string",
           },
           {
@@ -49,7 +46,6 @@ export const callRapidApi = async (fileBuffer) => {
               ],
             },
           },
-
           {
             key: "educations",
             description: "school education of the person",
@@ -57,11 +53,7 @@ export const callRapidApi = async (fileBuffer) => {
             items: {
               type: "object",
               properties: [
-                {
-                  key: "title",
-                  description: "study major of the people",
-                  type: "string",
-                },
+                { key: "title", description: "study major of the people", type: "string" },
                 { key: "start_date", type: "string" },
                 { key: "end_date", type: "string" },
                 { key: "school_name", type: "string" },
@@ -85,7 +77,40 @@ export const callRapidApi = async (fileBuffer) => {
             key: "certifications",
             description: "certificates of the person",
             type: "array",
-            items: { type: "string" },
+            items: {
+              type: "object",
+              properties: [
+                { key: "date", type: "string" },
+                { key: "title", description: "certification name", type: "string" },
+              ],
+            },
+          },
+          {
+            key: "awards",
+            description: "awards of the person",
+            type: "array",
+            items: {
+              type: "object",
+              properties: [
+                { key: "date", type: "string" },
+                { key: "title", description: "award name", type: "string" },
+              ],
+            },
+          },
+          {
+            key: "activities",
+            description: "activities that the person took part in",
+            type: "array",
+            items: {
+              type: "object",
+              properties: [
+                { key: "position_name", description: "role of the people in activity", type: "string" },
+                { key: "group_name", type: "string" },
+                { key: "start_date", type: "string" },
+                { key: "end_date", type: "string" },
+                { key: "description", type: "string" },
+              ],
+            },
           },
         ],
       },
