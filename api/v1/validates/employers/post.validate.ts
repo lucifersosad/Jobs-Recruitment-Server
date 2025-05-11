@@ -23,6 +23,26 @@ export const getLikes = [
   param("postId").isMongoId().withMessage("ID bài viết không hợp lệ"),
 ];
 
+export const getPostById = [
+  param("id").isMongoId().withMessage("ID bài viết không hợp lệ"),
+];
+
+export const likePost = [
+  param("id").isMongoId().withMessage("ID bài viết không hợp lệ"),
+];
+
+export const commentPost = [
+  param("id").isMongoId().withMessage("ID bài viết không hợp lệ"),
+  body("content").notEmpty().withMessage("Nội dung bình luận không được để trống"),
+];
+
+export const getPostComments = [
+  param("id").isMongoId().withMessage("ID bài viết không hợp lệ"),
+];
+
+export const checkLikeStatus = [
+  body("postIds").isArray().withMessage("postIds phải là một mảng"),
+];
 
 export const deletePost = [
   param("id").isMongoId().withMessage("ID bài viết không hợp lệ"),
