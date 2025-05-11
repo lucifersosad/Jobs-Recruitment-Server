@@ -3,7 +3,7 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 const path = require("path");
 
-const filePath = path.join(__dirname, "static_data", "CV_TEST_2.jpg");
+const filePath = path.join(__dirname, "static_data", "CV_TEST");
 
 // Chuyển file PDF thành base64
 const pdfToBase64 = (filePath) => {
@@ -32,7 +32,12 @@ const options = {
         { key: "address", description: "address of the person", type: "string" },
         {
           key: "position",
-          description: "job position of the person",
+          description: "job position that person is applying for",
+          type: "string",
+        },
+        {
+          key: "objective",
+          description: "job objective of the person",
           type: "string",
         },
         {
@@ -50,7 +55,6 @@ const options = {
             ],
           },
         },
-        
         {
           key: "educations",
           description: "school education of the person",
@@ -76,13 +80,52 @@ const options = {
           key: "skills",
           description: "skills of the person",
           type: "array",
-          items: { type: "string" },
+          items: {
+            type: "object",
+            properties: [
+              { key: "skill_name", type: "string" },
+              { key: "description", type: "string" },
+            ],
+          },
         },
         {
           key: "certifications",
           description: "certificates of the person",
           type: "array",
-          items: { type: "string" },
+          items: {
+            type: "object",
+            properties: [
+              { key: "date", type: "string" },
+              { key: "title", description: "certification name", type: "string" },
+            ],
+          },
+        },
+        {
+          key: "awards",
+          description: "awards of the person",
+          type: "array",
+          items: {
+            type: "object",
+            properties: [
+              { key: "date", type: "string" },
+              { key: "title", description: "award name", type: "string" },
+            ],
+          },
+        },
+        {
+          key: "activities",
+          description: "activities that the person took part in",
+          type: "array",
+          items: {
+            type: "object",
+            properties: [
+              { key: "position_name", description: "role of the people in activity", type: "string" },
+              { key: "group_name", type: "string" },
+              { key: "start_date", type: "string" },
+              { key: "end_date", type: "string" },
+              { key: "description", type: "string" },
+            ],
+          },
         },
       ],
     },

@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { getCvPdfBuffer } from "../../../../helpers/downloadCV";
 import { getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
+import { callRapidApi } from "../../../../helpers/parseCV";
 
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
@@ -101,6 +102,21 @@ export const downloadMyCv = async function (
 
     res.json({ code: 200, data: signedUrl });
 
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [GET] /api/v1/client/my-cvs/extract
+export const extractCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const url = req.body.url;
+    const dataExtract = await callRapidApi(url)
+    res.json({ code: 200, data: dataExtract });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
