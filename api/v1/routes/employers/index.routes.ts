@@ -7,7 +7,8 @@ import { chatRoutes } from "./chat.routes";
 import { cvRoutes } from "./cv.routes";
 import { employerAuthRoutes } from "./auth.routes";
 import { notificationRoutes } from "./notification.routes";
-import { postRoutes } from "./post.routes"; // 🆕 Import route mới
+import { postRoutes } from "./post.routes";
+import { myCvsRoutes } from "./my-cv.routes";
 
 const routesEmployerVersion1 = (app: Express): void => {
     const version = "/api/v1/employer";
@@ -18,7 +19,8 @@ const routesEmployerVersion1 = (app: Express): void => {
     app.use(version + "/chat", authMiddlewares.auth, chatRoutes);
     app.use(version + "/cvs", authMiddlewares.auth, cvRoutes);
     app.use(version + "/notifications", authMiddlewares.auth, notificationRoutes);
-    app.use(version + "/posts", authMiddlewares.auth, postRoutes); // 🆕 Thêm route mới
+    app.use(version + "/posts", authMiddlewares.auth, postRoutes);
+    app.use(version + "/my-cvs", authMiddlewares.auth, myCvsRoutes);
 };
 
 export default routesEmployerVersion1;

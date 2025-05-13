@@ -154,5 +154,11 @@ async function highlightPhonesAndEmailsInPdf(pdfBuffer) {
 }
 
 export async function hideDataProfileInCvPdf(pdfBuffer: Buffer): Promise<Buffer> {
-  return await highlightPhonesAndEmailsInPdf(pdfBuffer)
+  try {
+    const newBuffer = await highlightPhonesAndEmailsInPdf(pdfBuffer)
+    return newBuffer
+  } catch (error) {
+    console.log("🚀 ~ hideDataProfileInCvPdf ~ error:", error)
+  }
+  return pdfBuffer
 }

@@ -723,6 +723,10 @@ export const userPreviewJob = async function (
     const user = req["user"];
     const idJob: string = req.body.idJob;
 
+    // Lấy danh sách hồ sơ đã mở của employer
+    const employer = await Employer.findById(user._id).select("listApprovedUsers").lean();
+    const openedUserIds: string[] = employer?.listApprovedUsers?.map((item) => item.idUser.toString()) || [];
+
     // Định nghĩa cấu trúc populate để lấy thông tin người dùng và danh mục công việc
     const populateCheck: POPULATE[] = [
       {
@@ -751,10 +755,10 @@ export const userPreviewJob = async function (
       return;
     }
 
+    
     // Chuyển đổi dữ liệu để chỉ trả về thông tin cần thiết
     const dataConvert = job.listProfileViewJob.map((item: any) => {
-      //Nếu chưa mua thì không hiển thị email và phone
-      if (!item.buy) {
+      if (!openedUserIds.includes(item.idUser._id.toString())) {
         item["idUser"].email = "";
         item["idUser"].phone = "";
       }
@@ -818,6 +822,7 @@ export const buyUserPreviewJob = async function (
       },
       {
         $inc: { cointsGP: -maxBuy },
+        $addToSet: { listApprovedUsers: { idUser: idUser } }
       }
     );
 
@@ -866,14 +871,16 @@ export const infoUserProfile = async function (
     ];
 
     // Tìm công việc mà người dùng đã mở liên hệ
-    const findJob: IJob | null = await Job.findOne({
-      _id: idJob,
-      employerId: userId,
-      listProfileViewJob: { $elemMatch: { idUser: idUser, buy: true } },
-    }).select("_id");
+    // const findJob: IJob | null = await Job.findOne({
+    //   _id: idJob,
+    //   employerId: userId,
+    //   listProfileViewJob: { $elemMatch: { idUser: idUser, buy: true } },
+    // }).select("_id");
+
+    const isOpenedUser = await Employer.exists({_id: userId, "listApprovedUsers.idUser": idUser})
 
     // Chọn các trường cần hiển thị dựa trên việc người dùng đã mở liên hệ hay chưa
-    const defaultSelect = findJob?._id
+    const defaultSelect = isOpenedUser
       ? "-password -token -status -deleted -createdAt -updatedAt"
       : "-password -token -status -deleted -createdAt -updatedAt -email -phone";
 

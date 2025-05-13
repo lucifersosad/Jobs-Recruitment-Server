@@ -12,6 +12,7 @@ import {
 import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
 import filterJobCategory from "../../../../helpers/filterJobCategory";
+import Employer from "../../../../models/employers.model";
 export const createRecord = async (req: Request, res: Response, next: any): Promise<void> => {
   try {
     //Lấy dữ liệu người dùng gửi lên
@@ -423,6 +424,7 @@ export const buyUserPreviewJob = async (
   next: any
 ): Promise<void> => {
   try {
+    const userId: string = req["user"]?._id;
     const idJob: string = req.body.idJob;
     const idUser: string = req.body.idUser;
     if (!idJob) {
@@ -447,17 +449,9 @@ export const buyUserPreviewJob = async (
       return;
     }
 
-    const jobCheck = await Job.findOne({
-      _id: idJob,
-      listProfileViewJob: {
-        $elemMatch: {
-          idUser: idUser,
-          buy: true,
-        },
-      },
-    });
+    const isOpenedUser = await Employer.exists({_id: userId, "listApprovedUsers.idUser": idUser})
 
-    if (jobCheck) {
+    if (isOpenedUser) {
       res
         .status(400)
         .json({ error: "Bạn đã mua thông tin này rồi!", code: 400 });
