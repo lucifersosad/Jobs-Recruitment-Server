@@ -4,8 +4,6 @@ const { getDocument } = require('pdfjs-dist');
 const { PDFDocument, rgb } = require('pdf-lib');
 
 // 📌 Regex số điện thoại Việt Nam cơ bản
-// const phoneRegex = /\b((\+?\d{1,3}[\s\-]?)?)(\d{8,10})\b/g; //num 1
-// const phoneRegex = /\b(0|84)(\d{2})(\s?\d{3})(\s?\d{3})\b/g;
 const phoneRegex = /\b0?(?:[\s\-.]*\d){9}\b/g;
 
 // 📌 Regex cho email cơ bản
@@ -113,80 +111,7 @@ async function extractEmailPositions(pdfBuffer) {
   return emailPositions;
 }
 
-
-
-async function highlightPhonesInPdf(inputPath, outputPath) {
-  const pdfBuffer = fs.readFileSync(inputPath);
-  const phonePositions = await extractPhonePositions(pdfBuffer);
-
-  const pdfDoc = await PDFDocument.load(pdfBuffer);
-  const pages = pdfDoc.getPages();
-
-  phonePositions.forEach(pos => {
-    const page = pages[pos.page - 1];
-    // Vẽ hình chữ nhật để che khu vực có số điện thoại
-    page.drawRectangle({
-      x: pos.x,
-      y: pos.y,
-      width: pos.width,
-      height: pos.height,
-      color: rgb(0, 0, 0), // Màu trắng (hoặc màu khác để che chữ)
-      opacity: 1, // Không trong suốt
-    });
-  });
-
-  const modifiedPdfBytes = await pdfDoc.save();
-  fs.writeFileSync(outputPath, modifiedPdfBytes);
-
-  console.log(`✅ Highlighted PDF saved to ${outputPath}`);
-}
-
-async function highlightEmailsInPdf(inputPath, outputPath) {
-  const pdfBuffer = fs.readFileSync(inputPath);
-  const emailPositions = await extractEmailPositions(pdfBuffer);
-
-  const pdfDoc = await PDFDocument.load(pdfBuffer);
-  const pages = pdfDoc.getPages();
-
-  emailPositions.forEach(pos => {
-    const page = pages[pos.page - 1];
-    // Vẽ hình chữ nhật để che khu vực có email
-    page.drawRectangle({
-      x: pos.x,
-      y: pos.y,
-      width: pos.width,
-      height: pos.height,
-      color: rgb(1, 1, 1), // Màu trắng (hoặc màu khác để che chữ)
-      opacity: 1, // Không trong suốt
-    });
-  });
-
-  const modifiedPdfBytes = await pdfDoc.save();
-  fs.writeFileSync(outputPath, modifiedPdfBytes);
-
-  console.log(`✅ Highlighted PDF saved to ${outputPath}`);
-}
-
-async function writePdfTextContent(pdfBuffer, outputTextPath) {
-  const loadingTask = getDocument({ data: pdfBuffer });
-  const pdf = await loadingTask.promise;
-
-  let fullText = '';
-
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
-    const pageText = content.items.map(item => item.str).join('~~~~');
-    fullText += `--- Page ${i} ---\n${pageText}\n\n`;
-  }
-
-  fs.writeFileSync(outputTextPath, fullText, 'utf8');
-  console.log(`📄 PDF content written to ${outputTextPath}`);
-}
-
-async function highlightPhonesAndEmailsInPdf(inputPath, outputPath) {
-  const pdfBuffer = fs.readFileSync(inputPath);
-
+async function highlightPhonesAndEmailsInPdf(pdfBuffer) {
   // Tìm vị trí các số điện thoại và email
   const phonePositions = await extractPhonePositions(pdfBuffer);
   const emailPositions = await extractEmailPositions(pdfBuffer);
@@ -202,7 +127,7 @@ async function highlightPhonesAndEmailsInPdf(inputPath, outputPath) {
       y: pos.y,
       width: pos.width,
       height: pos.height,
-      color: rgb(0, 0, 0), // Màu trắng (hoặc màu khác để che chữ)
+      color: rgb(0.6, 0.6, 0.6), // Màu trắng (hoặc màu khác để che chữ)
       opacity: 1, // Không trong suốt
     });
   });
@@ -215,26 +140,19 @@ async function highlightPhonesAndEmailsInPdf(inputPath, outputPath) {
       y: pos.y,
       width: pos.width,
       height: pos.height,
-      color: rgb(0, 0, 0), // Màu trắng (hoặc màu khác để che chữ)
+      color: rgb(0.6, 0.6, 0.6), // Màu trắng (hoặc màu khác để che chữ)
       opacity: 1, // Không trong suốt
     });
   });
 
+  const outputPath = path.resolve(__dirname, 'output_highlighted.pdf');
+
   // Lưu file PDF đã chỉnh sửa
   const modifiedPdfBytes = await pdfDoc.save();
-  fs.writeFileSync(outputPath, modifiedPdfBytes);
-
-  console.log(`✅ Highlighted PDF saved to ${outputPath}`);
+  const buffer = Buffer.from(modifiedPdfBytes);
+  return buffer;
 }
 
-
-// 👉 Chạy script
-const input = path.resolve(__dirname, 'input7.pdf');
-const output = path.resolve(__dirname, 'output_highlighted.pdf');
-const textOutput = path.resolve(__dirname, 'content.txt');
-
-(async () => {
-  const pdfBuffer = fs.readFileSync(input);
-  await writePdfTextContent(pdfBuffer, textOutput);
-  await highlightPhonesAndEmailsInPdf(input, output);
-})();
+export async function hideDataProfileInCvPdf(pdfBuffer: Buffer): Promise<Buffer> {
+  return await highlightPhonesAndEmailsInPdf(pdfBuffer)
+}

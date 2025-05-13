@@ -9,6 +9,7 @@ const myCvSchema = new mongoose.Schema(
     idFile: String,
     nameFile: String,
     s3Key: String,
+    linkFile: String,
     fullName: String,
     email: String,
     phone: String,
