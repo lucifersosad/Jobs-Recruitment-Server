@@ -6,6 +6,8 @@ import { getCvPdfBuffer } from "../../../../helpers/downloadCV";
 import { getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { callRapidApi } from "../../../../helpers/parseCV";
+import axios from "axios";
+import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
 
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
@@ -28,6 +30,57 @@ export const getMyCv = async function (
       res.status(404).json({ code: 404, error: "Không tìm thấy cv" });
     }
 
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/client/my-cvs:/id/file
+export const getMyCvFile = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { id } = req.params;
+    console.log("🚀 ~ id:", id)
+
+    const cv = await MyCv.findById(id);
+
+    if (!cv || !cv.linkFile) {
+      res.status(404).json({ message: 'CV not found or missing S3 URL' });
+      return;
+    }
+
+    // Tải file từ S3
+    const response = await axios.get(cv.linkFile, {
+      responseType: 'arraybuffer', // để lấy dạng binary
+    });
+
+    const cvBuffer = Buffer.from(response.data);
+    
+    const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer);
+
+    const base64Data = cvBuffer.toString("base64");
+
+    res.json({
+      code: 200,
+      data: base64Data,
+    });
+
+
+    return;
+
+    // Thiết lập header phản hồi là PDF
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `inline; filename="${cv.nameFile || 'file-cv.pdf'}"`);
+
+    // const cvBuffer = Buffer.from(response.data)
+
+    // const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer)
+    
+    // Trả file PDF dưới dạng blob (buffer)
+    res.send(cvBuffer);
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
