@@ -1,4 +1,6 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { PutObjectCommand, S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3Client = new S3Client({
   region: process.env.AWS_S3_REGION,
@@ -42,3 +44,20 @@ export const putObject = async (file, fileName, type) => {
     console.log("🚀 ~ putObject ~ error:", error)
   }
 }
+
+export const getSignedDownloadUrl = async (key: string, filename = "CV", expiresIn = 60) => {
+  try {
+    const command = new GetObjectCommand({
+      Bucket: process.env.AWS_S3_BUCKET,
+      Key: key,
+      ResponseContentDisposition: `attachment; filename="${filename}.pdf"`,
+    });
+
+    const signedUrl = await getSignedUrl(s3Client, command, { expiresIn });
+
+    return signedUrl;
+  } catch (error) {
+    console.log("🚀 ~ getSignedDownloadUrl ~ error:", error);
+    return null;
+  }
+};
