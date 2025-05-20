@@ -8,6 +8,7 @@ import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { callRapidApi } from "../../../../helpers/parseCV";
 import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
+import { cvJsonToPrompt } from "../../../../helpers/cvHelper";
 
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
@@ -22,10 +23,11 @@ export const getMyCv = async function (
       return;
     }
 
-    const cv = await MyCv.findById(id)
+    const cv = await MyCv.findById(id).lean()
 
     if (cv) {
-      res.status(200).json({ code: 200, data: cv });
+      const prompt = cvJsonToPrompt(cv)
+      res.status(200).json({ code: 200, data: cv, prompt });
     } else {
       res.status(404).json({ code: 404, error: "Không tìm thấy cv" });
     }

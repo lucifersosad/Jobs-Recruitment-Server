@@ -29,10 +29,14 @@ const options = {
         { key: "fullName", description: "name of the person", type: "string" },
         { key: "email", description: "email of the person", type: "string" },
         { key: "phone", description: "phone of the person", type: "string" },
-        { key: "address", description: "address of the person", type: "string" },
+        {
+          key: "address",
+          description: "address of the person",
+          type: "string",
+        },
         {
           key: "position",
-          description: "job position that person is applying for",
+          description: "job title of the person",
           type: "string",
         },
         {
@@ -62,7 +66,11 @@ const options = {
           items: {
             type: "object",
             properties: [
-              { key: "title", description: "study major of the people", type: "string" },
+              {
+                key: "title",
+                description: "study major of the people",
+                type: "string",
+              },
               { key: "start_date", type: "string" },
               { key: "end_date", type: "string" },
               { key: "school_name", type: "string" },
@@ -80,13 +88,7 @@ const options = {
           key: "skills",
           description: "skills of the person",
           type: "array",
-          items: {
-            type: "object",
-            properties: [
-              { key: "skill_name", type: "string" },
-              { key: "description", type: "string" },
-            ],
-          },
+          items: { type: "string" },
         },
         {
           key: "certifications",
@@ -96,7 +98,11 @@ const options = {
             type: "object",
             properties: [
               { key: "date", type: "string" },
-              { key: "title", description: "certification name", type: "string" },
+              {
+                key: "title",
+                description: "certification name",
+                type: "string",
+              },
             ],
           },
         },
@@ -119,7 +125,11 @@ const options = {
           items: {
             type: "object",
             properties: [
-              { key: "position_name", description: "role of the people in activity", type: "string" },
+              {
+                key: "position_name",
+                description: "role of the people in activity",
+                type: "string",
+              },
               { key: "group_name", type: "string" },
               { key: "start_date", type: "string" },
               { key: "end_date", type: "string" },

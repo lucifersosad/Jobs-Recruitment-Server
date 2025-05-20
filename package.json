@@ -30,6 +30,7 @@
     "file-type": "^19.0.0",
     "firebase-admin": "^13.1.0",
     "googleapis": "^131.0.0",
+    "html-entities": "^2.6.0",
     "imgur": "^1.0.2",
     "jsonwebtoken": "^9.0.2",
     "md5": "^2.3.0",
