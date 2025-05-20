@@ -9,6 +9,7 @@ const router : Router = Router();
 const FileUpload = fileUpload()
 
 router.get('/:id', controller.getMyCv)
+router.post('/:id/file', controller.getMyCvFile)
 router.post('/', authMiddlewares.auth, controller.createMyCv)
 router.get('/:id/download', controller.downloadMyCv)
 router.post('/extract', FileUpload, uploadAws.uploadPdf, controller.extractCv)

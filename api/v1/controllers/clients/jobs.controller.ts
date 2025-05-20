@@ -198,6 +198,11 @@ export const jobSearch = async function (
         select: "title",
         model: JobCategories,
       },
+      {
+        path: "listProfileRequirement",
+        select: "idUser -_id",
+        model: Cv
+      }
     ];
     const records = await Job.findOne(find).populate(populateCheck);
 
@@ -387,6 +392,11 @@ export const advancedSearch = async function (
         select: "title",
         model: JobCategories,
       },
+      {
+        path: "listProfileRequirement",
+        select: "idUser -_id",
+        model: Cv
+      }
     ];
     //Đếm xem bảng record có bao nhiêu sản phẩm và check phân trang (Chức Năng Phân Trang)
     const countRecord = await Job.countDocuments(find);
@@ -406,7 +416,6 @@ export const advancedSearch = async function (
       .limit(objectPagination.limitItem)
       .skip(objectPagination.skip)
       .select(select);
-    console.log(find);
     const convertData = records.map((record) => ({
       ...record.toObject(),
       companyName: record["employerId"]["companyName"],
@@ -749,7 +758,6 @@ export const jobByCompany = async function (
       res.status(200).json({ data: [], code: 200 });
       return;
     }
-    console.log(slug);
     const find: JobInterface.Find = {
       deleted: false,
       status: "active",
@@ -820,6 +828,11 @@ export const jobByCompany = async function (
         select: "title",
         model: JobCategories,
       },
+      {
+        path: "listProfileRequirement",
+        select: "idUser -_id",
+        model: Cv
+      }
     ];
 
     //Đếm xem bảng record có bao nhiêu sản phẩm và check phân trang (Chức Năng Phân Trang)

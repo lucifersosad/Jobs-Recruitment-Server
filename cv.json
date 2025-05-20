@@ -1,0 +1,99 @@
+{
+  "_id": "68220bdb681c2bdba50d936a",
+  "fullName": "NGUYEN THI TUYET MAI",
+  "email": "tuyetmai031216@gmail.com",
+  "phone": "0795 029 657",
+  "address": "Ho Chi Minh City",
+  "position": "Research Associate",
+  "objective": "I am an analytical and collaborative data professional skilled in SQL, data visualization, and statistical analysis.",
+  "experiences": [
+    {
+      "position_name": "Research Associate",
+      "company_name": "B. Woods & Company",
+      "start_date": "11/2024",
+      "end_date": "04/2025",
+      "description": "<ul>\n<li>Analyze client project briefs to understand investment criteria and identify acquisition opportunities</li>\n<li>Conduct high-level industry and company research across various sectors to source and qualify potential investment targets</li>\n<li>Screen and prioritize potential acquisition targets based on client goals and strategic fit</li>\n<li>Collaborate with internal teams to refine research approaches and enhance project outcomes</li>\n</ul>",
+      "_id": "68220bdb681c2bdba50d936b"
+    },
+    {
+      "position_name": "Account Management Intern",
+      "company_name": "TikTok Shop",
+      "start_date": "04/2024",
+      "end_date": "07/2024",
+      "description": "<ul>\n<li>Track and analyze seller performance metrics, ensuring GMV growth and target achievement</li>\n<li>Analyze reports and develop dashboards for the PAPE project, meeting 100% of the target through data-driven insights and strategic recommendations</li>\n<li>Advise 15+ sellers on growth strategies, optimizing acquisition, retention, and monetization</li>\n<li>Collaborate with cross-functional teams to ensure compliance and improve operational efficiency</li>\n</ul>",
+      "_id": "68220bdb681c2bdba50d936c"
+    },
+    {
+      "position_name": "Data Processing & Customer Service Intern",
+      "company_name": "HRS Group",
+      "start_date": "04/2024",
+      "end_date": "07/2024",
+      "description": "<ul>\n<li>Identify, analyze, and label objects in overhead imagery</li>\n<li>Respond promptly and professionally to customer inquiries and concerns via email or other communication channels</li>\n<li>Assist customers in resolving issues, providing appropriate solutions, or escalating complex issues to the relevant department</li>\n<li>Maintain accurate records of customer interactions and transactions</li>\n</ul>",
+      "_id": "68220bdb681c2bdba50d936d"
+    }
+  ],
+  "educations": [
+    {
+      "title": "Bachelor of Business Administration in Technology and Innovation Management",
+      "school_name": "UEH University",
+      "start_date": "Sep 2021",
+      "end_date": "Dec 2024",
+      "description": "<ul>\n<li>GPA: 3.91/4.0</li>\n</ul>",
+      "_id": "68220bdb681c2bdba50d936e"
+    }
+  ],
+  "skills": [
+    {
+      "skill_name": "SQL",
+      "_id": "68220bdb681c2bdba50d936f"
+    },
+    {
+      "skill_name": "data visualization",
+      "_id": "68220bdb681c2bdba50d9370"
+    },
+    {
+      "skill_name": "statistical analysis",
+      "_id": "68220bdb681c2bdba50d9371"
+    },
+    {
+      "skill_name": "Microsoft Office",
+      "_id": "68220bdb681c2bdba50d9372"
+    },
+    {
+      "skill_name": "Excel",
+      "_id": "68220bdb681c2bdba50d9373"
+    },
+    {
+      "skill_name": "Google Analytics 4",
+      "_id": "68220bdb681c2bdba50d9374"
+    },
+    {
+      "skill_name": "Tableau",
+      "_id": "68220bdb681c2bdba50d9375"
+    }
+  ],
+  "awards": [
+    {
+      "date": "2022",
+      "title": "Excellent Assignment Awards UEH500",
+      "_id": "68220bdb681c2bdba50d9376"
+    },
+    {
+      "date": "2023",
+      "title": "Third Prize of 'Young Researcher of 2023' Award",
+      "_id": "68220bdb681c2bdba50d9377"
+    },
+    {
+      "date": "2023",
+      "title": "Top 25 of 'Rocket to Business Development 2023'",
+      "_id": "68220bdb681c2bdba50d9378"
+    }
+  ],
+  "certifications": [],
+  "activities": [],
+  "status": "active",
+  "deleted": false,
+  "createdAt": "2025-05-12T14:55:24.008Z",
+  "updatedAt": "2025-05-12T14:55:24.008Z",
+  "__v": 0
+}

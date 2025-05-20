@@ -723,6 +723,10 @@ export const userPreviewJob = async function (
     const user = req["user"];
     const idJob: string = req.body.idJob;
 
+    // Lấy danh sách hồ sơ đã mở của employer
+    const employer = await Employer.findById(user._id).select("listApprovedUsers").lean();
+    const openedUserIds: string[] = employer?.listApprovedUsers?.map((item) => item.idUser.toString()) || [];
+
     // Định nghĩa cấu trúc populate để lấy thông tin người dùng và danh mục công việc
     const populateCheck: POPULATE[] = [
       {
@@ -751,16 +755,17 @@ export const userPreviewJob = async function (
       return;
     }
 
+    
     // Chuyển đổi dữ liệu để chỉ trả về thông tin cần thiết
     const dataConvert = job.listProfileViewJob.map((item: any) => {
-      //Nếu chưa mua thì không hiển thị email và phone
-      if (!item.buy) {
+      if (!openedUserIds.includes(item.idUser._id.toString())) {
         item["idUser"].email = "";
         item["idUser"].phone = "";
       }
       return {
         ...item.idUser.toObject(),
         dataTime: item.dataTime,
+        followed: item?.follow || false
       };
     });
 
@@ -818,6 +823,7 @@ export const buyUserPreviewJob = async function (
       },
       {
         $inc: { cointsGP: -maxBuy },
+        $addToSet: { listApprovedUsers: { idUser: idUser } }
       }
     );
 
@@ -866,14 +872,16 @@ export const infoUserProfile = async function (
     ];
 
     // Tìm công việc mà người dùng đã mở liên hệ
-    const findJob: IJob | null = await Job.findOne({
-      _id: idJob,
-      employerId: userId,
-      listProfileViewJob: { $elemMatch: { idUser: idUser, buy: true } },
-    }).select("_id");
+    // const findJob: IJob | null = await Job.findOne({
+    //   _id: idJob,
+    //   employerId: userId,
+    //   listProfileViewJob: { $elemMatch: { idUser: idUser, buy: true } },
+    // }).select("_id");
+
+    const isOpenedUser = await Employer.exists({_id: userId, "listApprovedUsers.idUser": idUser})
 
     // Chọn các trường cần hiển thị dựa trên việc người dùng đã mở liên hệ hay chưa
-    const defaultSelect = findJob?._id
+    const defaultSelect = isOpenedUser
       ? "-password -token -status -deleted -createdAt -updatedAt"
       : "-password -token -status -deleted -createdAt -updatedAt -email -phone";
 
@@ -928,7 +936,7 @@ export const followUserProfile = async function (
       }
     );
 
-    res.status(200).json({ code: 200, success: "Bạn đã theo dõi người dùng" });
+    res.status(200).json({ code: 200, success: "Lưu hồ sơ thành công" });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -945,6 +953,10 @@ export const followUserJob = async function (
     // Lấy thông tin người dùng và id công việc từ request
     const userId: string = req["user"]._id;
     const idJob: string = req.body.idJob;
+
+    // Lấy danh sách hồ sơ đã mở của employer
+    const employer = await Employer.findById(userId).select("listApprovedUsers").lean();
+    const openedUserIds: string[] = employer?.listApprovedUsers?.map((item) => item.idUser.toString()) || [];
 
     // Định nghĩa cấu trúc populate để lấy thông tin người dùng và danh mục công việc
     const populateCheck: POPULATE[] = [
@@ -966,7 +978,6 @@ export const followUserJob = async function (
     const job = await Job.findOne({
       employerId: userId,
       _id: idJob,
-      "listProfileViewJob.follow": true,
     })
       .populate(populateCheck)
       .select("listProfileViewJob");
@@ -982,7 +993,7 @@ export const followUserJob = async function (
       .filter((itemFilter) => itemFilter.follow === true)
       .map((item: any) => {
         //Nếu chưa mua thì không hiển thị email và phone
-        if (!item.buy) {
+        if (!openedUserIds.includes(item.idUser._id.toString())) {
           item["idUser"].email = "";
           item["idUser"].phone = "";
         }
@@ -1025,7 +1036,7 @@ export const deleteFollowProfile = async function (
 
     res
       .status(200)
-      .json({ code: 200, success: "Bạn đã hủy theo dõi người dùng" });
+      .json({ code: 200, success: "Hủy theo dõi hồ sơ thành công!" });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
