@@ -68,7 +68,9 @@ export const edit = async (req: Request, res: Response, next: any): Promise<void
   const title: string = req.body.title.toString();
   const status: string = req.body.status || "";
   const parent_id: string = req.body.parent_id || "";
-  
+
+  const id: string = req.params.id.toString();
+
   //Nếu người dùng cố tình muốn đổi các trạng thái bên dưới thành rỗng thì in ra lỗi
   if (title === "") {
     res.status(400).json({ error: "Tiêu Đề Chưa Có Dữ Liệu!" });
@@ -91,6 +93,11 @@ export const edit = async (req: Request, res: Response, next: any): Promise<void
 
   if (parent_id) {
     if (!mongoose.Types.ObjectId.isValid(parent_id)) {
+      res.status(400).json({ error: "Danh Mục Công Việc Không Hợp Lệ!" });
+      return;
+    }
+
+    if (parent_id === id) {
       res.status(400).json({ error: "Danh Mục Công Việc Không Hợp Lệ!" });
       return;
     }
