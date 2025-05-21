@@ -176,7 +176,7 @@ export const editStatus = (req: Request, res: Response, next: any): void => {
   next();
 }
 
-export const editRecord = (req: Request, res: Response, next: any): void => {
+export const editRecord = async (req: Request, res: Response, next: any): Promise<void> => {
   try {
     //Lấy dữ liệu người dùng gửi lên
     const title: string = req.body.title.toString();
@@ -211,6 +211,13 @@ export const editRecord = (req: Request, res: Response, next: any): void => {
 
     if (!job_categorie_id) {
       res.status(400).json({ error: "Vui Lòng Chọn Danh Mục Công Việc!" });
+      return;
+    }
+
+    const category = await filterJobCategory(job_categorie_id)
+
+    if (!category) {
+      res.status(400).json({ error: "Danh Mục Công Việc Không Hợp Lệ!" });
       return;
     }
 
