@@ -7,4 +7,5 @@ const router : Router = Router();
 const FileUpload = fileUpload()
 
 router.post('/:id/file', controller.getMyCvFile)
+router.post('/evaluate', controller.evaluateMyCv)
 export const myCvsRoutes : Router  = router
