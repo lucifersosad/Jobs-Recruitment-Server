@@ -4,12 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.ts",
     "build": "tsc",
-    "add-build": "git add dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "foo": "echo \"fooo\" && exit 0",
-    "bar": "echo \"bar\" && exit 0",
+    "start": "nodemon index.ts",
+    "start:build": "node dist/index.js",
     "postinstall": "npx puppeteer browsers install chrome"
   },
   "author": "",
