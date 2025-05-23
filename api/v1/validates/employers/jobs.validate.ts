@@ -222,6 +222,13 @@ export const editRecord = async (
       return;
     }
 
+    const category = await filterJobCategory(job_categorie_id)
+
+    if (!category) {
+      res.status(400).json({ error: "Danh Mục Công Việc Không Hợp Lệ!" });
+      return;
+    }
+
     if (!jobType || jobType.length < 1) {
       res
         .status(400)

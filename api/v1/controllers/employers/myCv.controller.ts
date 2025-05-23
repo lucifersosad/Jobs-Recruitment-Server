@@ -3,6 +3,7 @@ import MyCv from "../../../../models/my-cvs.model";
 import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
 import Employer from "../../../../models/employers.model";
+import { evaluate } from "../../../../helpers/openAI";
 
 // [POST] /api/v1/client/my-cvs:/id/file
 export const getMyCvFile = async function (
@@ -41,6 +42,62 @@ export const getMyCvFile = async function (
     res.json({
       code: 200,
       data: cvBase64,
+    });
+
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/client/my-cvs/evaluate
+export const evaluateMyCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const userId: string = req["user"]?._id;
+
+    const id1 = "68296546ae46c77e88a9fa0b"
+    const id2 = "68205edf43d3081ba45aa57c"
+
+    const cv1 = await MyCv.findById(id1);
+    const cv2 = await MyCv.findById(id2);
+
+    // if (!cv || !cv.linkFile) {
+    //   res.status(404).json({ message: 'Không tìm thấy CV' });
+    //   return;
+    // }
+
+    // Tải file từ S3
+    const response1 = await axios.get(cv1.linkFile, {
+      responseType: 'arraybuffer', // để lấy dạng binary
+    });
+    const response2 = await axios.get(cv2.linkFile, {
+      responseType: 'arraybuffer', // để lấy dạng binary
+    });
+
+    const cvBuffer1 = Buffer.from(response1.data);
+    const cvBuffer2 = Buffer.from(response2.data);
+
+    const base64String1 = cvBuffer1.toString("base64");
+    const base64String2 = cvBuffer2.toString("base64");
+
+    const myCVs = [
+      {
+        file: {
+          type: "input_file",
+          filename: "CV1.pdf",
+          file_data: `data:application/pdf;base64,${base64String1}`
+        }
+      }
+    ]
+
+    const evaluatedMyCVs = await evaluate(myCVs)
+    
+    res.json({
+      code: 200,
+      data: evaluatedMyCVs,
     });
 
   } catch (error) {
