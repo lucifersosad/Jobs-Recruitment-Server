@@ -188,10 +188,9 @@ export const edit = async function (req: Request, res: Response): Promise<void> 
 
 
         };
-        //Nếu có id cha thì truyển vào không thì thôi
-        if (req.body.parent_id) {
-            recordNew["parent_id"] = req.body.parent_id
-        }
+
+        recordNew["parent_id"] = req.body.parent_id || ""
+
         //Nếu có ảnh thì gán không thì thôi
         if (req.body.thumbUrl) {
             recordNew["thumbnail"] = req.body.thumbUrl
