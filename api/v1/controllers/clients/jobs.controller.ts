@@ -352,7 +352,10 @@ export const advancedSearch = async function (
     }
     //tìm kiếm theo loại danh mục công việc
     if (req.query.job_categories) {
-      find["job_categorie_id"] = req.query.job_categories.toString();
+      const categories = req.query.job_categories.toString().split(',');
+      find["job_categorie_id"] = {
+        $in: categories?.map(id => id) || []
+      };
     }
     //tìm kiếm theo loại công việc kiểu thực tập hay full time gì đó
     if (req.query.job_type) {

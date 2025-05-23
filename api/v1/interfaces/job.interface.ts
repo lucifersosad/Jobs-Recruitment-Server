@@ -2,7 +2,7 @@ export interface Find {
     title?: RegExp,
     description?: string,
     employerId?: string,
-    job_categorie_id?: string,
+    job_categorie_id?: any,
     website?: string,
     level?: string,
     jobType?: string,
