@@ -58,11 +58,13 @@ export const evaluateMyCv = async function (
   try {
     const userId: string = req["user"]?._id;
 
-    const id1 = "68296546ae46c77e88a9fa0b"
-    const id2 = "68205edf43d3081ba45aa57c"
+    const id1 = "68205edf43d3081ba45aa57c"
+    const id2 = "68220bdb681c2bdba50d936a"
+    const id3 = "68296546ae46c77e88a9fa0b"
 
     const cv1 = await MyCv.findById(id1);
     const cv2 = await MyCv.findById(id2);
+    const cv3 = await MyCv.findById(id3);
 
     // if (!cv || !cv.linkFile) {
     //   res.status(404).json({ message: 'Không tìm thấy CV' });
@@ -76,21 +78,49 @@ export const evaluateMyCv = async function (
     const response2 = await axios.get(cv2.linkFile, {
       responseType: 'arraybuffer', // để lấy dạng binary
     });
+    const response3 = await axios.get(cv3.linkFile, {
+      responseType: 'arraybuffer', // để lấy dạng binary
+    });
 
     const cvBuffer1 = Buffer.from(response1.data);
     const cvBuffer2 = Buffer.from(response2.data);
+    const cvBuffer3 = Buffer.from(response3.data);
 
     const base64String1 = cvBuffer1.toString("base64");
     const base64String2 = cvBuffer2.toString("base64");
+    const base64String3 = cvBuffer3.toString("base64");
 
     const myCVs = [
       {
-        file: {
-          type: "input_file",
-          filename: "CV1.pdf",
-          file_data: `data:application/pdf;base64,${base64String1}`
-        }
-      }
+        type: "input_text",
+        text: `CV ID: ${id1}`
+      
+      },
+      {
+        type: "input_file",
+        filename: "CV.pdf",
+        file_data: `data:application/pdf;base64,${base64String1}`
+      },
+      {
+        type: "input_text",
+        text: `CV ID: ${id2}`
+      
+      },
+      {
+        type: "input_file",
+        filename: "CV.pdf",
+        file_data: `data:application/pdf;base64,${base64String2}`
+      },
+      {
+        type: "input_text",
+        text: `CV ID: ${id3}`
+      
+      },
+      {
+        type: "input_file",
+        filename: "CV.pdf",
+        file_data: `data:application/pdf;base64,${base64String3}`
+      },
     ]
 
     const evaluatedMyCVs = await evaluate(myCVs)

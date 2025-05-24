@@ -133,8 +133,9 @@ export const countJobs = async function (
     const find: JobCategoriesInterface.Find = {
       deleted: false,
       status: "active",
+      parent_id: "",
     };
-    const recordJobcategories = await JobCategories.find(find);
+    const recordJobcategories = await JobCategories.find(find).sort({position: "desc"}).limit(20);
     // Chuyển đổi data thành đối tượng có thể thay đổi (plain object).
 
     const arr: any = [];

@@ -7,14 +7,14 @@ const openai = new OpenAI({
 export const evaluate = async (cvs) => {
   try {
     const response = await openai.responses.create({
-      model: "gpt-4.1-nano",
+      model: "gpt-4.1-mini",
       input: [
         {
           role: "system",
           content: [
             {
               type: "input_text",
-              text: 'Bạn là chuyên viên tuyển dụng. Với mỗi file CV, hãy đọc nội dung và so sánh với mô tả công việc được cung cấp.\nTrả về JSON dạng:\n\n[\n  {\n    "filename": tên file CV được xét,\n    "score": số từ 0 đến 100 thể hiện độ phù hợp,\n    "reason": ["..."]\n  }\n]\n\nChỉ trả về JSON, không thêm văn bản khác.Chỉ trả về tiếng việt',
+              text: 'Bạn là chuyên viên tuyển dụng. Với mỗi file CV, hãy đọc nội dung và so sánh với mô tả công việc được cung cấp.\nTrả về JSON dạng:\n\n[\n  {\n    "id": ID CV ,\n    "score": số từ 0 đến 100 thể hiện độ phù hợp,\n    "reason": ["..."]\n  }\n]\n\nChỉ trả về JSON, không thêm văn bản khác.Chỉ trả về tiếng việt',
             },
           ],
         },
@@ -29,7 +29,7 @@ export const evaluate = async (cvs) => {
         },
         {
           role: "user",
-          content: cvs.flatMap(cv => [cv.file])
+          content: cvs
         }
       ],
       text: {
