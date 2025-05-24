@@ -135,7 +135,7 @@ export const index = async function (
     const populateCheck: POPULATE[] = [
       {
         path: "employerId",
-        select: "image companyName address logoCompany",
+        select: "image companyName address logoCompany slug",
         model: Employer,
       },
       {
