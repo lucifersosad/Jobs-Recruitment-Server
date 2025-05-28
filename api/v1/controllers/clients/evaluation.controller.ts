@@ -18,6 +18,7 @@ import {
 import { putObject } from "../../../../helpers/uploadToS3Aws";
 import { callRapidApi } from "../../../../helpers/parseCV";
 import MyCv from "../../../../models/my-cvs.model";
+import Evaluation from "../../../../models/evaluation.model";
 
 // [POST] /api/v1/clients/ai-review
 export const evaluateCV = async function (
@@ -26,21 +27,28 @@ export const evaluateCV = async function (
 ): Promise<void> {
   try {
     const _id: string = req["user"]._id;
+    const idJob = req.body.idJob
 
-    await User.updateOne(
-      {
-        _id,
-      },
-      {
-        skills: req.body
-      }
-    );
+    // const job = await Job.findById(idJob)
+
+    const evaluation = {
+      idUser: _id,
+      idJob
+    }
+
+    const record = new Evaluation(evaluation)
+    await record.save()
 
     res
       .status(200)
-      .json({ code: 200, success: `Đã Lưu Kĩ Năng` });
+      .json({ code: 200, success: `Thành công`, record });
   } catch (error) {
-    console.error("Error in API:", error);
+    console.error("Error in API:", error.message);
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ code: 400, error: error.message });
+      return;
+    }
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+

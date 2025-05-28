@@ -12,28 +12,28 @@ const sectionSchema = new mongoose.Schema(
 
 const evaluationSchema = new mongoose.Schema(
   {
-    idUser: { type: mongoose.Types.ObjectId, ref: "User", required: true },
+    idUser: { type: String, ref: "User", required: true },
     idJob: {
-      type: mongoose.Types.ObjectId,
+      type: String,
       ref: "Job",
       required: [true, "Id công việc không được để trống"],
       validate: {
         validator: (v) => mongoose.Types.ObjectId.isValid(v),
-        message: (props) => `Id công việc không hợp lệ`,
+        message: `Id công việc không hợp lệ`,
       },
     },
-    linkFile: { type: String, required: true },
-    nameFile: { type: String, required: true },
+    linkFile: String,
+    nameFile: String,
 
     overview: {
       score: { type: Number, default: 0 },
       summary: { type: [String], default: [] },
     },
 
-    jobTitle: sectionSchema,
-    skill: sectionSchema,
-    experience: sectionSchema,
-    education: sectionSchema,
+    jobTitle: { type: sectionSchema, default: () => ({}) },
+    skill: { type: sectionSchema, default: () => ({}) },
+    experience: { type: sectionSchema, default: () => ({}) },
+    education: { type: sectionSchema, default: () => ({}) },
 
     deleted: { type: Boolean, default: false },
   },
