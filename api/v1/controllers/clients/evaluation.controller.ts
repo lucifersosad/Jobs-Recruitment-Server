@@ -22,6 +22,8 @@ import Evaluation from "../../../../models/evaluation.model";
 import { decode } from "html-entities";
 import sanitizeHtml from 'sanitize-html';
 import { promptJob } from "../../../../helpers/prompt";
+import axios from "axios";
+import { evaluate } from "../../../../helpers/openAI";
 
 // [POST] /api/v1/clients/ai-review
 export const evaluateCV = async function (
@@ -31,24 +33,41 @@ export const evaluateCV = async function (
   try {
     const _id: string = req["user"]._id;
     const idJob = req.body.idJob
+    const linkFile = req.body.linkFile
+    const nameFile = req.body.nameFile
 
-    const job = await Job.findById(idJob).select("title city.name description detailWorkExperience listTagName presentationLanguage gender ageMin ageMax workExperience level educationalLevel").lean();
+    const job = await Job.findById(idJob).select("title city.name description detailWorkExperience skills listTagName presentationLanguage gender ageMin ageMax workExperience level educationalLevel").lean();
 
-    const data = promptJob(job)
+    const jdText = promptJob(job)
 
-    const evaluation = {
-      idUser: _id,
-      idJob
+    const response = await axios.get(linkFile, {
+      responseType: 'arraybuffer',
+    });
+
+    const cvBuffer = Buffer.from(response.data);
+
+    const base64String = cvBuffer.toString("base64");
+
+    const fileCv = {
+      file_data: `data:application/pdf;base64,${base64String}`,
+      filename: nameFile
     }
+
+    // const evaluation = {
+    //   idUser: _id,
+    //   idJob
+    // }
 
     // const record = new Evaluation(evaluation)
     // await record.save()
 
+    const openAiEvaluation = await evaluate(jdText, fileCv)
+
     res
       .status(200)
-      .json({ code: 200, success: `Thành công`, data });
+      .json({ code: 200, success: `Thành công`, data: openAiEvaluation });
   } catch (error) {
-    console.error("Error in API:", error.message);
+    console.error("Error in API:", error);
     if (error.name === 'ValidationError') {
       res.status(400).json({ code: 400, error: error.message });
       return;

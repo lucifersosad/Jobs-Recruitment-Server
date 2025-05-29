@@ -4,7 +4,49 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export const evaluate = async (cvs) => {
+const SYSTEM_PROMPT = `
+  Bạn là một chuyên gia tuyển dụng nhân sự. 
+  Hãy đánh giá mức độ phù hợp giữa một CV và mô tả công việc được cung cấp, sau đó đưa ra gợi ý cải thiện CV để nâng cao khả năng ứng tuyển thành công. 
+  Trả về kết quả dưới dạng JSON với cấu trúc sau:
+
+  {
+    "overview": {
+      "score": [0-100],
+      "summary": ["..."],
+      "rankingScore": "cao | trung bình | thấp"
+    },
+    "evaluation": {
+      "skill": {
+        "score": [0-100],
+        "matched": ["..."],
+        "unmatched": ["..."],
+        "suggestions": ["..."]
+      },
+      "experience": {
+        "score": [0-100],
+        "matched": ["..."],
+        "unmatched": ["..."],
+        "suggestions": ["..."]
+      },
+      "jobTitle": {
+        "score": [0-100],
+        "matched": ["..."],
+        "unmatched": ["..."],
+        "suggestions": ["..."]
+      },
+      "education": {
+        "score": [0-100],
+        "matched": ["..."],
+        "unmatched": ["..."],
+        "suggestions": ["..."]
+      }
+    }
+  }
+
+  Luôn trả lời bằng tiếng Việt. Chỉ trả về JSON hợp lệ.
+`
+
+export const evaluate = async (jdText, fileCv) => {
   try {
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",
@@ -14,7 +56,7 @@ export const evaluate = async (cvs) => {
           content: [
             {
               type: "input_text",
-              text: 'Bạn là chuyên viên tuyển dụng. Với mỗi file CV, hãy đọc nội dung và so sánh với mô tả công việc được cung cấp.\nTrả về JSON dạng:\n\n[\n  {\n    "id": ID CV ,\n    "score": số từ 0 đến 100 thể hiện độ phù hợp,\n    "reason": ["..."]\n  }\n]\n\nChỉ trả về JSON, không thêm văn bản khác.Chỉ trả về tiếng việt',
+              text: SYSTEM_PROMPT,
             },
           ],
         },
@@ -23,13 +65,23 @@ export const evaluate = async (cvs) => {
           content: [
             {
               type: "input_text",
-              text: "Đây là mô tả công việc:\nVị trí tuyển dụng: Entity Data Management Associate\n\nMô tả công việc: Accountable for accuracy and completeness of entity data in Source, Salesforce and Oracle. Reviewing each request to create / update entity. Verifying required information using authorised sources. Researching to enrich entity records as required by EMS. Managing approvals process. Reviewing DQ dashboard and Duplicates dashboard and action as required. Providing reports and data extracts from source / core systems when required.\n\nYêu cầu công việc: Research skills to be able to find entity information/ data from authorised sources. Ability to perform repetitive tasks with a high degree of accuracy. Strong attention to detail. Strong problem solving skills. English proficient\n\nCấp bậc: Mới Tốt Nghiệp\n\nSố năm kinh nghiệm: Không yêu cầu\n\nKỹ năng: Research Ability, Data Management",
+              text: `Mô tả công việc: ${jdText}`,
             },
           ],
         },
         {
           role: "user",
-          content: cvs
+          content: [
+            {
+              type: "input_text",
+              text: "CV: "
+            },
+            {
+              type: "input_file",
+              file_data: fileCv.file_data,
+              filename: fileCv.filename
+            }
+          ]
         }
       ],
       text: {
