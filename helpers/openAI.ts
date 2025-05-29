@@ -13,7 +13,7 @@ const SYSTEM_PROMPT = `
     "overview": {
       "score": [0-100],
       "summary": ["..."],
-      "rankingScore": "cao | trung bình | thấp"
+      "rankingScore": "Cao | Trung bình | Thấp"
     },
     "evaluation": {
       "skill": {

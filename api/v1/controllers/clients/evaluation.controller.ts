@@ -24,6 +24,66 @@ import sanitizeHtml from 'sanitize-html';
 import { promptJob } from "../../../../helpers/prompt";
 import axios from "axios";
 import { evaluate } from "../../../../helpers/openAI";
+import mongoose from "mongoose";
+import { POPULATE } from "../../interfaces/populate.interface";
+import Employer from "../../../../models/employers.model";
+
+// [GET] /api/v1/clients/ai-review/:id
+export const getEvaluation = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { id } = req.params;
+    const idUser: string = req["user"]._id;
+    const { fullName, avatar = "", email } = req["user"]
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      res.status(400).json({ code: 400, error: "Id không hợp lệ" });
+      return;
+    }
+
+    const populate: POPULATE[] = [
+      {
+        path: "idJob",
+        select: "title salaryMin salaryMax employerId slug",
+        model: Job,
+        populate: [
+          {
+          path: "employerId",
+          select: "companyName logoCompany",
+          model: Employer,
+          }
+        ]
+      }
+    ]
+
+    const evaluation = await Evaluation.findOne({
+      _id: id,
+      idUser,
+      deleted: false
+    }).populate(populate).lean()
+
+    if (!evaluation) {
+      res.status(400).json({ code: 400, error: "Không tìm thấy đánh giá CV" });
+      return;
+    }
+
+    const data = {
+      ...evaluation,
+      fullName,
+      avatar,
+      email
+    }
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Thành công`, data });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 // [POST] /api/v1/clients/ai-review
 export const evaluateCV = async function (

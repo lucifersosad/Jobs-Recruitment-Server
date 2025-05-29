@@ -7,5 +7,6 @@ import fileUpload from "express-fileupload"
 const router : Router = Router();
 const FileUpload = fileUpload()
 
+router.get('/:id', controller.getEvaluation)
 router.post('', controller.evaluateCV)
 export const evaluationRoutes : Router  = router

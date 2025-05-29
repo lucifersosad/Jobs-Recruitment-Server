@@ -28,6 +28,7 @@ const evaluationSchema = new mongoose.Schema(
     overview: {
       score: { type: Number, default: 0 },
       summary: { type: [String], default: [] },
+      rankingScore: { type: String }
     },
 
     jobTitle: { type: sectionSchema, default: () => ({}) },
