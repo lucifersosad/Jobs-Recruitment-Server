@@ -4,7 +4,7 @@ const sectionSchema = new mongoose.Schema(
   {
     score: { type: Number, default: 0 },
     matched: { type: [String], default: [] },
-    unMatched: { type: [String], default: [] },
+    unmatched: { type: [String], default: [] },
     suggestions: { type: [String], default: [] },
   },
   { _id: false }

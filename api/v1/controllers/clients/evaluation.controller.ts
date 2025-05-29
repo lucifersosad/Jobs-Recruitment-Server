@@ -53,19 +53,25 @@ export const evaluateCV = async function (
       filename: nameFile
     }
 
-    // const evaluation = {
-    //   idUser: _id,
-    //   idJob
-    // }
-
-    // const record = new Evaluation(evaluation)
-    // await record.save()
-
     const openAiEvaluation = await evaluate(jdText, fileCv)
+
+    const { overview, evaluation } = openAiEvaluation
+
+    const newEvaluation = {
+      idUser: _id,
+      idJob,
+      linkFile,
+      nameFile,
+      overview,
+      ...evaluation
+    }
+
+    const record = new Evaluation(newEvaluation)
+    await record.save()
 
     res
       .status(200)
-      .json({ code: 200, success: `Thành công`, data: openAiEvaluation });
+      .json({ code: 200, success: `Thành công`, data: record, jdText });
   } catch (error) {
     console.error("Error in API:", error);
     if (error.name === 'ValidationError') {

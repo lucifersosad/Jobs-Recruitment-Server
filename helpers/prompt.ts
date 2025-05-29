@@ -33,12 +33,12 @@ export const promptJob = (job) => {
     const formatSkills = job?.skills?.length > 0 ? job.skills.join(", ") : ""
 
     const lines = [];
-    formatTitle && lines.push(`\nChức danh: ${formatTitle}`)
-    formatdescription && lines.push(`\nMô tả: ${formatdescription}`)
-    formatdetailWorkExperience && lines.push(`\nYêu cầu: ${formatdetailWorkExperience}`)
+    formatTitle && lines.push(`\nChức danh tuyển dụng: ${formatTitle}`)
+    formatdescription && lines.push(`\nMô tả chi tiết:\n ${formatdescription}`)
+    formatdetailWorkExperience && lines.push(`\nYêu cầu công việc:\n ${formatdetailWorkExperience}`)
     formatLevel && lines.push(`\nCấp bậc: ${formatLevel}`)
     formatWorkExperience && lines.push(`\nSố năm kinh nghiệm: ${formatWorkExperience}`)
-    formatEducationalLevel && lines.push(`\nTrình độ học vấn tối thiểu: ${formatEducationalLevel}`)
+    // formatEducationalLevel && lines.push(`\nTrình độ học vấn tối thiểu: ${formatEducationalLevel}`)
     formatSkills && lines.push(`\nKỹ năng: ${formatSkills}`)
 
     return lines.join("\n")

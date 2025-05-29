@@ -5,7 +5,7 @@ const openai = new OpenAI({
 });
 
 const SYSTEM_PROMPT = `
-  Bạn là một chuyên gia tuyển dụng nhân sự. 
+  Bạn là một chuyên gia tuyển dụng AI. 
   Hãy đánh giá mức độ phù hợp giữa một CV và mô tả công việc được cung cấp, sau đó đưa ra gợi ý cải thiện CV để nâng cao khả năng ứng tuyển thành công. 
   Trả về kết quả dưới dạng JSON với cấu trúc sau:
 
