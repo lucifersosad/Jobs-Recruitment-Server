@@ -123,7 +123,7 @@ export const evaluateMyCv = async function (
       },
     ]
 
-    const evaluatedMyCVs = await evaluate(myCVs)
+    const evaluatedMyCVs = await evaluate("", myCVs)
     
     res.json({
       code: 200,
