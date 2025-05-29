@@ -65,6 +65,7 @@ const jobSchema = new mongoose.Schema(
       location: String,
       linkMap: Array,
     },
+    skills: [String],
     status: {
       type: String,
       default: "pending",
