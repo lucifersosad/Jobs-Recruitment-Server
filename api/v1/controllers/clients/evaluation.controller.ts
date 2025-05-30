@@ -131,7 +131,7 @@ export const evaluateCV = async function (
 
     res
       .status(200)
-      .json({ code: 200, success: `Thành công`, data: record, jdText });
+      .json({ code: 200, success: `Thành công`, data: record._id });
   } catch (error) {
     console.error("Error in API:", error);
     if (error.name === 'ValidationError') {

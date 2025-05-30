@@ -10,6 +10,29 @@ import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
 import { S3_CORE } from "../../../../config/constant";
 
+// [GET] /api/v1/client/my-cvs/
+export const getMyCvs = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const idUser = req["user"]._id
+    const cvs = await MyCv.find({
+      idUser
+    }).select("linkFile nameFile")
+
+    if (cvs) {
+      res.status(200).json({ code: 200, data: cvs });
+    } else {
+      res.status(404).json({ code: 404, error: "Không tìm thấy cv" });
+    }
+
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
   req: Request,
@@ -44,7 +67,6 @@ export const getMyCvFile = async function (
 ): Promise<void> {
   try {
     const { id } = req.params;
-    console.log("🚀 ~ id:", id)
 
     const cv = await MyCv.findById(id);
 

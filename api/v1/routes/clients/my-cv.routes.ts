@@ -8,8 +8,9 @@ import * as uploadAws from "../../middlewares/clients/uploadAws.middleware"
 const router : Router = Router();
 const FileUpload = fileUpload()
 
-router.get('/:id', controller.getMyCv)
-router.post('/:id/file', controller.getMyCvFile)
+router.get('/', authMiddlewares.auth, controller.getMyCvs)
+router.get('/:id', authMiddlewares.auth, controller.getMyCv)
+router.post('/:id/file', authMiddlewares.auth, controller.getMyCvFile)
 router.post('/', authMiddlewares.auth, controller.createMyCv)
 router.get('/:id/download', controller.downloadMyCv)
 router.post('/extract', FileUpload, uploadAws.uploadPdf, controller.extractCv)
