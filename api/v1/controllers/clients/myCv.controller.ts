@@ -3,11 +3,12 @@ import { Request, Response } from "express";
 import MyCv from "../../../../models/my-cvs.model";
 import mongoose from "mongoose";
 import { getCvPdfBuffer } from "../../../../helpers/downloadCV";
-import { getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
+import { getFileBase64, getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { callRapidApi } from "../../../../helpers/parseCV";
 import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
+import { S3_CORE } from "../../../../config/constant";
 
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
@@ -52,20 +53,25 @@ export const getMyCvFile = async function (
       return;
     }
 
-    // Tải file từ S3
-    const response = await axios.get(cv.linkFile, {
-      responseType: 'arraybuffer', // để lấy dạng binary
-    });
+    const s3Key = cv.linkFile.replace(`${S3_CORE}/`, "")
 
-    const cvBuffer = Buffer.from(response.data);
+    const base64Data = await getFileBase64(s3Key)
+
+    // // Tải file từ S3
+    // const response = await axios.get(cv.linkFile, {
+    //   responseType: 'arraybuffer', // để lấy dạng binary
+    // });
+
+    // const cvBuffer = Buffer.from(response.data);
     
-    const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer);
+    // const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer);
 
-    const base64Data = cvBuffer.toString("base64");
+    // const base64Data = cvBuffer.toString("base64");
 
     res.json({
       code: 200,
       data: base64Data,
+      s3Key
     });
 
 
@@ -80,7 +86,7 @@ export const getMyCvFile = async function (
     // const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer)
     
     // Trả file PDF dưới dạng blob (buffer)
-    res.send(cvBuffer);
+    // res.send(cvBuffer);
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });

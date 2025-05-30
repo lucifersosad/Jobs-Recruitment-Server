@@ -1,6 +1,7 @@
 import { PutObjectCommand, S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { Readable } from "stream";
 
 const s3Client = new S3Client({
   region: process.env.AWS_S3_REGION,
@@ -61,3 +62,27 @@ export const getSignedDownloadUrl = async (key: string, filename = "CV", expires
     return null;
   }
 };
+
+export const getFileBase64 = async (key: string): Promise<string | null> => {
+  try {
+    const command = new GetObjectCommand({
+      Bucket: process.env.AWS_S3_BUCKET,
+      Key: key,
+    });
+
+    const response = await s3Client.send(command);
+
+    const stream = response.Body as Readable;
+    const chunks: Buffer[] = [];
+
+    for await (const chunk of stream) {
+      chunks.push(chunk as Buffer);
+    }
+
+    const buffer = Buffer.concat(chunks);
+    return buffer.toString('base64');
+  } catch (error) {
+    console.log("🚀 ~ getFileBase64 ~ error:", error);
+    return null;
+  }
+}
