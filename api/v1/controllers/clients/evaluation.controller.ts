@@ -142,3 +142,40 @@ export const evaluateCV = async function (
   }
 };
 
+// [POST] /api/v1/clients/ai-review
+export const checkEvaluateCV = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const idUser: string = req["user"]._id;
+    const idJob = req.body.idJob
+
+    const evaluation = await Evaluation.findOne({
+      idUser,
+      idJob
+    })
+
+    const data = {
+      status: false,
+      id: ""
+    }
+
+    if (evaluation) {
+      data.status = true,
+      data.id = evaluation._id.toString()
+    }
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Thành công`, data });
+  } catch (error) {
+    console.error("Error in API:", error);
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ code: 400, error: error.message });
+      return;
+    }
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+

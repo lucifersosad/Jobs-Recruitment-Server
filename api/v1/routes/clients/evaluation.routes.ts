@@ -9,4 +9,5 @@ const FileUpload = fileUpload()
 
 router.get('/:id', controller.getEvaluation)
 router.post('', controller.evaluateCV)
+router.post('/check', controller.checkEvaluateCV)
 export const evaluationRoutes : Router  = router
