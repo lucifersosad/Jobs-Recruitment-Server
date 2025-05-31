@@ -1,3 +1,10 @@
+export const S3_CORE = "https://s3-utem.s3.ap-southeast-2.amazonaws.com"
+
+export const S3Key = {
+  RESUME: "my-cvs"
+}
+
+
 export enum LevelEnum {
   STUDENT_INTERN = 'student-intern',
   JUST_HAVE_GRADUATED = 'just-have-graduated',

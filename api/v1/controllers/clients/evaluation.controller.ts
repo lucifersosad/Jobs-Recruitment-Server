@@ -93,8 +93,14 @@ export const evaluateCV = async function (
   try {
     const _id: string = req["user"]._id;
     const idJob = req.body.idJob
-    const linkFile = req.body.linkFile
-    const nameFile = req.body.nameFile
+    const linkFile = req.body.url || req.body.linkFile
+    const nameFile = req.body.name || req.body.nameFile
+
+    // res
+    //   .status(200)
+    //   .json({ code: 200, success: `Thành công`, linkFile, nameFile});
+
+    // return
 
     const job = await Job.findById(idJob).select("title city.name description detailWorkExperience skills listTagName presentationLanguage gender ageMin ageMax workExperience level educationalLevel").lean();
 
@@ -131,7 +137,44 @@ export const evaluateCV = async function (
 
     res
       .status(200)
-      .json({ code: 200, success: `Thành công`, data: record, jdText });
+      .json({ code: 200, success: `Thành công`, data: record._id });
+  } catch (error) {
+    console.error("Error in API:", error);
+    if (error.name === 'ValidationError') {
+      res.status(400).json({ code: 400, error: error.message });
+      return;
+    }
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/ai-review
+export const checkEvaluateCV = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const idUser: string = req["user"]._id;
+    const idJob = req.body.idJob
+
+    const evaluation = await Evaluation.findOne({
+      idUser,
+      idJob
+    })
+
+    const data = {
+      status: false,
+      id: ""
+    }
+
+    if (evaluation) {
+      data.status = true,
+      data.id = evaluation._id.toString()
+    }
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Thành công`, data });
   } catch (error) {
     console.error("Error in API:", error);
     if (error.name === 'ValidationError') {
