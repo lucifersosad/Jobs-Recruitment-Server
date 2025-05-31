@@ -241,6 +241,35 @@ export const editMyCv = async function (
     const user = req["user"];
     let id = req.body.idCv
     let newNameCv = req.body.newNameCv;
+    let deleted = req.body.is_deleted
+
+    let is_primary = false;
+
+    if (req.body.is_primary === true) {
+      is_primary = true
+      await MyCv.updateMany(
+        {
+          _id: { $ne: id }
+        },
+        {
+          $set: { is_primary: false },
+        }
+      )
+    }
+
+    if (deleted === true) {
+      await MyCv.updateOne(
+        {
+          _id: id,
+          idUser: user._id,
+        },
+        {
+          $set: { deleted },
+        } 
+      );
+      res.status(200).json({ code: 200, success: "Xóa CV thành công" })
+      return;
+    }
 
     if (!newNameCv.toLowerCase().endsWith('.pdf')) {
       newNameCv = newNameCv + ".pdf"
@@ -252,7 +281,7 @@ export const editMyCv = async function (
         idUser: user._id,
       },
       {
-        $set: { nameFile: newNameCv },
+        $set: { nameFile: newNameCv, is_primary },
       }
     );
 
