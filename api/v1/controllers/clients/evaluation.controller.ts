@@ -93,8 +93,14 @@ export const evaluateCV = async function (
   try {
     const _id: string = req["user"]._id;
     const idJob = req.body.idJob
-    const linkFile = req.body.linkFile
-    const nameFile = req.body.nameFile
+    const linkFile = req.body.url || req.body.linkFile
+    const nameFile = req.body.name || req.body.nameFile
+
+    // res
+    //   .status(200)
+    //   .json({ code: 200, success: `Thành công`, linkFile, nameFile});
+
+    // return
 
     const job = await Job.findById(idJob).select("title city.name description detailWorkExperience skills listTagName presentationLanguage gender ageMin ageMax workExperience level educationalLevel").lean();
 
