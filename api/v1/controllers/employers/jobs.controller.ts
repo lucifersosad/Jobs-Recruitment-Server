@@ -20,6 +20,7 @@ import {
 import Skill from "../../../../models/skills.model";
 import Cv from "../../../../models/cvs.model";
 import RoomChat from "../../../../models/rooms-chat.model";
+import MyCv from "../../../../models/my-cvs.model";
 
 // [GET] /api/v1/employers/jobs/index/
 export const index = async function (
@@ -135,6 +136,7 @@ export const index = async function (
     //Nếu tồn tại thì mới gán vào sort
     if (querySortKey && querySortValue) {
       sort = {
+        _id: -1,
         [querySortKey]: querySortValue,
       };
     }
@@ -899,10 +901,21 @@ export const infoUserProfile = async function (
       result?.dateOfBirth,
     ].filter(Boolean).length;
 
+    //Ghi đè cv
+    const newCvs = await MyCv.find({
+      idUser
+    }).select("nameFile is_primary").sort({_id: -1}).lean()
+
+    const cv = newCvs?.map((item) => ({
+      idFile: item._id,
+      ...item
+    })) || []
+
     // Tạo một đối tượng mới với thông tin người dùng và mức độ xác thực
     const objectNew: { [key: string]: any } = {
       ...result.toObject(),
       authentication_level: count,
+      cv,
     };
 
     // Trả về thông tin người dùng và mức độ xác thực

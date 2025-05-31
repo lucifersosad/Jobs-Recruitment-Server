@@ -61,6 +61,10 @@ const myCvSchema = new mongoose.Schema(
         description: String,
       }
     ],
+    is_primary: {
+      type: Boolean,
+      default: false,
+    },
     status: {
       type: String,
       default: "active",
