@@ -18,8 +18,9 @@ export const getMyCvs = async function (
   try {
     const idUser = req["user"]._id
     const cvs = await MyCv.find({
-      idUser
-    }).select("linkFile nameFile")
+      idUser,
+      deleted: false
+    }).select("linkFile nameFile is_primary")
 
     if (cvs) {
       res.status(200).json({ code: 200, data: cvs });
@@ -46,7 +47,7 @@ export const getMyCv = async function (
       return;
     }
 
-    const cv = await MyCv.findById(id).lean()
+    const cv = await MyCv.findOne({_id: id, deleted: false}).lean()
 
     if (cv) {
       res.status(200).json({ code: 200, data: cv });
@@ -68,7 +69,7 @@ export const getMyCvFile = async function (
   try {
     const { id } = req.params;
 
-    const cv = await MyCv.findById(id);
+    const cv = await MyCv.findOne({_id: id, deleted: false});
 
     if (!cv || !cv.linkFile) {
       res.status(404).json({ message: 'CV not found or missing S3 URL' });

@@ -903,7 +903,8 @@ export const infoUserProfile = async function (
 
     //Ghi đè cv
     const newCvs = await MyCv.find({
-      idUser
+      idUser,
+      deleted: false
     }).select("nameFile is_primary").sort({_id: -1}).lean()
 
     const cv = newCvs?.map((item) => ({
