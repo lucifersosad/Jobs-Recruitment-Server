@@ -115,6 +115,33 @@ export const getMyCvFile = async function (
   }
 };
 
+// [POST] /api/v1/client/my-cvs/upload
+export const uploadMyCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const idUser = req["user"]._id
+    const url = req.body.url;
+    const name = req.body.name;
+    const key = req.body.key;
+
+    const myCv = {
+      linkFile: url,
+      idUser,
+      nameFile: name,
+    }
+
+    const record = new MyCv(myCv);
+    await record.save();
+
+    res.json({ code: 200, success: "Upload thành công", data: record });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 // [POST] /api/v1/clients/my-cvs
 export const createMyCv = async function (
   req: Request,
