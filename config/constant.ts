@@ -1,6 +1,6 @@
 export const S3_CORE = "https://s3-utem.s3.ap-southeast-2.amazonaws.com"
 
-export const S3Key = {
+export const S3KeyFolder = {
   RESUME: "my-cvs"
 }
 

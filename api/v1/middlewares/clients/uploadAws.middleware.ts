@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 
 import { putObject } from "../../../../helpers/uploadToS3Aws";
+import { format } from "date-fns";
+import { convertToSlug } from "../../../../helpers/convertToSlug";
+import { S3KeyFolder } from "../../../../config/constant";
 
 export const uploadPdf = async (
   req: Request,
@@ -9,15 +12,23 @@ export const uploadPdf = async (
 ): Promise<void> => {
   if (req["files"]) {
     try {
+      const user = req["user"]
       const objectFile = req["files"]["file"];
 
       const file = objectFile.data;
+      const name = objectFile.name
       const fileExtentsion = objectFile.mimetype.split("/")[1];
 
-      const fileName = "my-cvs/" + "CV-" + Date.now() + `.${fileExtentsion}`;
+      const slugFullname = convertToSlug(user?.fullName || "User")
+      const timeFormat = format(new Date(), 'dd-MM-yyyy-HHmmss');
 
-      const { url, key } = await putObject(file, fileName, "file");
-      req.body["buffer"] = objectFile.data
+      const s3KeyFile = `cv-${slugFullname}-${timeFormat}.${fileExtentsion}`
+      
+      const s3Key = S3KeyFolder.RESUME + "/" + s3KeyFile;
+
+      const { url, key } = await putObject(file, s3Key, "file");
+
+      req.body["name"] = name
       req.body["url"] = url;
       req.body["key"] = key;
     } catch (error) {
@@ -34,15 +45,21 @@ export const uploadPdfReviewAi = async (
 ): Promise<void> => {
   if (req["files"]) {
     try {
+      const user = req["user"]
       const objectFile = req["files"]["file"];
 
       const file = objectFile.data;
       const name = objectFile.name
       const fileExtentsion = objectFile.mimetype.split("/")[1];
 
-      const keyS3 = "my-cvs/" + "CV-" + Date.now() + `.${fileExtentsion}`;
+      const slugFullname = convertToSlug(user?.fullName || "User")
+      const timeFormat = format(new Date(), 'dd-MM-yyyy-HHmmss');
 
-      const { url, key } = await putObject(file, keyS3, "file");
+      const s3KeyFile = `cv-${slugFullname}-${timeFormat}.${fileExtentsion}`
+      
+      const s3Key = S3KeyFolder.RESUME + "/" + s3KeyFile;
+
+      const { url, key } = await putObject(file, s3Key, "file");
       req.body["url"] = url;
       req.body["key"] = key;
       req.body["name"] = name
