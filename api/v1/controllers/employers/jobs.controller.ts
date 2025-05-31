@@ -132,11 +132,11 @@ export const index = async function (
       queryLimit
     );
     //Tạo một object gán sortKey , sortValue tìm được vào  (Chức Năng Sắp Xếp)
-    let sort = {};
+    let sort: any = {_id: -1,};
     //Nếu tồn tại thì mới gán vào sort
     if (querySortKey && querySortValue) {
       sort = {
-        _id: -1,
+        ...sort,
         [querySortKey]: querySortValue,
       };
     }
