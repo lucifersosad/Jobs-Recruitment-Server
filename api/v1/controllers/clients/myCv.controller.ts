@@ -3,11 +3,35 @@ import { Request, Response } from "express";
 import MyCv from "../../../../models/my-cvs.model";
 import mongoose from "mongoose";
 import { getCvPdfBuffer } from "../../../../helpers/downloadCV";
-import { getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
+import { getFileBase64, getSignedDownloadUrl, putObject } from "../../../../helpers/uploadToS3Aws";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { callRapidApi } from "../../../../helpers/parseCV";
 import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
+import { S3_CORE } from "../../../../config/constant";
+
+// [GET] /api/v1/client/my-cvs/
+export const getMyCvs = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const idUser = req["user"]._id
+    const cvs = await MyCv.find({
+      idUser
+    }).select("linkFile nameFile")
+
+    if (cvs) {
+      res.status(200).json({ code: 200, data: cvs });
+    } else {
+      res.status(404).json({ code: 404, error: "Không tìm thấy cv" });
+    }
+
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 // [GET] /api/v1/client/my-cvs:/id
 export const getMyCv = async function (
@@ -43,7 +67,6 @@ export const getMyCvFile = async function (
 ): Promise<void> {
   try {
     const { id } = req.params;
-    console.log("🚀 ~ id:", id)
 
     const cv = await MyCv.findById(id);
 
@@ -52,20 +75,25 @@ export const getMyCvFile = async function (
       return;
     }
 
-    // Tải file từ S3
-    const response = await axios.get(cv.linkFile, {
-      responseType: 'arraybuffer', // để lấy dạng binary
-    });
+    const s3Key = cv.linkFile.replace(`${S3_CORE}/`, "")
 
-    const cvBuffer = Buffer.from(response.data);
+    const base64Data = await getFileBase64(s3Key)
+
+    // // Tải file từ S3
+    // const response = await axios.get(cv.linkFile, {
+    //   responseType: 'arraybuffer', // để lấy dạng binary
+    // });
+
+    // const cvBuffer = Buffer.from(response.data);
     
-    const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer);
+    // const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer);
 
-    const base64Data = cvBuffer.toString("base64");
+    // const base64Data = cvBuffer.toString("base64");
 
     res.json({
       code: 200,
       data: base64Data,
+      s3Key
     });
 
 
@@ -80,7 +108,7 @@ export const getMyCvFile = async function (
     // const newCvBuffer = await hideDataProfileInCvPdf(cvBuffer)
     
     // Trả file PDF dưới dạng blob (buffer)
-    res.send(cvBuffer);
+    // res.send(cvBuffer);
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -172,6 +200,40 @@ export const extractCv = async function (
     res.json({ code: 200, data: dataExtract });
   } catch (error) {
     console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [PATCH] /api/v1/clients/my-cvs/edit
+export const editMyCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const user = req["user"];
+    let id = req.body.idCv
+    let newNameCv = req.body.newNameCv;
+
+    if (!newNameCv.toLowerCase().endsWith('.pdf')) {
+      newNameCv = newNameCv + ".pdf"
+    }
+
+    await MyCv.updateOne(
+      {
+        _id: id,
+        idUser: user._id,
+      },
+      {
+        $set: { nameFile: newNameCv },
+      }
+    );
+
+    res.status(200).json({ code: 200, success: "Cập nhật CV thành công" });
+  } catch (error) {
+    // Ghi lỗi vào console nếu có lỗi xảy ra
+    console.error("Error in API:", error);
+
+    // Trả về lỗi 500 nếu có lỗi xảy ra
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
