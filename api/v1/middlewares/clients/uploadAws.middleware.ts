@@ -35,7 +35,6 @@ export const uploadPdfReviewAi = async (
   if (req["files"]) {
     try {
       const objectFile = req["files"]["file"];
-      console.log("🚀 ~ objectFile:", objectFile)
 
       const file = objectFile.data;
       const name = objectFile.name

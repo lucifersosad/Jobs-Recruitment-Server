@@ -203,3 +203,37 @@ export const extractCv = async function (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// [PATCH] /api/v1/clients/my-cvs/edit
+export const editMyCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const user = req["user"];
+    let id = req.body.idCv
+    let newNameCv = req.body.newNameCv;
+
+    if (!newNameCv.toLowerCase().endsWith('.pdf')) {
+      newNameCv = newNameCv + ".pdf"
+    }
+
+    await MyCv.updateOne(
+      {
+        _id: id,
+        idUser: user._id,
+      },
+      {
+        $set: { nameFile: newNameCv },
+      }
+    );
+
+    res.status(200).json({ code: 200, success: "Cập nhật CV thành công" });
+  } catch (error) {
+    // Ghi lỗi vào console nếu có lỗi xảy ra
+    console.error("Error in API:", error);
+
+    // Trả về lỗi 500 nếu có lỗi xảy ra
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
