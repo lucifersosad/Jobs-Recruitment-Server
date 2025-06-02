@@ -37,7 +37,7 @@ export const filterQueryEducationalLevelJobs = (query: string): boolean => {
     "high-school",
     "intermediate-level",
     "college",
-    "iniversity",
+    "university",
     "after-university",
     "other",
   ];
