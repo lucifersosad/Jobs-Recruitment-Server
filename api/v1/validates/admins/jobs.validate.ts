@@ -11,7 +11,7 @@ export const createRecord = async (req: Request, res: Response, next: any): Prom
     //Lấy dữ liệu người dùng gửi lên
     const title: string = req.body.title.toString();
     const employerId: string = req.body.employerId.toString();
-    const job_categorie_id: string = req.body.job_categorie_id.toString();
+    const job_categorie_id: string = req.body.job_categorie_id;
     const level: string = req.body.level.toString();
     const jobType: string[] = req.body.jobType.toString();
     const welfare: string[] = req.body.welfare;
@@ -181,7 +181,7 @@ export const editRecord = async (req: Request, res: Response, next: any): Promis
     //Lấy dữ liệu người dùng gửi lên
     const title: string = req.body.title.toString();
     const employerId: string = req.body.employerId.toString();
-    const job_categorie_id: string = req.body.job_categorie_id.toString();
+    const job_categorie_id: string = req.body.job_categorie_id;
     const level: string = req.body.level.toString();
     const jobType: string[] = req.body.jobType.toString();
     const welfare: string[] = req.body.welfare;
@@ -213,7 +213,7 @@ export const editRecord = async (req: Request, res: Response, next: any): Promis
       res.status(400).json({ error: "Vui Lòng Chọn Danh Mục Công Việc!" });
       return;
     }
-
+    
     const category = await filterJobCategory(job_categorie_id)
 
     if (!category) {

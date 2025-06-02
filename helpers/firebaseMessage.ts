@@ -6,7 +6,7 @@ const admin = require("firebase-admin");
 const serviceAccount = {
   type: "service_account",
   project_id: "jobs-employment-utem",
-  private_key_id: "56680d3b925f5b405790291751eed29d249a04d3",
+  private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
   private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
   client_email: "firebase-adminsdk-fbsvc@jobs-employment-utem.iam.gserviceaccount.com",
   client_id: "104760828291472319741",
