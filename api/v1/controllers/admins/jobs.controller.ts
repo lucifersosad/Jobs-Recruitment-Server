@@ -244,6 +244,7 @@ export const create = async function (
         linkMap: req.body.location || "",
       },
       city: req.body.city,
+      skills: req.body?.skills || []
     };
 
     const record = new Job(Jobs);
@@ -382,6 +383,7 @@ export const edit = async function (
         linkMap: req.body.location || "",
       },
       city: req.body.city,
+      skills: req.body?.skills || []
     };
 
     //Lấy ra id công việc muốn chỉnh sửa
