@@ -337,18 +337,29 @@ export const advancedSearch = async function (
       queryLimit = parseInt(req.query.limit.toString());
     }
 
+    function escapeRegex(keyword: string): string {
+      return keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
     //Tìm kiếu theo title công việc
-    if (req.query.keyword) {
+    if (req.query.keyword && req.query.keyword.toString().trim() !== "") {
       //Lấy ra key word của người dùng gửi lên
       const keyword: string = req.query.keyword.toString();
+      //Escape giữ ký tự đặc biệt
+      const escapedKeyword = escapeRegex(keyword);
       //Chuyển keyword về dạng regex
-      const keywordRegex: RegExp = new RegExp(keyword, "i");
+      const keywordRegex: RegExp = new RegExp(escapedKeyword, "i");
       //Chuyển tất cả sang dạng slug
-      const unidecodeSlug: string = convertToSlug(keyword);
+      const unidecodeSlug: string = convertToSlug(escapedKeyword);
       //Chuyển slug vừa tạo qua regex
       const slugRegex: RegExp = new RegExp(unidecodeSlug, "i");
       //Tạo ra một mảng find có các tiêu chí tìm một là tìm theo title nếu không có tìm theo slug
-      find["$or"] = [{ title: keywordRegex }, { keyword: slugRegex }];
+      find["$or"] = [
+        { title: keywordRegex }, 
+        { slug: slugRegex }, 
+        { listTagName: { $regex: keywordRegex} },
+        { listTagSlug: { $regex: slugRegex } },
+      ];
     }
     //tìm kiếm theo loại danh mục công việc
     if (req.query.job_categories) {
