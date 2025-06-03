@@ -10,9 +10,9 @@ export enum LevelEnum {
   JUST_HAVE_GRADUATED = 'just-have-graduated',
   STAFF = 'staff',
   TEAMLEADER_SUPERVISOR = 'teamleader-supervisor',
-  MANAGE = 'manage',
+  MANAGER = 'manager',
   VICE_DIRECTOR = 'vice-director',
-  GENERAL_MANAGER = 'general-manager',
+  GENERAL_DIRECTOR = 'general-director',
 }
 
 export const LevelLabelMapping = {
@@ -20,9 +20,9 @@ export const LevelLabelMapping = {
   [LevelEnum.JUST_HAVE_GRADUATED]: "Mới Tốt Nghiệp",
   [LevelEnum.STAFF]: "Nhân Viên",
   [LevelEnum.TEAMLEADER_SUPERVISOR]: "Trưởng Nhóm/Giám Sát",
-  [LevelEnum.MANAGE]: "Quản Lý",
+  [LevelEnum.MANAGER]: "Quản Lý",
   [LevelEnum.VICE_DIRECTOR]: "Phó Giám Đốc",
-  [LevelEnum.GENERAL_MANAGER]: "Tổng Giám Đốc",
+  [LevelEnum.GENERAL_DIRECTOR]: "Tổng Giám Đốc",
 };
 
 export enum WorkExperienceEnum {
@@ -38,6 +38,7 @@ export enum WorkExperienceEnum {
 
 export const WorkExperienceLabelMapping = {
   [WorkExperienceEnum.NO_REQUIRED]: "Không yêu cầu",
+  [WorkExperienceEnum.UNDER_ONE_YEAR]: "Dưới 1 năm",
   [WorkExperienceEnum.ONE_YEAR]: "1 năm",
   [WorkExperienceEnum.TWO_YEAR]: "2 năm",
   [WorkExperienceEnum.THREE_YEAR]: "3 năm",
