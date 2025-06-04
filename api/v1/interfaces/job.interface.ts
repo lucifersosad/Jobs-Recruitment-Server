@@ -35,4 +35,5 @@ export interface Find {
     city?: string[],
     $or?: any,
     slug?: any,
+    skills?: any
   }

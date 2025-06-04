@@ -337,18 +337,29 @@ export const advancedSearch = async function (
       queryLimit = parseInt(req.query.limit.toString());
     }
 
+    function escapeRegex(keyword: string): string {
+      return keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
     //Tìm kiếu theo title công việc
-    if (req.query.keyword) {
+    if (req.query.keyword && req.query.keyword.toString().trim() !== "") {
       //Lấy ra key word của người dùng gửi lên
       const keyword: string = req.query.keyword.toString();
+      //Escape giữ ký tự đặc biệt
+      const escapedKeyword = escapeRegex(keyword);
       //Chuyển keyword về dạng regex
-      const keywordRegex: RegExp = new RegExp(keyword, "i");
+      const keywordRegex: RegExp = new RegExp(escapedKeyword, "i");
       //Chuyển tất cả sang dạng slug
-      const unidecodeSlug: string = convertToSlug(keyword);
+      const unidecodeSlug: string = convertToSlug(escapedKeyword);
       //Chuyển slug vừa tạo qua regex
       const slugRegex: RegExp = new RegExp(unidecodeSlug, "i");
       //Tạo ra một mảng find có các tiêu chí tìm một là tìm theo title nếu không có tìm theo slug
-      find["$or"] = [{ title: keywordRegex }, { keyword: slugRegex }];
+      find["$or"] = [
+        { title: keywordRegex }, 
+        { slug: slugRegex }, 
+        { listTagName: { $regex: keywordRegex} },
+        { listTagSlug: { $regex: slugRegex } },
+      ];
     }
     //tìm kiếm theo loại danh mục công việc
     if (req.query.job_categories) {
@@ -873,3 +884,161 @@ export const jobByCompany = async function (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// [GET] /api/v1/client/jobs/advancedSearchV2
+// export const advancedSearchV2 = async function (req: Request, res: Response): Promise<void> {
+//   try {
+//     let querySortKey: string = req.query.sort_key?.toString() || "title";
+//     let querySortValue: number = req.query.sort_value?.toString() === "desc" ? -1 : 1;
+//     let queryPage: number = parseInt(req.query.page?.toString() || "1");
+//     let queryLimit: number = parseInt(req.query.limit?.toString() || "20");
+//     let select: string = req.query.select?.toString() || "-email -createdBy";
+
+//     // Tạo filter cho các trường
+//     const find: any = {
+//       deleted: false,
+//       status: "active",
+//       end_date: { $gte: new Date() },
+//     };
+
+//     if (req.query.job_categories) {
+//       const categories = req.query.job_categories.toString().split(",");
+//       find["job_categorie_id"] = { $in: categories };
+//     }
+
+//     if (req.query.job_type) find["jobType"] = req.query.job_type.toString();
+//     if (req.query.job_level) find["level"] = req.query.job_level.toString();
+//     if (req.query.salary_min && req.query.salary_max) {
+//       find["salaryMax"] = {
+//         $gte: parseInt(req.query.salary_min.toString()),
+//         $lte: parseInt(req.query.salary_max.toString()),
+//       };
+//     }
+//     if (req.query.workExperience) find["workExperience"] = req.query.workExperience.toString();
+//     if (req.query.city) find["city.slug"] = req.query.city.toString();
+
+//     const matchStage: any = { $match: find };
+//     const aggregate: any[] = [matchStage];
+
+//     // Xử lý tìm kiếm theo từ khóa nếu có
+//     if (req.query.keyword?.toString().trim()) {
+//       const keyword = req.query.keyword.toString();
+//       const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+//       const unidecodeSlug = convertToSlug(escapedKeyword);
+//       const slugRegex = new RegExp(unidecodeSlug, "i");
+
+//       aggregate.push(
+//         {
+//           $match: {
+//             listTagSlug: {
+//               $elemMatch: { $regex: unidecodeSlug, $options: "i" },
+//             },
+//           },
+//         },
+//         {
+//           $addFields: {
+//             priority: {
+//               $cond: [
+//                 { $in: [unidecodeSlug, "$listTagSlug"] },
+//                 0,
+//                 {
+//                   $cond: [
+//                     {
+//                       $gt: [
+//                         {
+//                           $size: {
+//                             $filter: {
+//                               input: "$listTagSlug",
+//                               as: "tag",
+//                               cond: {
+//                                 $regexMatch: {
+//                                   input: "$$tag",
+//                                   regex: `^${slugRegex.source}`,
+//                                   options: "i",
+//                                 },
+//                               },
+//                             },
+//                           },
+//                         },
+//                         0,
+//                       ],
+//                     },
+//                     1,
+//                     2,
+//                   ],
+//                 },
+//               ],
+//             },
+//           },
+//         },
+//         { $sort: { priority: 1, [querySortKey]: querySortValue } }
+//       );
+//     } else {
+//       aggregate.push({ $sort: { [querySortKey]: querySortValue } });
+//     }
+
+//     aggregate.push(
+//       { $skip: (queryPage - 1) * queryLimit },
+//       { $limit: queryLimit },
+//       {
+//         $project: select
+//           .split(" ")
+//           .filter(Boolean)
+//           .reduce((acc, field) => {
+//             if (field.startsWith("-")) acc[field.slice(1)] = 0;
+//             else acc[field] = 1;
+//             return acc;
+//           }, {} as any),
+//       }
+//     );
+
+//     // populate
+//     const aggregateWithLookup = [
+//       ...aggregate,
+//       {
+//         $lookup: {
+//           from: "employers",
+//           localField: "employerId",
+//           foreignField: "_id",
+//           as: "employerId",
+//         },
+//       },
+//       { $unwind: { path: "$employerId", preserveNullAndEmptyArrays: true } },
+//       {
+//         $lookup: {
+//           from: "jobcategories",
+//           localField: "job_categorie_id",
+//           foreignField: "_id",
+//           as: "job_categorie_id",
+//         },
+//       },
+//       { $unwind: { path: "$job_categorie_id", preserveNullAndEmptyArrays: true } },
+//       {
+//         $lookup: {
+//           from: "cvs",
+//           localField: "listProfileRequirement",
+//           foreignField: "_id",
+//           as: "listProfileRequirement",
+//         },
+//       },
+//     ];
+
+//     // Tổng số record cho phân trang
+//     const countRecord = await Job.countDocuments(find);
+//     const countJobs = Math.round(countRecord / queryLimit);
+
+//     const records = await Job.aggregate(aggregateWithLookup);
+//     const convertData = records.map((record) => ({
+//       ...record,
+//       companyName: record["employerId"]?.companyName,
+//       companyImage: record["employerId"]?.image,
+//       logoCompany: record["employerId"]?.logoCompany,
+//       slugCompany: record["employerId"]?.slug,
+//     }));
+//     const dataEncrypted = encryptedData(convertData);
+//     res.status(200).json({ data: dataEncrypted, code: 200, countJobs });
+//   } catch (error) {
+//     console.error("Error in API:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };

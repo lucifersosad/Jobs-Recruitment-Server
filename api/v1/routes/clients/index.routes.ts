@@ -4,7 +4,6 @@ import { employerRoutes } from "./employer.routes";
 import { jobRoutes } from "./job.routes";
 import { jobCategoriesRoutes } from "./jobCategories.routes";
 import { usersRoutes } from "./user-user.routes";
-import { skillRoutes } from "./skill.routes";
 import * as authMiddlewares from "../../middlewares/clients/auth.middleware"
 import { chatRoutes } from "./chat.routes";
 import { cvRoutes } from "./cv.routes";
@@ -18,7 +17,6 @@ const routesClientVersion1 = (app: Express): void => {
     app.use(version + "/users", usersRoutes);
     app.use(version +"/jobs",jobRoutes);
     app.use(version +"/job-categories",jobCategoriesRoutes)
-    app.use(version +"/skills",skillRoutes)
     app.use(version +"/chat",authMiddlewares.auth,chatRoutes)
     app.use(version +"/cvs",authMiddlewares.auth,cvRoutes)
     app.use(version +"/post",authMiddlewares.auth,postRoutes)
