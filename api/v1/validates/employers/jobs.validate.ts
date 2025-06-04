@@ -8,7 +8,7 @@ import {
   filterQueryEducationalLevelJobs,
   filterQueryLevelJobs,
   filterQueryWorkExperienceJobs,
-} from "../../../../helpers/filterQuery Validate";
+} from "../../../../helpers/filterQueryValidate";
 import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
 import filterJobCategory from "../../../../helpers/filterJobCategory";

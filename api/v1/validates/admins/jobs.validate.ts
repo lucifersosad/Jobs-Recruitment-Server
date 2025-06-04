@@ -4,7 +4,7 @@ import {
   filterQueryEducationalLevelJobs,
   filterQueryLevelJobs,
   filterQueryWorkExperienceJobs,
-} from "../../../../helpers/filterQuery Validate";
+} from "../../../../helpers/filterQueryValidate";
 import filterJobCategory from "../../../../helpers/filterJobCategory";
 export const createRecord = async (req: Request, res: Response, next: any): Promise<void> => {
   try {
