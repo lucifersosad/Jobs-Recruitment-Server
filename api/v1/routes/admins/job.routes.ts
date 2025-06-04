@@ -18,5 +18,6 @@ router.patch(
 router.patch("/change-multi", controller.changeMulti);
 //Xóa mềm dữ liệu
 router.delete("/delete/:id", controller.deleteJobs);
+router.post("/seed-tags", controller.seedTags);
 
 export const jobRoutes: Router = router;

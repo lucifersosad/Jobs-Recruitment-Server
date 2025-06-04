@@ -483,3 +483,51 @@ export const changeMulti = async function (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// [POST] /api/v1/admin/jobs/seed-tags
+export const seedTags = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const permissions = req["userAdmin"].permissions;
+    if (!permissions.includes("jobs-edit")) {
+      res
+        .status(401)
+        .json({ error: "Bạn Không Có Quyền Thực Hiện Thao Tác Này!" });
+      return;
+    }
+    
+
+    const jobs = await Job.find({_id: "67529b2eed63c2548973bdf4"})
+
+    for (let job of jobs) {
+      const skills = job.skills;
+
+      let listTagName = [
+        ...skills
+      ];
+      console.log("🚀 ~ listTagName:", listTagName)
+
+      const listSlugTag = listTagName.map((item) =>`${convertToSlug(item) }`)
+
+      const recordNew: JobInterface.Find = {
+        listTagName: listTagName,
+        listTagSlug: listSlugTag,
+      };
+
+      //Lấy ra id công việc muốn chỉnh sửa
+      const id: string = job._id.toString();
+      //Update công việc đó!
+      await Job.updateOne({ _id: id }, { $set: recordNew });
+    }
+    
+    res
+      .status(200)
+      .json({ success: "Cập Nhật Tag Tất Cả Công Việc Thành Công!", code: 200 });
+  } catch (error) {
+    //Thông báo lỗi 500 đến người dùng server lỗi.
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
