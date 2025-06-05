@@ -14,4 +14,27 @@ export const timeAgo = (date: Date): string => {
     const years = Math.floor(months / 12);
     return `${years} năm trước`;
   };
+
+  export const timeDuration = (startMonthStr, startYearStr, endMonthStr, endYearStr) => {
+  const startMonth = parseInt(startMonthStr);
+  const startYear = parseInt(startYearStr);
+
+  const now = new Date();
+  const endMonth = endMonthStr ? parseInt(endMonthStr) : now.getMonth() + 1; // getMonth trả 0-11
+  const endYear = endYearStr ? parseInt(endYearStr) : now.getFullYear();
+
+  const start = new Date(startYear, startMonth - 1);
+  const end = new Date(endYear, endMonth - 1);
+
+  let years = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth() - start.getMonth();
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return `${years} năm ${months} tháng`;
+};
+
   

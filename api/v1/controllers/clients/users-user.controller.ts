@@ -123,7 +123,7 @@ export const login = async function (
     const user = await User.findOne({
       email: email,
       password: md5(password),
-    });
+    }).select("-embedding");
     //Nếu không đúng thì return tài khoản mật khẩu ko đúng
     if (!user) {
       res
@@ -155,7 +155,7 @@ export const forgotPassword = async function (
     const user = await User.findOne({
       email: email,
       deleted: false,
-    });
+    }).select("-embedding");
     //Nếu không đúng thì return tài khoản ko đúng
     if (!user) {
       res.status(401).json({ code: 401, error: "Tài Khoản Không Đúng!" });
@@ -254,7 +254,7 @@ export const resetPassword = async function (
     const user = await User.findOne({
       email: email,
       deleted: false,
-    });
+    }).select("-embedding");
     //Nếu user không có thì in ra tài khoản không hợp lệ
     if (!user) {
       res.status(401).json({ error: "Tài Khoản Không Hợp Lệ!" });
@@ -326,7 +326,7 @@ export const authen = async function (
       token: token,
     })
       .lean()
-      .select("-password -token");
+      .select("-password -token -embedding");
     //Nếu không đúng thì return tài khoản mật khẩu ko đúng
     if (!userClient) {
       res.status(401).json({ error: "Xác Thực Thất Bại!" });

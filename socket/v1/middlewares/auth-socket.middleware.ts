@@ -9,7 +9,7 @@ const findUserOrEmployer = async (token: string, role: string) => {
   }
   // Tìm user từ token
   if (role === Role.CLIENT) {
-    const user = await User.findOne({ token }).select("-password -token");
+    const user = await User.findOne({ token }).select("-password -token -embedding");
     await User.updateOne({ token: token }, { statusOnline: true });
     return user;
   }

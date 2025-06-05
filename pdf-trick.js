@@ -176,7 +176,7 @@ async function writePdfTextContent(pdfBuffer, outputTextPath) {
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const content = await page.getTextContent();
-    const pageText = content.items.map(item => item.str).join('~~~~');
+    const pageText = content.items.map(item => item.str).join('\n');
     fullText += `--- Page ${i} ---\n${pageText}\n\n`;
   }
 
@@ -229,12 +229,12 @@ async function highlightPhonesAndEmailsInPdf(inputPath, outputPath) {
 
 
 // 👉 Chạy script
-const input = path.resolve(__dirname, 'input7.pdf');
+const input = path.resolve(__dirname, 'static_data/input4.pdf');
 const output = path.resolve(__dirname, 'output_highlighted.pdf');
 const textOutput = path.resolve(__dirname, 'content.txt');
 
 (async () => {
   const pdfBuffer = fs.readFileSync(input);
   await writePdfTextContent(pdfBuffer, textOutput);
-  await highlightPhonesAndEmailsInPdf(input, output);
+  // await highlightPhonesAndEmailsInPdf(input, output);
 })();
