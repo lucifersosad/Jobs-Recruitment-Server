@@ -87,7 +87,10 @@ const userSchema = new mongoose.Schema(
         updatedAt: Date,
       },
     ],
-
+    yoe: {
+      type: Number, 
+      default: 0,
+    },
     //profile
     educations: [
       {
@@ -123,6 +126,12 @@ const userSchema = new mongoose.Schema(
         description: String,
       }
     ],
+    embedding: {
+      type: [Number],
+    },
+    brief_embedding: {
+      type: String,
+    }
   },
   {
     timestamps: true,

@@ -55,7 +55,7 @@ export const register = async function (
   const checkEmail = await User.findOne({
     email: req.body.email,
     deleted: false,
-  });
+  }).select("-embedding");
 
   //Nếu email đã có trong database trả về lỗi
   if (checkEmail) {
@@ -254,7 +254,7 @@ export const changePassword = async function (
     const user = await User.findOne({
       email: email,
       password: md5(password),
-    });
+    }).select("-embedding");
     //Nếu không đúng thì return tài khoản mật khẩu ko đúng
     if (!user) {
       res.status(401).json({ code: 401, error: "Sai mật khẩu hiện tại!" });
@@ -600,7 +600,7 @@ export const saveJob = async function (
     const exitedJob = await User.findOne({
       "_id": user._id,
       "listJobSave.idJob": idJob,
-    });
+    }).select("-embedding");
     if (exitedJob) {
       res.status(401).json({ code: 401, error: "Công việc đã được lưu trước đó!" });
       return;
