@@ -102,3 +102,15 @@ export const evaluate = async (jdText, fileCv) => {
     throw error
   }
 };
+
+export const getEmbedding = async (text) => {
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-ada-002",
+    input: text,
+    encoding_format: "float",
+  });
+
+  console.log("🚀 ~ getEmbedding ~ embedding:", embedding)
+  return embedding.data[0].embedding
+}
+

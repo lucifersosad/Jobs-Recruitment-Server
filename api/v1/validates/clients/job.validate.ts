@@ -23,7 +23,7 @@ export const userViewJob = async function (
     });
     return;
   }
-  const user = await User.findById({ _id: idUser });
+  const user = await User.findById({ _id: idUser }).select("_id");
   if (!user) {
     res.status(401).json({
       code: 401,

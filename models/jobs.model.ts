@@ -84,6 +84,12 @@ const jobSchema = new mongoose.Schema(
       slug: "title",
       unique: true,
     },
+    embedding: {
+      type: [Number],
+    },
+    brief_embedding: {
+      type: String,
+    },
     createdBy: {
       account_id: String,
       createdAt: {

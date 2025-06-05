@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
 import Job from "../../../../models/jobs.model";
+import User from "../../../../models/user.model";
+import { buildJobDescription, buildUserProfileDescription, promptJobEmbedding, promptUser } from "../../../../helpers/prompt";
+import JobCategories from "../../../../models/jobCategories.model";
+import { getEmbedding } from "../../../../helpers/openAI";
 
 const generateRandomPhone = () => {
   const prefix = [
@@ -162,4 +166,54 @@ export const seedData = async (req: Request, res: Response): Promise<void> => {
 
   res.status(200).json({ data: "OK", code: 200 });
   return;
+};
+
+export const seedJobEmbedding = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const jobs = await Job
+    .find()
+    .populate({ path: "job_categorie_id", select: "title", model: JobCategories },)
+    .select("job_categorie_id workExperience level gender city skills")
+
+    let textJobs = []
+    for (let job of jobs) {
+      const textJob = buildJobDescription(job)
+      const embedding = await getEmbedding(textJob)
+      await Job.updateOne({_id: job._id}, { $set: { embedding, brief_embedding: textJob } })
+      textJobs.push(textJob)
+    }
+
+    const data = await Job.find().select("title brief_embedding")
+
+    res.status(200).json({ data: data, code: 200 });
+    return;
+  } catch (error) {
+    console.log("🚀 ~ seedUserEmbedding ~ error:", error)
+    res.status(500).json({ code: 500, error: error });
+  }
+};
+
+export const seedUserEmbedding = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const users = await User
+    .find()
+    .populate({ path: "job_categorie_id", select: "title", model: JobCategories },)
+    .select("fullName address.city educationalLevel yoe job_categorie_id jobTitle experiences educations skills embedding gender")
+
+    let textUsers = []
+    for (let user of users) {
+      const textUser = buildUserProfileDescription(user)
+      const embedding = await getEmbedding(textUser)
+      await User.updateOne({_id: user._id}, { $set: { embedding, brief_embedding: textUser } })
+      textUsers.push(textUser)
+    }
+
+    const data = await User.find()
+
+    res.status(200).json({ data, code: 200 });
+    return;
+  } catch (error) {
+    console.log("🚀 ~ seedUserEmbedding ~ error:", error)
+    res.status(500).json({ code: 500, error: error });
+  }
 };

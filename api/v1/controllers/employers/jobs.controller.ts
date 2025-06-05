@@ -735,7 +735,7 @@ export const userPreviewJob = async function (
     const populateCheck: POPULATE[] = [
       {
         path: "listProfileViewJob.idUser",
-        select: " -password -token -status -deleted -createdAt -updatedAt",
+        select: " -password -token -status -deleted -createdAt -updatedAt -embedding",
         model: User,
         populate: [
           {
@@ -886,8 +886,8 @@ export const infoUserProfile = async function (
 
     // Chọn các trường cần hiển thị dựa trên việc người dùng đã mở liên hệ hay chưa
     const defaultSelect = isOpenedUser
-      ? "-password -token -status -deleted -createdAt -updatedAt"
-      : "-password -token -status -deleted -createdAt -updatedAt -email -phone";
+      ? "-password -token -status -deleted -createdAt -updatedAt -embedding"
+      : "-password -token -status -deleted -createdAt -updatedAt -embedding -email -phone";
 
     // Tìm thông tin người dùng và populate các trường cần thiết
     const result = await User.findOne({ _id: idUser })
@@ -978,7 +978,7 @@ export const followUserJob = async function (
     const populateCheck: POPULATE[] = [
       {
         path: "listProfileViewJob.idUser",
-        select: " -password -token -status -deleted -createdAt -updatedAt",
+        select: " -password -token -status -deleted -createdAt -updatedAt -embedding",
         model: User,
         populate: [
           {
@@ -1058,3 +1058,58 @@ export const deleteFollowProfile = async function (
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+export const recommendProfile = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const { id } = req.params;
+
+    // Lấy thông tin công việc
+    const job = await Job.findOne({ _id: id });
+    if (!job || !job.embedding) {
+      res.status(404).json({ message: "Không tìm thấy job hoặc thiếu embedding." });
+      return
+    }
+
+    const embedding = job.embedding;
+
+    const aggregate: any = [
+      {
+        $vectorSearch: {
+          index: "default", // Tên index bạn đặt
+          path: "embedding",
+          queryVector: embedding,
+          numCandidates: 100, // Tối đa số ứng viên xem xét
+          limit: 6, // Trả về 10 ứng viên tốt nhất
+          filter: {
+            $and: [
+              { experience: { $gte: job.workExperience || 0 } },
+              { location: job.address },
+              { skills: { $in: job.skills || [] } }
+            ]
+          }
+        }
+      },
+      {
+        $project: {
+          _id: 1,
+          brief_embedding: 1,
+          fullName: 1,
+          experiences: 1,
+          skills: 1,
+          score: { $meta: "vectorSearchScore" }
+        }
+      }
+    ]
+
+    // Vector search
+    const result = await User.aggregate(aggregate);
+
+    res.status(200).json({ code: 200, brief_job: job?.brief_embedding, candidates: result });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}

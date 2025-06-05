@@ -10,7 +10,7 @@ export const auth =async function (req: Request, res: Response,next : any): Prom
         //Lấy token vừa tìm được check xem trong database có dữ liệu không nếu có thì không lấy ra password với token
         const user = await User.findOne({
             token: token
-        }).select("-password -token");
+        }).select("-password -token -embedding");
         //Nếu token không khớp databse trả ra dữ liệu người dùng không hợp lệ
         if (!user) {
              res.status(402).json({ error: "Dữ Liệu Người Dùng Không Hợp Lệ!",code:402 });
