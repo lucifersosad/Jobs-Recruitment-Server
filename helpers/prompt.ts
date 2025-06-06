@@ -105,6 +105,55 @@ export const promptUser = (user) => {
   return lines.join('');
 };
 
+export const promptJobEmbeddingV2 = (job) => {
+  const { title, description, detailWorkExperience, skills } = job
+
+  const formatdescription= clean(description)
+  const formatdetailWorkExperience = clean(detailWorkExperience)
+  const formatSkills = skills?.length > 0 ? skills.join(", ") : ""
+
+  const lines = []
+
+  title && lines.push(`\nChúng tôi đang tuyển dụng vị trí: ${title}`)
+  formatdescription && lines.push(`Mô tả: ${formatdescription}`)
+  formatdetailWorkExperience && lines.push(`Yêu cầu công việc: ${formatdetailWorkExperience}`)
+  formatSkills && lines.push(`Kĩ năng: ${formatSkills}`)
+
+  return lines.join("\n")
+};
+
+export const promptUserEmbeddingV2 = (user) => {
+  const {
+    job_categorie_id,
+    jobTitle,
+    skills,
+    experiences,
+    educations,
+  } = user;
+
+  const formatJobCategorie = job_categorie_id?.title || "";
+  const formatSkills = skills?.length > 0 ? skills.map(item => item?.title).join(", ") : "";
+  const formatExperiences = experiences?.length > 0
+    ? experiences.map(item =>
+        `${item?.position_name} tại ${item?.company_name}`
+      ).join("; ")
+    : ""
+  const formatEducations = educations?.length > 0
+    ? educations.map(item => `chuyên ngành ${item.title} tại ${item.school_name}`).join("; ")
+    : "";
+
+  const parts = [];
+
+  jobTitle && parts.push(`Ứng viên có chức danh: ${jobTitle}`)
+  formatJobCategorie && parts.push(`Ngành nghề: ${formatJobCategorie}`)
+  formatExperiences && parts.push(`Kinh nghiệm làm việc: ${formatExperiences}`);
+  formatEducations && parts.push(`Học vấn: ${formatEducations}`);
+  formatSkills && parts.push(`Kỹ năng chuyên môn: ${formatSkills}`);
+
+  return parts.join("\n");
+};
+
+
 const buildJobEmbeddingText = (job) => {
   return `
     Chúng tôi đang tuyển dụng vị trí: ${job.title || "Chưa xác định"}.

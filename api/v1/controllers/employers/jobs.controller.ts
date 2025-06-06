@@ -157,14 +157,14 @@ export const index = async function (
     if (req.query.findAll) {
       records = await Job.find(find)
         .sort(sort)
-        .select("")
+        .select("-embedding")
         .populate(populateCheck);
     } else {
       records = await Job.find(find)
         .sort(sort)
         .limit(objectPagination.limitItem || 4)
         .skip(objectPagination.skip || 0)
-        .select("")
+        .select("-embedding")
         .populate(populateCheck);
     }
 

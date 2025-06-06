@@ -460,11 +460,11 @@ export const changeJobSuggestions = async function (
     const {
       gender,
       job_categorie_id,
-      skill_id,
       yearsOfExperience,
       desiredSalary,
       workAddress,
       dateOfBirth,
+      skills,
     } = req.body;
 
     await User.updateOne(
@@ -474,11 +474,11 @@ export const changeJobSuggestions = async function (
       {
         gender,
         job_categorie_id,
-        skill_id,
         yearsOfExperience,
         desiredSalary,
         workAddress,
         dateOfBirth,
+        skills,
       }
     );
     res
