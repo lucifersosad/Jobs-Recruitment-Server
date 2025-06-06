@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
 
     workAddress: Array,
     phone: String,
+    level: String,
     educationalLevel: String,
     schoolName: String,
     foreignLanguage: String,

@@ -350,6 +350,8 @@ export const authen = async function (
       job_categorie_id: userClient.job_categorie_id || "",
       skill_id: userClient.skill_id || "",
       yearsOfExperience: userClient.yearsOfExperience || "",
+      educationalLevel: userClient.educationalLevel || "",
+      level: userClient.level || "",
       desiredSalary: userClient.desiredSalary || "",
       workAddress: userClient.workAddress || "",
       emailSuggestions: userClient.emailSuggestions || [],
@@ -464,7 +466,8 @@ export const changeJobSuggestions = async function (
       desiredSalary,
       workAddress,
       dateOfBirth,
-      skills,
+      educationalLevel,
+      level,
     } = req.body;
 
     await User.updateOne(
@@ -478,7 +481,8 @@ export const changeJobSuggestions = async function (
         desiredSalary,
         workAddress,
         dateOfBirth,
-        skills,
+        educationalLevel,
+        level,
       }
     );
     res
