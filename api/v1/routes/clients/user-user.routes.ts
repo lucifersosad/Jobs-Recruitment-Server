@@ -40,5 +40,6 @@ router.post('/upload-image', FileUpload, controller.uploadImage)
 router.post('/update-education', authMiddlewares.auth, controller.updateEducation)
 router.post('/update-experience', authMiddlewares.auth, controller.updateExperience)
 router.post('/update-skill', authMiddlewares.auth, controller.updateSkill)
+router.post('/update-profile', authMiddlewares.auth, controller.updateProfile)
 router.post('/upload-cv-2', authMiddlewares.auth, FileUpload, uploadAws.uploadPdf, controller.uploadCv2)
 export const usersRoutes : Router  = router
