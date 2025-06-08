@@ -1082,14 +1082,18 @@ export const recommendProfile = async function (
           path: "embedding",
           queryVector: embedding,
           numCandidates: 100, // Tối đa số ứng viên xem xét
-          limit: 6, // Trả về 10 ứng viên tốt nhất
+          limit: 3, // Trả về 10 ứng viên tốt nhất
           filter: {
-            $and: [
-              { experience: { $gte: job.workExperience || 0 } },
-              { location: job.address },
-              { skills: { $in: job.skills || [] } }
-            ]
-          }
+            job_categorie_id: job.job_categorie_id[1]
+          },
+          
+          // filter: {
+          //   $and: [
+          //     { experience: { $gte: job.workExperience || 0 } },
+          //     { location: job.address },
+          //     { skills: { $in: job.skills || [] } }
+          //   ]
+          // }
         }
       },
       {
@@ -1097,8 +1101,8 @@ export const recommendProfile = async function (
           _id: 1,
           brief_embedding: 1,
           fullName: 1,
-          experiences: 1,
-          skills: 1,
+          // experiences: 1,
+          // skills: 1,
           score: { $meta: "vectorSearchScore" }
         }
       }
