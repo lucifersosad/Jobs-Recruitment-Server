@@ -488,7 +488,7 @@ export const infoJob = async (req: Request, res: Response): Promise<void> => {
 
     const record = await Job.findOne(query)
       .populate(populateCheck)
-      .select("-employerId");
+      .select("-employerId -embedding");
     if (status && record) {
       record.listProfileRequirement = record.listProfileRequirement.filter(
         (item) => item.status === status
@@ -960,7 +960,6 @@ export const followUserProfile = async function (
 };
 
 // [Post] /api/v1/employers/jobs/follow-user-job
-// Hàm để xem thông tin người dùng mà nhà tuyển dụng đã theo dõi
 export const followUserJob = async function (
   req: Request,
   res: Response
@@ -1064,10 +1063,15 @@ export const recommendProfile = async function (
   res: Response
 ): Promise<void> {
   try {
-    const { id } = req.params;
+    const user = req["user"]
+    const idJob: string = req.body.idJob;
+
+    // Lấy danh sách hồ sơ đã mở của employer
+    const employer = await Employer.findById(user._id).select("listApprovedUsers").lean();
+    const openedUserIds: string[] = employer?.listApprovedUsers?.map((item) => item.idUser.toString()) || [];
 
     // Lấy thông tin công việc
-    const job = await Job.findOne({ _id: id });
+    const job = await Job.findOne({ _id: idJob });
     if (!job || !job.embedding) {
       res.status(404).json({ message: "Không tìm thấy job hoặc thiếu embedding." });
       return
@@ -1078,40 +1082,60 @@ export const recommendProfile = async function (
     const aggregate: any = [
       {
         $vectorSearch: {
-          index: "default", // Tên index bạn đặt
+          index: "default",
           path: "embedding",
           queryVector: embedding,
-          numCandidates: 100, // Tối đa số ứng viên xem xét
-          limit: 3, // Trả về 10 ứng viên tốt nhất
+          numCandidates: 100,
+          limit: 3,
           filter: {
             job_categorie_id: job.job_categorie_id[1]
           },
-          
-          // filter: {
-          //   $and: [
-          //     { experience: { $gte: job.workExperience || 0 } },
-          //     { location: job.address },
-          //     { skills: { $in: job.skills || [] } }
-          //   ]
-          // }
         }
       },
       {
         $project: {
           _id: 1,
-          brief_embedding: 1,
+          avatar: 1,
           fullName: 1,
-          // experiences: 1,
-          // skills: 1,
+          email: 1,
+          phone: 1,
+          job_categorie_id: 1,
+          brief_embedding: 1,
           score: { $meta: "vectorSearchScore" }
         }
-      }
+      },
+      {
+        $addFields: {
+          job_categorie_id: { $toObjectId: "$job_categorie_id" } 
+        }
+      },
+      {
+        $lookup: {
+          from: "jobs-categories",         // tên collection cần join
+          localField: "job_categorie_id",    // field ở collection hiện tại (orders)
+          foreignField: "_id",        // field ở collection cần join (products)
+          as: "job_categorie_id"           // tên field chứa kết quả sau join
+        }
+      },
+      { $unwind: "$job_categorie_id" } 
     ]
 
-    // Vector search
-    const result = await User.aggregate(aggregate);
+    const users = await User.aggregate(aggregate);
 
-    res.status(200).json({ code: 200, brief_job: job?.brief_embedding, candidates: result });
+    const data = users.length > 0 ? users.map((user) => {
+      if (!openedUserIds.includes(user._id?.toString())) {
+        user.email = "";
+        user.phone = "";
+      }
+      const followed = job.listProfileViewJob.filter(item => item.idUser === user._id?.toString())["followed"] || false
+      if (job.listProfileViewJob)
+      return {
+        ...user,
+        followed,
+      };
+    }) : []
+
+    res.status(200).json({ code: 200, brief_job: job?.brief_embedding, data,  });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });
