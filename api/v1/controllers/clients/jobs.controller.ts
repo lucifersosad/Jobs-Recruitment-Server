@@ -309,7 +309,7 @@ export const advancedSearch = async function (
     let querySortValue: string = "asc";
     let queryPage: number = 1;
     let queryLimit: number = 20;
-    let select: string = "-email -createdBy ";
+    let select: string = "-email -createdBy -embedding";
     //Check xem nếu query có sortKey  thì gán vào biến sortKey không thì gán bằng title. (Chức Năng Sắp Xếp)
     if (req.query.sort_key) {
       querySortKey = req.query.sort_key.toString() || "title";

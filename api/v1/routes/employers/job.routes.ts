@@ -35,6 +35,5 @@ router.post("/info-user-profile", controller.infoUserProfile);
 router.post("/follow-user-profile",validates.followUserProfile, controller.followUserProfile);
 router.post("/delete-follow-profile",validates.deleteFollowProfile, controller.deleteFollowProfile);
 router.post("/follow-user-job", controller.followUserJob);
-
-router.get("/:id/recommend", controller.recommendProfile)
+router.post("/suggest-user", controller.recommendProfile)
 export const jobRoutes: Router = router;
