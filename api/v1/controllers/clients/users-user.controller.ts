@@ -350,6 +350,8 @@ export const authen = async function (
       job_categorie_id: userClient.job_categorie_id || "",
       skill_id: userClient.skill_id || "",
       yearsOfExperience: userClient.yearsOfExperience || "",
+      educationalLevel: userClient.educationalLevel || "",
+      level: userClient.level || "",
       desiredSalary: userClient.desiredSalary || "",
       workAddress: userClient.workAddress || "",
       emailSuggestions: userClient.emailSuggestions || [],
@@ -460,11 +462,12 @@ export const changeJobSuggestions = async function (
     const {
       gender,
       job_categorie_id,
-      skill_id,
       yearsOfExperience,
       desiredSalary,
       workAddress,
       dateOfBirth,
+      educationalLevel,
+      level,
     } = req.body;
 
     await User.updateOne(
@@ -474,11 +477,12 @@ export const changeJobSuggestions = async function (
       {
         gender,
         job_categorie_id,
-        skill_id,
         yearsOfExperience,
         desiredSalary,
         workAddress,
         dateOfBirth,
+        educationalLevel,
+        level,
       }
     );
     res
@@ -753,7 +757,7 @@ export const getProfile = async function (
   try {
     const _id = req.params.id;
 
-    const profile = await User.findById(_id).select("_id fullName experiences educations skills")
+    const profile = await User.findById(_id).select("_id avatar jobTitle jobObjective fullName experiences educations skills")
 
     res
       .status(200)
@@ -836,6 +840,35 @@ export const updateSkill = async function (
     res
       .status(200)
       .json({ code: 200, success: `Đã Lưu Kĩ Năng` });
+  } catch (error) {
+    console.error("Error in API:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [POST] /api/v1/clients/users/update-profile
+export const updateProfile = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const _id: string = req["user"]._id;
+
+    const {jobTitle, jobObjective} = req.body
+
+    await User.updateOne(
+      {
+        _id,
+      },
+      {
+        jobTitle,
+        jobObjective
+      }
+    );
+
+    res
+      .status(200)
+      .json({ code: 200, success: `Cập nhật thành công` });
   } catch (error) {
     console.error("Error in API:", error);
     res.status(500).json({ error: "Internal Server Error" });

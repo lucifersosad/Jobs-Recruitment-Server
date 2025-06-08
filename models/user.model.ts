@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+var slug = require("mongoose-slug-updater");
+
 const userSchema = new mongoose.Schema(
   {
     fullName: String,
@@ -17,6 +19,7 @@ const userSchema = new mongoose.Schema(
 
     workAddress: Array,
     phone: String,
+    level: String,
     educationalLevel: String,
     schoolName: String,
     foreignLanguage: String,
@@ -24,10 +27,11 @@ const userSchema = new mongoose.Schema(
     companyName: String,
     desiredSalary: String,
     jobTitle: String,
+    jobObjective: String,
     avatar: {
       type: String,
       default:
-        "https://s3.thegioiyeuthuong.vn/demo/avatar/CdCGQpFfFo_1726590229622.png",
+        "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
     },
     cv: [
       {
@@ -131,7 +135,12 @@ const userSchema = new mongoose.Schema(
     },
     brief_embedding: {
       type: String,
-    }
+    },
+    slug: {
+      type: String,
+      slug: "fullName",
+      unique: true,
+    },
   },
   {
     timestamps: true,

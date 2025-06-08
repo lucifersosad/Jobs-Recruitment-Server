@@ -46,7 +46,7 @@ const employerSchema = new mongoose.Schema(
           },
         logoCompany: {
             type: String,
-            default: "https://thegioiyeuthuong.vn/wp-content/uploads/2022/03/logo-tgyt-02-1-1.svg"
+            default: "https://images.vietnamworks.com/img/company-default-logo.png"
         },
         activePhone:{
             type:Boolean,
@@ -61,7 +61,7 @@ const employerSchema = new mongoose.Schema(
         ,
         image : {
             type: String,
-            default: "https://thegioiyeuthuong.vn/wp-content/uploads/2022/03/logo-tgyt-02-1-1.svg"
+            default: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
         },
         position: {
             type: Number,
