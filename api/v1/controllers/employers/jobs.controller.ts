@@ -568,7 +568,7 @@ export const actionCv = async function (
     const emailSubject = "Thông Báo Tuyển Dụng";
 
     // Tìm công việc với id đã cho và populate các trường cần thiết
-    const jobRecord = await Job.findOne({ _id: idJob }).populate(
+    const jobRecord = await Job.findOne({ _id: idJob }).select("-embedding").populate(
       populateOptions
     );
 

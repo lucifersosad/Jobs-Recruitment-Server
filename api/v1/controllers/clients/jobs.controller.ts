@@ -34,7 +34,7 @@ export const index = async function (
     let queryLimit: number = 6;
     let queryKeyword: string = "";
     let queryFeatureValue: boolean = false;
-    let selectItem: string = "";
+    let selectItem: string = "-embedding";
 
     if (req.query.selectItem) {
       selectItem = req.query.selectItem.toString();
@@ -204,7 +204,7 @@ export const jobSearch = async function (
         model: Cv
       }
     ];
-    const records = await Job.findOne(find).populate(populateCheck);
+    const records = await Job.findOne(find).populate(populateCheck).select("-embedding");
 
     const convertData = {
       ...records.toObject(),
@@ -476,7 +476,7 @@ export const mayBeInterested = async function (
       .sort({ salaryMax: -1 })
       .limit(1)
       .populate(populateCheck)
-      .select("-email -deleted -status -phone")
+      .select("-email -deleted -status -phone -embedding")
       .then((jobs) => jobs[0]);
 
     if (!job) {
@@ -500,7 +500,7 @@ export const mayBeInterested = async function (
       })
         .skip(random)
         .populate(populateCheck)
-        .select("-email -deleted -status -phone");
+        .select("-email -deleted -status -phone -embedding");
     }
     const convertData = {
       ...job.toObject(),
@@ -583,7 +583,7 @@ export const jobApply = async function (
     const populateCheck: POPULATE[] = [
       {
         path: "idJob",
-        select: "-listProfileRequirement -listProfileViewJob -email",
+        select: "-listProfileRequirement -listProfileViewJob -email -embedding",
         model: Job,
         populate: [
           {
@@ -728,7 +728,7 @@ export const jobSave = async function (
 
     // Tìm các công việc trong database có id nằm trong listId, không bị xóa và đang hoạt động
     const record = await Job.find(find)
-      .select("-listProfileRequirement -listProfileViewJob -email")
+      .select("-listProfileRequirement -listProfileViewJob -email -embedding")
       .populate(populateCheck)
       .limit(objectPagination.limitItem)
       .skip(objectPagination.skip)

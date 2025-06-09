@@ -31,7 +31,7 @@ export const userViewJob = async function (
     });
     return;
   }
-  const job = await Job.findById({ _id: idJob });
+  const job = await Job.findById({ _id: idJob }).select("_id");
   if (!job) {
     res.status(401).json({
       code: 401,
