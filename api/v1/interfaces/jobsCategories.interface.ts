@@ -10,6 +10,7 @@ export interface Find {
     postion?:Number,
     thumbnail?:String,
     status?:string,
+    position?: any,
     $or?:Array<{title : RegExp} | {keyword : RegExp}>
  
 }

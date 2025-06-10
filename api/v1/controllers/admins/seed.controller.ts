@@ -3,7 +3,7 @@ import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
 import { buildJobDescription, buildUserProfileDescription, promptJobEmbedding, promptJobEmbeddingV2, promptUser, promptUserEmbeddingV2 } from "../../../../helpers/prompt";
 import JobCategories from "../../../../models/jobCategories.model";
-import { getEmbedding } from "../../../../helpers/openAI";
+import { getEmbedding, getEmbeddingHF } from "../../../../helpers/openAI";
 
 const generateRandomPhone = () => {
   const prefix = [
@@ -178,8 +178,8 @@ export const seedJobEmbedding = async (req: Request, res: Response): Promise<voi
     let textJobs = []
     for (let job of jobs) {
       const textJob = promptJobEmbeddingV2(job)
-      // const embedding = await getEmbedding(textJob)
-      // await Job.updateOne({_id: job._id}, { $set: { embedding, brief_embedding: textJob } })
+      const embedding = await getEmbedding(textJob)
+      await Job.updateOne({_id: job._id}, { $set: { embedding, brief_embedding: textJob } })
       textJobs.push(textJob)
     }
 
@@ -203,8 +203,8 @@ export const seedUserEmbedding = async (req: Request, res: Response): Promise<vo
     let textUsers = []
     for (let user of users) {
       const textUser = promptUserEmbeddingV2(user)
-      // const embedding = await getEmbedding(textUser)
-      // await User.updateOne({_id: user._id}, { $set: { embedding, brief_embedding: textUser } })
+      const embedding = await getEmbedding(textUser)
+      await User.updateOne({_id: user._id}, { $set: { embedding, brief_embedding: textUser } })
       textUsers.push(textUser)
     }
 
@@ -214,6 +214,6 @@ export const seedUserEmbedding = async (req: Request, res: Response): Promise<vo
     return;
   } catch (error) {
     console.log("🚀 ~ seedUserEmbedding ~ error:", error)
-    res.status(500).json({ code: 500, error: error });
+    res.status(500).json({ code: 500, error: "Internal Server Error" });
   }
 };

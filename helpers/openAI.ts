@@ -1,4 +1,7 @@
+import axios from "axios";
 import OpenAI from "openai";
+
+const HF_API_URL = 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -105,7 +108,8 @@ export const evaluate = async (jdText, fileCv) => {
 
 export const getEmbedding = async (text) => {
   const embedding = await openai.embeddings.create({
-    model: "text-embedding-ada-002",
+    // dimensions: 384,
+    model: "text-embedding-3-small",
     input: text,
     encoding_format: "float",
   });
@@ -113,4 +117,20 @@ export const getEmbedding = async (text) => {
   console.log("🚀 ~ getEmbedding ~ embedding:", embedding)
   return embedding.data[0].embedding
 }
+
+export const getEmbeddingHF = async (text) => {
+  const response = await axios.post(
+    HF_API_URL,
+    { inputs: text },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.HF_TOKEN}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  console.log("🚀 ~ getEmbeddingHF ~ response:", response)
+  return response.data[0];
+};
 

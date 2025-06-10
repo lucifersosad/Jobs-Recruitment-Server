@@ -570,7 +570,7 @@ export const saveJob = async function (
   }
   const exitedJob = await Job.findOne({
     _id: idJob,
-  });
+  }).select("_id");
   if (!exitedJob) {
     res.status(401).json({ code: 401, error: "Công việc không tồn tại!" });
     return;
@@ -582,7 +582,7 @@ export const saveJob = async function (
     const exitedJob = await User.findOne({
       "_id": user._id,
       "listJobSave.idJob": idJob,
-    }).select("-embedding");
+    }).select("_id");
     if (exitedJob) {
       res.status(401).json({ code: 401, error: "Công việc đã được lưu trước đó!" });
       return;
