@@ -169,7 +169,7 @@ export const editStatus = async (
   const job = await Job.findOne({
     employerId: user._id,
     _id: req.params.id,
-  });
+  }).select("-embedding");
   //Nếu không tìm thấy công việc thì báo lỗi không tìm thấy dữ liệu
   if (!job) {
     res.status(400).json({ error: "Dữ liệu không hợp lệ.", code: 400 });
@@ -336,7 +336,7 @@ export const editRecord = async (
       res.status(400).json({ error: "Vui Lòng Nhập Địa Chỉ!", code: 400 });
       return;
     }
-    const job = await Job.findOne({ _id: req.params.id });
+    const job = await Job.findOne({ _id: req.params.id }).select("-embedding");
     if (!job) {
       res.status(400).json({ error: "Dữ Liệu Không Hợp Lệ!", code: 400 });
       return;
@@ -450,7 +450,7 @@ export const buyUserPreviewJob = async (
     const jobCheckUser = await Job.findOne({
       _id: idJob,
       "listProfileViewJob.idUser": idUser,
-    });
+    }).select("_id");
     if (!jobCheckUser) {
       res.status(400).json({ error: "Dữ liệu không hợp lệ!", code: 400 });
       return;
@@ -493,7 +493,7 @@ export const followUserProfile = async (
       _id: idJob,
       employerId: user._id,
       "listProfileViewJob.idUser": idProfile,
-    });
+    }).select("_id");
 
     if (!record) {
       res.status(400).json({ error: "Dữ liệu không hợp lệ!", code: 400 });
@@ -528,7 +528,7 @@ export const deleteFollowProfile = async (
       _id: idJob,
       employerId: user._id,
       "listProfileViewJob.idUser": idProfile,
-    });
+    }).select("_id");
 
     if (!record) {
       res.status(400).json({ error: "Dữ liệu không hợp lệ!", code: 400 });

@@ -199,7 +199,10 @@ export const edit = async function (req: Request, res: Response): Promise<void> 
         if (req.body.description) {
             recordNew["description"] = req.body.description
         }
-
+        //Nếu có vị trí thì gán không thì thôi
+        if (req.body.position) {
+            recordNew["position"] = req.body.position
+        }
 
         //Lấy ra id công việc muốn chỉnh sửa
         const id: string = req.params.id.toString();
@@ -316,7 +319,7 @@ export const changeMulti = async function (req: Request, res: Response): Promise
                 }
                 //Update dữ liệu người dùng
                 await JobCategories.updateMany({ _id: { $in: ids } }, {
-                    status: value
+                    status: value,
                 });
                 //Trả về cập nhật trạng thánh thành công
                 res.status(200).json({ success: "Cập Nhật Trạng Thái Thành Công!", code: 200 });

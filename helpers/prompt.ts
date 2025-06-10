@@ -106,8 +106,9 @@ export const promptUser = (user) => {
 };
 
 export const promptJobEmbeddingV2 = (job) => {
-  const { title, description, detailWorkExperience, skills } = job
+  const { title, description, detailWorkExperience, skills, job_categorie_id } = job
 
+  const formatJobCategorie = job_categorie_id?.length > 1 ? job_categorie_id[1]?.title : ""
   const formatdescription= clean(description)
   const formatdetailWorkExperience = clean(detailWorkExperience)
   const formatSkills = skills?.length > 0 ? skills.join(", ") : ""
@@ -115,6 +116,7 @@ export const promptJobEmbeddingV2 = (job) => {
   const lines = []
 
   title && lines.push(`\nChúng tôi đang tuyển dụng vị trí: ${title}`)
+  formatJobCategorie && lines.push(`Ngành nghề: ${formatJobCategorie}`)
   formatdescription && lines.push(`Mô tả: ${formatdescription}`)
   formatdetailWorkExperience && lines.push(`Yêu cầu công việc: ${formatdetailWorkExperience}`)
   formatSkills && lines.push(`Kĩ năng: ${formatSkills}`)

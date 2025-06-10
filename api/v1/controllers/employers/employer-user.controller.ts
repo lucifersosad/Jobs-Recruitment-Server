@@ -777,6 +777,11 @@ export const statisticCompany = async function (
           },
         },
       },
+      {
+        $sort: {
+          _id: 1, // 1 for ascending, -1 for descending
+        },
+      },
     ]);
     record["groupedCvs"] = groupedCvs.map((item) => {
       return {

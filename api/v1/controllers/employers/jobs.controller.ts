@@ -568,7 +568,7 @@ export const actionCv = async function (
     const emailSubject = "Thông Báo Tuyển Dụng";
 
     // Tìm công việc với id đã cho và populate các trường cần thiết
-    const jobRecord = await Job.findOne({ _id: idJob }).populate(
+    const jobRecord = await Job.findOne({ _id: idJob }).select("-embedding").populate(
       populateOptions
     );
 
@@ -1077,6 +1077,13 @@ export const recommendProfile = async function (
       return
     }
 
+    function cosineSimilarity(vecA, vecB) {
+      const dot = vecA.reduce((sum, val, i) => sum + val * vecB[i], 0);
+      const normA = Math.sqrt(vecA.reduce((sum, val) => sum + val * val, 0));
+      const normB = Math.sqrt(vecB.reduce((sum, val) => sum + val * val, 0));
+      return dot / (normA * normB);
+    }
+
     const embedding = job.embedding;
 
     const aggregate: any = [
@@ -1086,10 +1093,10 @@ export const recommendProfile = async function (
           path: "embedding",
           queryVector: embedding,
           numCandidates: 100,
-          limit: 3,
-          filter: {
-            job_categorie_id: job.job_categorie_id[1]
-          },
+          limit: 9,
+          // filter: {
+          //   job_categorie_id: job.job_categorie_id[1]
+          // },
         }
       },
       {
@@ -1101,6 +1108,7 @@ export const recommendProfile = async function (
           phone: 1,
           job_categorie_id: 1,
           brief_embedding: 1,
+          embedding: 1,
           score: { $meta: "vectorSearchScore" }
         }
       },
@@ -1123,6 +1131,7 @@ export const recommendProfile = async function (
     const users = await User.aggregate(aggregate);
 
     const data = users.length > 0 ? users.map((user) => {
+      const similarity = cosineSimilarity(embedding, user.embedding)
       if (!openedUserIds.includes(user._id?.toString())) {
         user.email = "";
         user.phone = "";
@@ -1132,6 +1141,7 @@ export const recommendProfile = async function (
       return {
         ...user,
         followed,
+        similarity
       };
     }) : []
 

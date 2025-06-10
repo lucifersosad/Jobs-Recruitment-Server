@@ -160,14 +160,14 @@ export const index = async function (
     if (req.query.findAll) {
       records = await Job.find(find)
         .sort(sort)
-        .select("")
+        .select("-embedding")
         .populate(populateCheck);
     } else {
       records = await Job.find(find)
         .sort(sort)
         .limit(objectPagination.limitItem || 4)
         .skip(objectPagination.skip || 0)
-        .select("")
+        .select("-embedding")
         .populate(populateCheck);
     }
     //Chuyển dữ liệu mongoDb sang kiểu dữ liệu bình thường để đổi được tên và thêm trường
@@ -499,7 +499,7 @@ export const seedTags = async function (
     }
     
 
-    const jobs = await Job.find({_id: "67529b2eed63c2548973bdf4"})
+    const jobs = await Job.find({_id: "67529b2eed63c2548973bdf4"}).select("skills")
 
     for (let job of jobs) {
       const skills = job.skills;
