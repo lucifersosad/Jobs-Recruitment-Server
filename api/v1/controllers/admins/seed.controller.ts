@@ -171,7 +171,12 @@ export const seedData = async (req: Request, res: Response): Promise<void> => {
 export const seedJobEmbedding = async (req: Request, res: Response): Promise<void> => {
   try {
     const jobs = await Job
-    .find()
+    .find({
+      $or: [
+        { embedding: { $exists: false } },
+        { embedding: { $size: 0 } }
+      ]
+    })
     .populate({ path: "job_categorie_id", select: "title", model: JobCategories },)
     .select("job_categorie_id workExperience level gender city title description detailWorkExperience skills")
 
@@ -196,7 +201,12 @@ export const seedJobEmbedding = async (req: Request, res: Response): Promise<voi
 export const seedUserEmbedding = async (req: Request, res: Response): Promise<void> => {
   try {
     const users = await User
-    .find()
+    .find({
+      $or: [
+        { embedding: { $exists: false } },
+        { embedding: { $size: 0 } }
+      ]
+    })
     .populate({ path: "job_categorie_id", select: "title", model: JobCategories },)
     .select("fullName address.city educationalLevel yoe job_categorie_id jobTitle experiences educations skills embedding gender")
 

@@ -1093,10 +1093,10 @@ export const recommendProfile = async function (
           path: "embedding",
           queryVector: embedding,
           numCandidates: 100,
-          limit: 9,
-          // filter: {
-          //   job_categorie_id: job.job_categorie_id[1]
-          // },
+          limit: 3,
+          filter: {
+            job_categorie_id: job.job_categorie_id[1]
+          },
         }
       },
       {

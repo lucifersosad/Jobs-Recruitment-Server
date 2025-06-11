@@ -13,7 +13,7 @@ router.get('/:id', authMiddlewares.auth, controller.getMyCv)
 router.get('/:id/file', authMiddlewares.auth, controller.getMyCvFile)
 router.patch('/edit', authMiddlewares.auth, controller.editMyCv)
 router.post('/upload', authMiddlewares.auth, FileUpload, uploadAws.uploadPdf, controller.uploadMyCv)
+router.post('/extract', authMiddlewares.auth, FileUpload, uploadAws.uploadPdf, controller.extractCv)
 router.post('/', authMiddlewares.auth, controller.createMyCv)
 router.get('/:id/download', controller.downloadMyCv)
-router.post('/extract', controller.extractCv)
 export const myCvsRoutes : Router  = router
