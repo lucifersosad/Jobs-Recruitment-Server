@@ -154,7 +154,7 @@ export const createMyCv = async function (
 
     const newCv = {
       ...req.body,
-      isUser: user.id,
+      idUser: user._id,
     }
     
     const cv = new MyCv(newCv);
