@@ -296,16 +296,23 @@ export const editMyCv = async function (
   }
 };
 
-// [PATCH] /api/v1/clients/my-cvs/edit
+// [POST] /api/v1/clients/my-cvs/suggest-builder
 export const suggestBuildMyCv = async function (
   req: Request,
   res: Response
 ): Promise<void> {
   try {
     const user = req["user"];
-    let jobTitle = req.body.title
+    let description = req.body.description?.trim()
 
-    const data = await suggestBuildCv(jobTitle)
+    if (!description) {
+      res
+        .status(400)
+        .json({ error: "Vui Lòng Nhập Mô Tả!", code: 400 });
+      return;
+    }
+
+    const data = await suggestBuildCv(description)
 
     res.status(200).json({ code: 200, success: "Thành công", data });
   } catch (error) {
