@@ -1,11 +1,52 @@
 import axios from "axios";
 import OpenAI from "openai";
+import { promptCvBuild } from "./prompt";
 
 const HF_API_URL = 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const SYSTEM_PROMPT_CV_BUILD = `Bạn là một chuyên gia tư vấn viết CV chuyên nghiệp`
+
+export const mockCv = async (jobTitleText) => {
+  try {
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: [
+        {
+          role: "system",
+          content: [
+            {
+              type: "input_text",
+              text: SYSTEM_PROMPT_CV_BUILD,
+            },
+          ],
+        },
+        {
+          role: "user",
+          content: promptCvBuild(jobTitleText) ,
+        },
+      ],
+      text: {
+        format: {
+          type: "json_object",
+        },
+      },
+      reasoning: {},
+      tools: [],
+      temperature: 0.7,
+      max_output_tokens: 2048,
+      top_p: 1,
+      store: true,
+    });
+    return JSON.parse(response.output_text);
+  } catch (error) {
+    console.log("🚀 ~ test ~ error:", error);
+    throw error
+  }
+}
 
 const SYSTEM_PROMPT = `
   Bạn là một chuyên gia tuyển dụng AI. 
