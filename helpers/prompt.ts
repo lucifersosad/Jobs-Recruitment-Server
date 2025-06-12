@@ -155,33 +155,40 @@ export const promptUserEmbeddingV2 = (user) => {
   return parts.join("\n");
 };
 
-export const promptCvBuild = (jobTitle) => {
+export const promptCvBuild = (userDescription) => {
   return `
-    Hãy tạo một CV mẫu phù hợp cho chức danh công việc "${jobTitle}".
-    Bao gồm các mục: mục tiêu nghề nghiệp, kỹ năng nổi bật, học vấn và kinh nghiệm làm việc (giả định nếu cần).
-    Trả về kết quả dưới dạng JSON với cấu trúc sau:
-
-    {
-      "objective": "string", // đoạn tóm tắt chuyên nghiệp 2-3 câu, nêu rõ số năm kinh nghiệm, kỹ năng nổi bật liên quan đến vị trí, và thành tựu chính trong quá khứ. Kết thúc bằng mong muốn phát triển nghề nghiệp trong tương lai. Sử dụng từ khóa phù hợp với vị trí và tránh từ ngữ cảm tính.
-      "skills": ["string"], // kỹ năng chính, dạng danh sách từ khóa
-      "educations": [
-        {
-          "title": "string",
-          "school_name": "string",
-          "start_date": "MM/YYYY",
-          "end_date": "MM/YYYY",
-          "description": "string" // không đề cập các môn học trong chương trình, liệt kê theo bullet hoặc mô tả vắn tắt 
-        }
-      ],
-      "experiences": [
-        {
-          "position_name": "string",
-          "company_name": "string",
-          "start_date": "MM/YYYY",
-          "end_date": "MM/YYYY",
-          "description": "string" // dùng từ khóa, gạch đầu dòng, nhấn mạnh kết quả
-        }
-      ]
+    Hãy tạo một CV mẫu phù hợp cho người dùng có đoạn mô tả như sau: "${userDescription}"
+    Yêu cầu:
+    - Sử dụng từ khóa phù hợp với vị trí công việc.
+    - Sử dụng cấu trúc rõ ràng, súc tích và dễ đọc cho máy.
+    - Không dùng từ ngữ mang tính cảm tính, mơ hồ (ví dụ: "nhiệt huyết", "năng động").
+    - Ưu tiên kĩ năng chuyên môn, hạn chế kĩ năng mềm
+    - Ưu tiên mô tả bằng bullet points ngắn gọn và trực tiếp.
+    - Ngoại trừ vị trí công việc có thể là tiếng Anh, luôn trả lời bằng tiếng Việt
+    Trả về kết quả dưới dạng JSON với cấu trúc sau: 
+    
+    { 
+      "jobTitle": "string" // chức danh công việc,
+      "objective": "string", // đoạn tóm tắt chuyên nghiệp 2–3 câu, nêu rõ số năm kinh nghiệm (nếu có). Nếu kinh nghiệm làm việc liên quan trực tiếp tới vị trí ứng tuyển thì đề cập những kỹ năng chuyên môn nổi bật. Đề cập những thành tựu chính trong quá khứ (nếu có). Luôn có mong muốn phát triển nghề nghiệp trong tương lai. Luôn bắt đầu bằng: "Tôi...". Sử dụng từ khóa phù hợp với vị trí và tránh từ ngữ cảm tính. 
+      "skills": ["string"], // kỹ năng chuyên môn nếu ứng viên có từ kinh nghiệm làm việc liên quan tới ví trí ứng tuyển, dạng danh sách từ khóa, ngắn gọn 
+      "educations": [ 
+        { 
+          "title": "string", 
+          "school_name": "string", 
+          "start_date": "MM/YYYY", 
+          "end_date": "MM/YYYY", 
+          "description": ["string"] // không đề cập các môn học trong chương trình, liệt kê theo bullet hoặc mô tả vắn tắt 
+        } 
+      ] || [], 
+      "experiences": [ 
+        { 
+          "position_name": "string", 
+          "company_name": "string", 
+          "start_date": "MM/YYYY", 
+          "end_date": "MM/YYYY", 
+          "description": ["string"] // dùng từ khóa, gạch đầu dòng, nhấn mạnh kết quả 
+        } 
+      ] || [] 
     }
   `;
 };

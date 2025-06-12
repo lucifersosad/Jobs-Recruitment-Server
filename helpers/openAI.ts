@@ -8,9 +8,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const SYSTEM_PROMPT_CV_BUILD = `Bạn là một chuyên gia tư vấn viết CV chuyên nghiệp`
+const SYSTEM_PROMPT_CV_BUILD = `Bạn là một chuyên gia tư vấn viết CV chuyên nghiệp, thân thiện với ATS`
 
-export const suggestBuildCv = async (jobTitleText) => {
+export const suggestBuildCv = async (userDescriptionText) => {
   try {
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",
@@ -26,7 +26,7 @@ export const suggestBuildCv = async (jobTitleText) => {
         },
         {
           role: "user",
-          content: promptCvBuild(jobTitleText) ,
+          content: promptCvBuild(userDescriptionText) ,
         },
       ],
       text: {
