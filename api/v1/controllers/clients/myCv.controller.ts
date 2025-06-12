@@ -9,6 +9,7 @@ import { callRapidApi } from "../../../../helpers/parseCV";
 import axios from "axios";
 import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
 import { S3_CORE } from "../../../../config/constant";
+import { suggestBuildCv } from "../../../../helpers/openAI";
 
 // [GET] /api/v1/client/my-cvs/
 export const getMyCvs = async function (
@@ -286,6 +287,27 @@ export const editMyCv = async function (
     );
 
     res.status(200).json({ code: 200, success: "Cập nhật CV thành công" });
+  } catch (error) {
+    // Ghi lỗi vào console nếu có lỗi xảy ra
+    console.error("Error in API:", error);
+
+    // Trả về lỗi 500 nếu có lỗi xảy ra
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// [PATCH] /api/v1/clients/my-cvs/edit
+export const suggestBuildMyCv = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const user = req["user"];
+    let jobTitle = req.body.title
+
+    const data = await suggestBuildCv(jobTitle)
+
+    res.status(200).json({ code: 200, success: "Thành công", data });
   } catch (error) {
     // Ghi lỗi vào console nếu có lỗi xảy ra
     console.error("Error in API:", error);

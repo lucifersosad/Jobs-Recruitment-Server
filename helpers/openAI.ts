@@ -10,7 +10,7 @@ const openai = new OpenAI({
 
 const SYSTEM_PROMPT_CV_BUILD = `Bạn là một chuyên gia tư vấn viết CV chuyên nghiệp`
 
-export const mockCv = async (jobTitleText) => {
+export const suggestBuildCv = async (jobTitleText) => {
   try {
     const response = await openai.responses.create({
       model: "gpt-4.1-mini",

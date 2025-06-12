@@ -162,15 +162,15 @@ export const promptCvBuild = (jobTitle) => {
     Trả về kết quả dưới dạng JSON với cấu trúc sau:
 
     {
-      "objective": "string",
-      "skills": ["string"],
+      "objective": "string", // đoạn tóm tắt chuyên nghiệp 2-3 câu, nêu rõ số năm kinh nghiệm, kỹ năng nổi bật liên quan đến vị trí, và thành tựu chính trong quá khứ. Kết thúc bằng mong muốn phát triển nghề nghiệp trong tương lai. Sử dụng từ khóa phù hợp với vị trí và tránh từ ngữ cảm tính.
+      "skills": ["string"], // kỹ năng chính, dạng danh sách từ khóa
       "educations": [
         {
           "title": "string",
           "school_name": "string",
           "start_date": "MM/YYYY",
           "end_date": "MM/YYYY",
-          "description": "string"
+          "description": "string" // không đề cập các môn học trong chương trình, liệt kê theo bullet hoặc mô tả vắn tắt 
         }
       ],
       "experiences": [
@@ -179,7 +179,7 @@ export const promptCvBuild = (jobTitle) => {
           "company_name": "string",
           "start_date": "MM/YYYY",
           "end_date": "MM/YYYY",
-          "description": "string"
+          "description": "string" // dùng từ khóa, gạch đầu dòng, nhấn mạnh kết quả
         }
       ]
     }
