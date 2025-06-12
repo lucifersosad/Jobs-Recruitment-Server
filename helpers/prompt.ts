@@ -155,97 +155,43 @@ export const promptUserEmbeddingV2 = (user) => {
   return parts.join("\n");
 };
 
-
-const buildJobEmbeddingText = (job) => {
+export const promptCvBuild = (userDescription) => {
   return `
-    Chúng tôi đang tuyển dụng vị trí: ${job.title || "Chưa xác định"}.
-    Yêu cầu chính: ${Array.isArray(job.requiredSkills) ? job.requiredSkills.join(", ") : "Không có"}.
-    Kinh nghiệm tối thiểu: ${job.experience || 0} năm.
-    Địa điểm làm việc: ${job.location || "Không rõ"}.
-    Ngành nghề: ${job.industry || "Không rõ"}.
-    Mô tả công việc: ${job.description || "Không có mô tả chi tiết."}
-  `.trim();
+    Hãy tạo một CV mẫu phù hợp cho người dùng có đoạn mô tả như sau: "${userDescription}"
+    Yêu cầu:
+    - Sử dụng từ khóa phù hợp với vị trí công việc.
+    - Sử dụng cấu trúc rõ ràng, súc tích và dễ đọc cho máy.
+    - Không dùng từ ngữ mang tính cảm tính, mơ hồ (ví dụ: "nhiệt huyết", "năng động").
+    - Ưu tiên kĩ năng chuyên môn, hạn chế kĩ năng mềm
+    - Ưu tiên mô tả bằng bullet points ngắn gọn và trực tiếp.
+    - Ngoại trừ vị trí công việc có thể là tiếng Anh, luôn trả lời bằng tiếng Việt
+    Trả về kết quả dưới dạng JSON với cấu trúc sau: 
+    
+    { 
+      "jobTitle": "string" // chức danh công việc,
+      "objective": "string", // đoạn tóm tắt chuyên nghiệp 2–3 câu, nêu rõ số năm kinh nghiệm (nếu có). Nếu kinh nghiệm làm việc liên quan trực tiếp tới vị trí ứng tuyển thì đề cập những kỹ năng chuyên môn nổi bật. Đề cập những thành tựu chính trong quá khứ (nếu có). Luôn có mong muốn phát triển nghề nghiệp trong tương lai. Luôn bắt đầu bằng: "Tôi...". Sử dụng từ khóa phù hợp với vị trí và tránh từ ngữ cảm tính. 
+      "skills": ["string"], // kỹ năng chuyên môn nếu ứng viên có từ kinh nghiệm làm việc liên quan tới ví trí ứng tuyển, dạng danh sách từ khóa, ngắn gọn 
+      "educations": [ 
+        { 
+          "title": "string", 
+          "school_name": "string", 
+          "start_date": "MM/YYYY", 
+          "end_date": "MM/YYYY", 
+          "description": ["string"] // không đề cập các môn học trong chương trình, liệt kê theo bullet hoặc mô tả vắn tắt 
+        } 
+      ] || [], 
+      "experiences": [ 
+        { 
+          "position_name": "string", 
+          "company_name": "string", 
+          "start_date": "MM/YYYY", 
+          "end_date": "MM/YYYY", 
+          "description": ["string"] // dùng từ khóa, gạch đầu dòng, nhấn mạnh kết quả 
+        } 
+      ] || [] 
+    }
+  `;
 };
 
-const buildUserEmbeddingText = (candidate) => {
-  return `
-    Ứng viên có ${candidate.experience || 0} năm kinh nghiệm trong lĩnh vực liên quan.
-    Kỹ năng chuyên môn: ${Array.isArray(candidate.skills) ? candidate.skills.join(", ") : "Không có"}.
-    Vị trí từng làm việc:
-    ${(candidate.workHistory || []).map(w => 
-      `- ${w.role} tại ${w.company} (${w.years || "?"} năm)`
-    ).join("\n") || "- Không có thông tin."}
-    Dự án từng tham gia: ${Array.isArray(candidate.projects) ? candidate.projects.join("; ") : "Không có"}.
-    Chứng chỉ chuyên môn: ${Array.isArray(candidate.certifications) ? candidate.certifications.join(", ") : "Không có"}.
-    Học vấn: ${candidate.education || "Chưa cập nhật"}.
-    Địa điểm sinh sống: ${candidate.location || "Không rõ"}.
-  `.trim();
-};
-
-export const buildJobDescription = (job) => {
-  const { job_categorie_id, workExperience, level, gender, city, skills } = job;
-
-  const formatJobCategorie = job_categorie_id?.length > 1 ? job_categorie_id[1]?.title : "";
-  const formatWorkExperience = getWorkExperienceLabel(workExperience);
-  const formatLevel = getLevelLabel(level);
-  const formatGender = gender === "boy" ? "nam" : "nữ";
-  const formatCity = city?.name || "";
-  const formatSkills = skills?.length > 0 ? skills.join(", ") : "";
-
-  const parts = [];
-
-  parts.push(`Công ty đang tuyển một ${formatLevel?.toLowerCase() || "nhân viên"}.`);
-  formatJobCategorie && parts.push(`Vị trí thuộc ngành nghề ${formatJobCategorie.toLowerCase()}.`);
-  formatWorkExperience && parts.push(`Yêu cầu có kinh nghiệm tối thiểu ${formatWorkExperience}.`);
-  formatSkills && parts.push(`Kỹ năng cần thiết bao gồm: ${formatSkills}.`);
-
-  return parts.join(" ");
-};
-
-export const buildUserProfileDescription = (user) => {
-  const {
-    fullName,
-    job_categorie_id,
-    jobTitle,
-    yoe,
-    skills,
-    experiences,
-    educations,
-    address,
-    gender,
-  } = user;
-
-  const formatGender = gender === 2 ? "nam" : "nữ";
-  const formatJobCategorie = job_categorie_id?.title || "";
-  const formatSkills = skills?.length > 0 ? skills.map(item => item?.title).join(", ") : "";
-  const formatYOE = yoe > 0 ? `${yoe} năm kinh nghiệm` : "";
-  const formatAddress = address?.city?.split("/")[1] || "";
-
-  const formatExperiences = experiences?.length > 0
-    ? experiences.map(item =>
-        `${item?.position_name} tại ${item?.company_name} (${timeDuration(
-          item?.start_month,
-          item?.start_year,
-          item?.end_month,
-          item?.end_year
-        )})`
-      ).join("; ")
-    : "";
-
-  const formatEducations = educations?.length > 0
-    ? educations.map(item => `chuyên ngành ${item.title} tại ${item.school_name}`).join("; ")
-    : "";
-
-  const parts = [];
-
-  parts.push(`${fullName} là một ứng viên ${formatJobCategorie ? ` trong ngành nghề ${formatJobCategorie.toLowerCase()}` : ""}.`);
-  formatYOE && parts.push(`Ứng viên có ${formatYOE}.`);
-  // jobTitle && parts.push(`Hiện đang làm việc với vai trò ${jobTitle.toLowerCase()}.`);
-  formatExperiences && parts.push(`Kinh nghiệm làm việc: ${formatExperiences}.`);
-  formatSkills && parts.push(`Kỹ năng chuyên môn bao gồm: ${formatSkills}.`);
-  // formatEducations && parts.push(`Trình độ học vấn: ${formatEducations}.`);
-
-  return parts.join(" ");
-};
 
 

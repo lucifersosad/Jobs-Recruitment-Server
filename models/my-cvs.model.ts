@@ -16,6 +16,7 @@ const myCvSchema = new mongoose.Schema(
     address: String,
     position: String,
     objective: String,
+    jobTitle: String,
     experiences: [
       {
         position_name: String,
