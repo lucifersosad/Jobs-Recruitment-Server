@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
-import { buildJobDescription, buildUserProfileDescription, promptJobEmbedding, promptJobEmbeddingV2, promptUser, promptUserEmbeddingV2 } from "../../../../helpers/prompt";
+import {  promptJobEmbeddingV2, promptUserEmbeddingV2 } from "../../../../helpers/prompt";
 import JobCategories from "../../../../models/jobCategories.model";
 import { getEmbedding, getEmbeddingHF } from "../../../../helpers/openAI";
 
