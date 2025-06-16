@@ -282,6 +282,11 @@ export const createDeviceSession = async function (
 
     const notification_token = req.body.notification_token
 
+    if (!notification_token) {
+      res.status(400).json({ error: "Notification token is required" });
+      return;
+    }
+
     if (!notiTokens?.includes(notification_token)) {
       await Employer.updateOne(
         {
@@ -289,9 +294,7 @@ export const createDeviceSession = async function (
   
         },
         {
-          $push: {
-            notification_token
-          }
+          $set: { notification_token: [notification_token] } 
         }
       );  
     }
