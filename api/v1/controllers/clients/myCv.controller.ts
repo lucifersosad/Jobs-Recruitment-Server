@@ -20,7 +20,8 @@ export const getMyCvs = async function (
     const idUser = req["user"]._id
     const cvs = await MyCv.find({
       idUser,
-      deleted: false
+      deleted: false,
+      linkFile: { $exists: true }
     }).select("linkFile nameFile is_primary")
 
     if (cvs) {
@@ -250,7 +251,8 @@ export const editMyCv = async function (
       is_primary = true
       await MyCv.updateMany(
         {
-          _id: { $ne: id }
+          _id: { $ne: id },
+          idUser: user._id
         },
         {
           $set: { is_primary: false },
