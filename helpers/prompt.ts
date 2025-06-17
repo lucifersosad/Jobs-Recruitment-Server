@@ -193,5 +193,17 @@ export const promptCvBuild = (userDescription) => {
   `;
 };
 
+export const promptCvSummary = (cvText) => {
+  return `
+    Tóm tắt nội dung CV sau để lấy các thông tin quan trọng nhất như:
+    - Kinh nghiệm làm việc
+    - Kỹ năng
+    - Học vấn
+    - Mục tiêu nghề nghiệp (nếu có)
+    Dưới dạng đoạn văn dễ hiểu và ngắn gọn nhất. Dữ liệu gốc:
+    ${cvText}
+  `
+}
+
 
 
