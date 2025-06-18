@@ -68,7 +68,7 @@ const jobSchema = new mongoose.Schema(
     skills: [String],
     status: {
       type: String,
-      default: "active",
+      default: "pending",
     },
     deleted: {
       type: Boolean,

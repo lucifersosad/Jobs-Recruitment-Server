@@ -449,7 +449,7 @@ export const buyUserPreviewJob = async (
 
     const jobCheckUser = await Job.findOne({
       _id: idJob,
-      "listProfileViewJob.idUser": idUser,
+      // "listProfileViewJob.idUser": idUser,
     }).select("_id");
     if (!jobCheckUser) {
       res.status(400).json({ error: "Dữ liệu không hợp lệ!", code: 400 });
@@ -492,7 +492,7 @@ export const followUserProfile = async (
     const record = await Job.findOne({
       _id: idJob,
       employerId: user._id,
-      "listProfileViewJob.idUser": idProfile,
+      // "listProfileViewJob.idUser": idProfile,
     }).select("_id");
 
     if (!record) {
