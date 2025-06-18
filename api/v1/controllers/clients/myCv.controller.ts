@@ -7,9 +7,10 @@ import { getFileBase64, getSignedDownloadUrl, putObject } from "../../../../help
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { callRapidApi } from "../../../../helpers/parseCV";
 import axios from "axios";
-import { hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
+import { getPdfTextContent, hideDataProfileInCvPdf } from "../../../../helpers/pdfCV";
 import { S3_CORE } from "../../../../config/constant";
-import { suggestBuildCv } from "../../../../helpers/openAI";
+import { getCvSummary, getEmbedding, suggestBuildCv } from "../../../../helpers/openAI";
+import User from "../../../../models/user.model";
 
 // [GET] /api/v1/client/my-cvs/
 export const getMyCvs = async function (
@@ -20,7 +21,8 @@ export const getMyCvs = async function (
     const idUser = req["user"]._id
     const cvs = await MyCv.find({
       idUser,
-      deleted: false
+      deleted: false,
+      linkFile: { $exists: true }
     }).select("linkFile nameFile is_primary")
 
     if (cvs) {
@@ -250,12 +252,27 @@ export const editMyCv = async function (
       is_primary = true
       await MyCv.updateMany(
         {
-          _id: { $ne: id }
+          _id: { $ne: id },
+          idUser: user._id
         },
         {
           $set: { is_primary: false },
         }
       )
+      const cv = await MyCv.findById(id)
+
+      const response = await axios.get(cv.linkFile, {
+        responseType: 'arraybuffer', // để lấy dạng binary
+      });
+      const cvBuffer = Buffer.from(response.data);
+
+      const cvText = await getPdfTextContent(cvBuffer)
+
+      const cvSummary = await getCvSummary(cvText)
+
+      const embedding = await getEmbedding(cvSummary)
+
+      await User.updateOne({_id: cv.idUser}, { $set: { embedding, brief_embedding: cvSummary } })
     }
 
     if (deleted === true) {

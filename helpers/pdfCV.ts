@@ -162,3 +162,26 @@ export async function hideDataProfileInCvPdf(pdfBuffer: Buffer): Promise<Buffer>
   }
   return pdfBuffer
 }
+
+export async function getPdfTextContent(pdfBuffer) {
+  const loadingTask = getDocument({ data: pdfBuffer });
+  const pdf = await loadingTask.promise;
+
+  let fullText = '';
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    const pageText = content.items.map(item => item.str).join(' ');
+    fullText += `${pageText}\n`;
+  }
+
+  return fullText;
+}
+
+function cleanPdfText(text) {
+  text = text.replace(/([a-zA-ZÀ-ỹ])\s(?=[a-zA-ZÀ-ỹ])/g, '$1');
+  text = text.replace(/\s+/g, ' ');
+  text = text.replace(/\s([.,:;!?])/g, '$1');
+  return text.trim();
+}

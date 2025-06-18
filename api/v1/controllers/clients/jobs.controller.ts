@@ -631,6 +631,7 @@ export const jobApply = async function (
     const record = await Cv.find(find)
       .populate(populateCheck)
       .limit(objectPagination.limitItem)
+      .sort({_id: -1})
       .skip(objectPagination.skip);
     //Convert dữ liệu về dạng mảng client cần
     const convertData = record.map((item) => {

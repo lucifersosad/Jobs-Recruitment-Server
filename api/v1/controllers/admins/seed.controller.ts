@@ -3,7 +3,10 @@ import Job from "../../../../models/jobs.model";
 import User from "../../../../models/user.model";
 import {  promptJobEmbeddingV2, promptUserEmbeddingV2 } from "../../../../helpers/prompt";
 import JobCategories from "../../../../models/jobCategories.model";
-import { getEmbedding, getEmbeddingHF } from "../../../../helpers/openAI";
+import { getCvSummary, getEmbedding, getEmbeddingHF } from "../../../../helpers/openAI";
+import MyCv from "../../../../models/my-cvs.model";
+import axios from "axios";
+import { getPdfTextContent } from "../../../../helpers/pdfCV";
 
 const generateRandomPhone = () => {
   const prefix = [
@@ -200,6 +203,12 @@ export const seedJobEmbedding = async (req: Request, res: Response): Promise<voi
 
 export const seedUserEmbedding = async (req: Request, res: Response): Promise<void> => {
   try {
+    const cvs = await MyCv.find({
+      deleted: false,
+      is_primary: true,
+      linkFile: { $exists: true }
+    })
+
     const users = await User
     .find({
       $or: [
@@ -211,11 +220,21 @@ export const seedUserEmbedding = async (req: Request, res: Response): Promise<vo
     .select("fullName address.city educationalLevel yoe job_categorie_id jobTitle experiences educations skills embedding gender")
 
     let textUsers = []
-    for (let user of users) {
-      const textUser = promptUserEmbeddingV2(user)
-      const embedding = await getEmbedding(textUser)
-      await User.updateOne({_id: user._id}, { $set: { embedding, brief_embedding: textUser } })
-      textUsers.push(textUser)
+
+    for (let cv of cvs) {
+      const response = await axios.get(cv.linkFile, {
+        responseType: 'arraybuffer', // để lấy dạng binary
+      });
+      const cvBuffer = Buffer.from(response.data);
+
+      const cvText = await getPdfTextContent(cvBuffer)
+
+      const cvSummary = await getCvSummary(cvText)
+
+      const embedding = await getEmbedding(cvSummary)
+
+      await User.updateOne({_id: cv.idUser}, { $set: { embedding, brief_embedding: cvSummary } })
+      textUsers.push(cvSummary)
     }
 
     const data = await User.find()

@@ -1,6 +1,6 @@
 import axios from "axios";
 import OpenAI from "openai";
-import { promptCvBuild } from "./prompt";
+import { promptCvBuild, promptCvSummary } from "./prompt";
 
 const HF_API_URL = 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2';
 
@@ -174,4 +174,44 @@ export const getEmbeddingHF = async (text) => {
   console.log("🚀 ~ getEmbeddingHF ~ response:", response)
   return response.data[0];
 };
+
+const SYSTEM_PROMPT_CV_SUMMARY = `Bạn là một trợ lý AI chuyên tóm tắt CV.`
+
+export const getCvSummary = async (cvText) => {
+  try {
+    const response = await openai.responses.create({
+      model: "gpt-4.1-mini",
+      input: [
+        {
+          role: "system",
+          content: [
+            {
+              type: "input_text",
+              text: SYSTEM_PROMPT_CV_SUMMARY,
+            },
+          ],
+        },
+        {
+          role: "user",
+          content: promptCvSummary(cvText) ,
+        },
+      ],
+      text: {
+        format: {
+          type: "text",
+        },
+      },
+      reasoning: {},
+      tools: [],
+      temperature: 0,
+      max_output_tokens: 2048,
+      top_p: 1,
+      store: true,
+    });
+    return response.output_text;
+  } catch (error) {
+    console.log("🚀 ~ getCvSummary ~ error:", error)
+    throw error
+  }
+}
 
