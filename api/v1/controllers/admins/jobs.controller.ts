@@ -10,6 +10,8 @@ import slug from "slug";
 import { encryptedData } from "../../../../helpers/encryptedData";
 import JobCategories from "../../../../models/jobCategories.model";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
+import { promptJobEmbeddingV2 } from "../../../../helpers/prompt";
+import { getEmbedding } from "../../../../helpers/openAI";
 
 // [GET] /api/v1/admin/jobs/index/
 //VD: //VD: {{BASE_URL}}/api/v1/admin/admin/jobs?page=1&limit=7&sortKey=title&sortValue=asc&status=active&featured=true&salaryKey=gt&salaryValue=1000&jobLevel=Intern&occupationKey=software-development
@@ -53,12 +55,12 @@ export const index = async function (
 
     //Check xem nếu query có sortKey  thì gán vào biến sortKey không thì gán bằng title. (Chức Năng Sắp Xếp)
     if (req.query.sortKey) {
-      querySortKey = req.query.sortKey.toString() || "title";
+      querySortKey = req.query.sortKey.toString() || "";
     }
 
     //Check xem nếu query có sortValue  thì gán vào biến sortValue không thì gán bằng desc. (Chức Năng Sắp Xếp)
     if (req.query.sortValue) {
-      querySortValue = req.query.sortValue.toString() || "asc";
+      querySortValue = req.query.sortValue.toString() || "";
     }
 
     //Check xem nếu query có queryPage thì gán vào biến queryPage không thì gán bằng rỗng. (Chức Năng Phân Trang)
@@ -131,7 +133,9 @@ export const index = async function (
       queryLimit
     );
     //Tạo một object gán sortKey , sortValue tìm được vào  (Chức Năng Sắp Xếp)
-    let sort = {};
+    let sort: any = {
+      _id: -1
+    };
     //Nếu tồn tại thì mới gán vào sort
     if (querySortKey && querySortValue) {
       sort = {
@@ -317,6 +321,13 @@ export const changeStatus = async function (
         status: status,
       }
     );
+
+    if (status === "active") {
+      const job = await Job.findById(id)
+      const textJob = promptJobEmbeddingV2(job)
+      const embedding = await getEmbedding(textJob)
+      await Job.updateOne({_id: job._id}, { $set: { embedding, brief_embedding: textJob } })
+    }
 
     //Trả về cập nhật trạng thánh thành công
     res
