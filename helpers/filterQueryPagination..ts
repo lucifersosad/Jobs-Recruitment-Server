@@ -5,6 +5,7 @@ interface ObjectPagination{
     skip? : number,
     totalPage? : number,
     remainingItem?: number,
+    nextPage?: number,
 }
 
 
@@ -26,6 +27,8 @@ export const filterQueryPagination = (countRecord : number, currentPage : number
     const totalPage : number = Math.ceil(countRecord / limitItem);
     objectPagination.totalPage = totalPage;
     const remainingItem = countRecord > limitItem ? countRecord - limitItem : 0;
+    const nextPage = currentPage < totalPage ? currentPage + 1 : null
     objectPagination.remainingItem = remainingItem;
+    objectPagination.nextPage = nextPage;
     return objectPagination;
 }

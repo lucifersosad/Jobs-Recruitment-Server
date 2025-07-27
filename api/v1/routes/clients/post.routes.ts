@@ -5,7 +5,7 @@ import { auth } from "../../middlewares/clients/auth.middleware";
 
 const router: Router = Router();
 
-router.get("/get-all/:employerId", validates.getPosts, controller.getEmployerPosts);
+router.get("/get-all/:employerId", auth, validates.getPosts, controller.getEmployerPosts);
 router.post("/like/:postId", auth, validates.likePost, controller.likePost);
 router.post("/comment/:postId", auth, validates.commentOnPost, controller.commentOnPost);
 
