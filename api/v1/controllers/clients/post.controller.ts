@@ -3,26 +3,76 @@ import { Request, Response } from "express";
 import { Comment } from "../../../../models/comment.model";
 import { timeAgo } from "../../../../helpers/timeHelper";
 import mongoose from "mongoose";
+import { filterQueryPagination } from "../../../../helpers/filterQueryPagination.";
 
 export const getEmployerPosts = async (req: Request, res: Response) => {
   try {
+    const userId = req["user"]._id;
     const { employerId } = req.params;
+
+    let queryPage = 1;
+    let queryLimit = 4;
+    if (req.query.page) {
+      queryPage = parseInt(req.query.page.toString());
+    }
+    if (req.query.limit) {
+      queryLimit = parseInt(req.query.limit.toString());
+    }
 
     if (!employerId) {
       return res.status(400).json({ message: "Thiếu ID nhà tuyển dụng" });
     }
 
-    const posts = await Post.find({ employerId }).sort({ createdAt: -1 });
+    const countRecord = await Post.countDocuments({ employerId })
 
-    res.status(200).json(
-      posts.map((post) => ({
+    const objectPagination = filterQueryPagination(
+      countRecord,
+      queryPage,
+      queryLimit
+    );
+
+    const getPostComments = async (postId) => {
+      const comments = await Comment.find({ postId })
+      .populate("userId", "fullname avatar")
+      .sort({ createdAt: -1 });
+
+      const formattedComments = comments.map(comment => ({
+        id: comment._id,
+        content: comment.content,
+        userId: comment.userId,
+        timeAgo: timeAgo(comment.createdAt),
+        parentCommentId: comment.parentCommentId,
+      }));
+      return formattedComments
+    } 
+
+    const posts = await Post.find({ employerId })
+      .limit(objectPagination.limitItem)
+      .skip(objectPagination.skip)
+      .sort({ _id: -1 });
+
+    const data = await Promise.all(
+      posts.map(async (post) => ({
         id: post._id,
         caption: post.caption,
         images: post.images,
         likes: post.likes.length,
         timeAgo: timeAgo(post.createdAt),
+        isLiked: post.likes.includes(userId),
+        comments: await getPostComments(post._id),
       }))
     );
+
+    res.status(200).json({
+      code: 200,
+      data,
+      total: data.length,
+      totalPosts: countRecord,
+      page: objectPagination.currentPage,
+      limit: objectPagination.limitItem,
+      totalPages: objectPagination.totalPage,
+      nextPage: objectPagination.nextPage
+    });
   } catch (error) {
     console.error("Lỗi khi lấy danh sách bài viết:", error);
     res.status(500).json({ message: "Lỗi server, vui lòng thử lại sau." });
@@ -72,7 +122,9 @@ export const commentOnPost = async (req, res) => {
       return res.status(404).json({ message: "Bài viết không tồn tại" });
     }
 
-    const newComment = await Comment.create({ postId, userId, content });
+    const record = await Comment.create({ postId, userId, content });
+
+    const newComment = { ...record, timeAgo: timeAgo(record.createdAt)}
 
     res.status(201).json({ message: "Bình luận thành công", comment: newComment });
   } catch (error) {
