@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors"
 
 import * as database from "./config/database"
+import * as redis from "./config/redis"
 import routesAdminVersion1 from "./api/v1/routes/admins/index.routes";
 import routesClientVersion1 from "./api/v1/routes/clients/index.routes";
 import routesEmployerVersion1 from "./api/v1/routes/employers/index.routes";
@@ -34,8 +35,9 @@ app.set('socketio', io);
 app.use(bodyParser.json({ limit: '50mb' }))
 
 dotenv.config()
+database.connect()
 
-database.connect();
+redis.connect()
 
 routesCommonVersion1(app);
 
