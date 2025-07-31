@@ -8,6 +8,7 @@ import { POPULATE } from "../../interfaces/populate.interface";
 import Job from "../../../../models/jobs.model";
 import slug from "slug";
 import { encryptedData } from "../../../../helpers/encryptedData";
+import { invalidateJobsCacheByProperties, invalidateJobsCache } from "../../../../helpers/redisHelper";
 import JobCategories from "../../../../models/jobCategories.model";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { promptJobEmbeddingV2 } from "../../../../helpers/prompt";
@@ -254,6 +255,13 @@ export const create = async function (
     const record = new Job(Jobs);
     await record.save();
 
+    // Invalidate jobs cache after creating new job
+    await invalidateJobsCacheByProperties({
+      featured: Jobs.featured,
+      salaryMax: Jobs.salaryMax,
+      workExperience: Jobs.workExperience
+    });
+
     res
       .status(201)
       .json({ success: "Tạo Công Việc Thành Công!", code: 201 });
@@ -279,6 +287,10 @@ export const deleteJobs = async function (
     }
     //Lấy ra id công việc muốn xóa
     const id: string = req.params.id.toString();
+    
+    // Lấy thông tin job trước khi xóa để biết cần invalidate cache nào
+    const jobToDelete = await Job.findById(id).select("featured salaryMax workExperience");
+    
     //Bắt đầu xóa mềm dữ liệu,nghĩa là không xóa hẳn dữ liệu ra khỏi database mà chỉ chỉnh trường deteled thành true thôi
     await Job.updateOne(
       { _id: id },
@@ -287,6 +299,19 @@ export const deleteJobs = async function (
         deletedAt: new Date(),
       }
     );
+
+    // Smart cache invalidation - chỉ xóa cache liên quan
+    if (jobToDelete) {
+      await invalidateJobsCacheByProperties({
+        featured: jobToDelete.featured,
+        salaryMax: jobToDelete.salaryMax,
+        workExperience: jobToDelete.workExperience
+      });
+    } else {
+      // Fallback nếu không tìm thấy job
+      await invalidateJobsCache();
+    }
+
     res.status(200).json({ success: "Xóa Dữ Liệu Thành Công!", code: 200 });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
@@ -312,6 +337,9 @@ export const changeStatus = async function (
     const id: string = req.params.id.toString();
     const status: string = req.body.status.toString();
 
+    // Lấy thông tin job trước khi update để biết cần invalidate cache nào
+    const jobToUpdate = await Job.findById(id).select("featured salaryMax workExperience status");
+
     //Nếu qua được validate sẽ vào đây rồi update dữ liệu
     await Job.updateOne(
       {
@@ -327,6 +355,18 @@ export const changeStatus = async function (
       const textJob = promptJobEmbeddingV2(job)
       const embedding = await getEmbedding(textJob)
       await Job.updateOne({_id: job._id}, { $set: { embedding, brief_embedding: textJob } })
+    }
+
+    // Smart cache invalidation - chỉ xóa cache liên quan
+    if (jobToUpdate) {
+      await invalidateJobsCacheByProperties({
+        featured: jobToUpdate.featured,
+        salaryMax: jobToUpdate.salaryMax,
+        workExperience: jobToUpdate.workExperience
+      });
+    } else {
+      // Fallback nếu không tìm thấy job
+      await invalidateJobsCache();
     }
 
     //Trả về cập nhật trạng thánh thành công
@@ -401,6 +441,13 @@ export const edit = async function (
     const id: string = req.params.id.toString();
     //Update công việc đó!
     await Job.updateOne({ _id: id }, recordNew);
+
+    // Invalidate jobs cache after updating job
+    await invalidateJobsCacheByProperties({
+      featured: recordNew.featured,
+      salaryMax: recordNew.salaryMax,
+      workExperience: recordNew.workExperience
+    });
 
     res
       .status(200)

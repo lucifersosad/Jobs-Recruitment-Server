@@ -14,6 +14,12 @@ import { convertToSlug } from "../../../../helpers/convertToSlug";
 import { searchPro } from "../../../../helpers/searchPro";
 import { getFileDriverToBase64 } from "../../../../helpers/getFileToDriver";
 import Cv from "../../../../models/cvs.model";
+import { 
+  generateJobsCacheKey, 
+  getCachedData, 
+  setCachedData, 
+  getCacheConfig 
+} from "../../../../helpers/redisHelper";
 
 // [GET] /api/v1/client/jobs/index/
 //VD: //VD: {{BASE_URL}}/api/v1/client/jobs?page=1&limit=7&sortKey=title&sortValue=asc&status=active&featured=true&salaryKey=gt&salaryValue=1000&jobLevel=Intern&occupationKey=software-development
@@ -22,6 +28,20 @@ export const index = async function (
   res: Response
 ): Promise<void> {
   try {
+    // Cache key generation - tạo cache key từ query parameters
+    const cacheKey = generateJobsCacheKey(req.query);
+    const cacheConfig = getCacheConfig(req.query);
+    
+    // Check cache first - kiểm tra cache trước
+    const cachedData = await getCachedData(cacheKey);
+    if (cachedData) {
+      console.log(`🚀 Cache HIT for key: ${cacheKey}`);
+      res.status(200).json(cachedData);
+      return;
+    }
+    
+    console.log(`💾 Cache MISS for key: ${cacheKey} - Querying database...`);
+
     const find: JobInterface.Find = {
       deleted: false,
       status: "active",
@@ -163,10 +183,16 @@ export const index = async function (
     }));
     //Mã hóa dữ liệu khi gửi đi
     const dataEncrypted = encryptedData(convertData);
+    
+    // Chuẩn bị response data
+    const responseData = { data: dataEncrypted, code: 200, countJobs: countJobs };
+    
+    // Save to cache - lưu kết quả vào cache
+    await setCachedData(cacheKey, responseData, { ttl: cacheConfig.ttl });
+    console.log(`💾 Cached response for key: ${cacheKey} with TTL: ${cacheConfig.ttl}s`);
+    
     //Trả về công việc đó.
-    res
-      .status(200)
-      .json({ data: dataEncrypted, code: 200, countJobs: countJobs });
+    res.status(200).json(responseData);
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
     console.error("Error in API:", error);
