@@ -70,7 +70,6 @@ export async function setCachedData(key: string, data: any, options: CacheOption
 export async function deleteCacheKey(key: string): Promise<boolean> {
   try {
     await redisClient.del(key);
-    console.log(`🗑️ Deleted cache key: ${key}`);
     return true;
   } catch (error) {
     console.error("Redis DELETE error:", error);
@@ -86,7 +85,6 @@ export async function deleteCachePattern(pattern: string): Promise<number> {
     const keys = await redisClient.keys(pattern);
     if (keys.length > 0) {
       await redisClient.del(keys);
-      console.log(`🗑️ Deleted ${keys.length} cache keys matching pattern: ${pattern}`);
     }
     return keys.length;
   } catch (error) {
@@ -163,7 +161,9 @@ export function getCacheConfig(queryParams: Record<string, any>): { ttl: number;
 export async function invalidateJobsCache(): Promise<void> {
   try {
     const deletedCount = await clearJobsCache();
-    console.log(`🔄 Invalidated ${deletedCount} job cache entries`);
+    // Also invalidate count caches since job counts have changed
+    await invalidateJobCategoriesCountCache();
+    await invalidateEmployersCountCache();
   } catch (error) {
     console.error("Error invalidating jobs cache:", error);
   }
@@ -205,7 +205,10 @@ export async function invalidateJobsCacheByProperties(jobData: {
       if (deleted) totalDeleted++;
     }
 
-    console.log(`🎯 Targeted cache invalidation: ${totalDeleted} keys deleted`);
+    // Also invalidate count caches since job counts have changed
+    await invalidateJobCategoriesCountCache();
+    await invalidateEmployersCountCache();
+
   } catch (error) {
     console.error("Error in targeted cache invalidation:", error);
   }
@@ -218,7 +221,6 @@ export async function invalidateEmployerCache(employerId: string): Promise<void>
   try {
     // Invalidate jobs cache since employer data is populated in job responses
     await invalidateJobsCache();
-    console.log(`🏢 Invalidated cache for employer: ${employerId}`);
   } catch (error) {
     console.error("Error invalidating employer cache:", error);
   }
@@ -231,7 +233,6 @@ export async function invalidateJobCategoriesCache(): Promise<void> {
   try {
     // Since job categories are populated in job responses, invalidate jobs cache
     await invalidateJobsCache();
-    console.log(`📂 Invalidated job categories cache`);
   } catch (error) {
     console.error("Error invalidating job categories cache:", error);
   }
@@ -266,12 +267,83 @@ export async function warmCache(): Promise<void> {
 }
 
 /**
+ * Cache configuration for count APIs
+ */
+export const COUNT_CACHE_CONFIG = {
+  JOB_CATEGORIES_COUNT: {
+    key: "job-categories:count-job",
+    ttl: -1
+  },
+  EMPLOYERS_COUNT: {
+    key: "employers:count-job", 
+    ttl: -1
+  }
+};
+
+/**
+ * Get cached job categories count data
+ */
+export async function getCachedJobCategoriesCount(): Promise<any | null> {
+  return getCachedData(COUNT_CACHE_CONFIG.JOB_CATEGORIES_COUNT.key);
+}
+
+/**
+ * Set cached job categories count data
+ */
+export async function setCachedJobCategoriesCount(data: any): Promise<boolean> {
+  return setCachedData(
+    COUNT_CACHE_CONFIG.JOB_CATEGORIES_COUNT.key,
+    data,
+    { ttl: COUNT_CACHE_CONFIG.JOB_CATEGORIES_COUNT.ttl }
+  );
+}
+
+/**
+ * Get cached employers count data
+ */
+export async function getCachedEmployersCount(): Promise<any | null> {
+  return getCachedData(COUNT_CACHE_CONFIG.EMPLOYERS_COUNT.key);
+}
+
+/**
+ * Set cached employers count data
+ */
+export async function setCachedEmployersCount(data: any): Promise<boolean> {
+  return setCachedData(
+    COUNT_CACHE_CONFIG.EMPLOYERS_COUNT.key,
+    data,
+    { ttl: COUNT_CACHE_CONFIG.EMPLOYERS_COUNT.ttl }
+  );
+}
+
+/**
+ * Invalidate job categories count cache
+ */
+export async function invalidateJobCategoriesCountCache(): Promise<void> {
+  try {
+    await deleteCacheKey(COUNT_CACHE_CONFIG.JOB_CATEGORIES_COUNT.key);
+  } catch (error) {
+    console.error("Error invalidating job categories count cache:", error);
+  }
+}
+
+/**
+ * Invalidate employers count cache
+ */
+export async function invalidateEmployersCountCache(): Promise<void> {
+  try {
+    await deleteCacheKey(COUNT_CACHE_CONFIG.EMPLOYERS_COUNT.key);
+  } catch (error) {
+    console.error("Error invalidating employers count cache:", error);
+  }
+}
+
+/**
  * Clear all application cache (use with caution)
  */
-export async function clearAllCache(): Promise<void> {
+export async function invalidateAllCache(): Promise<void> {
   try {
-    const deletedJobs = await clearJobsCache();
-    console.log(`🧹 Cleared all cache: ${deletedJobs} job entries deleted`);
+    await invalidateJobsCache();
   } catch (error) {
     console.error("Error clearing all cache:", error);
   }

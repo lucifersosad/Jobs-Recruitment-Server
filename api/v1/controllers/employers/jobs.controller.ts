@@ -21,6 +21,7 @@ import Skill from "../../../../models/skills.model";
 import Cv from "../../../../models/cvs.model";
 import RoomChat from "../../../../models/rooms-chat.model";
 import MyCv from "../../../../models/my-cvs.model";
+import { invalidateJobsCacheByProperties } from "../../../../helpers/redisHelper";
 
 // [GET] /api/v1/employers/jobs/index/
 export const index = async function (
@@ -289,9 +290,18 @@ export const changeStatus = async function (
       {
         status: status,
       }
-    );
+    )
 
-    //Trả về cập nhật trạng thánh thành công
+    const jobToUpdate = await Job.findById(id).select("featured salaryMax workExperience status");
+    if (jobToUpdate) {
+      await invalidateJobsCacheByProperties({
+        featured: jobToUpdate.featured,
+        salaryMax: jobToUpdate.salaryMax,
+        workExperience: jobToUpdate.workExperience
+      });
+    }
+
+    //Trả về cập nhật trạng thái thành công
     res
       .status(200)
       .json({ success: "Cập nhật trạng thái thành công", code: 200 });

@@ -307,9 +307,6 @@ export const deleteJobs = async function (
         salaryMax: jobToDelete.salaryMax,
         workExperience: jobToDelete.workExperience
       });
-    } else {
-      // Fallback nếu không tìm thấy job
-      await invalidateJobsCache();
     }
 
     res.status(200).json({ success: "Xóa Dữ Liệu Thành Công!", code: 200 });
@@ -364,9 +361,6 @@ export const changeStatus = async function (
         salaryMax: jobToUpdate.salaryMax,
         workExperience: jobToUpdate.workExperience
       });
-    } else {
-      // Fallback nếu không tìm thấy job
-      await invalidateJobsCache();
     }
 
     //Trả về cập nhật trạng thánh thành công

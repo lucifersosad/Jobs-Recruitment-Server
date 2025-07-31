@@ -10,6 +10,10 @@ import * as JobCategoriesInterface from "../../interfaces/jobsCategories.interfa
 import { encryptedData } from "../../../../helpers/encryptedData";
 import JobCategories from "../../../../models/jobCategories.model";
 import { convertToSlug } from "../../../../helpers/convertToSlug";
+import { 
+  getCachedJobCategoriesCount, 
+  setCachedJobCategoriesCount 
+} from "../../../../helpers/redisHelper";
 
 //VD: {{BASE_URL}}/api/v1/client/job-categories?page=1&limit=7&sortKey=companyName&sortValue=asc&status=active$findAll=true
 export const index = async function (
@@ -129,6 +133,14 @@ export const countJobs = async function (
   res: Response
 ): Promise<void> {
   try {
+    // Check cache first
+    const cachedData = await getCachedJobCategoriesCount();
+    if (cachedData) {
+      console.log("📦 Serving job categories count from cache");
+      res.status(200).json({ data: cachedData, code: 200 });
+      return;
+    }
+
     //Khai báo biến find.
     const find: JobCategoriesInterface.Find = {
       deleted: false,
@@ -157,6 +169,10 @@ export const countJobs = async function (
       //Pust dataObject vừa nhận được vào mảng
       arr.push(dataObject);
     }
+
+    // Cache the result
+    await setCachedJobCategoriesCount(arr);
+    console.log("💾 Cached job categories count data");
 
     //Ta trả dữ liệu ra giao diện
     res.status(200).json({ data: arr, code: 200 });
