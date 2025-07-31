@@ -7,6 +7,10 @@ import { filterQueryPagination } from "../../../../helpers/filterQueryPagination
 import { encryptedData } from "../../../../helpers/encryptedData";
 import { off } from "process";
 import Job from "../../../../models/jobs.model";
+import { 
+  getCachedEmployersCount, 
+  setCachedEmployersCount 
+} from "../../../../helpers/redisHelper";
 
 // [GET] /api/v1/client/employers/index/
 //VD: {{BASE_URL}}/api/v1/client/employers?page=1&limit=7&sortKey=companyName&sortValue=asc&status=active
@@ -111,6 +115,14 @@ export const coutJobs = async function (
   res: Response
 ): Promise<void> {
   try {
+    // Check cache first
+    const cachedData = await getCachedEmployersCount();
+    if (cachedData) {
+      console.log("📦 Serving employers count from cache");
+      res.status(200).json({ data: cachedData, code: 200 });
+      return;
+    }
+
     const find: EmployerInterface.Find = {
       deleted: false,
       status: "active",
@@ -131,6 +143,11 @@ export const coutJobs = async function (
     //Chạy promise all để chờ tất cả các promise chạy xong.Vì ở đây dùng map nên phải chờ tất cả các promise chạy xong.
     const convertData = await Promise.all(convertDataPromises);
     const dataEncrypted = encryptedData(convertData);
+    
+    // Cache the result
+    await setCachedEmployersCount(dataEncrypted);
+    console.log("💾 Cached employers count data");
+
     res.status(200).json({ data: dataEncrypted, code: 200 });
   } catch (error) {
     //Thông báo lỗi 500 đến người dùng server lỗi.
