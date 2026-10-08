@@ -12,8 +12,13 @@ export const chatSocketRouter = async (socket: Socket, io: Server) => {
   // Lấy id của user hiện tại từ socket
   const userMain = socket["user"]?._id.toString();
 
-  // Nếu không có idUser hoặc userMain hoặc idUser trùng với userMain thì không thực hiện gì cả
-  if (!userMain || !idUser || userMain === idUser) return;
+  if (!userMain) return;
+
+  // Tham gia room riêng của user để nhận thông báo cập nhật lịch sử chat (kể cả khi chưa mở khung chat nào)
+  socket.join(`user:${userMain}`);
+
+  // Nếu không có idUser hoặc idUser trùng với userMain thì không thực hiện gì cả
+  if (!idUser || userMain === idUser) return;
 
   // Kiểm tra xem idUser có phải là id của phòng chat group không
   const typeRoom = await getTypeRoom(idUser);
@@ -32,7 +37,7 @@ export const chatSocketRouter = async (socket: Socket, io: Server) => {
   socket.join(roomChatId);
 
   // Cập nhật trạng thái của các tin nhắn chưa đọc trong phòng chat thành đã đọc
-  await updateUnreadMessages(roomChatId, idUser);
+  await updateUnreadMessages(roomChatId, idUser, typeRoom, userMain);
 
   // Gửi tin nhắn về cho tất cả client trong phòng chat thông báo user hiện tại đang online
   io.to(roomChatId).emit("SERVER_RETURN_REQUEST_ONLINE", {
@@ -72,7 +77,16 @@ const getRoomChat = async (userMain: string, idUser: string, typeRoom: string) =
 };
 
 // Hàm cập nhật trạng thái của các tin nhắn chưa đọc trong phòng chat thành đã đọc
-const updateUnreadMessages = async (roomChatId: string, idUser: string) => {
+const updateUnreadMessages = async (roomChatId: string, idUser: string, typeRoom: string, userMain: string) => {
+  //Phòng group: mỗi thành viên đọc riêng, chỉ thêm userMain vào readBy
+  if (typeRoom === "group") {
+    await Chat.updateMany(
+      { room_chat_id: roomChatId, user_id: { $ne: userMain }, readBy: { $ne: userMain } },
+      { $addToSet: { readBy: userMain } }
+    );
+    return;
+  }
+
   const chatQuery = {
     room_chat_id: roomChatId,
     user_id: idUser,

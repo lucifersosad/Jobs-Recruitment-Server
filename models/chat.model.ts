@@ -15,8 +15,13 @@ const chatSchema = new mongoose.Schema(
     read:{
       type: Boolean,
       default: false,
-    
-    }
+
+    },
+    //Danh sách id người đã đọc tin nhắn (dùng cho phòng group, vì mỗi thành viên đọc riêng)
+    readBy: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,
