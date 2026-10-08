@@ -38,9 +38,17 @@ export const chatSocket = (socket: Socket, io: any, typeRoom: string): any => {
     // Gửi tin nhắn về cho tất cả client
     io.to(socket["roomChat"]).emit("SERVER_RETURN_MESSAGE", objectSend);
     //Muốn trả ra một sự kiện để bên client nó nhận được một request yêu cầu check lịch sử chat lấy tin nhắn mới nhất
-    io.emit("SERVER_RETURN_REQUEST_LOADMORE", {
-      id_check: socket["user"]._id,
-    });
+    //Chỉ gửi tới các thành viên của phòng chat (qua room riêng `user:<id>`), không broadcast cho mọi socket
+    const roomChat = await RoomChat.findById(socket["roomChat"]).select("users.id_check");
+    const memberRooms: string[] = (roomChat?.users || [])
+      .map((item) => item?.id_check)
+      .filter(Boolean)
+      .map((id) => `user:${id}`);
+    if (memberRooms.length > 0) {
+      io.to(memberRooms).emit("SERVER_RETURN_REQUEST_LOADMORE", {
+        id_check: socket["user"]._id,
+      });
+    }
   }; 
 };
 
@@ -81,30 +89,37 @@ export const disconnectChatSocket = (socket: Socket, io: any): any => {
 
 //hàm này có task là cập nhật trạng thái đã đọc tin nhắn khi đang ở khung chat cùng đối phương
 export const requestSeenChat = (socket: Socket, io: any): any => {
-  return async (data: any) => {
+  return async (data: any, callback?: () => void) => {
+    try {
+      const idUser : string = data["idUser"];
+      const idCheck : string = data["idCheck"];
+      //idUser ở đây chính là idUser của đối phương đang nhắn tin cùng mình
+      // Cập nhật trạng thái đã đọc tin nhắn
 
-    const idUser : string = data["idUser"];
-    const idCheck : string = data["idCheck"];
-    //idUser ở đây chính là idUser của đối phương đang nhắn tin cùng mình
-    // Cập nhật trạng thái đã đọc tin nhắn
-
-    if(idUser === idCheck){
-      await Chat.updateMany(
-        { user_id: idUser, room_chat_id: socket["roomChat"], read: false },
-        { read: true }
-      );
+      if(idUser === idCheck){
+        await Chat.updateMany(
+          { user_id: idUser, room_chat_id: socket["roomChat"], read: false },
+          { read: true }
+        );
+      }
+      //Phòng group: idUser là id phòng group đang mở. Mỗi thành viên đọc riêng nên chỉ thêm mình vào readBy,
+      //không đổi cờ read chung (nếu không thì người gửi/1 thành viên mở group sẽ làm tin thành "đã đọc" với tất cả)
+      const userMain: string = socket["user"]._id.toString();
+      const exitedRoomChat = await RoomChat.findOne({
+        _id:idUser,
+        typeRoom: "group",
+        "users.id_check": userMain,
+      });
+      if(exitedRoomChat){
+        await Chat.updateMany(
+          { room_chat_id: idUser, user_id: { $ne: userMain }, readBy: { $ne: userMain } },
+          { $addToSet: { readBy: userMain } }
+        );
+      }
+    } finally {
+      //Báo cho client biết đã cập nhật xong để client mới load lại lịch sử chat (tránh race condition)
+      if (typeof callback === "function") callback();
     }
-    const exitedRoomChat = await RoomChat.findOne({
-      _id:idUser,
-      typeRoom: "group",
-    });
-    if(exitedRoomChat){
-      await Chat.updateMany(
-        { user_id: idCheck, room_chat_id: idUser, read: false },
-        { read: true }
-      );
-    }
-   
   };
 };
 

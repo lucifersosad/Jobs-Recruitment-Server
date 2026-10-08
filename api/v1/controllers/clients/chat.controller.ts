@@ -104,6 +104,7 @@ export const getHistoryChat = async function (
             room_chat_id: { $in: req["listIdRoomChat"] },
             read: false,
             user_id: { $ne: req["user"]._id.toString() },
+            readBy: { $ne: req["user"]._id.toString() }, // Phòng group: bỏ qua tin mình đã đọc
           },
         }, // Lọc các tin nhắn từ danh sách phòng chat
         {
@@ -121,6 +122,10 @@ export const getHistoryChat = async function (
       const chatAll = chats.find(
         (item) => item._id.toString() === room?._id.toString()
       );
+      // Số lượng tin nhắn chưa đọc của đúng phòng chat này
+      const unreadCount =
+        unreadCounts.find((item) => item._id.toString() === room._id.toString())
+          ?.count || 0;
       if (room.typeRoom === "group") {
         return {
           typeRoom: "group",
@@ -130,12 +135,9 @@ export const getHistoryChat = async function (
           user_id: room._id, // id người dùng
           lastMessage: chats ? chatAll?.lastMessage || "" : "", // tin nhắn cuối cùng hoặc chuỗi rỗng nếu không có tin nhắn
           idUserChat: chats ? chatAll?.idUserChat || "" : "", // id người dùng của tin nhắn cuối cùng hoặc chuỗi rỗng nếu không có tin nhắn
-          unreadCount: unreadCounts[0]?.count || 0, // Số lượng tin nhắn chưa đọc
+          unreadCount: unreadCount, // Số lượng tin nhắn chưa đọc
         };
       }
-      const unreadCount =
-        unreadCounts.find((item) => item._id.toString() === room._id.toString())
-          ?.count || 0;
 
       const findIndexEmployer = room.users.findIndex(
         (item) => item.employer_id
